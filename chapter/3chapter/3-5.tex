@@ -1,0 +1,216 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{Theorem}
+
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+% 定义证明环境样式
+\newtheoremstyle{zproofstyle}% 证明环境样式的名称
+  {0.5em}% 上方间距
+  {0.5em}% 下方间距
+  {\itshape}% 证明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 证明标记的字体样式
+  {.\newline}% 证明标记和证明内容之间的标点
+  {1em}% 证明标记后的水平空间
+  {}% 证明标记后的垂直空间
+
+% 使用新定义的样式创建证明环境
+\theoremstyle{zproofstyle}
+\newtheorem*{zproof}{证明}
+
+\begin{document}
+\section{3.5习题}
+\subsection*{3.5.5}
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    按照定义证明即可
+  \end{zremark}
+\end{zgraytheorem}
+\begin{zproof}
+  % 证明1
+  \textcircled{1}$(A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)$ 证明
+
+  令$Z = (A \times B) \cap (C \times D)$，$Z^\prime=(A \cap C) \times (B \cap D)$
+  现在我们只需证明属于Z中的元素也属于$Z^\prime$，反之亦然。
+
+  对任意$(x,y) \in Z$ 那么 $(x,y)\in A \times B$ 且 $(x,y)\in C \times D$，所以
+  $x \in A , x \in C$，$y \in B , y \in D$，由定义可知$(x,y) \in Z^\prime$。
+
+  反之，对任意$(x,y) \in Z^\prime$ 那么 $(x,y)\in A \cap C$ 且 $(x,y)\in B \cap D$，所以
+  $x \in A , x \in C$，$y \in B , y \in D$，由定义可知$(x,y) \in Z$。
+
+  % 证明2
+  剩下的证明类似，故略
+\end{zproof}
+
+\subsection*{3.5.6}
+\begin{zproof}
+  \textcircled{1}$A \times B \subseteq C \times D$ 当且仅当 $A \subseteq C$且$B \subseteq D$ 证明
+
+  先证明 $A \times B \subseteq C \times D \implies A \subseteq C,B \subseteq D$
+  任意$x \in A, y \in B \implies (x,y) \in A \times B$ 又 $A \times B \subseteq C \times D$
+  所以 $(x,y) \in C \times D$，所以 $x \in C , y \in D$，由此可知对任意$x \in A \implies x \in C$，
+  $y \in B \implies y \in D$，所以 $A \subseteq C$且$B \subseteq D$。
+
+  再证明 $A \subseteq C,B \subseteq D \implies A \times B \subseteq C \times D$ 任意$(x,y) \in A \times B$
+  所以 $x \in A , y \in B$,由$A \subseteq C,B \subseteq D$ 知 $x \in C , y \in D$ 那么 $(x,y) \in C \times D$，
+  所以 $A \times B \subseteq C \times D$
+
+  \textcircled{2}$A \times B = C \times D$ 当且仅当 $A = C$且$B = D$ 证明
+
+  先证明 $A \times B = C \times D \implies A = C,B = D$。
+  因 $A \times B = C \times D$ 由 \textcircled{1}知$A \subseteq C,B \subseteq D$，
+  由集合相等的对称性可知$C \times D = A \times B$，所以$B \subseteq A,D \subseteq B$,
+  综上$A = C$且$B = D$
+
+  类似证明$A = C,B = D \implies A \times B = C \times D$。
+
+  \textcircled{3}去掉空集的限制，空集和自然数0的效果很类似，
+  上面的\textcircled{1}\textcircled{2}都不再成立
+\end{zproof}
+
+\subsection*{3.5.7}
+\begin{zgraytheorem}
+  \begin{zremark}
+    证明唯一性，常见思路是先定义出目标对象，再证明其唯一性，
+    即证明其他满足条件的对象，都与目标对象相等
+  \end{zremark}
+\end{zgraytheorem}
+\begin{zproof}
+  定义$h : Z \rightarrow X \times Y, h(z) := (f(z),g(z))$
+  \newline
+  由h的定义，显然$\pi_{X \times Y \rightarrow X} \circ h = f$且$\pi_{X \times Y \rightarrow Y} \circ h = g$
+  现在证明其唯一性。假设存在另一个函数$h^\prime$满足$\pi_{X \times Y \rightarrow X} \circ h^\prime = f$且$\pi_{X \times Y \rightarrow Y} \circ h^\prime = g$，
+  现需证明$h=h^\prime$，我们要说明对任意z有$h(z)=h^\prime(z)$。
+  设$h(z) = (f(z), g(z)) = (x, y)$ $h^\prime(z) = (x^\prime, y^\prime)$
+  由$\pi_{X \times Y \rightarrow X} \circ h = f$ 和 $\pi_{X \times Y \rightarrow X}(x,y):=x$知
+  $\pi_{X \times Y \rightarrow X} \circ h(z) = x = f(z)$
+  同理 $\pi_{X \times Y \rightarrow X} \circ h^\prime(z) = x^\prime = f(z)$，
+  所以 $x=x^\prime$
+  同理 $y=y^\prime$,
+  综上对任意z有$h(z)=h^\prime(z)$
+  那么由函数的相等定义，有$h^\prime = h$，唯一性得到证明
+\end{zproof}
+
+\subsection*{3.5.8}
+\begin{zproof}
+  如果每一个$X_i$都是非空集合，由引理3.5.12可知，集合$\prod\limits_{1\leqslant i \leqslant n}X_i$ 也是非空的,
+  所以$\prod\limits_{1\leqslant i \leqslant n}X_i$为空至少有一个$X_i$为空。
+
+  如果有一个$X_i$为空，由笛卡尔积的定义，$1\leqslant i \leqslant n$的$x_i$不存在，所以$\prod\limits_{1\leqslant i \leqslant n}X_i$为空。
+
+  综上，命题得证
+\end{zproof}
+
+\subsection*{3.5.9}
+\begin{zgraytheorem}
+  \begin{zremark}
+    按照集合相等的定义证明即可
+  \end{zremark}
+\end{zgraytheorem}
+\begin{zproof}
+  任意$x \in [(\bigcup \limits_{\alpha \in I}A_\alpha) \bigcap (\bigcup \limits_{\beta \in J}B_\beta)]$
+  $\Rightarrow$ 存在 $\alpha \in I$ 使得 $x \in A_\alpha$ 且 存在 $\beta \in J$ 使得 $x \in B_\beta$，
+  由此可知$(\alpha,\beta) \in I \times J, x \in (A_\alpha \bigcap B_\beta)$，
+  所以$x \in \bigcup \limits_{(\alpha,\beta) \in I \times J}(A_\alpha \bigcap B_\beta)$
+
+  任意$x \in \bigcup \limits_{(\alpha,\beta) \in I \times J}(A_\alpha \bigcap B_\beta)$
+  $\Rightarrow$ 存在 $(\alpha,\beta) \in I \times J, x \in (A_\alpha \bigcap B_\beta)$，
+  由此可知存在 $\alpha \in I$ 使得 $x \in A_\alpha$ 且 存在 $\beta \in J$ 使得 $x \in B_\beta$，
+  所以$x \in [(\bigcup \limits_{\alpha \in I}A_\alpha) \bigcap (\bigcup \limits_{\beta \in J}B_\beta)]$
+
+  综上，命题得证
+\end{zproof}
+
+\subsection*{3.5.10}
+\begin{zgraytheorem}
+  \begin{zremark}
+
+  \end{zremark}
+\end{zgraytheorem}
+\begin{zproof}
+  \textcircled{1}先证明函数相等$\Rightarrow$图相等
+
+  假设两个函数$f: X \rightarrow Y$ 和 $\tilde{f}  : X \rightarrow Y$相等，
+  那么由函数的相等定义，有任意$x \in X, f(x) = \tilde{f}(x)$，由图的定义可知图是一个集合，
+  又$(x, f(x)) \in f$的图，$(x, \tilde{f}(x)) \in \tilde{f}$的图，且$f(x) = \tilde{f}(x)$，
+  所以两函数的图相等。
+
+  证明图相等$\Rightarrow$函数相等。
+
+  假设两函数$f , \tilde{f}$的图相等。
+  对任意$x \in X$，有 $(x, f(x)) \in f$的图，由图相等可知$(x, f(x)) \in \tilde{f}$的图。
+
+  同理：$(x, \tilde{f}(x)) \in \tilde{f}$的图，$(x, \tilde{f}(x)) \in f$的图，
+
+  假设两个函数不相等，应该存在$x_{0}, f(x_{0}) \neq \tilde{f}(x_{0})$，但由之前的说明可知，
+  $(x_0, f(x_0)) \in \tilde{f}$的图，所以存在$(x_1, \tilde{f}(x_1))=(x_0,f(x_0)) \in \tilde{f}$的图，
+  有有序对相等的定义可知$x_0=x_1, f(x_0) = \tilde{f}(x_1)$，
+  而由$x_0=x_1$，可以得到$f(x_0) = \tilde{f}(x_1) = \tilde{f}(x_0)$
+  这与$f(x_{0}) \neq \tilde{f}(x_{0})$矛盾，所以假设不成立
+
+  综上，命题得证
+
+  \textcircled{2}
+  先定义函数f: $X \rightarrow Y$，其性质为$(x,y) \in G$。
+  由题设“子集G具有下述性质：对每一个$x \in X$，集合{$y \in Y:(x,y) \in G$}中恰好有一个元素”，
+  可知这里定义的y是存在且唯一，满足函数定义。由f的构造方式知，f的图与G相等（这里不做证明了）。
+
+  现在证明f的唯一性。
+
+  假设存在另外一个函数$f^\prime: X \rightarrow Y$，它的图与G相等。
+  那么对任意$x \in X$，由图的定义可知$(x, f^\prime(x)) \in f^\prime$的图，
+  因为$f^\prime$的图与G相等，所以$(x, f^\prime(x)) \in G$，
+  由题设“子集G具有下述性质：对每一个$x \in X$，集合{$y \in Y:(x,y) \in G$}中恰好有一个元素”，
+  所以这里的$y=f^\prime(x)$，有由f的定义可知$(x,f(x)) \in G$，由y的唯一性可知，$f^\prime(x)=f(x)$，
+  所以$f=f^\prime$
+
+  综上所述，函数f唯一。
+\end{zproof}
+
+\subsection*{3.5.11}
+\begin{zgraytheorem}
+  \begin{zremark}
+    题目中的提示已经说明了证明思路
+  \end{zremark}
+\end{zgraytheorem}
+
+\begin{zproof}
+  \textcircled{1}对任意两个集合X和Y，利用引理 3.4.9 和分类公理构造出由$X \times Y$的一切子集组成的集合，它满足垂线测试。
+
+  由引理3.4.9知存在集合$\{a : a \in X \times Y\}$，即$X\times Y$的所有子集构成的集合A，
+  有分类公里得到$\{b \in A : b\text{满足垂线测试} \}$集合B。
+
+  \textcircled{2}利用3.5.10和替代公理构造出一个集合，该集合与公理3.10相同。
+
+
+\end{zproof}
+\end{document}
