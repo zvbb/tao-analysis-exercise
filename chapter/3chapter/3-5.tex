@@ -209,8 +209,20 @@
   由引理3.4.9知存在集合$\{a : a \in X \times Y\}$，即$X\times Y$的所有子集构成的集合A，
   有分类公里得到$\{b \in A : b\text{满足垂线测试} \}$集合B。
 
-  \textcircled{2}利用3.5.10和替代公理构造出一个集合，该集合与公理3.10相同。
+  \textcircled{2}利用3.5.10和替代公理构造出一个集合，该集合与公理3.10相同。如下：
+  \newline
+  $f_G := \{f: \alpha \in B, \text{函数f是定义域为X值域为Y,f的图与}\alpha \text{相同}\}$
+  \newline
+  现在我们只需证明$f_G$集合与公理3.10描述的集合$f_{ps} := \{ f: \text{f是一个定义域X且值域为Y的函数}\}$相等。
 
+  若$f_x \in f_G$，那么函数$f_x$的定义域是$X$，值域是$Y$，所以$f_x \in f_{ps}$,
 
+  若$f_x \in f_{ps}$，那么函数$f_x$的定义域是$X$，值域是$Y$，
+  又$f_x \text{的图}\{(x, f_x(x)), x \in X\}$为$\beta$，由函数的定义可知$\beta$满足垂线测试，
+  所以$\beta \in B$。由此可以得到一个函数$f_x^\prime: X \rightarrow Y$它的图为$\beta$，
+  由3.5.10可知两函数$f_x$和$f_x^\prime$相等，又$f_x^\prime \in f_G$，
+  所以$f_x \in f_G$。
+
+  综上所述，命题得证。
 \end{zproof}
 \end{document}
