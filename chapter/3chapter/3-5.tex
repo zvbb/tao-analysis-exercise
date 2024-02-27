@@ -225,4 +225,53 @@
 
   综上所述，命题得证。
 \end{zproof}
+
+\subsection*{3.5.12}
+\begin{zgraytheorem}
+  \begin{zremark}
+    证明思路：先证明提示中的命题，然后证明3.5.12
+  \end{zremark}
+\end{zgraytheorem}
+
+\begin{zproof}
+  \textcircled{1}证明提示中的命题
+
+  以归纳法证明该命题。
+  
+  归纳基始，当N=0时 ，存在唯一的函数$a_0: \{0\} \rightarrow N$，$a_0(0)=c$。
+  因为小于0的自然数不存在，
+  所以$a_0(n++) = f(n,a(n)) \text{对所有满足n < 0 的 n} \in \mathsf{N} \text{均成立}$这一点空成立
+  。由$a_0$的定义可知，$a_0$是唯一的。
+
+  归纳假设N=k时，提示中的命题成立。
+
+  现需证明N=k++时，提示中的命题成立。
+  先尝试定义出函数$a_{k++}: \{n \in \mathsf{N}: n \leq k \} \rightarrow \mathsf{N}$k++ = f(k, a(k))
+  当n<k时，$a_k(n) = a_{k++}(n), a_{k++}(k++) = f(k, a(k))$。
+  
+  现要证明函数$a_{k++}$的唯一性。假设存在另一个函数$a_j$，则存在一个x，使得$a_{k++}(x) \neq a_j(x)$，
+  若x属于函数$a_k$的定义域，那么与归纳假设$a_k$的唯一性矛盾。若x=k++，由函数的定义可知，函数f对同一个对象，
+  不可能有多个函数值，所以$x = k++$的情形不存在。由上述可知$a_j$是不存在的，所以$a_{k++}$是唯一的。
+
+  综上所述，提示中的命题成立。（有一点说明，上面提及的所有函数的存在性是由定义保证的）
+
+  \textcircled{2}证明3.5.12
+  利用提示中的命题，定义出函数a，并证明其唯一性。
+
+  函数$a: \mathsf{N} \rightarrow \mathsf{N}$，值域为$\{a_x(x): x \in \mathsf{N}\}$。
+  由$a(0)=a_0(0)=c, a(n++) = a_{n++}(n++) = f(n, a_{n})$，可知定义的函数a是满足要求的。
+
+  现在证明a的唯一性。
+
+  假设存在一个函数$a^\prime$满足题设，又$a \neq a^\prime$。
+  由函数的相等定义可知，若两个函数不相等，则存在一个自然数x,使得$a(x) \neq a^\prime(x)$，
+  当x=0,因为$a, a^\prime $都满足题设，所以$a(0)=a^\prime(0)=c$,
+  当$x \neq 0$时，即x是正数时，由于对任意正数都可以由一个自然数加1得到，我们假设$x = \alpha ++$，
+  那么$a(\alpha ++) = f(\alpha, a(\alpha)) = a^\prime(\alpha ++) = f(\alpha, a^\prime (\alpha))$
+  （对n进行归纳，可以证明该式子的正确性，这里不做证明了），所以这样的x不存在，到这里唯一性得到了证明。
+
+  综上，命题得证。
+
+\end{zproof}
+
 \end{document}
