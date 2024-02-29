@@ -237,7 +237,7 @@
   \textcircled{1}证明提示中的命题
 
   以归纳法证明该命题。
-  
+
   归纳基始，当N=0时 ，存在唯一的函数$a_0: \{0\} \rightarrow N$，$a_0(0)=c$。
   因为小于0的自然数不存在，
   所以$a_0(n++) = f(n,a(n)) \text{对所有满足n < 0 的 n} \in \mathsf{N} \text{均成立}$这一点空成立
@@ -248,7 +248,7 @@
   现需证明N=k++时，提示中的命题成立。
   先尝试定义出函数$a_{k++}: \{n \in \mathsf{N}: n \leq k \} \rightarrow \mathsf{N}$k++ = f(k, a(k))
   当n<k时，$a_k(n) = a_{k++}(n), a_{k++}(k++) = f(k, a(k))$。
-  
+
   现要证明函数$a_{k++}$的唯一性。假设存在另一个函数$a_j$，则存在一个x，使得$a_{k++}(x) \neq a_j(x)$，
   若x属于函数$a_k$的定义域，那么与归纳假设$a_k$的唯一性矛盾。若x=k++，由函数的定义可知，函数f对同一个对象，
   不可能有多个函数值，所以$x = k++$的情形不存在。由上述可知$a_j$是不存在的，所以$a_{k++}$是唯一的。
@@ -272,6 +272,76 @@
 
   综上，命题得证。
 
+
+  另一个挑战，不证明了，看着就让人emo
+
 \end{zproof}
 
+\subsection*{3.5.13}
+\begin{zgraytheorem}
+  \begin{zremark}
+    证明存在性，有两种常见思路：
+
+    一种是按照定义定义出目标对象；另一种是构造出目标对象，然后证明其符合定义。
+    在本题中，我们使用后一种方法。
+  \end{zremark}
+\end{zgraytheorem}
+
+\begin{zproof}
+  定义函数$f: \mathsf{N} \rightarrow \mathsf{N}^\prime, f(0)=0^\prime$
+  且对任意的$n \in \mathsf{N}, n^\prime \in \mathsf{N}^\prime, f(n) = n^\prime$，
+  当且仅当$f(n++)=n^\prime++^\prime$
+
+  \textcircled{1}证明定义的函数，符合函数定义。
+  首先$\mathsf{N},\mathsf{N}^\prime$都是集合，
+  我们要说明对任意定义域中的元素，在值域中可以找到唯一的元素与之对应。
+  这里我们对n进行归纳，来证明这一点。
+
+  归纳基始n=0, $f(0) = 0^\prime$，因$\mathsf{N}^\prime$也满足皮亚洛公理，由此可知$0^\prime$的唯一性，所以n=0满足定义;
+
+  归纳假设$n=x,f(x) = x^\prime$，$x^\prime$是唯一的。
+
+  现需$n=x++$满足定义，由函数f可知$f(x++) = x^\prime ++$，而2.4公理保证了$x^\prime ++$的唯一性。
+
+  至此可知，函数f是满足函数定义的。
+
+  \textcircled{2}证明函数f是双射的。
+
+  \textcircled{2.1}单射
+
+  归纳证明$f(x_1) = f(x_2)$，则$x_1 = x_2$
+
+  归纳基始，假设$f(x_1)=f(x_2)=0^\prime$，那么$x_1=x_2=0$
+  （
+  这里简单说下原因，
+  如果$x_1$不等于0，说明$x_1$是正数，而正数可以由一个自然数加1得到，这里假设$x_1=a++$
+  由此可得到$f(a) = a^\prime,f(a++)=a^\prime++^\prime = 0^\prime$，
+  这与洛必达公理2.3矛盾，所以$x_1$=0是必须的。
+  ）
+
+  归纳假设$f(x_1) = f(x_2) = n^\prime$，则$x_1 = x_2$
+
+  现需证明$f(x_1) = f(x_2) = n^\prime++\prime$，则$x_1 = x_2$；
+  因为$x_1,x_2$都是正数（归纳基始中已说明原因），
+  所以存在a,b使得$x_1 = a++, x_2 = b++$，由归纳假设可知$f(a) = f(b) = n^\prime$，
+  所以a=b，
+  所以$x_1 = x_2$。
+
+  由此可知: f单射
+
+  \textcircled{2.2}满射
+  归纳证明对任意$n^\prime \in \mathsf{N}^\prime$，有$n \in \mathsf{N}$使得$f(n)=n^\prime$
+
+  归纳基始，当$n^\prime=0^\prime$时，有$f(0) = 0^\prime$；
+
+  归纳假设，当$n^\prime=x^\prime$时，有$f(x)=x^\prime$；
+
+  现需证明，当$n^\prime=x^\prime++^\prime$时，有$n \in \mathsf{N}$使得$f(n)=x^\prime++^\prime$；
+  由归纳假设可知$f(x)=x^\prime$，所以$x++ \in \mathsf{N}$，由f的定义可知$f(x++)=x^\prime++^\prime$。
+
+  由此可知: f满射
+
+  综上，命题得证
+
+\end{zproof}
 \end{document}
