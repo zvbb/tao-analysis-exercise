@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+    backgroundcolor=gray!10,
+    linewidth=0pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    innertopmargin=10pt,
+    innerbottommargin=10pt
+]{zgraytheorem}{Theorem}
+
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+{1em}% 上方间距
+{1em}% 下方间距
+{\normalfont}% 说明内容的字体样式
+{}% 缩进量
+{\bfseries}% 说明标记的字体样式
+{.}% 说明标记和说明内容之间的标点
+{1em}% 说明标记后的水平空间
+{}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+% 定义证明环境样式
+\newtheoremstyle{zproofstyle}% 证明环境样式的名称
+{0.5em}% 上方间距
+{0.5em}% 下方间距
+{\itshape}% 证明内容的字体样式
+{}% 缩进量
+{\bfseries}% 证明标记的字体样式
+{.\newline}% 证明标记和证明内容之间的标点
+{1em}% 证明标记后的水平空间
+{}% 证明标记后的垂直空间
+
+% 使用新定义的样式创建证明环境
+\theoremstyle{zproofstyle}
+\newtheorem*{zproof}{证明}
+
+\begin{document}
+\title{2.2为什么}
+\maketitle
+\subsection*{定义2.2.1}
+证明两个自然数的和仍然是自然数。
+
+\begin{zproof}
+    对任意的自然数m,n，两个自然数的和为$n+m$，对n进行归纳。
+
+    n=0时，$n+m=0+m=m$，由于m是自然数，所以$n+m$也是自然数。
+
+    归纳假设$n+m$是自然数。
+
+    现需证明$(n++)+m$是自然数，由定义2.2.1可知$(n++)+m=(n+m)++$，又由归纳假设可知
+    $n+m$自然数，所以由洛必达公理可知$(n+m)++$是自然数。
+
+    至此归纳完成，命题得证
+\end{zproof}
+
+
+\end{document}

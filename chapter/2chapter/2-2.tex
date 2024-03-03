@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{Theorem}
+
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+% 定义证明环境样式
+\newtheoremstyle{zproofstyle}% 证明环境样式的名称
+  {0.5em}% 上方间距
+  {0.5em}% 下方间距
+  {\itshape}% 证明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 证明标记的字体样式
+  {.\newline}% 证明标记和证明内容之间的标点
+  {1em}% 证明标记后的水平空间
+  {}% 证明标记后的垂直空间
+
+% 使用新定义的样式创建证明环境
+\theoremstyle{zproofstyle}
+\newtheorem*{zproof}{证明}
+
+\begin{document}
+\title{2.2习题}
+\maketitle
+\subsection*{2.2.3}
+
+（a）（序是自反的）$a \geq a$
+
+\begin{zproof}
+    因为$a = a + 0$，由定义2.2.11可知$a \geq a$
+\end{zproof}
+
+（b）（序是可传递的）如果$a \geq b$并且$b \geq $，那么$a \geq c$。
+
+\begin{zproof}
+    如果$a \geq b$并且$b \geq c$，那么存在自然数m，n，使得$a = b + m, b = c + n$，
+    由相等公理（替换公理）可知$a= c + n + m$，所以$a = c + (n+m)$，
+    而两自然数相加仍然是自然数，所以$n+m$也是自然数，由定义2.2.11可知$a \geq c$，
+    至此，命题得证
+\end{zproof}
+
+（c）（序是反对称的）如果$a \geq b$并且$b \geq a$，那么a=b。
+
+\begin{zproof}
+    $a \geq b$并且$b \geq a$，可知存在m，n使得$a=b+m, b=a+m$，
+    替换公理替换掉b，则$a=b+n \Rightarrow a=a+m+n$，
+    由加法是可结合的（命题2.2.5）可知$a=a+m+n=a+(m+n)$
+    这里m+n必须是0，假设$m+n \neq 0$，所以$m+n$是正数。
+
+    这里要证明以下命题f：自然数a与正数c相加大于a。
+    对z做归纳。
+
+    z=1时，$a=a+(m+n)=a+(0++)=(a+0)++=a++>a$。
+
+    归纳假设z=k时，$a+k > a$。
+
+    当z=k++，$a+(k++)=(a+k)++>a+k$，所以$a+(k++) \neq (a+k)$
+    由$(a+k)>a$，可知$(a+k) \neq a$，所以$a+(k++) \neq a$，由定义2.2.11可知$a+(k++)>a$
+
+    那么$a >  a+m+n$，这与$a=a+m+n $矛盾。
+
+    至此，命题f得证
+
+    由命题f可知$m+n$不能是正数，否则与$a=a+(m+n)$矛盾。
+    由命题2.2.8可知$m=0,n=0$，又$a=b+n$，所以$a=b+0=b$。
+
+    至此，命题得证
+\end{zproof}
+
+（d）（加法保持序不变）$a \geq b$，当且仅当$a+c \geq b+c$。
+
+\begin{zproof}
+    $a \geq b$，可知存在自然数n，使得$a=b+n$。
+    $a+c=b+n+c=b+c+n$，所以$a+c \geq b+c$
+\end{zproof}
+
+（e）a<b,当且仅当$a++ \leq b$
+\begin{zproof}
+    $\Rightarrow$
+
+    a<b，可知存在自然数m，使得b=a+m，且$a \neq b$。
+    由此可是$m \neq 0$，因为如果m=0,那么$b=a+0, b=a$这与a<b矛盾。
+
+    对m进行归纳。
+
+    m=1时，$b=a+1=a++=a++$，所以$a++ \leq b$
+
+    归纳假设m=k时，$b=a+k$，$a \leq b$，即:$a \leq (a+k)$
+
+    m=k++，$b=a+(k++)=(a+k)++ \geq a+k \geq a$，由（b）可知$b \geq a$
+
+    综上所述，充分性得到证明
+
+    $\Leftarrow$
+    
+    $a++ \leq b$，可知存在m，$b=(a++)+m=a+(m++)$（用到了加法的交换律和加法的结合律），
+    自然数a与正数c相加大于a（在2-2-why.tex中有证明），所以$b > a$
+
+    综上所述，必要性得到证明
+
+    至此，命题得证
+\end{zproof}
+
+\begin{zproof}
+
+    （f）a<b,当且仅当存在自然数d使得$b=a+d$
+
+    $\Rightarrow$
+
+    a<b，可知存在自然数m使得$b=a+m$，如果m=0，那么$b=a+m=a$，这与a<b矛盾，
+    所以m是正数。
+
+    $\Leftarrow$
+
+    存在自然数d使得$b=a+d$，由自然数与正数相加大于该自然数（在2-2-why.tex中有证明），
+    所以$a<b$
+
+    至此，命题得证
+
+\end{zproof}
+\end{document}
