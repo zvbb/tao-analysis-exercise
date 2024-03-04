@@ -86,4 +86,38 @@
 
 由函数的满射定义可知，对值域中的任意元素y，定义域中都存在一个元素x，使得函数y=f(x)，
 而如果定义域是空集，那么x是不存在的，所以无法满足满射定义。
+
+\section*{引理3.6.9}
+\textbf{证明：定义的g函数是双射函数}
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    g构造书中说的不够直观，其实就是比$f(x)$小的，保持不变，比$f(x)$大的，向左平移1下，也就是$f(x)-1$。
+    这样就能保证值域不超过n，且为$\{i \in N: 1 \leq i \leq n-1\}$
+  \end{zremark}
+\end{zgraytheorem}
+
+\begin{zproof}
+
+  不妨设$Z=X - \{x\}, Y_{n-1}=\{i \in N: 1 \leq i \leq n-1\},Y_{n}=\{i \in N: 1 \leq i \leq n\} $。
+
+  \textcircled{1}g是单射
+
+  对任意$x_1 \in Z, x_2 \in Z, x_1 \neq x_2$，假设$g(x_1) = g(x_2)$，
+  由函数g的构造方式可知，要么$g(x_1)=g(x_2)=f(x_1)=f(x_2)$，
+  要么$g(x_1)=g(x_2)=f(x_1)-1=f(x_2)-1$，这都与f是单射函数矛盾，所以$g(x_1) \neq g(x_2)$，
+  所以g是单射的。
+
+  \textcircled{2}g是满射
+
+  对任意$y \in Y_{n-1}$，$y \in Y_n$，由于f是满射的，则存在$a \in X$使得$y=f(a)$，
+  若$f(a) < f(x)$，那么$y=g(a)=f(a)$；
+  若$f(a) \geq f(x)$，则由于f是单射，所以存在$b \in X$使得$y++=f(b)$，
+  由$f(b) > f(a) \geq f(x)$可知$f(b) > f(x)$，所以$g(b)=f(b)-1=(y++)-1=y$；
+  由此可知，对任意y都会存在Z中的元素i，使得$y=g(i)$。
+  （特别说明下，y++不可能取到n++的，因为$y \in Y_{n-1}$）
+  至此，g是满射得证。
+
+  综上，命题得证。
+\end{zproof}
 \end{document}
