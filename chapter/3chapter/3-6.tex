@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{Theorem}
+
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+% 定义证明环境样式
+\newtheoremstyle{zproofstyle}% 证明环境样式的名称
+  {0.5em}% 上方间距
+  {0.5em}% 下方间距
+  {\itshape}% 证明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 证明标记的字体样式
+  {.\newline}% 证明标记和证明内容之间的标点
+  {1em}% 证明标记后的水平空间
+  {}% 证明标记后的垂直空间
+
+% 使用新定义的样式创建证明环境
+\theoremstyle{zproofstyle}
+\newtheorem*{zproof}{证明}
+
+\begin{document}
+\title{3.6 习题}
+\maketitle
+
+\section*{3.6.1}
+\begin{zproof}
+  \textcircled{1}X和X有相等的基数。
+
+  构造一个从X到X的函数f，使得f(x)=x（$\{x \in X\}$）。函数f是双射函数，是显而易见的，
+  这里不做证明了。
+
+  \textcircled{2}如果X和Y有相等的基数，那么Y和X有相等的基数。
+
+  有X和Y有相等的基数，可知存在一个双射：$f: X \rightarrow Y$。
+  那么存在f的逆$f^{-1}: Y \rightarrow X$，由逆的定义可知$f^{-1}$是双射函数。
+
+  \textcircled{3}如果X和Y有相等的基数且Y和Z有相等的基数，那么X和Z有相等的基数。
+
+  由X和Y有相等的基数，可知存在一个双射：$f: X \rightarrow Y$。
+  由Y和Z有相等的基数，可知存在一个双射：$g: Y \rightarrow Z$。
+  那么g和f的复合函数为$g \circ f: X \rightarrow Z$。
+
+  由习题3.3.7可知$g \circ f$是双射函数。
+  由此可知存在一个双射：$g \circ f: X \rightarrow Z$，所以X和Z有相等的基数。
+\end{zproof}
+
+\subsection*{3.6.2}
+\begin{zproof}
+  \textcircled{1}充分性：一个集合X的基数为0，则X是空集。
+
+  那么存在从X到$\{i \in N: 1 \leq i \leq 0\}$的双射：$f: X \rightarrow \{i \in N: 1 \leq i \leq 0\}$。
+  而$\{i \in N: 1 \leq i \leq 0\}$是$\varnothing$，即$f: X \rightarrow \varnothing$。
+  如果X不是空集，那么则存在一个$x \in X$使得$f(x) \in \varnothing$，
+  这显然是不成立的，所以X是空集
+
+  \textcircled{2}必要性：X是空集，则X的基数为0。
+
+  若X是空集，由习题3.3.3知$f:\varnothing \rightarrow \varnothing$为双射，
+  而$\{i \in N : 1 \leq i \leq 0\}=\varnothing$，
+  即存在双射函数$f:\varnothing \rightarrow \{i \in N : 1 \leq i \leq 0\}$，
+  由定义3.6.5知集合X基数为0.
+\end{zproof}
+
+\end{document}
