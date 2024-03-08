@@ -85,7 +85,30 @@
   若X是空集，由习题3.3.3知$f:\varnothing \rightarrow \varnothing$为双射，
   而$\{i \in N : 1 \leq i \leq 0\}=\varnothing$，
   即存在双射函数$f:\varnothing \rightarrow \{i \in N : 1 \leq i \leq 0\}$，
-  由定义3.6.5知集合X基数为0.
+  由定义3.6.5可知集合X基数为0.
 \end{zproof}
 
+\subsection*{3.6.3}
+\begin{zproof}
+  对n进行归纳：
+
+  n=0时，f是空函数，命题空成立。
+
+  归纳假设n=k时，命题成立。
+
+  下面我们证明该命题对于k++也为真。
+  设集合$N_k = \{i \in \mathsf{N}: 1 \leq i \leq k\}, N_{k++} = \{i \in \mathsf{N}: 1 \leq i \leq k++\}$。
+  函数$f_{k++}: N_{k++} \rightarrow N$是一个函数，
+  我们可以由$f_{k++}$定义出一个函数$f_k: N_k \rightarrow N$，对任意$i \in N_k, f_k(i) = f_{k++}(i)$。
+  由归纳假设可知，存在一个自然数M使得$f_k(i) \leq M, i \in N_k$，即$f_{k++}(i) \leq M, i \in N_k$，
+  此时我们可以取$f_{k++}(k++), M$中的较大值为$M^\prime$，
+  由此可知该$M^\prime$使得$f_{k++}(i) \leq M^\prime, i \in N_{k++}$。归纳法完成。
+\end{zproof}
+
+\subsection*{3.6.4}
+
+（a）
+\begin{zproof}
+
+\end{zproof}
 \end{document}
