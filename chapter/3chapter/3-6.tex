@@ -107,8 +107,23 @@
 
 \subsection*{3.6.4}
 
-（a）
+（a）设$X$是一个有限集，设$x$是一个对象并且$x$不是$X$中的元素。
+那么$X \cup \{x\}$是有限的，且$\# (X \cup \{x\}) = \# (X) + 1$
 \begin{zproof}
-
+  $X$是有限集，不妨设$X$的基数是自然数n。因此存在从$X$到$\{i \in N: 1 \leq i \leq n\}$的双射函数$f$。
+  定义出一个函数$g: X \cup \{x\} \rightarrow \{i \in N: 1 \leq i \leq n+1\}$，
+  使得$g(x) = n+1$，$g(i) = f(i), i \in X$。
+  g是双射函数，由此可知$X \cup \{x\}$的基数是n+1，
+  所以$X \cup \{x\}$是有限的，且$\# (X \cup \{x\}) = \# (X) + 1$
 \end{zproof}
+
+（b）设$X$和$Y$都是有限集，那么$X \cup Y$是有限的，且$\# (X \cup Y) \leq \# (X) + \# (Y)$。
+另外，如果$X$和$Y$是不相交的（即$X \cap Y = \varnothing$），那么$\# (X \cup Y) = \# (X) + \# (Y)$
+\begin{zproof}
+  $X$和$Y$都是有限集，不妨设$X$和$Y$的基数分别为n和m。
+\end{zproof}
+
+（c）设$X$是一个有限集，$Y$是$X$的一个子集。那么$Y$是有限的，且$\# (Y) \leq \# (X)$。
+另外，如果$Y \neq X$（即$Y$是$X$的一个真子集），那么我们有$\#(Y) < \#(X)$。
+
 \end{document}
