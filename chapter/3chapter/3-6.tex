@@ -113,17 +113,17 @@
   $X$是有限集，不妨设$X$的基数是自然数n。因此存在从$X$到$\{i \in N: 1 \leq i \leq n\}$的双射函数$f$。
   定义出一个函数$g: X \cup \{x\} \rightarrow \{i \in N: 1 \leq i \leq n+1\}$，
   使得$g(x) = n+1$，$g(i) = f(i), i \in X$。
-  g是双射函数，由此可知$X \cup \{x\}$的基数是n+1，
+  由g的定义可知其是双射函数，且$X \cup \{x\}$的基数是n+1，
   所以$X \cup \{x\}$是有限的，且$\# (X \cup \{x\}) = \# (X) + 1$
 \end{zproof}
 
 （b）设$X$和$Y$都是有限集，那么$X \cup Y$是有限的，且$\# (X \cup Y) \leq \# (X) + \# (Y)$。
 另外，如果$X$和$Y$是不相交的（即$X \cap Y = \varnothing$），那么$\# (X \cup Y) = \# (X) + \# (Y)$
 \begin{zproof}
-  $X$和$Y$都是有限集，不妨设$X$和$Y$的基数分别为n和m。
+  $X$和$Y$都是有限集，不妨设$X$和$Y$的基数分别为m和n。
   通过对n进行归纳，完成证明；
 
-  n=0时，即$X$的基数是0，也就是说$X = \varnothing$，$X \cup Y = \varnothing \cup Y = Y$，
+  n=0时，即$Y$的基数是0，也就是说$Y = \varnothing$，$X \cup Y = X \cup \varnothing = X$，
   此时（b）命题显然是成立的。
 
   归纳假设n=k时，（b）命题成立。 
@@ -131,8 +131,9 @@
   现在需证明n=k++，任取$x \in Y, Z=Y \backslash \{x\}$，由引理3.6.9可知，$Z$的基数为k，
   由归纳假设可知，$X$与$Z$满足命题（b），由此可知$X \cup Z$是有限的；
 
-  $X \cup Y = X \cup Z \cup \{x\}$，
-  \textcircled{1} $X \cap Y = \varnothing$，由此可知$x \not\in X \cup Z$，且$\#(X \cup Z) = \#(X)+\#(Z)$。
+  $X \cup Y = X \cup Z \cup \{x\}$。
+
+  \textcircled{1} $X \cap Y = \varnothing$，由此可知$x \not\in X \cup Z$，且由归纳假设知$\#(X \cup Z) = \#(X)+\#(Z)$。
   由命题（a）可知$X \cup Z \cup \{x\}$是有限的，且$\#(X \cup Z \cup \{x\})=\#(X \cup Z)+1$，
   即$X \cup Y$是有限的，且$\#(X \cup Y) = \#(X \cup Z)+1 = \#(X) + \#(Z) + 1 = \#(X) + \#(Y)$，
   即$\#(X \cup Y) = \#(X) + \#(Y)$；
@@ -140,9 +141,11 @@
   \textcircled{2} $X \cap Y \neq \varnothing$
 
   如果$x \in X \cup Z$则$X \cup Y=X \cup Z \cup \{x\}=X \cup Z$，即$X \cup Y=X \cup Z$
-  由于同一集合只有几个基数，所以$\#(X \cup Y)=\#(X \cup Z) \leq \#(X)+ \#(Y)$。
+  由于同一集合只有一个基数，所以$\#(X \cup Y)=\#(X \cup Z)$，
+  又由归纳假设可知 $\#(X \cup Z) \leq \#(X) + \#(Z)$，所以$\#(X \cup Y) \leq \#(X)+ \#(Y)$。
 
-  如果$x \not\in X \cup Z$，（由$X \cap Y \neq \varnothing$，则$X \cap Z \neq \varnothing$，所以$\#(X \cup Z) \leq \#(X) + \#(Z)$）由命题（a）可知$\#(X \cup Z \cup \{x\})=\#(X \cup Z)+1$，
+  如果$x \not\in X \cup Z$，（由$X \cap Y \neq \varnothing$，则必须$X \cap Z \neq \varnothing$否则与假设矛盾，
+  所以$\#(X \cup Z) \leq \#(X) + \#(Z)$）由命题（a）可知$\#(X \cup Z \cup \{x\})=\#(X \cup Z)+1$，
   即$X \cup Y$是有限的，且$\#(X \cup Y) = \#(X \cup Z)+1 \leq \#(X) + \#(Z) + 1 = \#(X) + \#(Y)$，
   即$\#(X \cup Y) \leq \#(X) + \#(Y)$；
 
