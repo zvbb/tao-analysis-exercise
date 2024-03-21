@@ -170,7 +170,32 @@
   综上命题（c）成立。
 \end{zproof}
 
-（d）如果X是一个有限集，并且$f: X \rightarrow Y$是一个函数，那么$f(X)$是一个有限集并且满足$\#(f(X)) \leq \#(X)$。
+（d）如果$X$是一个有限集，并且$f: X \rightarrow Y$是一个函数，那么$f(X)$是一个有限集并且满足$\#(f(X)) \leq \#(X)$。
 另外，如果$f$是一对一的，那么$\#(f(X)) = \#(X)$。
+
+\begin{zproof}
+    对$X$的基数n进行归纳；
+
+    归纳基始n=0，即$X = \varnothing$，由定义3.4.1（集合的像）可知$f(X) = \varnothing$，
+    即$\#(f(X)) = 0$，此时命题（d）成立
+    
+    n=k++时，设$X^\prime = X \backslash \{x\}$，
+    由归纳假设可知$\#(f(X^\prime)) \leq \#(X^\prime)$，
+
+    \textcircled{1} $f(X^\prime) = f(X)$，则$\#(f(X)) =\#(f(X^\prime)) \leq \#(X^\prime) < \#(X)$。
+    此时f不是双射，命题后半部分空成立。
+
+    \textcircled{2} $f(X^\prime) \subsetneq  f(X)$
+    则$f(x) \not \in f(X^\prime)$，且$f(X) = f(X^\prime) \cup f(x)$，
+    由命题（a）可知$\#(f(X))=\#(f(X^\prime)) + 1$，有$\#(X) = \#(X^\prime) + 1$，
+    所以由归纳假设$\#(f(X^\prime)) \leq \#(X^\prime)$可知$\#(f(X^\prime)) + 1 \leq \#(X^\prime) + 1$，
+    即$\#(f(X)) \leq \#(X)$；若$f$是一对一的，则$X^\prime \backslash \{x\} \rightarrow Y \backslash \{f(x)\}$也是一对一，
+    由归纳假设知$\#(f(X^\prime)) = \#(X^\prime)$，由此可知$\#(f(X^\prime)) + 1 = \#(X^\prime) + 1$，
+    $\#(f(X)) = \#(X)$。综上，n=k++时命题（d）成立。
+
+    至此，命题成立
+\end{zproof}
+
+
 
 \end{document}
