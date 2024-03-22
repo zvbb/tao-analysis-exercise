@@ -196,6 +196,18 @@
     至此，命题成立
 \end{zproof}
 
+  （e）设$X$和$Y$都是有限集，那么笛卡尔积$X \times Y$是有限的并且$\#(X \times Y) = \#(X) \times \#(Y)$。
+  \begin{zproof}
+    设$X,Y$的基数分别为n、m，对n进行归纳。
 
+    归纳基始n=0，即$X$是空集，有笛卡尔积的定义可知，$X \times Y = \varnothing$，
+    由此可知$\#(X \times Y) = 0$，且$X \times Y$是有限的。又$\#(X \times Y) = \#(X) \times \#(Y) = 0$，
+    所以n=0时，命题（e）成立。
+
+    n=k++时，设对任意$x \in X$，构造$X^\prime = X \backslash \{x\}$，由归纳假设可知$\#(X^\prime \times Y) = \#(X^\prime) \times \#(Y)$，
+
+    
+
+  \end{zproof}
 
 \end{document}
