@@ -204,10 +204,71 @@
     由此可知$\#(X \times Y) = 0$，且$X \times Y$是有限的。又$\#(X \times Y) = \#(X) \times \#(Y) = 0$，
     所以n=0时，命题（e）成立。
 
-    n=k++时，设对任意$x \in X$，构造$X^\prime = X \backslash \{x\}$，由归纳假设可知$\#(X^\prime \times Y) = \#(X^\prime) \times \#(Y)$，
+    n=k++时，设对任意$x \in X$，构造$X^\prime = X \backslash \{x\}$，
+    由习题3.5.5可知$X \times Y = (X^\prime \cup \{x\}) \times (Y \cup Y) = (X^\prime \times Y) \cup (\{x\} \times Y)$，
+    由笛卡尔积的定义可知$(X^\prime \times Y) \cap (\{x\} \times Y) = \varnothing$，
+    由（b）可知，$\#((X^\prime \times Y) \cup (\{x\} \times Y)) = \#(X^\prime \times Y) + \#(\{x\} \times Y)$
+    由归纳假设可知$\#(X^\prime \times Y) = \#(X^\prime) \times \#(Y)$，现在只需证明$\#(\{x\} \times Y)=\#(Y)$，
+    命题就能完成证明。
+    （在直觉上是显然的，但为了严谨性，还是需要证明），要想证明基数相同，
+    按照定义3.6.1只需找到从$(\{x\} \times Y)$到$Y$的一个双射函数$f: (\{x\} \times Y) \rightarrow Y$。
+    可以定义$f$如下：$f((x,y))=y, (x,y) \in (\{x\} \times Y)$，这里的f是双射性是显然的，为了简洁不做说明了。
+    由此可知$\#(X \times Y) = \#(X^\prime \times Y) + \#(\{x\} \times Y)=\#(X^\prime \times Y) + \#(Y)$
+    $=\#(X^\prime) \times \#(Y) + \#(Y)=(\#(X^\prime)++) \times \#(Y) = \#(X) \times \#(Y)$，
+    n=k++时命题（e）成立。
 
-    
+    至此归纳完成，命题（e）得到证明。
 
+  \end{zproof}
+
+  （f）设$X$和$Y$都是有限集，那么集合$Y^X$（在公理3.10中被定义）是有限的，并且$\#(Y^X)=\#(Y)^{\#(X)}$
+  \begin{zproof}
+    公理3.10中对幂集公理的定义，很难定量分析，我们使用其他公理对幂集公理重新定义。
+
+
+    $I$为一个集合，并对每一个元素$y_0 \in I$均有一个集合$A_{y_0}$，
+    $A_{y_0} = \{ \{f\text{是X到Y的函数}, f(x_0)=y_0\}: y_0 \in Y\}$
+    幂集定义如下：
+    $W=\bigcup\limits_{y \in I}A_{y} = \cup\{A_y : y \in I\}$
+
+    现在需要证明该定义和幂集公理的等价性。
+
+    $f \in W \Leftrightarrow \text{存在} y \in I \text{使得} f \in A_y$，
+    由此可知$f\text{是X到Y的函数}$，所以$f \in Y^X$。
+
+    $f \in Y^X$，由于$f$是X到Y的函数，则对$x_0 \in X$有$y=f(x_0)$，$y \in Y$，所以$f \in A_y$，
+    所以$f \in W$。
+
+    综上可证该定义和幂集公理的等价性。
+
+
+    设$X,Y$的基数分别为n、m，通过对n进行归纳，证明该命题。
+
+    归纳基始n=0，即$X = \varnothing$，而$f: \varnothing \rightarrow Y$的函数，由函数相等的定义可知是唯一的，
+    所以$\#(Y^X)=1,\#(Y)^{\#(X)}=m^0=1$，由此可知$\#(Y^X)=\#(Y)^{\#(X)}$，在n=0时命题（f）成立
+
+    n=k++时，设$X^\prime=X \backslash \{x_0\}, x_0 \in X$，
+    证明$\#(A_y)=\#(Y^{X^\prime})$，
+    函数$G: A_y \rightarrow Y^{X^\prime}$，
+    定义如下：$ g=G(f), x \in X^\prime, f(x)=g(x)$。
+
+    证明函数G的定义是合法，即证明g的唯一性，假设存在g满足定义，
+    即对任意$f \in A_y$，存在$g^\prime(x)=f(x)=g(x)$,由函数相等的定义可知$g=g^\prime$，g的唯一性得证。
+
+    证明G是双射的，先证明单射，如果G不是单射，则存在$f_1 \neq f_2$，有相同的函数值$g$，
+    由于$f_1 \neq f_2$所以存在$x \in X^\prime, f_1(x) \neq f_2(x)$，有G的定义可知$g(x)=f_1(x)=f_2(x)$，
+    这与$f_1(x) \neq f_2(x)$矛盾，所以G是单射。
+
+    证明G是满射的，对任意函数值$g \in Y^{X^\prime}$，可以定义出一个函数$f: X \rightarrow Y, f(x_0)=y, f(x)=g(x)$，
+    该函数$f \in A_y$，所以G是满射的。
+
+    由此可知$\#(A_y)=\#(Y^{X^\prime})=m^k$
+
+    由$A_y$的定义方式可知是不相交的，即对任意$y_0 \neq y_1, A_{y_0} \cap A_{y_1}=\varnothing$，
+    由（b）可知$\#(W)=\sum_{y \in I} \#(A_y) = m \times \#(Y^{X^\prime}) = m \times (m^k) = m^{k++} $，
+    由此可知n=k++命题（f）也成立。
+
+    至此命题（f）成立。
   \end{zproof}
 
 \end{document}
