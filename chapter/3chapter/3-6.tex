@@ -126,7 +126,7 @@
   n=0时，即$Y$的基数是0，也就是说$Y = \varnothing$，$X \cup Y = X \cup \varnothing = X$，
   此时（b）命题显然是成立的。
 
-  归纳假设n=k时，（b）命题成立。 
+  归纳假设n=k时，（b）命题成立。
 
   现在需证明n=k++，任取$x \in Y, Z=Y \backslash \{x\}$，由引理3.6.9可知，$Z$的基数为k，
   由归纳假设可知，$X$与$Z$满足命题（b），由此可知$X \cup Z$是有限的；
@@ -174,101 +174,185 @@
 另外，如果$f$是一对一的，那么$\#(f(X)) = \#(X)$。
 
 \begin{zproof}
-    对$X$的基数n进行归纳；
+  对$X$的基数n进行归纳；
 
-    归纳基始n=0，即$X = \varnothing$，由定义3.4.1（集合的像）可知$f(X) = \varnothing$，
-    即$\#(f(X)) = 0$，此时命题（d）成立
-    
-    n=k++时，设$X^\prime = X \backslash \{x\}$，
-    由归纳假设可知$\#(f(X^\prime)) \leq \#(X^\prime)$，
+  归纳基始n=0，即$X = \varnothing$，由定义3.4.1（集合的像）可知$f(X) = \varnothing$，
+  即$\#(f(X)) = 0$，此时命题（d）成立
 
-    \textcircled{1} $f(X^\prime) = f(X)$，则$\#(f(X)) =\#(f(X^\prime)) \leq \#(X^\prime) < \#(X)$。
-    此时f不是双射，命题后半部分空成立。
+  n=k++时，设$X^\prime = X \backslash \{x\}$，
+  由归纳假设可知$\#(f(X^\prime)) \leq \#(X^\prime)$，
 
-    \textcircled{2} $f(X^\prime) \subsetneq  f(X)$
-    则$f(x) \not \in f(X^\prime)$，且$f(X) = f(X^\prime) \cup f(x)$，
-    由命题（a）可知$\#(f(X))=\#(f(X^\prime)) + 1$，有$\#(X) = \#(X^\prime) + 1$，
-    所以由归纳假设$\#(f(X^\prime)) \leq \#(X^\prime)$可知$\#(f(X^\prime)) + 1 \leq \#(X^\prime) + 1$，
-    即$\#(f(X)) \leq \#(X)$；若$f$是一对一的，则$X^\prime \backslash \{x\} \rightarrow Y \backslash \{f(x)\}$也是一对一，
-    由归纳假设知$\#(f(X^\prime)) = \#(X^\prime)$，由此可知$\#(f(X^\prime)) + 1 = \#(X^\prime) + 1$，
-    $\#(f(X)) = \#(X)$。综上，n=k++时命题（d）成立。
+  \textcircled{1} $f(X^\prime) = f(X)$，则$\#(f(X)) =\#(f(X^\prime)) \leq \#(X^\prime) < \#(X)$。
+  此时f不是双射，命题后半部分空成立。
 
-    至此，命题成立
+  \textcircled{2} $f(X^\prime) \subsetneq  f(X)$
+  则$f(x) \not \in f(X^\prime)$，且$f(X) = f(X^\prime) \cup f(x)$，
+  由命题（a）可知$\#(f(X))=\#(f(X^\prime)) + 1$，有$\#(X) = \#(X^\prime) + 1$，
+  所以由归纳假设$\#(f(X^\prime)) \leq \#(X^\prime)$可知$\#(f(X^\prime)) + 1 \leq \#(X^\prime) + 1$，
+  即$\#(f(X)) \leq \#(X)$；若$f$是一对一的，则$X^\prime \backslash \{x\} \rightarrow Y \backslash \{f(x)\}$也是一对一，
+  由归纳假设知$\#(f(X^\prime)) = \#(X^\prime)$，由此可知$\#(f(X^\prime)) + 1 = \#(X^\prime) + 1$，
+  $\#(f(X)) = \#(X)$。综上，n=k++时命题（d）成立。
+
+  至此，命题成立
 \end{zproof}
 
-  （e）设$X$和$Y$都是有限集，那么笛卡尔积$X \times Y$是有限的并且$\#(X \times Y) = \#(X) \times \#(Y)$。
-  \begin{zproof}
-    设$X,Y$的基数分别为n、m，对n进行归纳。
+（e）设$X$和$Y$都是有限集，那么笛卡尔积$X \times Y$是有限的并且$\#(X \times Y) = \#(X) \times \#(Y)$。
+\begin{zproof}
+  设$X,Y$的基数分别为n、m，对n进行归纳。
 
-    归纳基始n=0，即$X$是空集，有笛卡尔积的定义可知，$X \times Y = \varnothing$，
-    由此可知$\#(X \times Y) = 0$，且$X \times Y$是有限的。又$\#(X \times Y) = \#(X) \times \#(Y) = 0$，
-    所以n=0时，命题（e）成立。
+  归纳基始n=0，即$X$是空集，有笛卡尔积的定义可知，$X \times Y = \varnothing$，
+  由此可知$\#(X \times Y) = 0$，且$X \times Y$是有限的。又$\#(X \times Y) = \#(X) \times \#(Y) = 0$，
+  所以n=0时，命题（e）成立。
 
-    n=k++时，设对任意$x \in X$，构造$X^\prime = X \backslash \{x\}$，
-    由习题3.5.5可知$X \times Y = (X^\prime \cup \{x\}) \times (Y \cup Y) = (X^\prime \times Y) \cup (\{x\} \times Y)$，
-    由笛卡尔积的定义可知$(X^\prime \times Y) \cap (\{x\} \times Y) = \varnothing$，
-    由（b）可知，$\#((X^\prime \times Y) \cup (\{x\} \times Y)) = \#(X^\prime \times Y) + \#(\{x\} \times Y)$
-    由归纳假设可知$\#(X^\prime \times Y) = \#(X^\prime) \times \#(Y)$，现在只需证明$\#(\{x\} \times Y)=\#(Y)$，
-    命题就能完成证明。
-    （在直觉上是显然的，但为了严谨性，还是需要证明），要想证明基数相同，
-    按照定义3.6.1只需找到从$(\{x\} \times Y)$到$Y$的一个双射函数$f: (\{x\} \times Y) \rightarrow Y$。
-    可以定义$f$如下：$f((x,y))=y, (x,y) \in (\{x\} \times Y)$，这里的f是双射性是显然的，为了简洁不做说明了。
-    由此可知$\#(X \times Y) = \#(X^\prime \times Y) + \#(\{x\} \times Y)=\#(X^\prime \times Y) + \#(Y)$
-    $=\#(X^\prime) \times \#(Y) + \#(Y)=(\#(X^\prime)++) \times \#(Y) = \#(X) \times \#(Y)$，
-    n=k++时命题（e）成立。
+  n=k++时，设对任意$x \in X$，构造$X^\prime = X \backslash \{x\}$，
+  由习题3.5.5可知$X \times Y = (X^\prime \cup \{x\}) \times (Y \cup Y) = (X^\prime \times Y) \cup (\{x\} \times Y)$，
+  由笛卡尔积的定义可知$(X^\prime \times Y) \cap (\{x\} \times Y) = \varnothing$，
+  由（b）可知，$\#((X^\prime \times Y) \cup (\{x\} \times Y)) = \#(X^\prime \times Y) + \#(\{x\} \times Y)$
+  由归纳假设可知$\#(X^\prime \times Y) = \#(X^\prime) \times \#(Y)$，现在只需证明$\#(\{x\} \times Y)=\#(Y)$，
+  命题就能完成证明。
+  （在直觉上是显然的，但为了严谨性，还是需要证明），要想证明基数相同，
+  按照定义3.6.1只需找到从$(\{x\} \times Y)$到$Y$的一个双射函数$f: (\{x\} \times Y) \rightarrow Y$。
+  可以定义$f$如下：$f((x,y))=y, (x,y) \in (\{x\} \times Y)$，这里的f是双射性是显然的，为了简洁不做说明了。
+  由此可知$\#(X \times Y) = \#(X^\prime \times Y) + \#(\{x\} \times Y)=\#(X^\prime \times Y) + \#(Y)$
+  $=\#(X^\prime) \times \#(Y) + \#(Y)=(\#(X^\prime)++) \times \#(Y) = \#(X) \times \#(Y)$，
+  n=k++时命题（e）成立。
 
-    至此归纳完成，命题（e）得到证明。
+  至此归纳完成，命题（e）得到证明。
 
-  \end{zproof}
+\end{zproof}
 
-  （f）设$X$和$Y$都是有限集，那么集合$Y^X$（在公理3.10中被定义）是有限的，并且$\#(Y^X)=\#(Y)^{\#(X)}$
-  \begin{zproof}
-    公理3.10中对幂集公理的定义，很难定量分析，我们使用其他公理对幂集公理重新定义。
-
-
-    $I$为一个集合，并对每一个元素$y_0 \in I$均有一个集合$A_{y_0}$，
-    $A_{y_0} = \{ \{f\text{是X到Y的函数}, f(x_0)=y_0\}: y_0 \in Y\}$
-    幂集定义如下：
-    $W=\bigcup\limits_{y \in I}A_{y} = \cup\{A_y : y \in I\}$
-
-    现在需要证明该定义和幂集公理的等价性。
-
-    $f \in W \Leftrightarrow \text{存在} y \in I \text{使得} f \in A_y$，
-    由此可知$f\text{是X到Y的函数}$，所以$f \in Y^X$。
-
-    $f \in Y^X$，由于$f$是X到Y的函数，则对$x_0 \in X$有$y=f(x_0)$，$y \in Y$，所以$f \in A_y$，
-    所以$f \in W$。
-
-    综上可证该定义和幂集公理的等价性。
+（f）设$X$和$Y$都是有限集，那么集合$Y^X$（在公理3.10中被定义）是有限的，并且$\#(Y^X)=\#(Y)^{\#(X)}$
+\begin{zproof}
+  公理3.10中对幂集公理的定义，很难定量分析，我们使用其他公理对幂集公理重新定义。
 
 
-    设$X,Y$的基数分别为n、m，通过对n进行归纳，证明该命题。
+  $I$为一个集合，并对每一个元素$y_0 \in I$均有一个集合$A_{y_0}$，
+  $A_{y_0} = \{ \{f\text{是X到Y的函数}, f(x_0)=y_0\}: y_0 \in Y\}$
+  幂集定义如下：
+  $W=\bigcup\limits_{y \in I}A_{y} = \cup\{A_y : y \in I\}$
 
-    归纳基始n=0，即$X = \varnothing$，而$f: \varnothing \rightarrow Y$的函数，由函数相等的定义可知是唯一的，
-    所以$\#(Y^X)=1,\#(Y)^{\#(X)}=m^0=1$，由此可知$\#(Y^X)=\#(Y)^{\#(X)}$，在n=0时命题（f）成立
+  现在需要证明该定义和幂集公理的等价性。
 
-    n=k++时，设$X^\prime=X \backslash \{x_0\}, x_0 \in X$，
-    证明$\#(A_y)=\#(Y^{X^\prime})$，
-    函数$G: A_y \rightarrow Y^{X^\prime}$，
-    定义如下：$ g=G(f), x \in X^\prime, f(x)=g(x)$。
+  $f \in W \Leftrightarrow \text{存在} y \in I \text{使得} f \in A_y$，
+  由此可知$f\text{是X到Y的函数}$，所以$f \in Y^X$。
 
-    证明函数G的定义是合法，即证明g的唯一性，假设存在g满足定义，
-    即对任意$f \in A_y$，存在$g^\prime(x)=f(x)=g(x)$,由函数相等的定义可知$g=g^\prime$，g的唯一性得证。
+  $f \in Y^X$，由于$f$是X到Y的函数，则对$x_0 \in X$有$y=f(x_0)$，$y \in Y$，所以$f \in A_y$，
+  所以$f \in W$。
 
-    证明G是双射的，先证明单射，如果G不是单射，则存在$f_1 \neq f_2$，有相同的函数值$g$，
-    由于$f_1 \neq f_2$所以存在$x \in X^\prime, f_1(x) \neq f_2(x)$，有G的定义可知$g(x)=f_1(x)=f_2(x)$，
-    这与$f_1(x) \neq f_2(x)$矛盾，所以G是单射。
+  综上可证该定义和幂集公理的等价性。
 
-    证明G是满射的，对任意函数值$g \in Y^{X^\prime}$，可以定义出一个函数$f: X \rightarrow Y, f(x_0)=y, f(x)=g(x)$，
-    该函数$f \in A_y$，所以G是满射的。
 
-    由此可知$\#(A_y)=\#(Y^{X^\prime})=m^k$
+  设$X,Y$的基数分别为n、m，通过对n进行归纳，证明该命题。
 
-    由$A_y$的定义方式可知是不相交的，即对任意$y_0 \neq y_1, A_{y_0} \cap A_{y_1}=\varnothing$，
-    由（b）可知$\#(W)=\sum_{y \in I} \#(A_y) = m \times \#(Y^{X^\prime}) = m \times (m^k) = m^{k++} $，
-    由此可知n=k++命题（f）也成立。
+  归纳基始n=0，即$X = \varnothing$，而$f: \varnothing \rightarrow Y$的函数，由函数相等的定义可知是唯一的，
+  所以$\#(Y^X)=1,\#(Y)^{\#(X)}=m^0=1$，由此可知$\#(Y^X)=\#(Y)^{\#(X)}$，在n=0时命题（f）成立
 
-    至此命题（f）成立。
-  \end{zproof}
+  n=k++时，设$X^\prime=X \backslash \{x_0\}, x_0 \in X$，
+  证明$\#(A_y)=\#(Y^{X^\prime})$，
+  函数$G: A_y \rightarrow Y^{X^\prime}$，
+  定义如下：$ g=G(f), x \in X^\prime, f(x)=g(x)$。
 
+  证明函数G的定义是合法，即证明g的唯一性，假设存在g满足定义，
+  即对任意$f \in A_y$，存在$g^\prime(x)=f(x)=g(x)$,由函数相等的定义可知$g=g^\prime$，g的唯一性得证。
+
+  证明G是双射的，先证明单射，如果G不是单射，则存在$f_1 \neq f_2$，有相同的函数值$g$，
+  由于$f_1 \neq f_2$所以存在$x \in X^\prime, f_1(x) \neq f_2(x)$，有G的定义可知$g(x)=f_1(x)=f_2(x)$，
+  这与$f_1(x) \neq f_2(x)$矛盾，所以G是单射。
+
+  证明G是满射的，对任意函数值$g \in Y^{X^\prime}$，可以定义出一个函数$f: X \rightarrow Y, f(x_0)=y, f(x)=g(x)$，
+  该函数$f \in A_y$，所以G是满射的。
+
+  由此可知$\#(A_y)=\#(Y^{X^\prime})=m^k$
+
+  由$A_y$的定义方式可知是不相交的，即对任意$y_0 \neq y_1, A_{y_0} \cap A_{y_1}=\varnothing$，
+  由（b）可知$\#(W)=\sum_{y \in I} \#(A_y) = m \times \#(Y^{X^\prime}) = m \times (m^k) = m^{k++} $，
+  由此可知n=k++命题（f）也成立。
+
+  至此命题（f）成立。
+\end{zproof}
+
+\section*{3.6.5}
+\begin{zproof}
+  \begin{align}
+    A \times B & = \{(a,b): a \in A, b \in B \} \\
+    B \times A & = \{(b,a): b \in B, a \in A \}
+  \end{align}
+  现在定义函数$f: A \times B \rightarrow B \times A, f(a, b):= (b, a)$。
+
+  接下来要证明f的双射性（为了简洁不做说明了）。
+
+  由命题3.6.14可知
+  \begin{align}
+    \#(A \times B) & = \#(A) \times \#(B) \\
+    \#(B \times A) & = \#(B) \times \#(A)
+  \end{align}
+  又因为$A \times B, B \times A$之间存在一个双射f，所以两个集合之间有相同的基数，
+  由此通过（3）（4）可知$\#(A) \times \#(B) = \#(B) \times \#(A)$
+\end{zproof}
+
+\section*{3.6.6}
+\begin{zproof}
+  \textcircled{1}构造双射
+
+  由公理3.10（幂集公理）可知，
+  \begin{align}
+    (A^B)^C &= \{f: f\text{是一个定义域为}C,\text{值域为}A^B\text{的函数}\} \\
+    A^{B \times C} &= \{g: g\text{是一个定义域为}B \times C,\text{值域为}A\text{的函数}\} 
+  \end{align}
+    定义函数$G: (A^B)^C \rightarrow A^{B \times C}$如下： 
+    $G(f):=g$，$f,g$满足以下性质：对任意$b \in B, c \in C$有$[f(c)](b)=g(b,c)$
+
+    现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
+    函数f对任意$b \in B, c \in C$存在$g, g^\prime$使得$[f(c)](b)=g(b,c)=g^\prime(b,c)$，
+    对任意$b \in B, c \in C$，$g(b,c)=g^\prime(b,c)$通过函数相等的定义可知$g=g^\prime$。
+
+    现需证明G是双射函数。对任意$f \neq f^\prime$， 
+    \begin{align}
+      [f(c)](b) &= g(b,c)  \\
+      [f^\prime(c)](b) &= g^\prime(b,c) 
+    \end{align}
+    由于$f \neq f^\prime$所以存在$(b^\prime, c^\prime)$使得$f(b^\prime, c^\prime) \neq f^\prime(b^\prime, c^\prime)$，
+    可得$g(b^\prime, c^\prime) \neq g^\prime(b^\prime, c^\prime)$，所以$g \neq g^\prime$，所以G是单射函数。
+
+    $g \in A^{B \times C}$，对某个$c_0\in C$我们定义函数$h_0: B\rightarrow A, h_0(b):=g(b, c_0);$
+    再对每个$c\in C$我们定义函数$f: C\rightarrow A^B, f(c):=h_c$。 
+    此时对任意$c\in C,b\in B$有$[f(c)](b)=h_c(b)=g(b,c)$。 故$G(f)=g$。 故G是满射的
+
+    \textcircled{2} $(a^b)^c = a^{bc}$
+
+    设A、B、C的基数分别为a、b、c，由命题3.6.14可知
+    \begin{align}
+      \#((A^B)^C) &= \#(A^B)^{\#(C)} = (\#(A)^{\#B})^{\#(C)} = (a^b)^c \\
+      \#(A^{B \times C}) &= \#A^{\#(B \times C)} = \#A^{\#(B) \times \#(C)} = a^{bc}
+    \end{align}
+    又$(A^B)^C,A^{B \times C}$基数相同，所以$(a^b)^c = a^{bc}$
+
+    \textcircled{3} $a^b \times a^c = a^{b+c}$
+
+    通过构造明确的双射来证明：集合$A^B \times A^C$和集合$A^{B \cup C}$有相同的基数（$B \cap C = \varnothing$）。
+    由公理3.10（幂集公理）和定义3.5.4（笛卡尔积）可知
+    \begin{align}
+      A^B \times A^C &= \{(f, f^\prime): f \in A^B, f^\prime \in A^C\} \\ 
+      A^{B \cup C} &= \{g: g\text{是定义域为}B \cup C \text{值域为} A \text{的函数} \}
+    \end{align}
+    定义函数$G: A^B \times A^C \rightarrow A^{B \cup C}$如下：
+
+    $G(f,f^\prime):=g$，$f,f^\prime,g$满足如下性质：
+    对任意$b \in B, c \in C$有$f(b)=g(b),f^\prime(c)=g(c)$
+
+    现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
+    函数$f,f^\prime$对任意$b \in B, c \in C$存在$g, g^\prime$
+    使得$f(b)=g(b),f^\prime(c)=g(c); f(b)=g^\prime(b),f^\prime(c)=g^\prime(c);$，
+    对任意$b \in B, c \in C$，$g(b)=g^\prime(b);g(c)=g^\prime(c)$通过函数相等的定义可知$g=g^\prime$。
+
+    现需证明G是双射函数。对任意$(f1,f2) \neq (f1^\prime,f2^\prime)$，
+    $g=G(f1,f2),g^\prime=G(f1^\prime,f2^\prime)$，
+    如果$g = g^\prime$，那么对任意$b \in B, c \in C$
+    有$g(b)=g^\prime(b)=f1(b)=f1\prime(b),g(c)=g^\prime(c)=f2(c)=f2\prime(c)$，
+    由此可知$f1=f1^\prime,f2=f2^\prime$，那么$(f1,f2) = (f1^\prime,f2^\prime)$，
+    这与前提$(f1,f2) \neq (f1^\prime,f2^\prime)$矛盾，$g \neq g^\prime$，所以G是单射。
+
+    
+
+\end{zproof}
 \end{document}
