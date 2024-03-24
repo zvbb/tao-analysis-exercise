@@ -352,7 +352,17 @@
     由此可知$f1=f1^\prime,f2=f2^\prime$，那么$(f1,f2) = (f1^\prime,f2^\prime)$，
     这与前提$(f1,f2) \neq (f1^\prime,f2^\prime)$矛盾，$g \neq g^\prime$，所以G是单射。
 
-    
+    任意$g \in A^{B \cup C}$，
+    对任意$b \in B, c \in C$定义$f1:B \rightarrow A, f1(b)=g(b); f2: C \rightarrow A, f2(c)=g(c)$，
+    $f1,f2$满足如下性质：对任意$b \in B, c \in C$有$f1(b)=g(b),f2(c)=g(c)$，
+    故$G(f1,f2)=g$。故G是满射。
+
+    设A、B、C的基数分别为a、b、c，由命题3.6.14可知
+    \begin{align}
+      \#(A^B \times A^C) &= \#(A^B) \times \#(A^C) = \#(A)^{\#B} \times \#(A)^{\#C} = a^b \times a^c \\
+      \#(A^{B \cup C}) &= \#(A)^{\#(B \cup C)} = \#(A)^{\#(B) + \#(C)} = a^{b+c} 
+    \end{align}
+    又$A^B \times A^C,A^{B \cup C}$基数相同，所以$a^b \times a^c = a^{b+c}$
 
 \end{zproof}
 \end{document}
