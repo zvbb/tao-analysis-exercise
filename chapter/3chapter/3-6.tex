@@ -296,73 +296,102 @@
 
   由公理3.10（幂集公理）可知，
   \begin{align}
-    (A^B)^C &= \{f: f\text{是一个定义域为}C,\text{值域为}A^B\text{的函数}\} \\
-    A^{B \times C} &= \{g: g\text{是一个定义域为}B \times C,\text{值域为}A\text{的函数}\} 
+    (A^B)^C        & = \{f: f\text{是一个定义域为}C,\text{值域为}A^B\text{的函数}\}        \\
+    A^{B \times C} & = \{g: g\text{是一个定义域为}B \times C,\text{值域为}A\text{的函数}\}
   \end{align}
-    定义函数$G: (A^B)^C \rightarrow A^{B \times C}$如下： 
-    $G(f):=g$，$f,g$满足以下性质：对任意$b \in B, c \in C$有$[f(c)](b)=g(b,c)$
+  定义函数$G: (A^B)^C \rightarrow A^{B \times C}$如下：
+  $G(f):=g$，$f,g$满足以下性质：对任意$b \in B, c \in C$有$[f(c)](b)=g(b,c)$
 
-    现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
-    函数f对任意$b \in B, c \in C$存在$g, g^\prime$使得$[f(c)](b)=g(b,c)=g^\prime(b,c)$，
-    对任意$b \in B, c \in C$，$g(b,c)=g^\prime(b,c)$通过函数相等的定义可知$g=g^\prime$。
+  现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
+  函数f对任意$b \in B, c \in C$存在$g, g^\prime$使得$[f(c)](b)=g(b,c)=g^\prime(b,c)$，
+  对任意$b \in B, c \in C$，$g(b,c)=g^\prime(b,c)$通过函数相等的定义可知$g=g^\prime$。
 
-    现需证明G是双射函数。对任意$f \neq f^\prime$， 
-    \begin{align}
-      [f(c)](b) &= g(b,c)  \\
-      [f^\prime(c)](b) &= g^\prime(b,c) 
-    \end{align}
-    由于$f \neq f^\prime$所以存在$(b^\prime, c^\prime)$使得$f(b^\prime, c^\prime) \neq f^\prime(b^\prime, c^\prime)$，
-    可得$g(b^\prime, c^\prime) \neq g^\prime(b^\prime, c^\prime)$，所以$g \neq g^\prime$，所以G是单射函数。
+  现需证明G是双射函数。对任意$f \neq f^\prime$，
+  \begin{align}
+    [f(c)](b)        & = g(b,c)        \\
+    [f^\prime(c)](b) & = g^\prime(b,c)
+  \end{align}
+  由于$f \neq f^\prime$所以存在$(b^\prime, c^\prime)$使得$[f(c^\prime)](b^\prime) \neq [f^\prime(c^\prime)](b^\prime)$，
+  可得$g(b^\prime, c^\prime) \neq g^\prime(b^\prime, c^\prime)$，所以$g \neq g^\prime$，所以G是单射函数。
 
-    $g \in A^{B \times C}$，对某个$c_0\in C$我们定义函数$h_0: B\rightarrow A, h_0(b):=g(b, c_0);$
-    再对每个$c\in C$我们定义函数$f: C\rightarrow A^B, f(c):=h_c$。 
-    此时对任意$c\in C,b\in B$有$[f(c)](b)=h_c(b)=g(b,c)$。 故$G(f)=g$。 故G是满射的
+  $g \in A^{B \times C}$，对某个$c_0\in C$我们定义函数$h_0: B\rightarrow A, h_0(b):=g(b, c_0);$
+  再对每个$c\in C$我们定义函数$f: C\rightarrow A^B, f(c):=h_c$。
+  此时对任意$c\in C,b\in B$有$[f(c)](b)=h_c(b)=g(b,c)$。 故$G(f)=g$。 故G是满射的
 
-    \textcircled{2} $(a^b)^c = a^{bc}$
+  \textcircled{2} $(a^b)^c = a^{bc}$
 
-    设A、B、C的基数分别为a、b、c，由命题3.6.14可知
-    \begin{align}
-      \#((A^B)^C) &= \#(A^B)^{\#(C)} = (\#(A)^{\#B})^{\#(C)} = (a^b)^c \\
-      \#(A^{B \times C}) &= \#A^{\#(B \times C)} = \#A^{\#(B) \times \#(C)} = a^{bc}
-    \end{align}
-    又$(A^B)^C,A^{B \times C}$基数相同，所以$(a^b)^c = a^{bc}$
+  设A、B、C的基数分别为a、b、c，由命题3.6.14可知
+  \begin{align}
+    \#((A^B)^C)        & = \#(A^B)^{\#(C)} = (\#(A)^{\#B})^{\#(C)} = (a^b)^c        \\
+    \#(A^{B \times C}) & = \#A^{\#(B \times C)} = \#A^{\#(B) \times \#(C)} = a^{bc}
+  \end{align}
+  又$(A^B)^C,A^{B \times C}$基数相同，所以$(a^b)^c = a^{bc}$
 
-    \textcircled{3} $a^b \times a^c = a^{b+c}$
+  \textcircled{3} $a^b \times a^c = a^{b+c}$
 
-    通过构造明确的双射来证明：集合$A^B \times A^C$和集合$A^{B \cup C}$有相同的基数（$B \cap C = \varnothing$）。
-    由公理3.10（幂集公理）和定义3.5.4（笛卡尔积）可知
-    \begin{align}
-      A^B \times A^C &= \{(f, f^\prime): f \in A^B, f^\prime \in A^C\} \\ 
-      A^{B \cup C} &= \{g: g\text{是定义域为}B \cup C \text{值域为} A \text{的函数} \}
-    \end{align}
-    定义函数$G: A^B \times A^C \rightarrow A^{B \cup C}$如下：
+  通过构造明确的双射来证明：集合$A^B \times A^C$和集合$A^{B \cup C}$有相同的基数（$B \cap C = \varnothing$）。
+  由公理3.10（幂集公理）和定义3.5.4（笛卡尔积）可知
+  \begin{align}
+    A^B \times A^C & = \{(f, f^\prime): f \in A^B, f^\prime \in A^C\}        \\
+    A^{B \cup C}   & = \{g: g\text{是定义域为}B \cup C \text{值域为} A \text{的函数} \}
+  \end{align}
+  定义函数$G: A^B \times A^C \rightarrow A^{B \cup C}$如下：
 
-    $G(f,f^\prime):=g$，$f,f^\prime,g$满足如下性质：
-    对任意$b \in B, c \in C$有$f(b)=g(b),f^\prime(c)=g(c)$
+  $G(f,f^\prime):=g$，$f,f^\prime,g$满足如下性质：
+  对任意$b \in B, c \in C$有$f(b)=g(b),f^\prime(c)=g(c)$
 
-    现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
-    函数$f,f^\prime$对任意$b \in B, c \in C$存在$g, g^\prime$
-    使得$f(b)=g(b),f^\prime(c)=g(c); f(b)=g^\prime(b),f^\prime(c)=g^\prime(c);$，
-    对任意$b \in B, c \in C$，$g(b)=g^\prime(b);g(c)=g^\prime(c)$通过函数相等的定义可知$g=g^\prime$。
+  现需证明G是满足函数定义的，对相同的输入只存在唯一的函数值。
+  函数$f,f^\prime$对任意$b \in B, c \in C$存在$g, g^\prime$
+  使得$f(b)=g(b),f^\prime(c)=g(c); f(b)=g^\prime(b),f^\prime(c)=g^\prime(c);$，
+  对任意$b \in B, c \in C$，$g(b)=g^\prime(b);g(c)=g^\prime(c)$通过函数相等的定义可知$g=g^\prime$。
 
-    现需证明G是双射函数。对任意$(f1,f2) \neq (f1^\prime,f2^\prime)$，
-    $g=G(f1,f2),g^\prime=G(f1^\prime,f2^\prime)$，
-    如果$g = g^\prime$，那么对任意$b \in B, c \in C$
-    有$g(b)=g^\prime(b)=f1(b)=f1\prime(b),g(c)=g^\prime(c)=f2(c)=f2\prime(c)$，
-    由此可知$f1=f1^\prime,f2=f2^\prime$，那么$(f1,f2) = (f1^\prime,f2^\prime)$，
-    这与前提$(f1,f2) \neq (f1^\prime,f2^\prime)$矛盾，$g \neq g^\prime$，所以G是单射。
+  现需证明G是双射函数。对任意$(f1,f2) \neq (f1^\prime,f2^\prime)$，
+  $g=G(f1,f2),g^\prime=G(f1^\prime,f2^\prime)$，
+  如果$g = g^\prime$，那么对任意$b \in B, c \in C$
+  有$g(b)=g^\prime(b)=f1(b)=f1\prime(b),g(c)=g^\prime(c)=f2(c)=f2\prime(c)$，
+  由此可知$f1=f1^\prime,f2=f2^\prime$，那么$(f1,f2) = (f1^\prime,f2^\prime)$，
+  这与前提$(f1,f2) \neq (f1^\prime,f2^\prime)$矛盾，$g \neq g^\prime$，所以G是单射。
 
-    任意$g \in A^{B \cup C}$，
-    对任意$b \in B, c \in C$定义$f1:B \rightarrow A, f1(b)=g(b); f2: C \rightarrow A, f2(c)=g(c)$，
-    $f1,f2$满足如下性质：对任意$b \in B, c \in C$有$f1(b)=g(b),f2(c)=g(c)$，
-    故$G(f1,f2)=g$。故G是满射。
+  任意$g \in A^{B \cup C}$，
+  对任意$b \in B, c \in C$定义$f1:B \rightarrow A, f1(b)=g(b); f2: C \rightarrow A, f2(c)=g(c)$，
+  $f1,f2$满足如下性质：对任意$b \in B, c \in C$有$f1(b)=g(b),f2(c)=g(c)$，
+  故$G(f1,f2)=g$。故G是满射。
 
-    设A、B、C的基数分别为a、b、c，由命题3.6.14可知
-    \begin{align}
-      \#(A^B \times A^C) &= \#(A^B) \times \#(A^C) = \#(A)^{\#B} \times \#(A)^{\#C} = a^b \times a^c \\
-      \#(A^{B \cup C}) &= \#(A)^{\#(B \cup C)} = \#(A)^{\#(B) + \#(C)} = a^{b+c} 
-    \end{align}
-    又$A^B \times A^C,A^{B \cup C}$基数相同，所以$a^b \times a^c = a^{b+c}$
+  设A、B、C的基数分别为a、b、c，由命题3.6.14可知
+  \begin{align}
+    \#(A^B \times A^C) & = \#(A^B) \times \#(A^C) = \#(A)^{\#B} \times \#(A)^{\#C} = a^b \times a^c \\
+    \#(A^{B \cup C})   & = \#(A)^{\#(B \cup C)} = \#(A)^{\#(B) + \#(C)} = a^{b+c}
+  \end{align}
+  又$A^B \times A^C,A^{B \cup C}$基数相同，所以$a^b \times a^c = a^{b+c}$
+\end{zproof}
+
+\section*{3.6.7}
+\begin{zproof}
+  \textcircled{1} 充分性
+
+  假设A的基数小于或等于B基数，则存在一个从A到B的单射$f: A \rightarrow B$，
+  由定义3.4.1（集合的像）可知$f(X) \subseteq B$；又由命题3.6.14（c）可知
+  \begin{align}
+    \#(f(X)) \leq \#(B)
+  \end{align}
+  定义函数$g: A \rightarrow f(X), g(x)=f(x)$，函数g是双射函数（证明略），
+  由此可知$\#(A) = \#(f(X))$。综上可知$\#(A) = \#(f(X)) \leq \#(B)$，必要性得证。
+
+  \textcircled{2} 必要性
+
+  假设$\#(A) \leq \#(B)$，基数分别为m、n（$m \leq n$），由定义3.6.5可知，
+  存在双射函数$f: A \rightarrow \{i \in N: 1 \leq i \leq m \}$。
+  存在双射函数$g: \{i \in N: 1 \leq i \leq n \} \rightarrow B$。
+  由此我们可以定义从A到B的单射$h: A \rightarrow B$如下：对任意$x \in A$，$h(x)=g(f(x))$。
+  现在证明h是单射函数，对任意$x_1 \neq x2$，由于$f$是单射函数，所以$f(x_1) \neq f(x_2)$，
+  又$g$是单射函数，所以$g(f(x_1)) \neq g(f(x_2))$，即$h(x_1) \neq h(x_2)$，所以$h$是单射函数。
+
+  综上命题得证
+
+\end{zproof}
+
+\section*{3.6.8}
+\begin{zproof}
 
 \end{zproof}
 \end{document}
