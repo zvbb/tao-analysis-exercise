@@ -400,5 +400,76 @@
   所以$f(a) \in f(X) \subseteq B, f(a) \in B$，此时由g的定义可知$g(f(a))=a$是存在的;g的满射性成立。
 \end{zproof}
 
+\section*{3.6.9}
+\begin{zproof}
+  \textcircled{1} $A \cup B$是一个有限集
+
+  设A、B的基数分别为n、m，对n进行归纳。
+
+  归纳基始n=0，即$A = \varnothing$，所以$A \cup B = B$，此时$\#(A \cup B) = \#(B) = m$，
+  归纳基始成立。
+
+  归纳假设n=k，命题$A \cup B$是有限集成立
+
+  假设n=k++，
+  某个$a \in A, A^\prime = A \backslash \{a\}$，由归纳假设可知$A^\prime \cup B$是有限集，
+  若$a \in B$则$A^\prime \cup B = A \cup B$，所以$A \cup B$也是有限集；
+  若$a \notin B$则$A^\prime \{a\} \cup B = A \cup B$，
+  由命题3.6.14可知（a）可知$\#(A^\prime \cup B)+1=\#(A \cup B)$，所以$A \cup B$也是有限集；
+
+  至此归纳完成，命题成立
+
+  \textcircled{2} $A \cap B$是一个有限集
+
+  设A、B的基数分别为n、m，对n进行归纳。
+
+  归纳基始n=0，即$A = \varnothing$，所以$A \cap B = \varnothing$，此时$\#(A \cup B) = \#(\varnothing) = 0$，
+  归纳基始成立。
+
+  归纳假设n=k，命题$A \cap B$是有限集成立
+
+  假设n=k++，
+  某个$a \in A, A^\prime = A \backslash \{a\}$，由归纳假设可知$A^\prime \cap B$是有限集，
+  若$a \notin B$则$A^\prime \cap B = A \cap B$，所以$A \cap B$也是有限集；
+  若$a \in B$则$A^\prime \cap B \cup \{a\} = A \cap B$，
+  由命题3.6.14可知（a）可知$\#(A^\prime \cap B)+1=\#(A \cap B)$，所以$A \cap B$也是有限集；
+
+  至此归纳完成，命题成立
+
+  \textcircled{3} $\#(A) + \#(B) = \#(A \cup B) + \#(A \cap B)$
+
+  设$A \cap B$的基数为n，对n进行归纳。
+
+  归纳基始n=0时，即$A \cap B = \varnothing$，由命题3.6.14可知$\#(A \cup B) = \#(A) + \#(B)$，
+  归纳基始成立。
+
+  归纳假设n=k时，命题成立。
+
+  假设n=k++，
+  某个$a \in A \cap B, A^\prime = A \backslash \{a\} $，
+  由3.6.14（a）可知$\#(A \cap B) = \#(A^\prime \cap B) + 1$，
+  由归纳假设可知$\#(A^\prime) + \#(B) = \#(A^\prime \cup B) + \#(A^\prime \cap B)$，
+  又$\#(A)=\#(A^\prime)+1$（引理3.6.9），
+  由于$a \in B$，所以$A \cup B = A^\prime \cup B$，所以$\#(A^\prime \cup B) = \#(A \cup B)$，
+  综合
+  \begin{align}
+    (A \cap B)           & = \#(A^\prime \cap B) + 1                   \\
+    \#(A^\prime) + \#(B) & = \#(A^\prime \cup B) + \#(A^\prime \cap B) \\
+    \#(A^\prime \cup B)  & = \#(A \cup B)                              \\
+    \#(A)                & = \#(A^\prime) + 1
+  \end{align}
+  得
+  \begin{align*}
+     & \#(A \cup B) + \#(A \cap B)                     \\
+     & = \#(A^\prime \cup B) + \#(A \cap B)            \\
+     & = \#(A^\prime \cup B) + \#(A^\prime \cap B) + 1 \\
+     & = \#(A^\prime) + \#(B) + 1                      \\
+     & = \#(A^\prime) + 1 + \#(B)                      \\
+     & = \#(A) + \#(B)
+  \end{align*}
+
+  命题得证。
+\end{zproof}
+
 
 \end{document}
