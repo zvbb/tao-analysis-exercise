@@ -393,12 +393,12 @@
 \section*{3.6.8}
 \begin{zproof}
   定义函数$g: B \rightarrow A$
-  如下：对任意$b \in B$，存在$a \in A$使得$b=f(a)$则$g(b)=a$，
+  如下：对任意$b \in B$，存在$a \in A$使得$b=f(a)$则$g(b)=a$（f是单射的，保证了$a$的唯一性），
   否则$g(b)=x_0$（$x_0$是A中的某个元素，引理3.1.6保证$x_0$是存在的）。
 
-  现需证明定义的g是满射函数。对任意$b \in B$，由定义3.4.1（集合的像）可知$f(X) \subseteq B$，
-  所以要么$b \in f(X)$，要么$b \not \in f(X)$；
-  如果$b \in f(X)$，即存在$a \in X$使得$b=f(a)$，此时$g(b)=a$是存在的;
-  如果$b \not \in f(X)$，此时$g(b)=x_0$；综上$g(b)$总是存在的且$g(b) \in X$，g的满射性成立。
+  现需证明定义的g是满射函数。对任意$a \in A$，由定义3.4.1（集合的像）可知$f(X) \subseteq B$，
+  所以$f(a) \in f(X) \subseteq B, f(a) \in B$，此时由g的定义可知$g(f(a))=a$是存在的;g的满射性成立。
 \end{zproof}
+
+
 \end{document}
