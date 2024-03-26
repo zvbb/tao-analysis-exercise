@@ -473,6 +473,32 @@
 
 \section*{3.6.10}
 \begin{zproof}
+  对n进行归纳
+
+  n=0，此时$\{1,...,n\} = \varnothing$，所以命题空成立。
+
+  （之前的命题有类似的n=0空成立，其实都要改为n=1为起始点）
+
+  归纳基始n=1，$\bigcup\limits_{i \in \{1,...,n\}}=A_1$，
+  即$\#(A_1) > 1$，所以$\#(A_1) \geq 2$（命题2.2.12（e）保证的）
+
+  归纳假设n=k时，命题成立。
+
+  假设n=k++，
+  若$\#(A_{k++}) \geq 2$，命题成立；
+  若$\#(A_{k++}) < 2$，所以$\#(A_{k++})=0 $或$ \#(A_{k++})=1$。
+  若$\#(A_{k++})=0$，则$A_{k++} = \varnothing$，所以
+  $\bigcup\limits_{i \in \{1,...,k++\}}A_i = \bigcup\limits_{i \in \{1,...,k\}}A_i > k++$，
+  由归纳假设可知存在$i \in \{1,...,k\}$使得$\#(A_i) \geq 2$；
+  若$\#(A_{k++})=1$，则$A_{k++}$是单元素集合，不妨设$a \in A_{k++}$且$a$是其中的唯一元素，
+  如果$a \in \bigcup\limits_{i \in \{1,...,k\}}A_i$，此时
+  $\bigcup\limits_{i \in \{1,...,k++\}}A_i = \bigcup\limits_{i \in \{1,...,k\}}A_i$，命题成立前面已说明。
+  如果$a \notin \bigcup\limits_{i \in \{1,...,k\}}A_i$，
+  由命题3.6.14可知$\#(\bigcup\limits_{i \in \{1,...,k++\}}A_i) = \#(\bigcup\limits_{i \in \{1,...,k\}}A_i) + 1 > k++$，
+  所以$\#(\bigcup\limits_{i \in \{1,...,k\}}A_i) > k$（命题2.2.6和自然数序的定义保证的），
+  由归纳假设可知存在$i \in \{1,...,k\}$使得$\#(A_i) \geq 2$。
+
+  至此，归纳完成。
 
 \end{zproof}
 \end{document}
