@@ -46,8 +46,34 @@
 \newtheorem*{zproof}{证明}
 
 \begin{document}
-\title{4.1 为什么}
+\title{4.1 习题}
 \maketitle
 
-\section*{}
+文中的减号占位符，不好表示，习题中的所有减号占位符都用减号代替。
+
+\section*{4.1.1}
+\begin{zproof}
+  \textcircled{1} 自反性
+
+  设$a-b$是任意整数，现证明$a-b=a-b$。由于$a+b=a+b$，所以$a-b=a-b$
+
+  \textcircled{2} 对称性
+
+  设$a-b=c-d$，现证明$c-d=a-b$。
+  由于$a-b=c-d$，所以$a+d=c+b$，由自然数相等的对称性可知$c+b=a+d$（这个基础性质在书中没有特别强调），所以$c-d=a-b$。
+\end{zproof}
+
+\section*{4.1.2}
+\begin{zproof}
+  $-(a-b)=b-a,-(a^\prime - b^\prime)=b^\prime - a^\prime$，
+  又$(a-b)=(a^\prime - b^\prime)$则$a+b^\prime = a^\prime + b$，
+  由于加法是可以交换的（命题2.2.4）所以$b^\prime + a = b + a^\prime$，
+  由此可得$-(a^\prime - b^\prime)=-(a-b)$，又由整数相等的对称性可得$-(a-b)=-(a^\prime - b^\prime)$。
+\end{zproof}
+
+\section*{4.1.3}
+\begin{zproof}
+  设$a = x-y$则
+  $(-1)\times a=(0-1) \times (x-y)= (0 \times x + 1 \times y) - $
+\end{zproof}
 \end{document}
