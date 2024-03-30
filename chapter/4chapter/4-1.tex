@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{mathtools} 
 \usepackage{fontspec}
 \usepackage[UTF8]{ctex}
 \usepackage{amsthm}
@@ -41,59 +42,62 @@
   {}
 \theoremstyle{zproofstyle}
 \newtheorem*{zproof}{证明}
-
+\newcommand{\zsub}{\mathbin{\rule{1em}{0.5em}}}
 \begin{document}
 \title{4.1 习题}
 \maketitle
-
-文中的减号占位符，不好表示，习题中的所有减号占位符都用减号代替，看官注意分辨。
 
 \section*{4.1.1}
 \begin{zproof}
   \textcircled{1} 自反性
 
-  设$a-b$是任意整数，现证明$a-b=a-b$。由于$a+b=a+b$，所以$a-b=a-b$
+  设$a \zsub b$是任意整数，现证明$a \zsub b$ = $a \zsub b$。
+  由于$a+b=a+b$，所以$a \zsub b$ = $a \zsub b$
 
   \textcircled{2} 对称性
 
-  设$a-b=c-d$，现证明$c-d=a-b$。
-  由于$a-b=c-d$，所以$a+d=c+b$，由自然数相等的对称性可知$c+b=a+d$，所以$c-d=a-b$。
+  设$a \zsub b = c \zsub d$，现证明$c \zsub d=a \zsub b$。
+  由于$a \zsub b = c \zsub d$，所以$a+d=c+b$，
+  由自然数相等的对称性可知$c+b=a+d$，所以$c \zsub d=a \zsub b$。
 \end{zproof}
 
 \section*{4.1.2}
 \begin{zproof}
-  $-(a-b)=b-a,-(a^\prime - b^\prime)=b^\prime - a^\prime$，
-  又$(a-b)=(a^\prime - b^\prime)$则$a+b^\prime = a^\prime + b$，
+  $-(a \zsub b)=b \zsub a,-(a^\prime \zsub b^\prime)=b^\prime \zsub a^\prime$，
+  又$(a \zsub b)=(a^\prime \zsub b^\prime)$则$a+b^\prime = a^\prime + b$，
   由于加法是可以交换的（命题2.2.4）所以$b^\prime + a = b + a^\prime$，
-  由此可得$-(a^\prime - b^\prime)=-(a-b)$，又由整数相等的对称性可得$-(a-b)=-(a^\prime - b^\prime)$。
+  由此可得$-(a^\prime \zsub b^\prime)=-(a \zsub b)$，
+  又由整数相等的对称性可得$-(a \zsub b)=-(a^\prime \zsub b^\prime)$。
 \end{zproof}
 
 \section*{4.1.3}
 \begin{zproof}
-  因为a是整数，不妨设$a = x-y$，其中$x, y$是自然数，则
+  因为a是整数，不妨设$a = x \zsub y$，其中$x, y$是自然数，则
   \begin{align*}
-     & (-1) \times a                                           \\
-     & =(0-1) \times (x-y)                                     \\
-     & = (0 \times x + 1 \times y) - (0 \times y + 1 \times x) \\
-     & = (0 + y) - (0 + x)                                     \\
-     & = y - x                                                 \\
+     & (-1) \times a                                               \\
+     & =(0 \zsub 1) \times (x \zsub y)                             \\
+     & = (0 \times x + 1 \times y) \zsub (0 \times y + 1 \times x) \\
+     & = (0 + y) \zsub (0 + x)                                     \\
+     & = y \zsub x                                                 \\
      & = -a
   \end{align*}
 \end{zproof}
 
 \section*{4.1.4}
+注意： 此时书中已经说明了$\zsub$与$-$的等价性，从此处开始证明中将不使用$\zsub$
+
 记$x = a - b, y = c - d, z = e - f$其中a、b、c、d、e、f是自然数
 
 \textcircled{1} $x + y = y + x$
 
 \begin{zproof}
   \begin{align*}
-    x + y
-    = (a-b)+(c-d)
-    = (a+c) - (b+d)
-    y + x
-    =(c-d)+(a-b)
-    =(c+a) - (d+b)
+     & x + y           \\
+     & = (a-b)+(c-d)   \\
+     & = (a+c) - (b+d) \\
+     & y + x           \\
+     & =(c-d)+(a-b)    \\
+     & =(c+a) - (d+b)  \\
   \end{align*}
   由于加法是可交换（命题2.2.4）可知$a+c=c+a,b+d=d+b$，又由自然数相等的替换公理
   可得$(a+c) + (d+b) = (c+a) + (b+d)$，由此可知$x + y = y + x$
@@ -104,15 +108,15 @@
 \begin{zproof}
   \begin{align*}
      & (x+y)+z               \\
-     & = ((a-b)+(c-d))+(e-f) \\
-     & = ((a+c)-(b+d))+(e-f) \\
+     & = [(a-b)+(c-d)]+(e-f) \\
+     & = [(a+c)-(b+d)]+(e-f) \\
      & = (a+c+e) - (b+d+f)   \\
      & x+(y+z)               \\
-     & = (a-b)+((c-d)+(e-f)) \\
-     & = (a-b)+((c+e)-(d+f)) \\
+     & = (a-b)+[(c-d)+(e-f)] \\
+     & = (a-b)+[(c+e)-(d+f)] \\
      & = (a+c+e) - (b+d+f)   \\
   \end{align*}
-  由整数相等的定义可知$(x+y)+z=x+(y+z)$
+  于是$(x+y)+z=x+(y+z)$
 
 \end{zproof}
 
@@ -139,8 +143,9 @@
               & = (a-b) + (b-a) \\
               & = (a+b) - (b+a) \\
     (a+b) + 0 & = (b+a) + 0     \\
+    a + b     & = b + a
   \end{align*}
-  由整数相等的定义可知$x+(-x)=(-x)+x=0$
+  于是$x+(-x)=(-x)+x=0$
 \end{zproof}
 
 \textcircled{5} $xy=yx$
@@ -221,7 +226,7 @@
   \end{align*}
   由于m,n都是正自然数，所以$ab=mn \neq 0$，与题设矛盾；
 
-  （3）如果$a=b=0$（这里的0也可以看做自然数），所以$ab=0$，满足题设。
+  （3）如果$a=b=0$，$ab=0$，满足题设。
 
   （4）如果$a=0,b=x-y$，x、y为任意自然数；
   \begin{align*}
@@ -239,15 +244,7 @@
      & = (x-y) \times (0-0)          \\
      & = (x \times 0) - (y \times 0) \\
      & = 0 - 0                       \\
-  \end{align*}
-  于是$ab=0$，满足题设；
-
-  如果$a=0,b=x-y$，，x、y为任意自然数；
-  \begin{align*}
-     & ab                \\
-     & = 0 \times (x-y)  \\
-     & = (x-y) \ times 0 \\
-     & = 0 - 0           \\
+     & = 0                           \\
   \end{align*}
   于是$ab=0$，满足题设；
 
@@ -269,48 +266,10 @@
     a - b           & = 0     \\
     a - b + b       & = 0 + b \\
     a + (- b) + b   & = 0 + b \\
-    a + ((- b) + b) & = b     \\
+    a + [(- b) + b] & = b     \\
     a + 0           & = b     \\
     a               & = b     \\
   \end{align*}
-
-  （2）方法二
-
-  由引理4.1.5（整数的三歧性）分多种情况讨论。
-
-  （1）a、b、c都是正自然数，则
-  \begin{align*}
-    ac = bc
-  \end{align*}
-  由推论2.3.7可知$a=b$
-
-  其余的情况同理。（略）
-
-\end{zproof}
-
-\section*{4.1.7}
-
-（a）$a > b$当且仅当$a-b$是一个正的自然数。
-\begin{zproof}
-  充分性
-
-  假设$a>b$，由引理4.1.5（整数的三歧性）对$a-b$分多种情况讨论。
-
-  （1）$a-b \neq 0$，因为如果$a-b=0$，则$a=b$，与题设矛盾；
-
-  （2）$a-b$是正自然数n的负数-n，即
-  \begin{align*}
-    a - b     & = -n         \\
-    a - b + b & = -n + b     \\
-    a + 0     & = -n + b     \\
-    a         & = -n + b     \\
-    a + n     & = -n + b + n \\
-    a + n     & = b + -n + n \\
-    a + n     & = b          \\
-    b         & > a          \\
-  \end{align*}
-
-  综上，$a-b$只能是正自然数
 
   \begin{zgraytheorem}
     \begin{zremark}
@@ -318,7 +277,7 @@
 
       该命题对自然数是成立的，但对于整数书中没有该命题，这里需要证明下。
 
-      记$a=x-y,b=p-q,c=w-z$，x、y、p、q、w、z是自然数。
+      记$a=x-y,b=p-q,c=w-z$，$x$、$y$、$p$、$q$、$w$、$z$是自然数。
       由$a=b$可得：
       \begin{align*}
         a     & = b     \\
@@ -341,11 +300,50 @@
          & (p + w) + (y + z) \\
          & = p + y + w + z   \\
       \end{align*}
-      由整数相等的定义可知$a+c=b+c$
+      结合$x + q = p + y$于是$a+c=b+c$
     \end{zremark}
   \end{zgraytheorem}
 
-  必要性
+  （2）方法二
+
+  由引理4.1.5（整数的三歧性）分多种情况讨论。
+
+  （1）a、b、c都是正自然数，则
+  \begin{align*}
+    ac = bc
+  \end{align*}
+  由推论2.3.7可知$a=b$
+
+  其余的情况证明类似。（略）
+
+\end{zproof}
+
+\section*{4.1.7}
+
+（a）$a > b$当且仅当$a-b$是一个正的自然数。
+\begin{zproof}
+  \textcircled{1} 充分性
+
+  假设$a>b$，由引理4.1.5（整数的三歧性）对$a-b$分多种情况讨论。
+
+  （1）如果$a-b=0$，则$a=b$，与题设矛盾；
+
+  （2）$a-b$是正自然数n的负数-n，即
+  \begin{align*}
+    a - b     & = -n         \\
+    a - b + b & = -n + b     \\
+    a + 0     & = -n + b     \\
+    a         & = -n + b     \\
+    a + n     & = -n + b + n \\
+    a + n     & = b + -n + n \\
+    a + n     & = b          \\
+    b         & > a          \\
+  \end{align*}
+  与题设矛盾；
+
+  综上，$a-b$只能是正自然数
+
+  \textcircled{2} 必要性
 
   假设$a-b$是一个正的自然数n，那么
   \begin{align*}
@@ -367,11 +365,12 @@
 
         若$a+c=b$，则
         \begin{align*}
-          a + c = b
-          b + n + c = b
-          n + c = 0
+          a + c            & = b        \\
+          b + n + c        & = b        \\
+          b + n + c + (-b) & = b + (-b) \\
+          n + c            & = 0        \\
         \end{align*}
-        这与$c$是正自然数矛盾，所以$a+c \neq b$，所以$a + c > b$，命题得证。
+        由推论2.2.9可知$c=0$，这与$c$是正自然数矛盾，所以$a+c \neq b$，所以$a + c > b$，命题得证。
       \end{zproof}
     \end{zremark}
   \end{zgraytheorem}
@@ -382,7 +381,18 @@
 （b）（加法保持序不变）如果$a > b$，那么$a + c > b + c$
 
 \begin{zproof}
-
+  因为$a>b$，由（a）可知$a-b=n$，n是正自然数；
+  \begin{align*}
+     & (a+c) - (b+c)        \\
+     & =(a+c) + [-(b+c)]    \\
+     & =(a+c) + [(-c)+(-b)] \\
+     & =a + c + (-c) + (-b) \\
+     & =a + 0 + (-b)        \\
+     & =a - b
+  \end{align*}
+  由此可知$(a+c) - (b+c)=a - b$是正自然数，所以$a + c > b + c$。
 \end{zproof}
+
+（c）（正的乘法保持序不变）
 
 \end{document}
