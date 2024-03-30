@@ -14,8 +14,7 @@
   innerrightmargin=10pt,
   innertopmargin=10pt,
   innerbottommargin=10pt
-]{zgraytheorem}{Theorem}
-
+]{zgraytheorem}{}
 % 定义说明环境样式
 \newtheoremstyle{mystyle}% 说明环境样式的名称
   {1em}% 上方间距
@@ -254,4 +253,136 @@
 
   综上，命题得证。
 \end{zproof}
+
+\section*{4.1.6}
+
+\begin{zproof}
+  （1）方法一
+
+  由整数加法的替换性与命题4.1.6可知：
+  \begin{align*}
+    ac - bc & = 0 \\
+    (a-b) c & = 0 \\
+  \end{align*}
+  由命题4.1.8可知$a-b=0$，接下来要证$a=b$，以上等式才能成立。
+  \begin{align*}
+    a - b           & = 0     \\
+    a - b + b       & = 0 + b \\
+    a + (- b) + b   & = 0 + b \\
+    a + ((- b) + b) & = b     \\
+    a + 0           & = b     \\
+    a               & = b     \\
+  \end{align*}
+
+  （2）方法二
+
+  由引理4.1.5（整数的三歧性）分多种情况讨论。
+
+  （1）a、b、c都是正自然数，则
+  \begin{align*}
+    ac = bc
+  \end{align*}
+  由推论2.3.7可知$a=b$
+
+  其余的情况同理。（略）
+
+\end{zproof}
+
+\section*{4.1.7}
+
+（a）$a > b$当且仅当$a-b$是一个正的自然数。
+\begin{zproof}
+  充分性
+
+  假设$a>b$，由引理4.1.5（整数的三歧性）对$a-b$分多种情况讨论。
+
+  （1）$a-b \neq 0$，因为如果$a-b=0$，则$a=b$，与题设矛盾；
+
+  （2）$a-b$是正自然数n的负数-n，即
+  \begin{align*}
+    a - b     & = -n         \\
+    a - b + b & = -n + b     \\
+    a + 0     & = -n + b     \\
+    a         & = -n + b     \\
+    a + n     & = -n + b + n \\
+    a + n     & = b + -n + n \\
+    a + n     & = b          \\
+    b         & > a          \\
+  \end{align*}
+
+  综上，$a-b$只能是正自然数
+
+  \begin{zgraytheorem}
+    \begin{zremark}
+      上面的证明中用到了一个命题：a,b是整数且$a=b$，则$a+c=b+c$，c是整数。
+
+      该命题对自然数是成立的，但对于整数书中没有该命题，这里需要证明下。
+
+      记$a=x-y,b=p-q,c=w-z$，x、y、p、q、w、z是自然数。
+      由$a=b$可得：
+      \begin{align*}
+        a     & = b     \\
+        x - y & = p - q \\
+        x + q & = p + y \\
+      \end{align*}
+      又
+      \begin{align*}
+         & a + c               \\
+         & = (x - y) + (w - z) \\
+         & = (x + w) - (y + z) \\
+         & b + c               \\
+         & = (p - q) + (w - z) \\
+         & = (p + w) - (q + z) \\
+      \end{align*}
+      又由
+      \begin{align*}
+         & (x + w) + (q + z) \\
+         & = x + q + w + z   \\
+         & (p + w) + (y + z) \\
+         & = p + y + w + z   \\
+      \end{align*}
+      由整数相等的定义可知$a+c=b+c$
+    \end{zremark}
+  \end{zgraytheorem}
+
+  必要性
+
+  假设$a-b$是一个正的自然数n，那么
+  \begin{align*}
+    a - b     & = n     \\
+    a - b + b & = n + b \\
+    a + 0     & = n + b \\
+    a         & = n + b \\
+  \end{align*}
+  于是$a \geq b$，又由于$n$是正自然数，那么$a \neq b$（其实这里需要引入一个额外的命题，下方有说明），所以$a > b$
+
+  \begin{zgraytheorem}
+    \begin{zremark}
+      整数$a,b$，如果$a \geq b$，c是正自然数，那么$a + c > b$
+
+      \begin{zproof}
+        不妨设$a=x-y,b=p-q$
+        因为$a \geq b$，那么存在一个自然数n使得$a = b + n$，
+        所以$a + c = b + n + c = b + (n + c)$，于是$a + c \geq b$，
+
+        若$a+c=b$，则
+        \begin{align*}
+          a + c = b
+          b + n + c = b
+          n + c = 0
+        \end{align*}
+        这与$c$是正自然数矛盾，所以$a+c \neq b$，所以$a + c > b$，命题得证。
+      \end{zproof}
+    \end{zremark}
+  \end{zgraytheorem}
+
+  综上，命题得证。
+\end{zproof}
+
+（b）（加法保持序不变）如果$a > b$，那么$a + c > b + c$
+
+\begin{zproof}
+
+\end{zproof}
+
 \end{document}
