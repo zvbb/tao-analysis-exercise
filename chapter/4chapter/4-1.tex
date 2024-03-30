@@ -194,4 +194,64 @@
   \end{align*}
   于是$x(y + z) = xy + xz$
 \end{zproof}
+
+\textcircled{9} $(y+z)x = yx+zx$
+
+\begin{zproof}
+  由\textcircled{5}可知$(y+z)x=x(y+z)$，
+  又由\textcircled{8}可知$x(y+z)=xy+xz$，
+  再次应用\textcircled{5}可得$xy+xz=yx+zx$，
+  于是等式成立
+\end{zproof}
+
+\section*{4.1.5}
+
+\begin{zproof}
+  由引理4.1.5（整数的三歧性）分多种情况讨论。
+
+  （1）如果$a,b$都是正自然数，
+  则由2.3.3可知$ab$是正自然数，则$ab \neq = 0$与题设矛盾；
+
+  （2）如果$a,b$都是正自然数的负数，假设分别为$-m,-n$，m、n都是正自然数。
+  \begin{align*}
+     & ab                                              \\
+     & = (-m) \times (-n)                              \\
+     & = (0-m) \times (0-n)                            \\
+     & = (0 \times 0 + mn) - (0 \times 0 + m \times 0) \\
+     & = mn                                            \\
+  \end{align*}
+  由于m,n都是正自然数，所以$ab=mn \neq 0$，与题设矛盾；
+
+  （3）如果$a=b=0$（这里的0也可以看做自然数），所以$ab=0$，满足题设。
+
+  （4）如果$a=0,b=x-y$，x、y为任意自然数；
+  \begin{align*}
+     & ab                            \\
+     & = (0-0) \times (x-y)          \\
+     & = (0 \times x) - (0 \times y) \\
+     & = 0 - 0                       \\
+     & = 0                           \\
+  \end{align*}
+  所以$ab=0$，满足题设；
+
+  （5）如果$a=x-y,b=0$，x、y为任意自然数；
+  \begin{align*}
+     & ab                            \\
+     & = (x-y) \times (0-0)          \\
+     & = (x \times 0) - (y \times 0) \\
+     & = 0 - 0                       \\
+  \end{align*}
+  于是$ab=0$，满足题设；
+
+  如果$a=0,b=x-y$，，x、y为任意自然数；
+  \begin{align*}
+     & ab                \\
+     & = 0 \times (x-y)  \\
+     & = (x-y) \ times 0 \\
+     & = 0 - 0           \\
+  \end{align*}
+  于是$ab=0$，满足题设；
+
+  综上，命题得证。
+\end{zproof}
 \end{document}
