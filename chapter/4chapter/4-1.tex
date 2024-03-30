@@ -393,6 +393,30 @@
   由此可知$(a+c) - (b+c)=a - b$是正自然数，所以$a + c > b + c$。
 \end{zproof}
 
-（c）（正的乘法保持序不变）
+\begin{zgraytheorem}
+  \begin{zremark}
+    以上的证明中$-(b+c)=(-b)+(-c)$，不是显然的，需要证明以下命题。
+
+    $a,b$是整数，则$-(a+b)=(-a)+(-b)$。
+    \begin{zproof}
+      由于a,b是整数，所以存在$a=x-y,b=p-q$，$x,y,p,q$是自然数。
+      \begin{align*}
+         & -(a+b)                \\
+         & =-[(x-y)+(p-q)]       \\
+         & =-[(x+p)-(y+q)]       \\
+         & =(y+p)-(x+p)          \\
+         & (-a)+(-b)             \\
+         & = [-(x-y)] + [-(p-q)] \\
+         & = (y-x) + (q-p)       \\
+         & = (y+q) - (x+p)       \\
+      \end{align*}
+      于是$-(a+b)=(-a)+(-b)$，命题得证。
+    \end{zproof}
+  \end{zremark}
+\end{zgraytheorem}
+
+（c）（正的乘法保持序不变）如果$a>b$并且c是正的，那么$ac > bc$。
+
+
 
 \end{document}
