@@ -417,6 +417,31 @@
 
 （c）（正的乘法保持序不变）如果$a>b$并且c是正的，那么$ac > bc$。
 
+证明：
 
+因为$a>b$所以存在正自然数$x$使得$a=b+x$，此时
+\begin{align*}
+  ac & = (b+x) \times c          \\
+     & = b \times c + x \times c \\
+\end{align*}
+又
+\begin{align*}
+  ac - bc & = b \times c + x \times c - b \times c \\
+          & = x \times c                           \\
+\end{align*}
+由于$x,c$都是正的自然数，所以$ac-bc = x\times c > 0$，通过（a）可知$ac > bc$
+
+（d）（负运算反序）如果$a > b$，那么$-a < -b$。
+
+证明:
+
+不妨设$b = p - q$，$p$、$q$是自然数。由题设$a > b$可知存在正自然数c，使得$a = b + c$，
+\begin{align*}
+  -b - (-a) & = q-p - (b + c)
+            & = q-p - [(p - q) + c]
+              = q-p - [(p+c) - q]
+              = q-p + [q - (p+c)]
+              = q-p + ()
+\end{align*}
 
 \end{document}
