@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{4.2 习题}
+\maketitle
+
+\section*{4.2.1}
+
+证明：
+
+设$x=a//b,y=c//d,z=e//f$为有理数,其中$a,c,e$是整数，$b,d,f$是不为零的整数。
+
+（1）自反性
+
+$ab=ab$，由定义4.2.1（有理数相等的定义）可知$x=x$
+
+（2）对称性
+
+假设$x=y$，由定义4.2.1（有理数相等的定义）可知$ad=bc$，再次利用定义4.2.1（有理数相等的定义）可知$y=x$
+
+（3）传递性
+
+假设$x=y,y=z$，由定义4.2.1（有理数相等的定义）可知$ad=bc,cf=de$，又
+\begin{align*}
+  ad  & = bc  \\
+  adf & = bcf \\
+\end{align*}
+\begin{align*}
+  cf  & = de  \\
+  bcf & = bde \\
+\end{align*}
+所以：$adf = bcf = bde, adf = bde$，由推论4.1.9可知$af=be$，所以$x=z$
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    其实这里需要引入一个额外的命题，$a=b$，$a,b,c$都是整数，那么$ac=bc$。
+    这个命题相对简单，这里说一下证明思路，先证明自然数符合该命题，然后再推广到整数。
+  \end{zremark}
+\end{zgraytheorem}
+
+\section*{4.2.2}
+
+
+\end{document}
