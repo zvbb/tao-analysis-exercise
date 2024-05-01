@@ -35,6 +35,13 @@
 \title{4.2 习题}
 \maketitle
 
+\begin{zremark}
+  \begin{zgraytheorem}
+    在本节的证明过程中，用到一些在4.1节未提到的整数代数定律，但都很明显，
+    我就没有特别说明证明了
+  \end{zgraytheorem}
+\end{zremark}
+
 \section*{4.2.1}
 
 证明：
@@ -97,5 +104,177 @@ $ab^\prime = ba^\prime$，由假设可知该等式成立；
 \end{align*}
 由推论4.1.9（整数的消去律）可知，只需证明
 $ab^\prime = a^\prime b$，由假设可知该等式成立；
+
+
+\section*{4.2.3}
+
+证明：
+
+我们记$x=a//b,y=c//d,z=e//f$，其中$a,c,e$是整数，$b,d,f$是不为零的整数。
+
+（1）$x + y = y + x$
+
+\begin{align*}
+  x + y & = (a//b) + (c//d)   \\
+        & = (ad + bc) // (bd)
+\end{align*}
+又
+\begin{align*}
+  y + x & = (c//d) + (a//b)   \\
+        & = (cb + da) // (db)
+\end{align*}
+由定义4.2.1（有理数的相等定义）可知要证明$x+y=y+x$，只需证明
+$(ad + bc)(db) = (cb + da) (bd)$，利用整数的代数定律可知，等式成立。
+
+（2）$x + 0 = 0 + x = x$
+
+\begin{align*}
+  x + 0 & = (a//b) + (0//1)  \\
+        & = (a1 + b0) // (b) \\
+        & = a // b           \\
+        & = x
+\end{align*}
+又
+\begin{align*}
+  0 + x & = (0//1) + (a//b)  \\
+        & = (0b + 1a) // (b) \\
+        & = a // b           \\
+        & = x
+\end{align*}
+
+（3）$x + (-x) = (-x) + (x) = 0$
+
+由（1）可知$x + (-x) = (-x) + (x)$
+
+\begin{align*}
+  x + (-x) & = (a//b) + [(-a)//b]         \\
+           & = [ab + (-a)b] // bb         \\
+           & = [ab + (-1) \times ab]// bb \\
+           & = [ab(1+(-1))] // bb         \\
+           & = [ab(0)] // bb              \\
+           & = 0 // bb                    \\
+           & = 0
+\end{align*}
+
+（4）$xy = yx$
+
+\begin{align*}
+  xy & = (a//b) * (c//d) \\
+     & = (ac) // (bd)    \\
+\end{align*}
+又
+\begin{align*}
+  yx & = (c//d) * (a//b) \\
+     & = (ca) // (db)    \\
+\end{align*}
+现只需证明$acdb = bdca$，由整数的代数定律可知，等式成立。
+
+（5）$(xy)z = x(yz)$
+
+\begin{align*}
+  (xy)z & = [(a//b) * (c//d)] * (e//f) \\
+        & = (ac//bd) * (e//f)          \\
+        & = ace//bdf                   \\
+\end{align*}
+又
+\begin{align*}
+  x(yz) & = a//b * [(c//d)*(e//f)] \\
+        & = a//b * (ce//df)        \\
+        & = ace//bdf               \\
+\end{align*}
+
+（6）$x1 = 1x = x$
+
+由（4）可知$x1 = 1x$
+
+\begin{align*}
+  x1 & = (a//b) * (1//1) \\
+     & = (a1//b)         \\
+     & = a//b            \\
+     & = x               \\
+\end{align*}
+
+（7）$x(y+z) = xy + xz$
+
+\begin{align*}
+  x(y+z) & = (a // b)[c // d + e // f] \\
+         & = (a // b)[(cf + de) // df] \\
+         & = [a(cf + de)] // bdf       \\
+         & = (acf + ade) // bdf        \\
+\end{align*}
+又
+\begin{align*}
+  xy + xz & = (a//b) * (c//d) + (a//b) * (e//f) \\
+          & = (ac // bd) + (ae // bf)           \\
+          & = (acbf + bdae) // bdbf             \\
+\end{align*}
+
+由有理数相等的定义可知，我们此时只需证明
+$(acf + ade)bdbf = bdf(acbf + bdae)$。
+\begin{align*}
+  (acf + ade)bdbf  & = acfbdbf + adebdbf \\
+                   & = abbcdff + abbddef \\
+  bdf(acbf + bdae) & = bdfacbf + bdfbdae \\
+                   & = abbcdff + abbddef \\
+\end{align*}
+所以$(acf + ade)bdbf = bdf(acbf + bdae)$。
+
+（8）$(y+z)x = yx + zx$
+
+由（4）可知
+\begin{align*}
+  (y+z)x & = x(y+z) \\
+  xy     & = yx     \\
+  xz     & = zx     \\
+\end{align*}
+综上，可知$(y+z)x=x(y+z)=xy+xz=yx+zx$，命题得证；
+
+\section*{4.2.4}
+
+\begin{zremark}
+  \begin{zgraytheorem}
+    由有理数的定义可知，有理数是由整数构造而成，通过整数的三歧性，可以推导出有理数的三歧性。
+  \end{zgraytheorem}
+\end{zremark}
+
+设$x$为任意有理数，由有理数的定义可知，存在$x=a/b$，其中$a,b$是整数。
+
+首先证明（a）(b)（c）中至少有一个为真。
+我们有如下三种情况：$a$、$b$同号，$a$、$b$异号，$a$为0。
+
+如果$a,b$同号，也就是说，要么$a,b$都是正整数，要么$a,b$都是负整数。
+如果$a,b$都是正整数，由定义4.2.6可知$x$是正的；
+如果$a,b$都是负整数，不妨设$a=-a^\prime, b=-b^\prime$，其中$a^\prime,b^\prime$是正整数，
+此时，
+\begin{align*}
+  x & = a/b                       \\
+    & = (-a^\prime) / (-b^\prime) \\
+    & = a^\prime / b^\prime       \\
+\end{align*}
+所以$x$是正的。
+
+如果$a,b$是异号，要么$a$是正整数$b$负整数，或反之。
+如果$a$是正整数$b$负整数，不妨设$b=-b^\prime$，其中$b^\prime$是正整数，
+此时，
+\begin{align*}
+  x & = a/b           \\
+    & = a/(-b^\prime) \\
+    & = -(a/b^\prime) \\
+\end{align*}
+所以$x$是负的；
+同理可证$a$是负整数$b$正整数时，$x$是负的。
+
+如果$a$为0，则$x=a/b=0/1=0$。
+
+所以（a）(b)（c）中至少有一个为真
+
+现在我们证明（a）、（b）、（c）最多有一个为真。
+
+（a）、（b）不能同时为真，如果（a）、（b）同时为真，
+当$x=a/b$是正的，则$a$是正整数，
+当$x=a/b=0$，则$a=0$，
+这与正整数的定义矛盾。
+
+（a）、（c）不能同时为真，如果（a）、（b）同时为真，
 
 \end{document}
