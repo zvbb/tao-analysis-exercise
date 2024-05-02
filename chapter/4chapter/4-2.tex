@@ -35,12 +35,12 @@
 \title{4.2 习题}
 \maketitle
 
-\begin{zremark}
-  \begin{zgraytheorem}
+\begin{zgraytheorem}
+  \begin{zremark}
     在本节的证明过程中，用到一些在4.1节未提到的整数代数定律，但都很明显，
     我就没有特别说明证明了
-  \end{zgraytheorem}
-\end{zremark}
+  \end{zremark}
+\end{zgraytheorem}
 
 \section*{4.2.1}
 
@@ -231,11 +231,11 @@ $(acf + ade)bdbf = bdf(acbf + bdae)$。
 
 \section*{4.2.4}
 
-\begin{zremark}
-  \begin{zgraytheorem}
+\begin{zgraytheorem}
+  \begin{zremark}
     由有理数的定义可知，有理数是由整数构造而成，通过整数的三歧性，可以推导出有理数的三歧性。
-  \end{zgraytheorem}
-\end{zremark}
+  \end{zremark}
+\end{zgraytheorem}
 
 设$x$为任意有理数，由有理数的定义可知，存在$x=a/b$，其中$a,b$是整数。
 
@@ -271,10 +271,158 @@ $(acf + ade)bdbf = bdf(acbf + bdae)$。
 现在我们证明（a）、（b）、（c）最多有一个为真。
 
 （a）、（b）不能同时为真，如果（a）、（b）同时为真，
-当$x=a/b$是正的，则$a$是正整数，
 当$x=a/b=0$，则$a=0$，
-这与正整数的定义矛盾。
+当$x=a/b$是正的，则$a$是正整数，
+这与正整数大于0矛盾。
 
 （a）、（c）不能同时为真，如果（a）、（b）同时为真，
+当$x=a/b=0$，则$a=0$，
+当$x=a/b$是负数，则$(-a)$是正整数，这与$a=0$矛盾，因为$(-0)=0$；
 
+（b）、（c）不能同时为真，如果（b）、（c）同时为真，
+那么存在$x=a/b,x=(-a^\prime)/b^\prime$，其中$a,b,a^\prime,b^\prime$是正整数，
+\begin{align*}
+  a / b     & = (-a^\prime) / b^\prime \\
+  ab^\prime & = (-a^\prime)b           \\
+\end{align*}
+由于$ab^\prime$是正整数，所以$(-a^\prime)b$也一定是正整数，但很明显在$-a^\prime$是负整数，
+$b$是正整数的情况下，$(-a^\prime)b$是负整数，存在矛盾，所以（b）、（c）不能同时为真。
+
+所以（a）（b）（c）最多有一个为真。
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    在（b）、（c）不能同时为真的证明过程中，用到一个命题：
+    a，b是正自然数【也可以把a，b看成正整数】，那么(-a)b是负整数。
+
+    证明：
+
+    \begin{align*}
+      (-a)b & = (0-a)(b-0)               \\
+            & = (0*b + a*0) - (ab + 0*0) \\
+            & = -ab                      \\
+    \end{align*}
+    因为$ab$是正自然数，所以$-ab$是负整数。
+  \end{zremark}
+\end{zgraytheorem}
+\section*{4.2.5}
+
+\section*{4.2.5}
+
+证明：
+
+（a）（序的三歧性）命题$x = y$、$x < y$和$x > y$中恰有一个为真。
+
+有引理4.2.7（有理数的三歧性）可知，$x-y$的值只有以下三种情况：
+（1）$x-y$是0，此时$x = y$【无法$x-y=0,x=y$直接得到，证明比较简单，这里省略】；
+（2）$x-y$是正有理数，由定义4.2.9（有理数的排序）可知$x > y$；
+（3）$x-y$是负有理数，由定义4.2.9（有理数的排序）可知$x < y$；
+
+（b）（序是反对称的）我们有$x < y$当且仅当$y > x$。
+
+充分性：如果$x<y$，由定义4.2.8可知$x-y$是一个负有理数，即存在两个正整数$a$和$b$使得
+$x - y = (-a) / b$，现在只需证明$y - x = a / b$即可证明充分性。
+由
+\begin{align*}
+  x - y + y - x              & = 0     \\
+  (-a) / b + (y - x)         & = 0     \\
+  (-a) / b + (y - x) + a / b & = a / b \\
+  y - x                      & = a / b
+\end{align*}
+可知$y - x = a / b > 0$，所有$y > x$。
+
+必要性：证明同上。
+
+（c）（序是可传递的）如果$x < y$且$y < z$，那么$x < z$。
+
+由$x < y, y < z$与（b）可知$y>x,z>y$，所以$y - x = a, z - y = b$，其中$a, b$是正有理数，
+由此可知:
+\begin{align*}
+  z - x & = z - y + y - x     \\
+        & = (z - y) + (y - x) \\
+        & = a + b             \\
+\end{align*}
+所以$z - x $是正有理数，所以$z > x$，由（b）可知 $x < z$。
+
+（d）（加法保持序不变）如果$x < y$，那么$x + z < y + z$。
+
+\begin{align*}
+  (y + z) - (x + z) & = (y + z) - x - z & \text{【见说明】} \\
+                    & = y + z - x - z                  \\
+                    & = y - x                          \\
+\end{align*}
+由$x < y$和（b）可知$y-x$是正有理数，所以$x + z < y + z$。
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    以上的证明中用到命题：$x,y$是有理数，$-(x+y) = (-x) + (-y)$。
+
+    证明：
+
+    不妨设$x = a/b, y = c/d$，其中$a,b,c,d$是整数，且$b,d$不为零。
+    \begin{align*}
+      -(x+y) & = -(a/b + c/d)                              \\
+             & = -[(ad+bc)/bd]                             \\
+             & = -(ad+bc)/bd                               \\
+             & = (-1) \times (ad+bc)/bd & \text{【习题4.1.3】} \\
+    \end{align*}
+    又
+    \begin{align*}
+      (-x) + (-y) & = (-a)/b + (-c)/d                              \\
+                  & = [(-a)d + b(-c)] / bd                         \\
+                  & = [(-1)ab + (-1)bc] /bd     & \text{【习题4.1.3】} \\
+                  & = (-1) \times (ab + bc) /bd & \text{【命题4.1.6】} \\
+    \end{align*}
+    由上可知$-(x+y) = (-x) + (-y)$。
+
+  \end{zremark}
+\end{zgraytheorem}
+
+（e）（正的乘法保持序不变）如果$x < y$且$z$是正的， 那么$xz < yz$。
+
+不妨设$x = a/b, y = c/d, z = e/f$，其中$a,b,c,d,e,f$是整数，且$b,d,f$不为零的正整数。
+
+\begin{align*}
+  yz - xz & = c/d * e/f - a/b * e/f \\
+          & = ce/df - ae/bf         \\
+          & = (cebf - aedf) / dfbf  \\
+\end{align*}
+由于$b,d,f$是不为零的正整数，所以$dfbf$是整数，由此$yz - xz$的正负由$cebf - aedf$的正负决定。
+由于$x<y$可知:
+\begin{align*}
+  y-x                 & = c/d-a/b         \\
+                      & = cb + (-a)d / db \\
+  \rightarrow cb - ad & > 0               \\
+\end{align*}
+综上：
+\begin{align*}
+  cebf - aedf & = ef(cb-ad) & \text{命题4.1.6} \\
+              & > 0                          \\
+\end{align*}
+所以$yz - xz > 0$，于是$yz > xz$命题成立。
+
+\section*{4.2.6}
+
+证明：
+
+不妨设$x = a/b, y = c/d, z = e/f$，其中$a,b,c,d,e,f$是整数，且$b,d,f$不为零的正整数，$e$是负整数。
+由习题4.2.5（e）的证明可知：
+
+\begin{align*}
+  xz - yz & = a/b * e/f - c/d * e/f \\
+          & = ae / bf - ce / df     \\
+          & = (aedf - bfce ) / bfdf \\
+          & = ef(ad - bc) / bfdf    \\
+\end{align*}
+由$x<y$可知$ad - bc > 0$，又$z$是负数，所以$ef < 0$。现在只需证明正整数与负整数的乘积是负数。
+
+设$n,m$都是正自然数【按照整数的正负定义可知$a,b$也是正整数】，
+\begin{align*}
+  n(-m) & = (n-0)(0-m)               \\
+        & = (n*0 + 0*m) - (0*0 + nm) \\
+        & = -nm                      \\
+\end{align*}
+由$n(-m)$是正自然数$nm$的负数，所有$n(-m)$是负整数。
+
+由此可知$ef(ad - bc)/ bfdf$是负有理数，所以$xz - yz$是负有理数，按照定义4.2.8（有理数的排序）可知$xz > yz$。
 \end{document}
