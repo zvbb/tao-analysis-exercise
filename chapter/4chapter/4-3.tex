@@ -314,4 +314,143 @@ $d(x,z)=|x-z|,d(x,y)=|x-y|,d(y,z)=|y-z|$，由于$x-z = (x-y)+(y-z)$，
 此时也取$\varepsilon = (1/2) * z$，那么$d(x,y) > \varepsilon$，与前提矛盾，所以$z$不能是负有理数。
 
 由（1）（2）可知$z$只能是零，所以$z=x-y=0 \Rightarrow x=y$。
+
+\textbf{（b）设$\varepsilon > 0$，如果$x$是$\varepsilon$-接近于$y$的，那么$y$也是$\varepsilon$-接近于$x$的。}
+
+证明：
+
+由于$x$是$\varepsilon$-接近于$y$的，所以$d(x,y) \leq \varepsilon$。
+由命题4.3.3（f）可知$d(x,y)=d(y,x)$，所以$d(y,x) \leq \varepsilon$，所以$y$也是$\varepsilon$-接近于$x$的。
+
+\textbf{（c）设$\varepsilon,\delta>0$，如果$x$是$\varepsilon$- 接近于$y$的，
+  并且$y$是$\delta$- 接近于$z$的，那么$x$和$z$是$(\varepsilon+\delta)$- 接近的。}
+
+证明：
+
+由4.3.3（g）可知$d(x,z) \leq d(x,y) + d(y,z)$，所以$d(x,z) \leq \varepsilon + \delta$，
+那么$x$和$z$是$(\varepsilon+\delta)$- 接近的
+
+\textbf{（d）设$\varepsilon,\delta>0$，如果$x$和$y$是$\varepsilon$- 接近的，并且$z$和$w$是$\delta$- 接近的，
+  那么$x+z$和$y+w$是$(\varepsilon+\delta)$-接近的，并且$x-z$和$y-w$也是$(\varepsilon+\delta)$- 接近的。}
+
+证明：
+
+记$a:=y-x$，那么$y=x+a$且$|a| \leq \varepsilon$。
+类似地，定义$b:=w-z$，那么$w=z+b$且$|b| \leq \delta$。
+
+因为$y=x+a,w=z+b$，所以$d(x+z,y+w)=d(x+z,x+z+a+b)=|a+b|$，
+由4.3.3（b）可知$|a+b| \leq |a|+b$，即$d(x+z,y+w) \leq \varepsilon + \delta$，
+那么$x+z$和$y+w$是$(\varepsilon+\delta)$-接近的；
+
+因为$y=x+a,w=z+b$，所以$d(x-z,y-w)=d(x-z,x-z+a-b)=|a-b|=|a+(-b)|$，
+由4.3.3（b）（d）可知$|a+(-b)| \leq |a| + |b|$，即$d(x-z,y-w) \leq \varepsilon + \delta$，
+那么$x-z$和$y-w$也是$(\varepsilon+\delta)$- 接近的
+
+\textbf{（e）设$\varepsilon>0$，如果$x$和$y$是$\varepsilon$- 接近的，
+  那么对任意的$\varepsilon^\prime > \varepsilon$，$x$和$y$也是$\varepsilon^\prime$- 接近的。}
+
+证明：
+
+由题设可知$d(x,y) \leq \varepsilon$，又$\varepsilon < \varepsilon^\prime$，
+由命题4.2.9（c）（序是可传递的）可知$d(x,y) \leq \varepsilon^\prime$，
+那么$x$和$y$也是$\varepsilon^\prime$- 接近的。
+
+\textbf{（f）设$\varepsilon>0$，如果$y$和$z$都是$\varepsilon$- 接近于$x$的，
+  并且$w$位于$y$和$z$之间（即$y \leq w \leq z$或$z \leq w \leq y$），
+  那么$w$也是$\varepsilon$- 接近于$x$的。}
+
+证明：
+
+情况1：
+$w=x$、$w=y$和$w=z$时，显然$w$是$\varepsilon$- 接近于$x$的。
+
+情况2：
+$w \neq x, w \neq y, w \neq z$时，
+当$y < w < x$时，可知：
+\begin{align*}
+  d(y,x) & = d(y,w) + d(w,x) \\
+\end{align*}
+由于命题4.3.3（e）可知$d(y,w) \geq 0$，所以$d(w,x) \leq \varepsilon$，否则与题设矛盾。
+当$x<w<z$、$z<w<x$和$x<w<y$证明类似。
+
+综上，命题成立。【感觉证明有点麻烦，没想到好的思路】
+
+\textbf{（g）设$\varepsilon>0$，如果$x$和$y$是$\varepsilon$- 接近的，并且$z$不为零，
+  那么$xz$和$yz$是$\varepsilon|z|$- 接近的。}
+
+证明：
+
+记$a:=y-x$，那么$y=x+a$且$|a| \leq \varepsilon$。
+
+因为$y=x+a$，所以，
+\begin{align*}
+  yz & = (x+a)z = xz + az \\
+\end{align*}
+于是，
+\begin{align*}
+  |yz - xz| = |xz + az - xz| = |az| = |a||z|
+\end{align*}
+又因为$|a| \leq \varepsilon$，所以，
+\begin{align*}
+  |yz - xz| \leq \varepsilon|z|
+\end{align*}
+从而$xz$和$yz$是$\varepsilon|z|$- 接近的。
+
+\section*{4.3.3}
+
+\textbf{（a）我们有$x^n x^m = x^{n+m}, (x^n)^m = x^{nm}, (xy)^n = x^n y^n$。}
+
+证明：
+
+（1）$x^n x^m = x^{n+m}$
+
+对$m$进行归纳。当$m=0$时，
+\begin{align*}
+  x^n x^0 & = x^n * 1 \\
+          & = x^n     \\
+\end{align*}
+又因为，
+\begin{align*}
+  x^{n+m} & = x^{n+0} \\
+          & = x^n
+\end{align*}
+所以当$m=0$是命题成立。
+
+归纳假设$m=k$时，$x^n x^k = x^{n+k}$。
+
+现在只需证明$m=k++$时，命题成立。由定义4.3.9可知，
+\begin{align*}
+  x^n x^{k+1} & = x^n (x^k \times x^1) \\
+\end{align*}
+又由命题4.2.4（有理数的代数定律）可知，
+\begin{align*}
+  x^n x^{k+1} & = x^n (x^k \times x^1) \\
+              & = (x^n x^k) \times x^1 \\
+              & = x^{n+k} \times x^1   \\
+              & = x^{n+k+1}
+\end{align*}
+综上，命题成立。
+
+（2）$(x^n)^m = x^{nm}$
+
+对$m$进行归纳。当$m=0时$，由定义4.3.9可知，
+\begin{align*}
+  (x^n)^m & = (x^n)^0 \\
+          & = 1
+\end{align*}
+又
+\begin{align*}
+  x^{nm} & = x^{n \times 0} \\
+         & = x^0            \\
+         & = 1
+\end{align*}
+所以当$m=0$是命题成立。
+
+归纳假设$m=k$时，$(x^n)^k = x^{nk}$。
+
+现在只需证明$m=k++$时，命题成立。
+\begin{align*}
+  
+\end{align*}
+
 \end{document}
