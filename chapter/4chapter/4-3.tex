@@ -427,9 +427,9 @@ $w \neq x, w \neq y, w \neq z$时，
   x^n x^{k+1} & = x^n (x^k \times x^1) \\
               & = (x^n x^k) \times x^1 \\
               & = x^{n+k} \times x^1   \\
-              & = x^{n+k+1}
+              & = x^{n+k++}
 \end{align*}
-综上，命题成立。
+综上，归纳完成。
 
 （2）$(x^n)^m = x^{nm}$
 
@@ -450,7 +450,53 @@ $w \neq x, w \neq y, w \neq z$时，
 
 现在只需证明$m=k++$时，命题成立。
 \begin{align*}
-  
+  (x^n)^{k++} & = (x^n)^k \times x^n                                  \\
+              & = x^{nk} \times x^n                                   \\
+              & = x^{(nk) + n}       & \text{【利用$x^n x^m = x^{n+m}$】} \\
+              & = x^{n(k+1)}                                          \\
+              & = x^{n(k++)}                                          \\
 \end{align*}
+综上，归纳完成。
 
+（3）$(xy)^n = x^n y^n$
+
+对$n$进行归纳。当$n=0$时，
+\begin{align*}
+  (xy)^n & = (xy)^0 \\
+         & = 1
+\end{align*}
+又
+\begin{align*}
+  x^n y^n & = x^0 y^0    \\
+          & = 1 \times 1 \\
+          & = 1
+\end{align*}
+所以当$n=0$是命题成立。
+
+归纳假设$n=k$时$(xy)^k = x^k y^k$。
+
+现在只需证明$n=k++$时，命题成立。
+由于，
+\begin{align*}
+  (xy)^n & =(xy)^{k++}                            \\
+         & = (xy)^k \times xy                     \\
+         & = x^k y^k \times xy                    \\
+         & = (x^k \times x) \times (y^k \times y) \\
+         & = x^{k++} \times y^{k++}
+\end{align*}
+综上，归纳完成。
+
+\textbf{（b）假设$n>0$，那么$x^n = 0$当且仅当$x=0$。}
+
+证明：
+
+必要性：如果$x^n=0$，由命题4.3.3（a）可知$|x^n|=0$，
+又由4.3.3（d）可知$|x^n|=|x|^n$。
+如果$|x|$是正有理数，那么$|x|^n$是正有理数（可以通过归纳法证明，这里省略），
+所以$|x|=0$，于是$x=0$。
+
+充分性：当$x=0$时，$0^n=0$是显然的（任何有理数乘零结果都是零，该命题的证明省略）。
+
+\textbf{（c）如果$x \geq y \geq 0$，那么$x^n \geq y^n \geq 0$。
+  如果$x > y \geq 0$并且$n > 0$，那么$x^n > y^n \geq 0$。}
 \end{document}
