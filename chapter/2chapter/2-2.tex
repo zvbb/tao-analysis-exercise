@@ -53,95 +53,123 @@
 （a）（序是自反的）$a \geq a$
 
 \begin{zproof}
-    因为$a = a + 0$，由定义2.2.11可知$a \geq a$
+  因为$a = a + 0$，由定义2.2.11可知$a \geq a$
 \end{zproof}
 
 （b）（序是可传递的）如果$a \geq b$并且$b \geq $，那么$a \geq c$。
 
 \begin{zproof}
-    如果$a \geq b$并且$b \geq c$，那么存在自然数m，n，使得$a = b + m, b = c + n$，
-    由相等公理（替换公理）可知$a= c + n + m$，所以$a = c + (n+m)$，
-    而两自然数相加仍然是自然数，所以$n+m$也是自然数，由定义2.2.11可知$a \geq c$，
-    至此，命题得证
+  如果$a \geq b$并且$b \geq c$，那么存在自然数m，n，使得$a = b + m, b = c + n$，
+  由相等公理（替换公理）可知$a= c + n + m$，所以$a = c + (n+m)$，
+  而两自然数相加仍然是自然数，所以$n+m$也是自然数，由定义2.2.11可知$a \geq c$，
+  至此，命题得证
 \end{zproof}
 
 （c）（序是反对称的）如果$a \geq b$并且$b \geq a$，那么a=b。
 
 \begin{zproof}
-    $a \geq b$并且$b \geq a$，可知存在m，n使得$a=b+m, b=a+m$，
-    替换公理替换掉b，则$a=b+n \Rightarrow a=a+m+n$，
-    由加法是可结合的（命题2.2.5）可知$a=a+m+n=a+(m+n)$
-    这里m+n必须是0，假设$m+n \neq 0$，所以$m+n$是正数。
+  $a \geq b$并且$b \geq a$，可知存在m，n使得$a=b+m, b=a+m$，
+  替换公理替换掉b，则$a=b+n \Rightarrow a=a+m+n$，
+  由加法是可结合的（命题2.2.5）可知$a=a+m+n=a+(m+n)$
+  这里m+n必须是0，假设$m+n \neq 0$，所以$m+n$是正数。
 
-    这里要证明以下命题f：自然数a与正数c相加大于a。
-    对z做归纳。
+  这里要证明以下命题f：自然数a与正数c相加大于a。
+  对z做归纳。
 
-    z=1时，$a=a+(m+n)=a+(0++)=(a+0)++=a++>a$。
+  z=1时，$a=a+(m+n)=a+(0++)=(a+0)++=a++>a$。
 
-    归纳假设z=k时，$a+k > a$。
+  归纳假设z=k时，$a+k > a$。
 
-    当z=k++，$a+(k++)=(a+k)++>a+k$，所以$a+(k++) \neq (a+k)$
-    由$(a+k)>a$，可知$(a+k) \neq a$，所以$a+(k++) \neq a$，由定义2.2.11可知$a+(k++)>a$
+  当z=k++，$a+(k++)=(a+k)++>a+k$，所以$a+(k++) \neq (a+k)$
+  由$(a+k)>a$，可知$(a+k) \neq a$，所以$a+(k++) \neq a$，由定义2.2.11可知$a+(k++)>a$
 
-    那么$a >  a+m+n$，这与$a=a+m+n $矛盾。
+  那么$a >  a+m+n$，这与$a=a+m+n $矛盾。
 
-    至此，命题f得证
+  至此，命题f得证
 
-    由命题f可知$m+n$不能是正数，否则与$a=a+(m+n)$矛盾。
-    由命题2.2.8可知$m=0,n=0$，又$a=b+n$，所以$a=b+0=b$。
+  由命题f可知$m+n$不能是正数，否则与$a=a+(m+n)$矛盾。
+  由命题2.2.8可知$m=0,n=0$，又$a=b+n$，所以$a=b+0=b$。
 
-    至此，命题得证
+  至此，命题得证
 \end{zproof}
 
 （d）（加法保持序不变）$a \geq b$，当且仅当$a+c \geq b+c$。
 
 \begin{zproof}
-    $a \geq b$，可知存在自然数n，使得$a=b+n$。
-    $a+c=b+n+c=b+c+n$，所以$a+c \geq b+c$
+  $a \geq b$，可知存在自然数n，使得$a=b+n$。
+  $a+c=b+n+c=b+c+n$，所以$a+c \geq b+c$
 \end{zproof}
 
 （e）a<b,当且仅当$a++ \leq b$
 \begin{zproof}
-    $\Rightarrow$
+  $\Rightarrow$
 
-    a<b，可知存在自然数m，使得b=a+m，且$a \neq b$。
-    由此可是$m \neq 0$，因为如果m=0,那么$b=a+0, b=a$这与a<b矛盾。
+  a<b，可知存在自然数m，使得b=a+m，且$a \neq b$。
+  由此可是$m \neq 0$，因为如果m=0,那么$b=a+0, b=a$这与a<b矛盾。
 
-    对m进行归纳。
+  对m进行归纳。
 
-    m=1时，$b=a+1=a++=a++$，所以$a++ \leq b$
+  m=1时，$b=a+1=a++=a++$，所以$a++ \leq b$
 
-    归纳假设m=k时，$b=a+k$，$a \leq b$，即:$a \leq (a+k)$
+  归纳假设m=k时，$b=a+k$，$a \leq b$，即:$a \leq (a+k)$
 
-    m=k++，$b=a+(k++)=(a+k)++ \geq a+k \geq a$，由（b）可知$b \geq a$
+  m=k++，$b=a+(k++)=(a+k)++ \geq a+k \geq a$，由（b）可知$b \geq a$
 
-    综上所述，充分性得到证明
+  综上所述，充分性得到证明
 
-    $\Leftarrow$
-    
-    $a++ \leq b$，可知存在m，$b=(a++)+m=a+(m++)$（用到了加法的交换律和加法的结合律），
-    自然数a与正数c相加大于a（在2-2-why.tex中有证明），所以$b > a$
+  $\Leftarrow$
 
-    综上所述，必要性得到证明
+  $a++ \leq b$，可知存在m，$b=(a++)+m=a+(m++)$（用到了加法的交换律和加法的结合律），
+  自然数a与正数c相加大于a（在2-2-why.tex中有证明），所以$b > a$
 
-    至此，命题得证
+  综上所述，必要性得到证明
+
+  至此，命题得证
 \end{zproof}
 
 \begin{zproof}
 
-    （f）a<b,当且仅当存在自然数d使得$b=a+d$
+  （f）a<b,当且仅当存在自然数d使得$b=a+d$
 
-    $\Rightarrow$
+  $\Rightarrow$
 
-    a<b，可知存在自然数m使得$b=a+m$，如果m=0，那么$b=a+m=a$，这与a<b矛盾，
-    所以m是正数。
+  a<b，可知存在自然数m使得$b=a+m$，如果m=0，那么$b=a+m=a$，这与a<b矛盾，
+  所以m是正数。
 
-    $\Leftarrow$
+  $\Leftarrow$
 
-    存在自然数d使得$b=a+d$，由自然数与正数相加大于该自然数（在2-2-why.tex中有证明），
-    所以$a<b$
+  存在自然数d使得$b=a+d$，由自然数与正数相加大于该自然数（在2-2-why.tex中有证明），
+  所以$a<b$
 
-    至此，命题得证
+  至此，命题得证
 
 \end{zproof}
+
+\section*{2.3.5}
+
+证明：
+
+固定$q$并对$n$进行归纳。
+
+$n=0$时，取$m=0, r=0$，此时
+\begin{align*}
+  mq + r & = 0 \times q + 0 \\
+         & = 0 + 0          \\
+         & = 0
+\end{align*}
+从而，$n=0$时，命题成立。
+
+归纳假设$n=k$时，命题成立。
+
+现在只需证明$n=k++$时，命题成立。
+
+由归纳假设可知，存在自然数$m_0$，$r_0$，使得$k=m_0 q + r_0$，所以
+$k++ = k+1 = m_0 q + r_0 + 1$，由命题2.2.12（e）可知$r_0 < q$时$r_0 + 1 \leq q$，
+
+当$r_0 + 1 < q$时，可取$m=m_0, r = r_0 + 1$，
+
+当$r_0 + 1 = q$时，可取$m=m_0 + 1, r = 0$。
+所以当$n=k++$时，存在$m,r$使得$0 \leq r < q$并且$n = mq + r$。
+
+综上，归纳完成。
 \end{document}
