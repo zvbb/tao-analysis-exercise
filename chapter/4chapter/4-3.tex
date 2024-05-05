@@ -90,6 +90,31 @@
     \end{align*}
     由于分子是正整数（命题2.2.8），分母是正整数（命题2.3.3），所以$x+y$是正有理数。
 
+    \textbf{C. 两个正有理数的乘积，是正有理数}
+
+    证明：不妨设$x,y$是任意正有理数，所以存在$a,b,c,d$正整数，使得$x=a/b,y=c/d$。
+    \begin{align*}
+      x * y & = a/b * c/d \\
+            & = (ac)/(bd) \\
+    \end{align*}
+
+    由于分子、分母都是正整数（命题2.3.3），所以$x*y$是正有理数。
+
+    \textbf{D. 两个有理数的乘积是0，当且仅当其中一个为零}
+
+    证明：
+
+    充分性：
+
+    不妨设$x,y$是任意有理数，有有理数的定义可知，存在整数$a,b,c,d$其中$b \neq 0, d \neq 0$，使得$x=a/b,y=c/d$。
+    又因为，
+    \begin{align*}
+      x * y & = a/b * c/d \\
+            & =  ac / bd  \\
+    \end{align*}
+    由命题4.1.8（整数没有零因子）可知$bd \neq 0$，又$x * y = 0$，所以$ac = 0$，那么$a=0$或$b=0$，也就是说$x$或$y$为零。
+
+    必要性： 略
 
   \end{zremark}
 \end{zgraytheorem}
@@ -499,4 +524,64 @@ $w \neq x, w \neq y, w \neq z$时，
 
 \textbf{（c）如果$x \geq y \geq 0$，那么$x^n \geq y^n \geq 0$。
   如果$x > y \geq 0$并且$n > 0$，那么$x^n > y^n \geq 0$。}
+
+证明：
+
+（1）如果$x \geq y \geq 0$，那么$x^n \geq y^n \geq 0$
+
+对$n$进行归纳。
+当$n=0$时，$x^0=1,y^0=1$，此时$x^0 \geq y^0 \geq 0$。
+
+归纳假设$n=k$时，$x^k \geq y^k \geq 0$。
+
+现在只需证明$n=k++$时，命题成立。由归纳假设$x^k \geq y^k$可知，$x^k = y^k + a$且$a \geq 0$。
+所以，
+\begin{align*}
+  x^{k++} & = x^k \times x              \\
+          & = (y^k + a) \times x        \\
+          & = y^k \times x + a \times x \\
+\end{align*}
+又因为，
+\begin{align*}
+  x^{k++} - y^{k++} & = y^k \times x + a \times x - y^k \times y \\
+                    & = y^k \times x - y^k \times y + a \times x \\
+                    & = y^k \times (x - y) + a \times x          \\
+\end{align*}
+
+由此可知$x^{k++} - y^{k++} \geq 0$，所以$x^{k++} \geq y^{k++}$。
+当$y=0$时，由D可知$y^n = 0$，此时$y^n \geq 0$。
+当$y>0$即$y$是正有理数时，由C可知$y^n$是正有理数，所以$y^n > 0$。
+所以，$x^{k++} \geq y^{k++} \geq 0$；
+
+综上，归纳完成。
+
+（2）如果$x > y \geq 0$并且$n > 0$，那么$x^n > y^n \geq 0$
+
+相比于（1）区别在于$x$不能是零了，而$y$还是可以取到零的。
+证明方式类似，还是对$n$进行归纳，只是归纳基始从$n=1$开始。
+
+\textbf{（d）我们有$|x^n|=|x|^n$。}
+
+证明：
+
+对$n$进行归纳。 使用命题4.3.3（d）。
+
+当$n=0$，$|x^0| = 1, |x|^0 =1$，所以$|x^0| = |x|^0$。
+
+归纳假设$n=k$时，$|x^k| = |x|^k$。
+
+现在只需证明$n=k++$时，$|x^{k++}|=|x|^{k++}$。
+因为：
+
+\begin{align*}
+  |x^{k++}| & = |x^k||x|         & \text{【命题4.3.3（d）】}  \\
+            & = |x|^k \times |x|                        \\
+            & = |x|^{k++}        & \text{【命题4.3.10（a）】} \\
+\end{align*}
+
+综上，归纳完成。
+
+\section*{4.3.4}
+
+
 \end{document}
