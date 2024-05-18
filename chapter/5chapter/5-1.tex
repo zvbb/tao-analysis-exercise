@@ -35,12 +35,31 @@
 \title{5.1 习题}
 \maketitle
 
-
-\section*{5.5.1 是0.1稳定的，但不是0.01稳定的} 
+\section*{5.1.1}
 
 证明：
 
-$0.1-0.01=0.09>0.01$
+由柯西序列的定义可知，
+设$\epsilon = 1 > 0$，则存在一个$N \geq 0$使得$d(a_j,a_k) \leq \epsilon$对所有的$j,k \geq N$均成立。
+由此可以把柯西序列看成两个部分，
+\begin{align*}
+  a_1,a_2,a_2,...,a_{N-1} \\
+  (a_n)_{n=N}^\infty      \\
+\end{align*}
 
+有引理5.1.14（有限序列是有界的）可知对于序列$a_1,a_2,a_2,...,a_{N-1}$是有界的，
+即存在有理数$M \geq 0$使得该序列以$M$为界。
+
+对于序列$(a_n)_{n=N}^\infty$，该序列也是有界的，因为由$d(a_j,a_k) \leq \epsilon$对所有的$j,k \geq N$均成立，
+取$j=N, i \geq N$可知，
+\begin{align*}
+  d(a_N,a_i)  & \leq \epsilon              \\
+  |a_N - a_i| & \leq \epsilon              \\
+  |a_i|-|a_N| & \leq |a_N - a_i| \leq \epsilon \\
+  |a_i|       & \leq |a_N| + \epsilon
+\end{align*}
+由$i$的任意性可得$(a_n)_{n=N}^\infty$是有界的，
+
+综上，序列$(a_n)_{n=1}^\infty$是有界的。
 
 \end{document}
