@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.2 习题}
+\maketitle
+
+\section*{5.2.1}
+
+证明：
+
+有理数$\delta >0, \epsilon=\frac{2}{3}\delta > 0$。
+由于$(a_n)_{n=1}^\infty$是柯西序列，
+所以存在一个$N_a \geq 0$使得$d(a_j,a_k) \leq \frac{1}{2} \epsilon$对所有$j,k \geq N_a$均成立。
+
+由于$(a_n)_{n=1}^\infty$和$(b_n)_{n=1}^\infty$是等价的，
+所以存在一个$N_m \geq 0$使得$d(a_n-b_n) \leq \frac{1}{2} \epsilon$对所有$n \geq N_m$均成立。
+
+取$M=max(N_a,N_m)$，所以当取$j,k \geq M$时，
+
+\begin{align*}
+  |(a_j-b_j) - (a_k - b_k)|          & \leq |a_j-b_j| + |a_k - b_k| \leq \epsilon       \\
+  |(a_j-b_j) - (a_k - b_k)|          & = |a_j-a_k + b_k-b_j| \geq |b_k-b_j| - |a_j-a_k| \\
+  \Rightarrow  \epsilon +  |a_j-a_k| & \geq |b_k-b_j|                                   \\
+  \Rightarrow \frac{3}{2}\epsilon    & \geq |b_k-b_j|                                   \\
+\end{align*}
+由此可知$|b_k-b_j| \leq \frac{3}{2}\epsilon = \delta$，所以$(b_n)_{n=1}^\infty$也是柯西序列
+
+\section*{5.2.2}
+
+证明：
+
+（1）充分性
+
+$(a_n)_{n=1}^\infty$是有界的，那么存在$M \geq 0$使得$|a_i| \leq M$对任意的$i \leq 1$均成立。
+
+由于$(a_n)_{n=1}^\infty$和$(b_n)_{n=1}^\infty$是等价的，
+所以存在一个$N_m \geq 0$使得$d(a_n-b_n) \leq \epsilon$对所有$n \geq N_m$均成立。
+又因为，
+\begin{align*}
+  |b_n| - |a_n| & \leq |a_n - b_n| \leq \epsilon \\
+  |b_n|         & \leq \epsilon + |a_n|          \\
+  |b_n|         & \leq \epsilon + M
+\end{align*}
+且$b_1,b_2,b_3,...,b_{N_m}$是有限序列，所以$b_1,b_2,b_3,...,b_m$也是有界的。
+综上，$(b_n)_{n=1}^\infty$是有界的。
+
+
+\end{document}
