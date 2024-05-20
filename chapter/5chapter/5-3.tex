@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.3 习题}
+\maketitle
+
+\section*{5.3.1}
+
+\textbf{1.自反性$x=x$。}
+
+证明：
+
+对于任意有理数$\epsilon > 0$，因为$|a_n - a_n| = 0 < \epsilon $，
+所以$(a_n)_{n=1}^\infty$与$(a_n)_{n=1}^\infty$是等价的柯西序列，由定义5.3.1可知$x=x$
+
+\textbf{2.对称性$x=y$那么$y=x$。}
+
+证明：
+
+因为$x=y$所以$(a_n)_{n=1}^\infty$与$(b_n)_{n=1}^\infty$是等价的柯西序列，
+由柯西序列的等价的定义可知，等价是相互的，所以$y = x$。
+
+\textbf{3.传递性$x=y$和$y=z$那么$x=z$。}
+
+证明：
+
+任意有理数$\epsilon > 0$，$\frac{1}{2}\epsilon > 0$。
+
+由$x=y$可知，两个序列是最终$\frac{1}{/2}\epsilon -$接近的，
+所有存在$N \geq 0$使得对于所有的$n \geq N$均有$|a_n - b_n| \leq \frac{1}{2}\epsilon$。
+
+由$y=x$同理可知，存在$N^\prime \geq 0$使得对于所有的$n \geq N^\prime$均有$|b_n - c_n| \leq \frac{1}{2}\epsilon$。
+
+取$M=max(N,N^\prime)$，此时当$n \geq M$，
+\begin{align*}
+  |a_n - c_n| & = |a_n - b_n + b_n - c_n|                      \\
+              & \leq |a_n - b_n| + |b_n - c_n|                 \\
+              & \leq \frac{1}{2}\epsilon + \frac{1}{2}\epsilon \\
+              & = \epsilon                                     \\
+\end{align*}
+所以序列$(a_n)_{n=1}^\infty,(c_n)_{n=1}^\infty$是最终$\epsilon -$接近的，于是$x=z$。
+
+\section*{5.3.2}
+
+\textbf{1.$xy$也是实数}
+
+证明：
+
+这里要证明$(a_nb_n)_{n=1}^\infty$也是有理数的一个柯西序列。
+
+我们要证明对每一个$\epsilon > 0$，序列$(a_nb_n)_{n=1}^\infty$是最终$\epsilon-$稳定的。
+
+因为$(a_n)_{n=1}^\infty$是柯西序列，所以是有界的，即存在$M_1 \ge 0$使得$|a_n|\leq M_1$对任意$n \geq 1$都成立。
+
+因为$(b_n)_{n=1}^\infty$是柯西序列，所以是有界的，即存在$M_2 \ge 0$使得$|b_n|\leq M_2$对任意$n \geq 1$都成立。
+
+取$M=max(M_1,M_2)$，则$|a_n|\leq M, |b_n| \leq M$对任意$n \geq 1$都成立。
+
+又因为$(a_n)_{n=1}^\infty$与$(b_n)_{n=1}^\infty$是最终稳定的，
+所以任意有理数$\epsilon>0$，存在$N \geq 0$，对$j,k \geq N$有，
+\begin{align*}
+  |a_j - a_k| \leq \epsilon \\
+  |b_j - b_k| \leq \epsilon \\
+\end{align*}
+
+由命题4.3.7（h）可知，
+\begin{align*}
+  |a_jb_j - a_kb_k| & \leq \epsilon|b_j| + \epsilon|a_j| + \epsilon^2 \\
+                    & \leq \epsilon (2 + \epsilon)
+\end{align*}
+由$\epsilon$的任意性可知，$(a_nb_n)_{n=1}^\infty$也是有理数的一个柯西序列。
+
+\textbf{2.$x=x^\prime$，那么$xy = x^\prime y$，即乘法满足替换公理。}
+
+证明：
+
+要证明$xy = x^\prime y$，
+即证明序列$(a_nb_n)_{n=1}^\infty$与序列$(a^\prime_nb_n)_{n=1}^\infty$是等价的。
+
+（1）由于$x=x^\prime$可知，序列$(a_n)_{n=1}^\infty$与序列$(a^\prime_n)_{n=1}^\infty$是等价的，
+所以对任意$\epsilon > 0$，两个序列是最终$\epsilon -$接近的，
+即存在$N \geq 0$使得$n \geq N$有
+\begin{align*}
+  |a_n - a^\prime_n| & \leq \epsilon \\
+\end{align*}
+
+（2）又因为$(b_n)_{n=1}^\infty$是有理数的柯西序列，所以该序列是有界的，
+即存在$M \geq 0$，对任意$n \geq 0$有
+\begin{align*}
+  |b_n| & \leq M \\
+\end{align*}
+
+由（1）（2）可知，对任意$n \geq N$有，
+\begin{align*}
+  |a_nb_n - a^\prime_nb_n| & = |(a_n-a^\prime_n)b_n| \\
+                           & = |a_n-a^\prime_n||b_n| \\
+                           & \leq M \epsilon
+\end{align*}
+由$\epsilon$的任意性与$M$是某个确定的有理数可知，序列$(a_nb_n)_{n=1}^\infty$与序列$(a^\prime_nb_n)_{n=1}^\infty$是最终接近的，
+所以$xy = x^\prime y$
+
+\section*{5.3.3}
+\end{document}
