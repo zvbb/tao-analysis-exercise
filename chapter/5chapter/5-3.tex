@@ -131,4 +131,35 @@
 所以$xy = x^\prime y$
 
 \section*{5.3.3}
+
+（1）充分性
+
+如果$a=b$，那么对任意$\epsilon > 0$，都有，
+\begin{align*}
+  |a_n - b_n| & =                 \\
+              & = |a-b|           \\
+              & = 0 \leq \epsilon
+\end{align*}
+于是$a=LIM_{n \rightarrow \infty}a,b=LIM_{n \rightarrow \infty}b$是相等的（等价的）。
+
+（2）必要性
+
+如果$a=LIM_{n \rightarrow \infty}a_n, b=LIM_{n \rightarrow \infty}b_n$是相等的（等价的）。
+那么对任意$\epsilon > 0$，存在$N \geq 0$使得$n \geq N$都有，
+\begin{align*}
+  |a_n - b_n| & =             \\
+              & = |a-b|       \\
+              & \leq \epsilon
+\end{align*}
+假设$a \neq b$，那么取$\epsilon = \frac{1}{2}|a-b|$，此时，
+\begin{align*}
+  |a_n - b_n| & =  |a-b| > \epsilon
+\end{align*}
+存在矛盾，所以$a=b$
+
+\section*{5.3.4}
+
+证明：
+
+
 \end{document}
