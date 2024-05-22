@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.3 文中的为什么}
+\maketitle
+
+\textbf{$-LIM_{n \rightarrow \infty}a_n = LIM_{n \rightarrow \infty}(-a_n)$}
+
+证明：
+
+由实数负运算的定义可知，
+\begin{align*}
+  -LIM_{n \rightarrow \infty}a_n & = (-1) \times LIM_{n \rightarrow \infty}a_n                                           \\
+                                 & = LIM_{n \rightarrow \infty}-1 \times LIM_{n \rightarrow \infty}a_n                   \\
+                                 & = LIM_{n \rightarrow \infty}(-a_n)                                  & \text{【实数乘法定义】} \\
+\end{align*}
+
+\textbf{序列$0.1,0.01,0.001,...$等价于零序列$(0)_{n=1}^\infty$}
+
+证明：
+
+其实序列$0.1,0.01,0.001,...$就是$(\frac{1}{n})_{n=1}^\infty$，
+对任意有理数$\epsilon > 0$，当$N \geq \frac{1}{\epsilon}$（有命题4.4.1保证$N$是存在的），
+使得对所有$n \geq N$有，
+\begin{align*}
+  |1/n - 0| & = 1/n \leq \epsilon
+\end{align*}
+所以序列$0.1,0.01,0.001,...$与零序列$(0)_{n=1}^\infty$对任意$\epsilon$是最终$\epsilon -$接近的，
+所以两者是等价的。
+
+
+\textbf{如何推导？}
+
+证明：
+
+这里要先证明，有理数$x,y$具有以下性质$|x|-|y| \leq |x-y|$。
+
+$x=x-y+y$，然后由命题4.3.3（b）(绝对值的三角不等式)可知，
+\begin{align*}
+  |x|       & \leq |x-y| + |y|                       \\
+  |x| - |y| & \leq |x-y|       & \text{【命题4.2.9（d）】} \\
+\end{align*}
+于是性质$|x|-|y| \leq |x-y|$得证。
+
+利用刚才的性质，可得，
+\begin{align*}
+  |b_{n_0}| - |b_{n}|     & \leq |b_{n_0} - b_{n}|             \\
+  |b_{n_0}| - |b_{n}|     & \leq \frac{1}{2}\epsilon           \\
+  \epsilon \leq |b_{n_0}| & \leq \frac{1}{2}\epsilon + |b_{n}| \\
+  \epsilon                & \leq \frac{1}{2}\epsilon + |b_{n}| \\
+  \frac{1}{2}\epsilon     & \leq  |b_{n}|
+\end{align*}
+
+\section*{5.3.4}
+
+证明：
+
+$(b_n)_{n=0}^\infty$等价于$(a_n)_{n=0}^\infty$，即两个序列对有理数$\epsilon > 0$是最终$\epsilon -$接近的，
+又因为$(a_n)_{n=0}^\infty$是有界的，由习题5.2.2可知$(b_n)_{n=0}^\infty$也是有界的。
+
+
+\section*{5.3.5}
+
+证明：
+
+要证明$LIM_{n \rightarrow \infty}\frac{1}{n} = 0$，
+也就是要证明$LIM_{n \rightarrow \infty}\frac{1}{n}$与$LIM_{n \rightarrow \infty}0$的等价性。
+
+对任意$\epsilon > 0$，当$n \leq \frac{1}{\epsilon}$有，
+\begin{align*}
+  |\frac{1}{n} - 0| = \frac{1}{n} \leq \epsilon
+\end{align*}
+所以两者是等价的，于是命题得证。
+
+\end{document}
