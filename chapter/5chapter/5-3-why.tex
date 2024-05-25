@@ -35,7 +35,7 @@
 \title{5.3 文中的为什么}
 \maketitle
 
-\textbf{$-LIM_{n \rightarrow \infty}a_n = LIM_{n \rightarrow \infty}(-a_n)$}
+\textbf{1.$-LIM_{n \rightarrow \infty}a_n = LIM_{n \rightarrow \infty}(-a_n)$}
 
 证明：
 
@@ -46,7 +46,7 @@
                                  & = LIM_{n \rightarrow \infty}(-a_n)                                  & \text{【实数乘法定义】} \\
 \end{align*}
 
-\textbf{序列$0.1,0.01,0.001,...$等价于零序列$(0)_{n=1}^\infty$}
+\textbf{2.序列$0.1,0.01,0.001,...$等价于零序列$(0)_{n=1}^\infty$}
 
 证明：
 
@@ -60,7 +60,7 @@
 所以两者是等价的。
 
 
-\textbf{如何推导？}
+\textbf{3.如何推导？}
 
 证明：
 
@@ -82,25 +82,25 @@ $x=x-y+y$，然后由命题4.3.3（b）(绝对值的三角不等式)可知，
   \frac{1}{2}\epsilon     & \leq  |b_{n}|
 \end{align*}
 
-\section*{5.3.4}
+\textbf{4.$xx^{-1}=x^{-1}x=1$为什么？}
 
-证明：
-
-$(b_n)_{n=0}^\infty$等价于$(a_n)_{n=0}^\infty$，即两个序列对有理数$\epsilon > 0$是最终$\epsilon -$接近的，
-又因为$(a_n)_{n=0}^\infty$是有界的，由习题5.2.2可知$(b_n)_{n=0}^\infty$也是有界的。
-
-
-\section*{5.3.5}
-
-证明：
-
-要证明$LIM_{n \rightarrow \infty}\frac{1}{n} = 0$，
-也就是要证明$LIM_{n \rightarrow \infty}\frac{1}{n}$与$LIM_{n \rightarrow \infty}0$的等价性。
-
-对任意$\epsilon > 0$，当$n \leq \frac{1}{\epsilon}$有，
+不妨设$x=LIM_{n\rightarrow \infty}a_n$，那么由定义5.3.16（实数的倒数）可知
+$x^{-1} = LIM_{n\rightarrow \infty}a_n^{-1}$，所以，
 \begin{align*}
-  |\frac{1}{n} - 0| = \frac{1}{n} \leq \epsilon
+  x^{-1}x & = LIM_{n\rightarrow \infty}a_n^{-1} \times LIM_{n\rightarrow \infty}a_n \\
+          & = LIM_{n\rightarrow \infty}a_n^{-1} a_n                                 \\
+          & = LIM_{n\rightarrow \infty}1                                            \\
+          & = 1
 \end{align*}
-所以两者是等价的，于是命题得证。
+
+同时，
+\begin{align*}
+  xx^{-1} & = LIM_{n\rightarrow \infty}a_n \times LIM_{n\rightarrow \infty}a_n^{-1} \\
+          & = LIM_{n\rightarrow \infty} a_n a_n^{-1}                                 \\
+          & = LIM_{n\rightarrow \infty}1                                            \\
+          & = 1
+\end{align*}
+
+所以$xx^{-1}=x^{-1}x=1$
 
 \end{document}

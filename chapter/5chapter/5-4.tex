@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.4 习题}
+\maketitle
+
+\section*{5.4.1}
+
+\textbf{1.实数的三歧性}
+
+证明：
+
+按照以前的思路，先证明（a）（b）（c）至少有一个为真，其次证明（a）（b）（c）最多有一个为真。
+
+按照实数的构造方式，对任意实数$x$，该实数$x$要么是零，要么不是零，不可能同时成立。
+
+这是因为任意实数都是通过柯西序列构造的，两个柯西序列要么等价的，要么不是，
+我们固定一个序列是$(0)_{n=1}^\infty$，那么其他的柯西序列要么与其等价，即也等于实数0，要么不等价，即不等于实数0。
+
+如果$x \neq 0$那么由引理5.3.14可知$x$一定存在某个远离0的柯西序列，
+由此可知$x$可能是正的或负的，也可能都是；
+
+至此（a）（b）（c）至少有一个为真成立。
+
+现在证明（a）（b）（c）最多有一个为真。
+
+（a）（b）（c）分别对应：
+\begin{align}
+  x & = LIM_{n \rightarrow \infty}0                 \\
+  x & = LIM_{n \rightarrow \infty}a_n & \text{正远离0} \\
+  x & = LIM_{n \rightarrow \infty}b_n & \text{负远离0}
+\end{align}
+如果（a）（b）同时成立，
+此时，存在$c>0$使得$a_n \geq c$，
+那么对任意$n \geq 1$均有
+\begin{align*}
+  |a_n - 0| & = |a_n| > c
+\end{align*}
+所以两个系列不能对任意$c > \epsilon > 0$都是最终$\epsilon -$接近的，所以（a）（b）不能同时成立。
+
+同理（a）（c）不能同时成立。
+
+如果（b）（c）同时成立，此时，
+此时，存在$c_0>0$使得$a_n \geq c_0$，存在$c_1 \geq 0$使得$b_n \leq -c_1$，
+那么对任意$n \geq 1$均有
+\begin{align*}
+  |a_n| - |b_n|     & \leq |a_n - b_n|          \\
+  |a_n|             & \leq |a_n - b_n|  + |b_n| \\
+  c_0               & \leq |a_n - b_n| + |b_n|  \\
+  c_0 - |a_n - b_n| & \leq |b_n|                \\
+  c_0 - |a_n - b_n| & \leq -c_1                 \\
+  c_0 + c_1         & \leq |a_n - b_n|          \\
+\end{align*}
+所以两个系列不能对任意$c_0 + c_1 > \epsilon > 0$都是最终$\epsilon -$接近的，所以（b）（c）不能同时成立。
+
+至此（a）（b）（c）最多有一个为真。
+
+\textbf{2.实数$x$是负的，当且仅当$-x$是正的。}
+
+证明：
+
+
+\end{document}
