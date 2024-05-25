@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.4 推论}
+\maketitle
+
+\textbf{1.书中对命题5.4.12（有理数对实数的界定）的表达感觉有点奇怪。}
+
+不是说命题不正确，而是命题中提到了正整数，虽然正整数是嵌入到有理数中的。
+如果把命题中的正整数改为正的有理数话，有理数界定了实数，而整数界定了有理数（命题4.4.1），
+这样的表达更加统一。
+
+\textbf{2.书中的命题5.4.12（有理数对实数的界定）只说明了正实数的情况，这里证明对所有实数，命题的正确性。}
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    这里需要把命题中的$x$改为实数，不限定其是正的，把$q,N$分别改为有理数$q,p$，且不限定为正的。
+  \end{zremark}
+\end{zgraytheorem}
+
+证明：
+
+通过实数的三歧性分别证明。
+
+当$x$是正的，则书中已经证明过。
+
+当$x=0$，可以直接取$q=0,p=0$此时命题成立。
+
+当$x$是负的，此时$-x$是正的，则存在$q,p$使得$q \leq -x \leq p$，所以$-p \leq x \leq -q$（实数也满足习题4.2.6）。
+
+综上，命题证明完成。
+
+\end{document}
