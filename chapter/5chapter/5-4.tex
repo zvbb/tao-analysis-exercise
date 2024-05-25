@@ -90,5 +90,60 @@
 
 证明：
 
+$x$是负的，所以它可以写成某个负远离0的序列$(a_n)_{n=1}^\infty$的形式极限$x=LIM_{n\rightarrow \infty}a_n$。
+由实数的负运算可知$-LIM_{n\rightarrow \infty}a_n = LIM_{n \rightarrow \infty}-a_n$，
+由序列$(a_n)_{n=1}^\infty$是负远离0可知，存在有理数$c > 0$使得$a_n \leq -c$对所有的$n \geq 1$均成立，
+所以
+\begin{align*}
+  a_n  & \leq -c                  \\
+  -a_n & \geq c  & \text{习题4.2.6}
+\end{align*}
+于是序列$-(a_n)_{n=1}^\infty$是正远离0的，所以其形式极限$-x$是正的。
 
+\textbf{3.如果$x$和$y$都是正的，那么$x+y$和$xy$都是正的。}
+
+证明：
+
+不妨设$x=LIM_{n \rightarrow \infty}a_n, y = LIM_{n \rightarrow \infty}b_n$。
+
+因为$x,y$是正的，所以它们都是正远离0的，于是存在有理数$c_0,c_1 > 0$使得对任意$n \geq 1$都有
+\begin{align}
+  |a_n| \geq c_0 \\
+  |b_n| \geq c_1
+\end{align}
+又
+\begin{align*}
+  x + y & = LIM_{n \rightarrow \infty}a_n + LIM_{n \rightarrow \infty}b_n \\
+        & = LIM_{n \rightarrow \infty} a_n + b_n
+\end{align*}
+因为
+\begin{align*}
+  |a_n + b_n| = |a_n| + |b_n| \geq c_0 + c_1 > 0
+\end{align*}
+所以$(a_n+b_n)_{n=1}^\infty$序列正远离0，所以其极限形式$x+y=LIM_{n \rightarrow \infty} a_n + b_n$是正的。
+
+又
+\begin{align*}
+  xy = LIM_{n \rightarrow \infty} a_nb_n
+\end{align*}
+因为
+\begin{align*}
+  |a_nb_n| = |a_n||b_n| \geq c_0c_1 > 0
+\end{align*}
+所以$(a_nb_n)_{n=1}^\infty$序列正远离0，所以其极限形式$xy=LIM_{n \rightarrow \infty} a_nb_n$是正的。
+
+\section*{5.4.2}
+
+证明：
+
+元证明：命题4.2.4所有的代数定律不仅对实数也是成立的，且实数的三歧性和序的定义都是与有理数一致，
+于是有理数通过以上性质得到的命题4.2.9对于实数也应该是成立的。
+
+\begin{zgraytheorem}
+  \begin{zremark}
+    元证明，就是对证明本身的说明。
+    逻辑学中有元对象与目标对象的概念，目标对象是直接讨论的对象，元对象是对目标对象进行讨论或分析的更高层次的对象。
+    这里的元证明与元对象类似，目标对象是直接讨论的对象即：实数。
+  \end{zremark}
+\end{zgraytheorem}
 \end{document}
