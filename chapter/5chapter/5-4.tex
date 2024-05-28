@@ -146,4 +146,181 @@ $x$是负的，所以它可以写成某个负远离0的序列$(a_n)_{n=1}^\infty
     这里的元证明与元对象类似，目标对象是直接讨论的对象即：实数。
   \end{zremark}
 \end{zgraytheorem}
+
+\section*{5.4.3}
+
+证明：
+
+通过实数的三歧性讨论。
+
+（1）$x=0$时，此时取$N=0$就可以满足命题。
+
+（2）$x$是正的。
+
+这里通过反证法证明。假设命题不成立，即不存在自然数N使得$N \leq x < N + 1$，
+也就是说，对任意自然数$n$都有$x < n$或$x \geq n + 1$。
+
+接下来我们要通过上面假设的命题，推出一个与命题 5.4.12矛盾的结果。
+
+通过“对任意自然数$n$都有$x < n$或$x \geq n + 1$”，可以推出“不存在自然数大于$x$”。
+
+通过归纳法证明：“不存在自然数大于$x$”
+
+当$N=0$，因为$x$是正实数，所以$x > 0$,由“对任意自然数$n$都有$x < n$或$x \geq n + 1$”可知，
+$x < 0$此时不成立，因为与$x > 0$矛盾，所以$x \geq 1$；
+
+归纳假设$N=n$时，$x \geq n + 1$；
+
+$N=n+1$时，$x \geq n + 1$与$x < n + 1$不能同时成立，所以$x \geq (n+1) + 1$；
+
+综上，对任意自然数$N$，都有$x \geq N + 1$，即：不存在自然数大于$x$
+
+与命题5.4.12矛盾，所以命题得证。
+
+（3）$x$是负的。
+
+$-x$是正的，所以存在自然数$N$使得$N \leq -x < N + 1$，所以，
+\begin{align*}
+  -(N + 1) < x \leq -N
+\end{align*}
+若$x \neq -N$，则$-(N + 1) \leq x < -N$；若$x = -N$，则$-N \leq x < -N + 1$；
+
+所以负实数也满足命题。
+
+现在证明$N$的唯一性。
+
+假设存在$N_1,N_2,N_1 \neq N_2$都满足命题，即：
+\begin{align*}
+  N_1 \leq x < N_1 + 1 \\
+  N_2 \leq x < N_2 + 1
+\end{align*}
+
+如果$N_1 < N_2$，那么$N_1 + 1 \leq N_2$，那么，
+\begin{align*}
+  N_1 \leq x < N_1 + 1 \leq N_2 \leq x < N_2+1
+\end{align*}
+可得，$x < x$，存在矛盾。
+
+同理$N_1 > N_2$也存在矛盾。
+
+所以$N$是唯一的。
+
+综上，命题成立。
+
+\section*{5.4.4}
+
+证明：
+
+由命题5.4.8 可知，$x$是正实数，那么$x^{-1}$也是正的。
+由习题5.4.3可知，存在自然数$N$使得$N \leq x^{-1} < N + 1$，所以，
+\begin{align*}
+  x > 1 / (N + 1) > 0
+\end{align*}
+$N$是自然数，那么$N + 1$是正整数，命题得证。
+
+\section*{5.4.5}
+
+证明：
+
+由习题5.4.3可知，存在整数$N_1, N_2$使得，
+\begin{align*}
+  N_1 \leq x < N_1 + 1 \\
+  N_2 \leq y < N_2 + 1
+\end{align*}
+
+因为$x < y$，则$y - x > 0$。
+
+如果$y - x > 1$，此时，$ x + 1 < y $，同时由$N_1 \leq x < N_1 + 1$可得，
+\begin{align*}
+  N_1 + 1 \leq x + 1 < y \\
+  N_1 + 1 < y
+\end{align*}
+此时，$q = N_1$。
+
+如果$1 \geq y - x > 0$，由推论5.4.13可知，存在$M$使得$M(y-x) > 1$，那么，$My - Mx > 1$。
+由之前的论证可知，此时存在整数$N$使得$Mx < N < My$，那么$x < N/M < y$。
+
+综上，命题得证。
+
+\section*{5.4.6}
+
+证明：
+
+充分性
+
+$|x-y| < \epsilon $可以推出$y - \epsilon < x < y + \epsilon$
+
+反证法，假设$x \leq y - \epsilon$或$x > y + \epsilon$，
+若
+\begin{align*}
+  x     & \leq y - \epsilon \\
+  x - y & \leq - \epsilon   \\
+  |x-y| & \geq \epsilon     \\
+\end{align*}
+与$|x-y| < \epsilon$矛盾
+
+若
+\begin{align*}
+  x & > y + \epsilon \\
+  x - y > \epsilon   \\
+  |x - y| > \epsilon \\
+\end{align*}
+与$|x-y| < \epsilon$矛盾
+
+综上，充分性得到证明。
+
+必要性
+
+\begin{align*}
+  y - \epsilon & < x        & < y + \epsilon                    \\
+  -\epsilon    & < x - y    & < y + \epsilon                    \\
+  |x - y|      & < \epsilon & \text{分正负讨论即可，利用了命题4.2.9，习题4.2.6}
+\end{align*}
+
+必要性得到证明。
+
+$|x-y| \leq \epsilon$当且仅当$y-\epsilon \leq x \leq y + \epsilon$的证明同理。
+
+\section*{5.4.7}
+
+【解题不对，大家不要看了】
+
+证明：
+
+（1）$x \leq y + \epsilon$对所有的实数$\epsilon > 0$均成立 $\Rightarrow$ $x \leq y$。
+
+反证法。假设$x > y$，此时取$\epsilon = (x-y)/2 > 0$，
+\begin{align*}
+  x   & \leq y + \epsilon    \\
+  x   & \leq y + (x - y) / 2 \\
+  x   & \leq x/2 + y/2       \\
+  x/2 & \leq y/2             \\
+  x   & \leq y
+\end{align*}
+此时$x \leq y$与$x > y$矛盾，所以假设不成立，由实数序的三歧性可知，
+$x < y$或$x = y$，即:$x \leq y$。
+
+(2)$x \leq y$ $\Rightarrow$ $x \leq y + \epsilon$对所有的实数$\epsilon > 0$均成立。
+
+由$x \leq y$可知$y - x \geq 0$，那么对任意$\epsilon > 0$，有
+\begin{align*}
+  y - x            & \geq 0             \\
+  y - x + \epsilon & \geq \epsilon  > 0 \\
+  y + \epsilon     & > x
+\end{align*}
+其实按照定义5.4.6，$y + \epsilon > x$表达为$y + \epsilon \geq 0$也是可以的，但$=$的情况好像取不到，
+这也是我让大家不要看这个解答的原因。
+
+\section*{5.4.8}
+
+假设$LIM_{n \rightarrow \infty}a_n > x$，
+由命题5.4.14可知，存在有理数q使得$x < q < LIM_{n \rightarrow \infty}a_n$，
+把$q$看做$LIM_{n \rightarrow \infty}q$，由$a_n \leq x, x < q$可知，
+\begin{align*}
+  q > a_n
+\end{align*}
+由此可知$q \geq LIM_{n \rightarrow \infty}a_n$，与$q < LIM_{n \rightarrow \infty}a_n$存在矛盾。
+
+同理可证另一个命题。
+
 \end{document}
