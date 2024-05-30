@@ -50,6 +50,20 @@
 假设空集存在$M$为其最小上界，由于任何实数都是空集的上界，
 所以$M - 1$也是空集的上界，但$M - 1 < M$，与最小上界的定义矛盾。
 
+\textbf{
+  3.因为$m_n/n$是$E$的上界而$(m_{n^\prime}-1)/n^\prime$不是，
+  所以一定有$m_n/n > (m_{n^\prime}-1)/n^\prime$。
+}
 
+证明：
+
+$(m_{n^\prime}-1)/n^\prime$不是$E$的上界，即：存在$x \in E$使得
+$x > (m_{n^\prime}-1)/n^\prime$。
+
+又$m_n/n$是$E$的上界，所以，$x \leq m_n/n$，所以，
+\begin{align*}
+  (m_{n^\prime}-1)/n^\prime < x \leq m_n/n \\
+  (m_{n^\prime}-1)/n^\prime < m_n/n
+\end{align*}
 
 \end{document}
