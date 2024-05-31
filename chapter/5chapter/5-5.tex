@@ -65,16 +65,55 @@
 
 由于$m/n$是$E$的上界，而$(m^\prime -1)/n$不是$E$的上界，所以
 \begin{align*}
-  m^\prime -1 & < m                                          \\
+  m^\prime -1 & < m                                           \\
   m^\prime    & \leq m & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
 \end{align*}
 
 由于$m^\prime/n$是$E$的上界，而$(m -1)/n$不是$E$的上界，所以
 \begin{align*}
-  m - 1 & < m^\prime                                          \\
+  m - 1 & < m^\prime                                           \\
   m     & \leq m^\prime & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
 \end{align*}
 
 所以$m = m^\prime$
+
+\section*{5.5.4}
+
+证明：
+
+（1）对任意有理数$\epsilon > 0$，由推论5.4.13可知，存在正整数$M$使得$M\epsilon > 1$，
+此时，
+\begin{align*}
+  \epsilon > 1/M
+\end{align*}
+由题设可知，对任意$j,k \geq M$都有$d(q_j,q_k) \leq \frac{1}{M} < \epsilon$，
+即：序列对任意$\epsilon > 0$是最终$\epsilon -$稳定的，所以，序列是柯西序列
+
+（2）由实数的运算法则可知，
+\begin{align*}
+  q_M - S & = LIM_{n\rightarrow \infty}q_M - q_n \\
+\end{align*}
+$q_M - S$是一个实数，现在通过实数的三歧性分别讨论。
+
+$q_M - S = 0$，显然是满足命题的。
+
+$q_M - S > 0$，则存在$N \geq 1$使得$q_M - q_n > 0$对$n \geq N$均成立【因为序列是最终正远离0的】。
+
+又由题设可知，当$n \geq max(N, M)$时，$|q_M - q_n| \leq \frac{1}{M}$，结合$q_M - q_n > 0$可知，
+\begin{align*}
+  0 < q_M - q_n \leq \frac{1}{M}
+\end{align*}
+于是由习题5.4.8可知，
+\begin{align*}
+  0 & < LIM_{n\rightarrow \infty}q_M - q_n  \leq \frac{1}{M} \\
+    & \Rightarrow                                            \\
+  0 & < q_M - S                             \leq \frac{1}{M}
+\end{align*}
+【\textbf{注}：不用考虑前$max(N,M)$的情况，这里运用命题：
+\textbf{一个柯西序列$(a_n)_{n=1}^\infty$，删除开头$k-1$个元素得到序列$(a_n)_{n=k}^\infty$，两个序列还是等价的} 】。
+
+$q_M - S < 0$，类似可证。
+
+综上，命题得证。
 
 \end{document}
