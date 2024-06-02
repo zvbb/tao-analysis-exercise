@@ -39,88 +39,103 @@
 
 证明：
 
-\section*{5.5.2}
+反证法。假设$M^\prime$是$-E$最大下界，且$M^\prime \neq -M$，
+由实数序的三歧性可知，要么$M^\prime < -M$，要么$M^\prime > -M$。接下来，我们分情况讨论：
 
-证明：
+$M^\prime < -M$，那么，此时存在$x \in -E$，使得$-M > x \geq M^\prime$，而$-x \in E$，于是
+  \begin{align*}
+    M < -x
+  \end{align*}
+  这与$M$是$E$的最小上界矛盾。
 
-由于$L,K$都是整数，且$L < K$可知，$K - L$是正自然数，
-现在通过对$K - L$进行归纳来完成证明【提示信息中有提到归纳证明】。
+$M^\prime > -M$，那么，此时不存在$x \in -E$，使得$-M \leq x < M^\prime$，即$M \geq -x > -M^\prime$，但由于$M$是$E$的最小上界，
+  所以一定存在$-x \in E$使得$M \geq -x > -M^\prime$，否则$E$的最小上界就不是$M$了，所以存在矛盾。
 
-归纳基始，$K-L=1$，此时$m=K,m-1=L$，由题设信息可知，该$m$是满足命题的。
 
-归纳假设，$K-L=n$时，存在$m$满足命题。
+  综上，命题得证。
 
-现在假设$K-L=n+1$时，由于$L < L + 1 < K$，
+  \section*{5.5.2}
 
-如果$(L + 1)/n$是集合$E$的上界，
-此时可以取$m=L+1$，又由题设可知$(m-1)/n=L/n$不是$E$的上界，此时的$m$满足命题。
+  证明：
 
-如果$(L + 1)/n$不是集合$E$的上界，由归纳假设可知，存在$m, L+1 < m \leq K$满足命题。
+  由于$L,K$都是整数，且$L < K$可知，$K - L$是正自然数，
+  现在通过对$K - L$进行归纳来完成证明【提示信息中有提到归纳证明】。
 
-至此，完成归纳。
+  归纳基始，$K-L=1$，此时$m=K,m-1=L$，由题设信息可知，该$m$是满足命题的。
 
-\section*{5.5.3}
+  归纳假设，$K-L=n$时，存在$m$满足命题。
 
-证明：
+  现在假设$K-L=n+1$时，由于$L < L + 1 < K$，
 
-由于$m/n$是$E$的上界，而$(m^\prime -1)/n$不是$E$的上界，所以
-\begin{align*}
-  m^\prime -1 & < m                                           \\
-  m^\prime    & \leq m & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
-\end{align*}
+  如果$(L + 1)/n$是集合$E$的上界，
+  此时可以取$m=L+1$，又由题设可知$(m-1)/n=L/n$不是$E$的上界，此时的$m$满足命题。
 
-由于$m^\prime/n$是$E$的上界，而$(m -1)/n$不是$E$的上界，所以
-\begin{align*}
-  m - 1 & < m^\prime                                           \\
-  m     & \leq m^\prime & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
-\end{align*}
+  如果$(L + 1)/n$不是集合$E$的上界，由归纳假设可知，存在$m, L+1 < m \leq K$满足命题。
 
-所以$m = m^\prime$
+  至此，完成归纳。
 
-\section*{5.5.4}
+  \section*{5.5.3}
 
-证明：
+  证明：
 
-（1）对任意有理数$\epsilon > 0$，由推论5.4.13可知，存在正整数$M$使得$M\epsilon > 1$，
-此时，
-\begin{align*}
-  \epsilon > 1/M
-\end{align*}
-由题设可知，对任意$j,k \geq M$都有$d(q_j,q_k) \leq \frac{1}{M} < \epsilon$，
-即：序列对任意$\epsilon > 0$是最终$\epsilon -$稳定的，所以，序列是柯西序列
+  由于$m/n$是$E$的上界，而$(m^\prime -1)/n$不是$E$的上界，所以
+  \begin{align*}
+    m^\prime -1 & < m                                           \\
+    m^\prime    & \leq m & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
+  \end{align*}
 
-（2）由实数的运算法则可知，
-\begin{align*}
-  q_M - S & = LIM_{n\rightarrow \infty}q_M - q_n \\
-\end{align*}
+  由于$m^\prime/n$是$E$的上界，而$(m -1)/n$不是$E$的上界，所以
+  \begin{align*}
+    m - 1 & < m^\prime                                           \\
+    m     & \leq m^\prime & \text{【题设说明了$m,m^\prime$是整数，否则无法成立】}
+  \end{align*}
+
+  所以$m = m^\prime$
+
+  \section*{5.5.4}
+
+  证明：
+
+  （1）对任意有理数$\epsilon > 0$，由推论5.4.13可知，存在正整数$M$使得$M\epsilon > 1$，
+  此时，
+  \begin{align*}
+    \epsilon > 1/M
+  \end{align*}
+  由题设可知，对任意$j,k \geq M$都有$d(q_j,q_k) \leq \frac{1}{M} < \epsilon$，
+  即：序列对任意$\epsilon > 0$是最终$\epsilon -$稳定的，所以，序列是柯西序列
+
+  （2）由实数的运算法则可知，
+  \begin{align*}
+    q_M - S & = LIM_{n\rightarrow \infty}q_M - q_n \\
+  \end{align*}
 $q_M - S$是一个实数，现在通过实数的三歧性分别讨论。
 
 $q_M - S = 0$，显然是满足命题的。
 
 $q_M - S > 0$，则存在$N \geq 1$使得$q_M - q_n > 0$对$n \geq N$均成立【因为序列是最终正远离0的】。
 
-又由题设可知，当$n \geq max(N, M)$时，$|q_M - q_n| \leq \frac{1}{M}$，结合$q_M - q_n > 0$可知，
-\begin{align*}
-  0 < q_M - q_n \leq \frac{1}{M}
-\end{align*}
-于是由习题5.4.8可知，
-\begin{align*}
-  0 & < LIM_{n\rightarrow \infty}q_M - q_n  \leq \frac{1}{M} \\
-    & \Rightarrow                                            \\
-  0 & < q_M - S                             \leq \frac{1}{M}
-\end{align*}
-【\textbf{注}：不用考虑前$max(N,M)$的情况，这里运用命题：
-\textbf{一个柯西序列$(a_n)_{n=1}^\infty$，删除开头$k-1$个元素得到序列$(a_n)_{n=k}^\infty$，两个序列还是等价的} 】。
+  又由题设可知，当$n \geq max(N, M)$时，$|q_M - q_n| \leq \frac{1}{M}$，结合$q_M - q_n > 0$可知，
+  \begin{align*}
+    0 < q_M - q_n \leq \frac{1}{M}
+  \end{align*}
+  于是由习题5.4.8可知，
+  \begin{align*}
+    0 & < LIM_{n\rightarrow \infty}q_M - q_n  \leq \frac{1}{M} \\
+      & \Rightarrow                                            \\
+    0 & < q_M - S                             \leq \frac{1}{M}
+  \end{align*}
+  【\textbf{注}：不用考虑前$max(N,M)$的情况，这里运用命题：
+  \textbf{一个柯西序列$(a_n)_{n=1}^\infty$，删除开头$k-1$个元素得到序列$(a_n)_{n=k}^\infty$，两个序列还是等价的} 】。
 
 $q_M - S < 0$，类似可证。
 
-综上，命题得证。
+  综上，命题得证。
 
-\section*{5.5.5}
+  \section*{5.5.5}
 
-证明：
+  证明：
 
-给定任意两个有理数$x < y$，我们能够找到一个无理数$q$使得$x < q < y$。
+  给定任意两个有理数$x < y$，我们能够找到一个无理数$q$使得$x < q < y$。
 
 这个命题此时无法证明，无理数的定义到现在为止，书中还没有定义。
 \end{document}
