@@ -44,5 +44,55 @@
 
 按照定义5.6.1 $0^n = 0$，所以$0^n \in E$。
 
+\textbf{2.如果$y > 1$，且$n \geq 1$是一个正整数，那么$y^n > 1$}
+
+证明：
+
+对$n$进行归纳。
+
+$n = 1$时，按照定义5.6.1 $y^n=y^1=y^0 \times y = 1 \times y = y$，因为$y > 1$，
+所以$y^n > 1$。
+
+归纳假设$n = k$时，$y^k > 1$。
+
+当$n = k+1$时，$y^{k+1} = y^k \times y$，于是由归纳假设可知，
+\begin{align*}
+  y^k          & > 1              \\
+  y^k \times y & > 1 \times y > 1
+\end{align*}
+
+综上，归纳完成。
+
+\textbf{3.如果$y > x$，且$y > 1, n \geq 1$，所以$y^n > x$}
+
+证明：
+
+对$n$进行归纳。
+
+当$n=1$时，$y^1 = y$，所以$y^n > x$。
+
+归纳假设，$n=k$时，$y^k > x$。
+
+当$n = k+1$时，$y^{k+1} = y^k \times y$，由归纳假设可知$y^k > x$，所以，
+\begin{align*}
+  y^k \times y & > xy
+\end{align*}
+又因为，
+\begin{align*}
+  y  & > 1 \\
+  yx & > x
+\end{align*}
+于是$y^k \times y > xy > x$。
+
+综上，归纳完成。
+
+\textbf{4.$x$是一个非负实数，证明$x^{1/1}=x=x^1$}
+
+证明：
+
+由定义5.6.1 可知，$x^1 = x^0 \times x = 1 \times x = x$。
+
+由定义5.6.4 可知，$x^{1/1} = sup\{y \in R: y \geq 0 \text{且} y^1 \leq x\} = x$。
+
 
 \end{document}
