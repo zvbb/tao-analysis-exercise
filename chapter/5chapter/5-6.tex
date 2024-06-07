@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{5.6 习题}
+\maketitle
+
+\section*{5.6.1}
+
+证明：
+
+\textbf{（a）}
+
+仿照命题5.5.12 的证明过程。
+
+令$E=\{z \in R: z \geq 0 \text{且} z^n \leq x\}$，由定义5.6.4 可知$y = x^{1/n} := sup(E)$。
+
+利用反证法，我们要证明$y^n < x$和$y^n > x$都会导致矛盾。
+
+首先假设$y^n < x$，假设$0<\epsilon<1$是一个较小的正数。由于$\epsilon ^n < \epsilon$。
+
+如果$0< y \leq 1$，那么，
+\begin{align}
+  (y + \epsilon)^n & = \epsilon ^n + k_0y\epsilon^{n-1} + k_1y^2\epsilon^{n-2} + ... + y^n \\
+                   & < \epsilon + y^n + max(k_0,k_1,...,)y\epsilon                         \\
+                   & < y^n + \epsilon[1+max(k_0,k_1,...,)y]
+\end{align}
+
+设$\delta = x - y^n$，取$\epsilon < \delta / [1+max(k_0,k_1,...,)y]$，就可以保证$(y + \epsilon)^n < x$，
+所以$(y + \epsilon) \in E$，从而与$y$是$E$的上确界矛盾。
+
+如果$y>1$，那么，
+\begin{align}
+  (y + \epsilon)^n & = \epsilon ^n + k_0y\epsilon^{n-1} + k_1y^2\epsilon^{n-2} + ... + y^n \\
+                   & < \epsilon + y^n + max(k_0,k_1,...,)y^{n-1}\epsilon                   \\
+                   & < y^n + \epsilon[1+max(k_0,k_1,...,)y^{n-1}]
+\end{align}
+设$\delta = x - y^n$，取$\epsilon < \delta / [1+max(k_0,k_1,...,)y^{n-1}]$，就可以保证$(y + \epsilon)^n < x$，
+所以$(y + \epsilon) \in E$，从而与$y$是$E$的上确界矛盾。
+
+现在假设$y^n > x$，假设$0<\epsilon<1$是一个较小的正数。
+
+如果$0< y \leq 1$，那么，
+\begin{align}
+  (y - \epsilon)^n & > y^n - \epsilon^n - max(|k_0|,|k_1|,...,)y\epsilon \\
+                   & > y^n - \epsilon[1-max(|k_0|,|k_1|,...,)y]
+\end{align}
+
+设$\delta = y^n - x$，取$\epsilon < \delta / [1-max(|k_0|,|k_1|,...,)y]$，就可以保证$(y - \epsilon)^n > x$，
+所以$(y-\epsilon)$也是上界，这与$y$是$E$的最小上界矛盾。
+
+如果$y > 1$，那么，
+\begin{align}
+  (y - \epsilon)^n & > y^n - \epsilon^n - max(|k_0|,|k_1|,...,)y\epsilon \\
+                   & > y^n - \epsilon[1-max(|k_0|,|k_1|,...,)y^{n-1}]
+\end{align}
+
+设$\delta = y^n - x$，取$\epsilon < \delta / [1-max(|k_0|,|k_1|,...,)y^{n-1}]$，就可以保证$(y - \epsilon)^n > x$，
+所以$(y-\epsilon)$也是上界，这与$y$是$E$的最小上界矛盾。
+
+根据这两个矛盾，我们得到$y^n = x$，命题得证。
+
+证明过程中$k_n$具体的值是什么不重要，这里是定性分析。
+
+\textbf{（b）}
+
+该命题说明了$y$的唯一性，即：只有$y=x^{1/n}$，才能使得$y^n = x$。
+
+假设存在$y^\prime$使得$(y^\prime)^n = x$，那么$(y^\prime)^n = y^n$，对$n$进行归纳，可知$y^\prime = y$，
+存在矛盾，所以$y=y^\prime$，即$y=x^{1/n}$是唯一的。
+
+\textbf{（c）}
+
+定义5.6.4 就保证了任何$E=\{y \in R: y \geq 0 \text{且} y^n \leq x\}$的上界$M \geq 0$，
+因为上界要大于$E$中的任意元素。所以，$E$的最小上界$sup(E) \geq 0$，所以$x^{1/n}$是非负实数。
+
+\textbf{（d）}
+
+必要性：因为$x^{1/n} > y^{1/n}$，且由命题5.6.3（c）可知，
+\begin{align*}
+  (x^{1/n})^n   & > (y^{1/n})^n \\
+  \Rightarrow x & > y           \\
+\end{align*}
+
+充分性：反证法，假设$x > y$时，$x^{1/n} \leq y^{1/n}$。而通过5.6.3（c）可知，
+\begin{align*}
+  (x^{1/n})^n   & \leq (y^{1/n})^n \\
+  \Rightarrow x & \leq y           \\
+\end{align*}
+这与$x > y$矛盾。所以假设不成立，命题得证。
+
+\textbf{（e）}
+（1）$x>1$
+
+首先证明$x>1$时，$x^{1/n}>1$。由（d）可知，$x>1$于是$x^{1/n} > 1^{1/n}$，又因为$1^n=1$，由（b）可知$1=1^{1/n}$，
+于是，
+\begin{align*}
+  x^{1/n} & > 1^{1/n} = 1
+\end{align*}
+
+现在证明$x>1$时，$x^n$是严格递增的。只需证明对任意自然数$k, x^k < x^{k+1}$。由于，
+\begin{align*}
+  x^{k+1} - x^k &= x^k(x-1) > 0
+\end{align*}
+所以$x^n$是严格递增的。
+
+不妨设$k_0 < k_1$，由（a）可知，
+\begin{align}
+  (x^{1/k_0})^{k_0} & = x \\
+  (x^{1/k_1})^{k_1} & = x
+\end{align}
+由于$x>1, x^{1/k_1} > 1$，于是$(x^{1/k_1})^n$是严格递增的，且$k_0<k_1$，
+所以$(x^{1/k_1})^{k_0} < (x^{1/k_1})^{k_1}=x$，由此可知，
+\begin{align}
+  (x^{1/k_0})^{k_0} & > (x^{1/k_1})^{k_0}
+\end{align}
+由5.6.3（c）可知，$x^{1/k_0} > x^{1/k_1}$，所以$x^{1/k}$是关于$k$的减函数得证。
+
+（2）$x<1$ 证明略
+
+（3）$x=1$ 证明略
+
+\textbf{f}
+
+
+\end{document}
