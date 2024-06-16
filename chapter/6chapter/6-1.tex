@@ -132,4 +132,37 @@ $(a_n)_{n=m}^\infty$收敛于$c$，于是对任意$\epsilon > 0$，
 存在一个比$M$大的有理数$M^\prime$，由于$M^\prime$是有理数，且$M < M^\prime$，所有该序列也以$M^\prime$为界，
 所以$(a_n)_{n=m}^\infty$是定义5.1.12 意义下的有界序列。
 
+\section*{6.1.8}
+
+\textbf{（a）}
+
+我们必须证明$(a_n+b_n)_{n=m}^\infty$收敛于$x+y$。换言之，对于任意的$\epsilon > 0$，
+我们需要证明序列$(a_n+b_n)_{n=m}^\infty$是最终$\epsilon -$接近$x+y$的。
+
+因为$(a_n)_{n=m}^\infty$收敛于$x$且$\epsilon /2 > 0$，则序列是最终$\epsilon /2 -$接近$x$，
+即存在$N_a \geq m$使得$|a_n - x| \leq \epsilon /2$对所有的$n \geq N_a$均成立。
+
+同理对序列$(b_n)_{n=m}^\infty$存在$N_b \geq m$使得$|b_n - y| \leq \epsilon /2$对所有的$n \geq N_b$均成立。
+
+取$N := max(N_a, N_b)$，于是对所有的$n \geq N$都有，
+\begin{align*}
+  |a_n + b_n - (x+y)|                      \\
+   & =|(a_n - x) + (b_n - y)|              \\
+   & \leq |a_n - x| + |b_n - y| = /epsilon
+\end{align*}
+因此$(a_n+b_n)_{n=m}^\infty$是最终$\epsilon -$接近$x+y$的。
+由于$\epsilon$是任意的，所以$(a_n+b_n)_{n=m}^\infty$收敛于$x+y$
+
+\textbf{（b）}
+
+证明与（a）类似，略
+
+
+\textbf{（c）}
+
+利用（b）可以证明（c），略
+
+\textbf{（d）}
+
+
 \end{document}
