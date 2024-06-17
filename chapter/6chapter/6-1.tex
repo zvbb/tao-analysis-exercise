@@ -146,7 +146,7 @@ $(a_n)_{n=m}^\infty$收敛于$c$，于是对任意$\epsilon > 0$，
 
 取$N := max(N_a, N_b)$，于是对所有的$n \geq N$都有，
 \begin{align*}
-  |a_n + b_n - (x+y)|                      \\
+   & |a_n + b_n - (x+y)|                   \\
    & =|(a_n - x) + (b_n - y)|              \\
    & \leq |a_n - x| + |b_n - y| = /epsilon
 \end{align*}
@@ -155,14 +155,135 @@ $(a_n)_{n=m}^\infty$收敛于$c$，于是对任意$\epsilon > 0$，
 
 \textbf{（b）}
 
-证明与（a）类似，略
+设$\epsilon_0> 0$，
+因为$(a_n)_{n=m}^\infty$收敛于$x$，即存在$N_a \geq m$使得$|a_n - x| \leq \epsilon _0$对所有的$n \geq N_a$均成立。
+
+因为$(b_n)_{n=m}^\infty$收敛于$y$，即存在$N_b \geq m$使得$|b_n - y| \leq \epsilon _0$对所有的$n \geq N_b$均成立。
+
+取$N := max(N_a, N_b)$，
+
+由命题4.3.7（h） 对实数也成立，那么对任意$n \geq N$都有，
+\begin{align*}
+  d(a_nb_n,xy) \leq \epsilon_0|y| + \epsilon_0|x| + \epsilon_0\epsilon_0
+\end{align*}
+对任意的$\epsilon > 0$，只要$\epsilon_0$足够小，那么$d(a_nb_n,xy)\leq \epsilon$，
+因此$(a_nb_n)_{n=m}^\infty$是最终$\epsilon -$接近$xy$的。
+由于$\epsilon$是任意的，所以$(a_nb_n)_{n=m}^\infty$收敛于$xy$
 
 
 \textbf{（c）}
 
-利用（b）可以证明（c），略
+（c）是（b）的特例。由实数的定义可知，存在一个有理数序列使得$LIM_{n\rightarrow\infty}c_n = c$，
+由命题6.1.15可知 $c = \lim\limits_{n \rightarrow \infty}c_n$，即$(c_n)_{n=m}^\infty$收敛于$c$，
+由命题（b）可知，
+\begin{align*}
+  \lim\limits_{n\rightarrow \infty}(ca_n) & = (\lim\limits_{n\rightarrow \infty}c) (\lim\limits_{n\rightarrow \infty}a_n) \\
+                                          & = cx
+\end{align*}
 
 \textbf{（d）}
+
+由（c）可知，$(-b_n)_{n=m}^\infty$是收敛于$-y$的。再利用（a）可证明该命题。
+
+
+\textbf{（e）}
+
+因为$(b_n)_{n=m}^\infty$收敛于$y$，
+那么对任意$\delta > 0$，存在$N_b \geq m$使得$|b_n - y| \leq \delta$，对任意的$n \geq N_b$均成立。
+
+我们必须要证明序列$(b_n^{-1})_{n=m}^\infty$收敛于$y^{-1}$。换言之，对于任意的$\epsilon > 0$，我们需要证明
+序列$(b_n^{-1})_{n=m}^\infty$是最终$\epsilon -$接近于$y^{-1}$的。
+于是设$\epsilon > 0$是任意的实数，
+\begin{align*}
+  |b_n^{-1} - y^{-1}| & = \left| \frac{1}{b_n} - \frac{1}{y} \right| \\
+                      & = \left| \frac{y - b_n}{yb_n} \right|        \\
+\end{align*}
+此时，分子分母都是可变的，无法定量分析，需要固定分母的范围，这也是书中提示要证明辅助命题
+\textbf{"如果一个序列的所有元素都不为零，并且该序列收敛于一个非零极限，那么这个序列是远离 0 的。"}原因。
+
+\begin{zgraytheorem}
+  辅助命题证明：
+
+  设序列$(a_n)_{n=m}^\infty$收敛于$L \neq 0$，那么设$\epsilon = \frac{1}{2}|L| > 0$，存在$N \geq m, n \geq N$使得
+  \begin{align*}
+    |a_n - L|                      & \leq \epsilon                    \\
+    |a_n - L|                      & \leq \frac{1}{2}|L|              \\
+    \Rightarrow L - \frac{1}{2}|L| & \leq a_n \leq L + \frac{1}{2}|L|
+  \end{align*}
+
+  如果$L > 0$，那么，$0 < \frac{1}{2}|L| \leq a_n$，由于序列的所有元素都不为零，即：$a_n > 0$对$m \leq n < N$均成立，
+  取$c := min(\frac{1}{2}|L|, (a_n)_{n=m}^{N-1})$【$min$生效的前提是$(a_n)_{n=m}^{N-1}$是有限集合】，
+  综上可知$c > 0$，且任意$a_n \geq c$对任意$n \geq m$均成立，
+  所以序列是远离$0$的。如果$L < 0$，同理可证。
+
+  综上，命题得证。
+\end{zgraytheorem}
+
+由辅助命题可知，序列$(b_n)_{n=m}^\infty$是远离$0$的，那么存在一个实数$c > 0$使得$|b_n| \geq c$对所有的$n \geq m$均成立。
+所以，
+\begin{align*}
+   & \left| \frac{y - b_n}{yb_n} \right| \\
+   & \leq |y - b_n| / c|y|               \\
+   & \leq \delta/c|y|                    \\
+\end{align*}
+
+因为$\delta>0$是任意实数，可以通过调整$\delta$的取值，使得，
+\begin{align*}
+   & \left| \frac{y - b_n}{yb_n} \right| \\
+   & \leq \epsilon
+\end{align*}
+即$|b_n^{-1} - y^{-1}| \leq \epsilon$，所以序列是最终$\epsilon -$接近于$y^{-1}$的，
+因为$\epsilon$是任意的，所以序列收敛于$y^{-1}$。
+
+\textbf{（f）}
+
+序列$(a_n/b_n)_{n=m}^\infty$可以看做$(a_n \times b_n^{-1})_{n=m}^\infty$，
+由（e）可知$(b_n^{-1})_{n=m}^\infty$收敛于$y^{-1}$。
+由（a）可知，
+\begin{align*}
+   & \lim\limits_{n \rightarrow \infty}(a_n \times b_n^{-1})                               \\
+   & = (\lim\limits_{n \rightarrow \infty}a_n)(\lim\limits_{n \rightarrow \infty}b_n^{-1}) \\
+   & = x \times y^{-1}                                                                     \\
+   & = \frac{x}{y}                                                                         \\
+   & = \frac{\lim\limits_{n \rightarrow \infty}a_n}{\lim\limits_{n \rightarrow \infty}b_n}
+\end{align*}
+
+\textbf{（g）}
+
+我们必须证明$(max(a_n,b_n))_{n=m}^\infty$收敛于$max(x,y)$。换言之，对于任意的$\epsilon > 0$，
+我们需要证明序列$(max(a_n,b_n))_{n=m}^\infty$是最终$\epsilon -$接近$max(x,y)$的。
+
+任意实数$\delta > 0$，
+因为$(a_n)_{n=m}^\infty$收敛于$x$，即存在$N_a \geq m$使得$|a_n - x| \leq \delta$对所有的$n \geq N_a$均成立。
+
+因为$(b_n)_{n=m}^\infty$收敛于$y$，即存在$N_b \geq m$使得$|b_n - y| \leq \delta$对所有的$n \geq N_b$均成立。
+
+取$N := max(N_a, N_b)$，于是对所有的$n \geq N$都有，
+\begin{align*}
+  |a_n - x|              & \leq \delta              \\
+  \Rightarrow x - \delta & \leq a_n \leq x + \delta \\
+  |b_n - y|              & \leq \delta              \\
+  \Rightarrow y - \delta & \leq b_n \leq y + \delta
+\end{align*}
+
+如果$y > x$，我们可以取$0 < \delta < (y-x)/2$，此时$b_n > a_n$对任意$n \geq N$均成立。也就是说，
+当$n \geq N$后$max(a_n,b_n) = b_n$，由习题6.1.3可知 序列$(max(a_n,b_n))_{n=m}^\infty$与$(b_n)_{n=m}^\infty$
+收敛于同一个值$y$。
+
+同理可证，$y \leq x$时，序列$(max(a_n,b_n))_{n=m}^\infty$收敛于$x$。
+
+综上，命题得证。
+
+\textbf{（h）}
+
+证明与（g）类似。
+
+
+\section*{6.1.9}
+
+暂时还证明不了，要看完10.5节后才可以解答
+
+\section*{6.1.10}
 
 
 \end{document}
