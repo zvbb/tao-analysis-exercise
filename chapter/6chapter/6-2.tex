@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{6.2 习题}
+\maketitle
+
+\section*{6.2.1}
+
+\textbf{自反性}
+
+当$x \in R$时，有命题5.3.3可知$x = x$，由实数排序定义5.4.6可知$x \leq x$，
+又由广义实数的排序定义6.2.3可知$x \leq x$。
+
+当$x = +\infty$时，由广义实数的排序定义6.2.3可知$x \leq x$
+
+当$x = -\infty$时，由广义实数的排序定义6.2.3可知$x \leq x$
+
+\textbf{三歧性}
+
+（1）如果$x,y \in R$，由实数的三歧性可得$x,y$满足三歧性。
+
+（2）分情况讨论$x,y$属于广义实数系附加的两个额外元素$+\infty$和$-\infty$。
+
+这里只讨论一种情况，其他的情况类似不做赘述。
+
+如果$x = +\infty$，$y \in R$，由定义6.2.3可知$x \geq y$，即该种情况属于三种情况之一，
+按照定义，不满足其他两种情况，所以满足三歧性。
+
+\textbf{传递性}
+
+（1）如果$x,y,z \in R$，由实数的传递性可得$x \leq z$。
+
+（2）分情况讨论$x,y,z$属于广义实数系附加的两个额外元素$+\infty$和$-\infty$。
+
+证明略
+
+\textbf{负运算使序改变}
+
+如果$x, y \in R$，显然成立。
+
+分情况讨论$x,y$属于广义实数系附加的两个额外元素$+\infty$和$-\infty$。
+
+证明略
+
+\section*{6.2.2}
+
+\textbf{（a）}
+
+根据定义6.2.6 和 定义6.2.3，$sup(E) \geq x \text{且} inf(E) \leq x, x \in E$。
+
+\textbf{（b）}
+
+反证法。假设$sup(E) > M$。
+
+如果$sup(E)$是实数，按照定义6.2.6可知$E$中只能包括$-\infty$和实数，
+而6.2.6（c）的情形最终会归入6.2.6（a），由定义5.5.10可知，$sup(E)$是$E$的最小上界，
+如果$sup(E) > M$，那么与最小上界的定义5.5.5矛盾。
+
+如果$sup(E)=-\infty$，由定义6.2.3可知，$-\infty \leq M$。
+
+如果$sup(E)=+\infty$，由定义6.2.3可知，$M$必须等于$+\infty$，所以$sup(E) \leq M$。
+
+\textbf{（c）}
+
+证明方法与(b)类似，略
+\end{document}
