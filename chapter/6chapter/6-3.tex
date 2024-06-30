@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{6.3 习题}
+\maketitle
+
+说在开头的话：文中的\textbf{上确界与最小上界不是一回事}，
+最小上界是一个集合$E$有上界为前提的，此时的最小上界与上确界一致。
+而如果集合没有最小上界，那么集合的上确界被指定为$+\infty$【空集时被指定为$-\infty$】。
+由此可知，最小上界定义是包含在上确界中的定义中，反之则不然。
+
+\section*{6.3.1}
+
+证明$sup(a_n)_{n=1}^\infty=1$，
+首先$1$是上界，因为$a_n$是递减的，且$n=1$时，$a_1 = 1$。
+假设存在上界$M < 1$，由$a_1=1$可知，$M$不存在。
+
+证明$inf(a_n)_{n=1}^\infty=0$，
+首先，因为$n$是正整数，所以$1/n>0$，于是$0$是下界。假设存在下界$m > 0$，由推论5.4.13（阿基米德性质）可知，
+存在正整数$M$使得$Mm > 1$，所以$m > 1/M$，取$n = M$，此时$a_n = 1/M < m$，
+与$m$是下界矛盾。
+
+\section*{6.3.2}
+
+设$E := \{a_n : n \geq m\}$，$E$是非空的实数集合，$x := sup(E)$。
+
+（1）
+由定义6.2.6可知，$x$要么是实数，要么是$+\infty$。
+
+如果$x$是实数，由最小上界定义可知，$a_n \leq x$对所有的$n \geq m$均成立。
+
+如果$x$是$+\infty$，定义6.2.3可知$a_n \leq x$。
+
+
+（2）$M$是$E$的上界。反证法$x > M$。
+如果$x$是实数，那么此时与$x$是$E$的最小上界定义矛盾。
+如果$x=+\infty$，那么由定义6.2.3可知，这样的$x \geq M$，按照定义5.5.10此时$E$是没有上界的，
+于是$M = +\infty$，所以不存在$x>M$。
+
+综上，$ x \leq M$。
+
+（3）反证法。假设不存在$n \geq m$使得$y < a_n \leq x$。
+
+由假设可知$a_n \leq y$或$a_n > x$。
+
+如果$x$是实数，那么，$x$是$E$的最小上界，
+如果存在$y<x, a_n \leq y$，那么$y$才是$E$的最小上界，所以该情况不可能发生。
+如果存在$a_n > x$，那么与$x$是最小上界矛盾，所以该情况不可能发生。
+
+如果$x=+\infty$，表明$E$没有上界。
+所以$a_n > x$是不可能的。
+如果存在$y < x, a_n \leq y$，那么，$y$是实数，即$E$是有上界的，这与$E$没有上界矛盾。
+
+综上，假设不成立。
+
+\section*{6.3.3}
+
+由于序列$(a_n)_{n=m}^\infty$是有界的实数序列，所以集合$E := \{a_n : n \geq m\}$按定理5.5.9
+可知集合$E$有一个最小上界，即存在$sup(E)$。
+
+有命题6.3.6可知，$M$是$E$的上界，那么$sup(E) \leq M$。
+
+现在要证明序列$(a_n)_{n=m}^\infty$是收敛的，并且收敛与$sup(E)$，设$x:=sup(E)$。
+
+对于任意实数$\epsilon > 0$，$x - \epsilon < x$，
+由命题6.3.6可知，存在一个$n \geq m$使得$x-\epsilon < a_n \leq x$，不妨设这里的$n$为$N$， 
+由于序列是递增的，所以存在$n \geq N$使得$x-\epsilon < a_n \leq x$均成立，
+所以$|x - a_n| \leq \epsilon$，即序列是最终$\epsilon -$接近与$x$，由于$\epsilon$是任意的，
+所以序列收敛于$x$，即：$\lim\limits_{n \to \infty} a_n = x = sup(a_n)_{n=m}^\infty$
+
+\end{document}
