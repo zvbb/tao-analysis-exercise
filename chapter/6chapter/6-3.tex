@@ -89,13 +89,13 @@
 由于序列$(a_n)_{n=m}^\infty$是有界的实数序列，所以集合$E := \{a_n : n \geq m\}$按定理5.5.9
 可知集合$E$有一个最小上界，即存在$sup(E)$。
 
-有命题6.3.6可知，$M$是$E$的上界，那么$sup(E) \leq M$。
+$M$是$E$的上界，由命题6.3.6可知，那么$sup(E) \leq M$。
 
-现在要证明序列$(a_n)_{n=m}^\infty$是收敛的，并且收敛与$sup(E)$，设$x:=sup(E)$。
+现在要证明序列$(a_n)_{n=m}^\infty$是收敛的，并且收敛于$sup(E)$，为了描述方便，设$x:=sup(E)$。
 
 对于任意实数$\epsilon > 0$，$x - \epsilon < x$，
-由命题6.3.6可知，存在一个$n \geq m$使得$x-\epsilon < a_n \leq x$，不妨设这里的$n$为$N$， 
-由于序列是递增的，所以存在$n \geq N$使得$x-\epsilon < a_n \leq x$均成立，
+由命题6.3.6可知，存在一个$n \geq m$使得$x-\epsilon < a_n \leq x$，不妨设这里的$n$为$N$，
+由于序列是递增的，且$x$是最小上界，所以$x-\epsilon < a_n \leq x$对$n \geq N$均成立，
 所以$|x - a_n| \leq \epsilon$，即序列是最终$\epsilon -$接近与$x$，由于$\epsilon$是任意的，
 所以序列收敛于$x$，即：$\lim\limits_{n \to \infty} a_n = x = sup(a_n)_{n=m}^\infty$
 

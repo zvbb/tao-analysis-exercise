@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{6.3 为什么}
+\maketitle
+
+\textbf{1.$0<x<1$，那么序列$(x^n)_{n=1}^\infty$是单调递减的。}
+
+需要证明$x^n \geq x^{n+1}$：
+\begin{align*}
+   & x^n - x^{n+1}      \\
+   & = x^n(1-x)     < 0 \\
+\end{align*}
+所以$x^n \geq x^{n+1}$
+
+\textbf{2.定义5.2.6中定义的等价序列，如果有极限，则极限是相同的。}
+
+设序列$(a_n)_{n=0}^\infty$和序列$(b_n)_{n=0}^\infty$是等价序列，
+并且$(a_n)_{n=0}^\infty$收敛于$x$，现在需要证明：$(b_n)_{n=0}^\infty$也收敛与$x$。
+
+任意实数$\epsilon > 0$，$\epsilon/2 > 0$，所以存在$N \geq 0$对任意$n \geq N$有
+\begin{align*}
+  |a_n - x| & \leq \epsilon / 2 \\
+  d(a_n, x) & \leq \epsilon / 2 \\
+\end{align*}
+又因为序列$(a_n)_{n=0}^\infty$和序列$(b_n)_{n=0}^\infty$是等价序列，所以是最终
+$\epsilon/2 -$接近的，即存在$N^\prime \geq n$使得，
+\begin{align*}
+  |b_n - a_n| & \leq \epsilon/2 \\
+  d(b_n, a_n) & \leq \epsilon/2 \\
+\end{align*}
+
+由命题4.3.3（g）【准确的说是实数版本，并把$y$看做$a_n$】所以，
+\begin{align*}
+  d(b_n - x) & \leq d(a_n, x) + d(b_n, a_n) \\
+             & \leq \epsilon                \\
+\end{align*}
+所以序列$(b_n)_{n=0}^\infty$最终$\epsilon -$接近于$x$。
+由$\epsilon$的任意性可知，序列$(b_n)_{n=0}^\infty$收敛于$x$。
+
+\end{document}
