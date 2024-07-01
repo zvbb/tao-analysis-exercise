@@ -71,4 +71,23 @@ $\epsilon/2 -$接近的，即存在$N^\prime \geq n$使得，
 所以序列$(b_n)_{n=0}^\infty$最终$\epsilon -$接近于$x$。
 由$\epsilon$的任意性可知，序列$(b_n)_{n=0}^\infty$收敛于$x$。
 
+\section*{6.3.4}
+
+反证法。假设序列$(x^n)_{n=1}^\infty$收敛于$L$，由于$x>1$，所以$0< 1/x < 1$，
+由命题6.3.10可知，序列$[(1/x)^n]_{n=1}^\infty$收敛于$0$，由定理6.1.19中的极限定律可知，
+序列$[(1/x)^n \times x^n]_{n=1}^\infty$的极限为：
+\begin{align*}
+  \lim\limits_{n \to \infty} (1/x)^n \times x^n & = \lim\limits_{n \to \infty} (1/x)^n \times \lim\limits_{n \to \infty} x^n \\
+                                                & = L \times 0                                                               \\
+                                                & = 0                                                                        \\
+\end{align*}
+又因$(1/x)^n \times x^n = 1$可知，
+
+\begin{align*}
+  \lim\limits_{n \to \infty} (1/x)^n \times x^n & = \lim\limits_{n \to \infty} 1 \\
+                                                & = 1                            \\
+\end{align*}
+
+由矛盾可知，假设不成立。
+
 \end{document}
