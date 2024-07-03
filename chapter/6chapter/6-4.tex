@@ -37,5 +37,25 @@
 
 \section*{6.4.1}
 
+（1）
+序列$(a_n)_{n=m}^\infty$收敛于$c$，那么对任意实数$\epsilon > 0$，
+都是最终$\epsilon -$接近于$c$的，
+即: 能够找到某个$N \geq m$使得$(a_n)_{n=N}^\infty$是$\epsilon-$接近于$c$的。
+并且对于任意$N^\prime \geq m$，取$N_0 := max(N, N^\prime)$，
+此时$(a_n)_{n=N_0}^\infty$是$\epsilon-$接近于$c$的，
+即：$a_n$是$\epsilon-$接近于$c$，对$n \geq N_0$均成立，所以$c$是$\epsilon-$附着于$(a_n)_{n=N^\prime}^\infty$的。
+由$\epsilon$的任意性，可知$c$是$(a_n)_{n=m}^\infty$的极限点。
+
+（2）反证法，存在另一个极限点$d$，且$d \neq c$。
+$(a_n)_{n=m}^\infty$收敛于$c$，那么对实数$\epsilon > 0$，是最终$\epsilon -$接近于$c$的。
+即: 能够找到$N \geq m$使得$(a_n)_{n=N}^\infty$是$\epsilon-$接近于$c$的。
+
+同时$d$是$(a_n)_{n=m}^\infty$的极限点，那么，$d$是$\epsilon-$附着于$(a_n)_{n=N}^\infty$的，
+那么存在一个$n \geq N$使得$a_n$是$\epsilon-$接近于$d$的，
+如果$d > c$，取$0 <\epsilon < (d-c)/2$，
+此时，$|a_n - d| \leq \epsilon$与$|a_n - c| \leq \epsilon$无法同时满足，即$a_n$
+无法同时$\epsilon-$接近于$c,d$。
+
+$d \leq c$同理。
 
 \end{document}
