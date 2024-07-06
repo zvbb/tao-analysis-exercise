@@ -58,4 +58,67 @@ $(a_n)_{n=m}^\infty$收敛于$c$，那么对实数$\epsilon > 0$，是最终$\ep
 
 $d \leq c$同理。
 
+\section*{6.4.2}
+
+这里只说明极限点和上极限，因为下极限的证明可以用上极限类推。
+
+设$(a_n)_{n=m}^\infty$是一个实数序列，$c$是一个实数，且$m^\prime \geq m$是一个整数。
+
+（1）与习题6.1.3类似的结论
+
+（1.1）$c$是$(a_n)_{n=m}^\infty$极限点，当且仅当$c$是$(a_n)_{n=m^\prime}^\infty$极限点。
+
+$\Rightarrow$ $c$是$(a_n)_{n=m}^\infty$极限点，
+那么，“对任意$\epsilon > 0$，对每一个$N \geq m$，$c$都是$\epsilon-$附着于$(a_n)_{n=N}^\infty$的”，
+我们把引号中的性质定义声明为$P(N)$，即对任意$N$，只要$N \geq m$都具有性质$P$。
+因为$m^\prime \geq m$，于是对任意$N$，$N \geq m^\prime \geq m$都具有性质$P$，
+所以$c$是$(a_n)_{n=m^\prime}^\infty$的极限点。
+
+$\Leftarrow$ $c$是$(a_n)_{n=m^\prime}^\infty$的极限点。
+对任意$\epsilon > 0$，对每一个$N$，
+如果$N \geq m^\prime$，由于$c$是$(a_n)_{n=m^\prime}^\infty$的极限点，
+那么，$c$都是$\epsilon-$附着于$(a_n)_{n=N}^\infty$的；
+如果$m \leq N < m^\prime$，我们要证明此时$c$也是$\epsilon-$附着于$(a_n)_{n=N}^\infty$，
+即：要证明存在一个$n \geq N$使得$a_n$是$\epsilon-$接近于$c$。
+我们可以取$n \geq m^\prime$，那么$n$也是大于$N$，还是由$c$是$(a_n)_{n=m^\prime}^\infty$的极限点，
+保证了$n$的存在性。
+
+综上$c$是$(a_n)_{n=m}^\infty$的极限点。
+
+（1.2）$c$是$(a_n)_{n=m}^\infty$的上极限，当且仅当$c$是$(a_n)_{n=m^\prime}^\infty$的上极限。
+
+$\Rightarrow$ $c$是$(a_n)_{n=m}^\infty$的上极限，即：序列$(a_N^+)_{N=m}^\infty$的下确界是$c$。
+序列$(a_N^+)_{N=m^\prime}^\infty$是序列$(a_N^+)_{N=m}^\infty$的子集。
+
+反证法，假设$c$不是$(a_n)_{n=m^\prime}^\infty$的上极限，设$(a_n)_{n=m^\prime}^\infty$的上极限是$c^\prime$
+【这里其实要证明$c^\prime$的存在性。可以通过以下命题得到$c^\prime$是存在的：
+\textbf{有上界序列存在实数上极限，否则上极限不是实数，而是$+\infty$}】。
+
+如果$c^\prime > c$，那么，存在$m \leq N_0 < m^\prime$
+使得$c \leq a_{N_0}^+ < c^\prime$，因为$(a_n)_{n=m^\prime}^\infty$是$(a_n)_{n=N_0}^\infty$的子集，
+所以$sup((a_n)_{n=m^\prime}^\infty) \leq sup((a_n)_{n=N_0}^\infty)$，
+又因为$c^\prime \leq sup((a_n)_{n=m^\prime}^\infty)$，
+于是$c^\prime \leq sup((a_n)_{n=N_0}^\infty)$，即：$c^\prime < a_{N_0}^+$。这与$c < a_{N_0}^+$矛盾。
+
+如果$c > c^\prime$，因为序列$(a_N^+)_{N=m^\prime}^\infty$是序列$(a_N^+)_{N=m}^\infty$的子集，
+所以$inf((a_N^+)_{N=m^\prime}^\infty) \geq inf((a_N^+)_{N=m}^\infty)$，这与$c > c^\prime$矛盾。
+
+综上，$c = c^\prime$。
+
+$\Leftarrow$ $c$是$(a_n)_{n=m^\prime}^\infty$的上极限，即：序列$(a_N^+)_{N=m^\prime}^\infty$的下确界是$c$。
+序列$(a_N^+)_{N=m^\prime}^\infty$是序列$(a_N^+)_{N=m}^\infty$的子集。
+
+反证法，假设$c$不是$(a_n)_{n=m}^\infty$的上极限，设$(a_n)_{n=m}^\infty$的上极限是$c^\prime$。
+
+如果$c > c^\prime$，那么，存在$m \leq N_0 < m^\prime$
+使得$c^\prime \leq a_{N_0}^+ < c$，因为$(a_n)_{n=m^\prime}^\infty$是$(a_n)_{n=N_0}^\infty$的子集，
+所以$sup((a_n)_{n=m^\prime}^\infty) \leq sup((a_n)_{n=N_0}^\infty)$，
+又因为$c \leq sup((a_n)_{n=m^\prime}^\infty)$，
+于是$c \leq sup((a_n)_{n=N_0}^\infty)$，即：$c < a_{N_0}^+$。这与$c^\prime \leq a_{N_0}^+ < c$矛盾。
+
+如果$c < c^\prime$，因为序列$(a_N^+)_{N=m^\prime}^\infty$是序列$(a_N^+)_{N=m}^\infty$的子集，
+所以$inf((a_N^+)_{N=m^\prime}^\infty) \geq inf((a_N^+)_{N=m}^\infty)$，这与$c < c^\prime$矛盾。
+
+综上，$c = c^\prime$。
+
 \end{document}
