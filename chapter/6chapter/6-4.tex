@@ -148,4 +148,27 @@ $d \leq c$同理。
 由$f \circ g,f^\prime \circ g^\prime$的构造过程可知两个具有相同的定义域，
 又对于任意的$x \in N$，$f \circ g(x) = a_{x+k}, f^\prime \circ g^\prime(x)=a_{x+k}$，
 所以$f \circ g(x) = f^\prime \circ g^\prime(x)$，由此可知 两个函数相等，即两个序列相等。
+
+\section*{6.4.3}
+
+不妨设$E := \{a_n: n \geq m\}$，$M=sup(E),M^\prime=inf(E)$。
+
+\textbf{（c）}
+
+由例6.2.10 可知$M \geq M^\prime$，接下来我只证明$L^+ \leq M$（可以类推$M^\prime \leq L^-$）和$L^- \leq L+$。
+
+反证法，假设$L^+ > M$。由命题6.3.6 可知对任意$n \geq m$，都有$a_n \leq M$。
+因为$L^+ := inf(a_N^+)_{N=m}^\infty$则也由命题6.3.6 可知存在$N \geq m$使得$a_N^+ > L^+$，
+由$a_N^+ := sup(a_n)_{n=N}^\infty$，可知存在$n \geq N$使得$a_n > L^+$，这与任意$a_n \leq M$矛盾。
+
+反证法，假设$L^- > L^+$，由$L^- := sup(a_N^-)_{N=m}^\infty$可知存在$N_0 \geq m$使得$a_{N_0}^- > L^+$，
+由因为$L^+ := inf(a_N^+)_{N=m}^\infty$，所以存在$N_1 \geq m$使得$a_{N_0}^- > a_{N_1}^+$【否则上极限就不是$L^+$了，
+而是一个大于等于$a_{N_0}^-$的数了】。
+由$a_{N_0}^- := inf(a_n)_{n=N_0}^\infty$定义， 可知 对$n \geq N_0$都有$a_n \geq a_{N_0}^-$，
+由$a_{N_1}^+ := sup(a_n)_{n=N_1}^\infty$定义，可知对$n \geq N_1$都有$a_n \leq a_{N_1}^+$，
+取$n \geq max(N_0,N_1)$此时$a_{N_0}^- \leq a_n \leq a_{N_1}^+$，这与$a_{N_0}^- > a_{N_1}^+$矛盾。
+
+\textbf{（d）}
+
+
 \end{document}
