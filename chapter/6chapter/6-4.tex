@@ -170,5 +170,66 @@ $d \leq c$同理。
 
 \textbf{（d）}
 
+这里我只证明$c \leq L^+$，因为$L^- \leq c$可以类推。
+
+反证法，假设$c > L^+$，由$L^+ := inf(a_N^+)_{N=m}^\infty$可知，
+由命题6.3.6 可知，存在$N_0 \geq m$使得$a_{N_0}^+ < c$，
+又因为$a_{N_0}^+ := sup(a_n)_{n=N_0}^\infty$，所以任意$n \geq N_0$都有$a_n \leq a_{N_0}^+$，
+由此可知，
+\begin{align*}
+  |c - a_n| & = |c - a_{N_0}^+ + a_{N_0}^+ - a_n|   \\
+            & = |c - a_{N_0}^+| + |a_{N_0}^+ - a_n| \\
+            & > |c - a_{N_0}^+|
+\end{align*}
+此时$c,a_n$的距离总是大于$|c - a_{N_0}^+|$，这与$c$是极限点的定义矛盾。
+
+\textbf{（e）}
+
+这里我只证明$L^+$是极限点，因为$L^-$可以类推。
+
+反证法，假设$L^+$不是极限点，那么通过极限点的定义6.4.1 可知，存在$\epsilon > 0, N_0 \geq m$，
+此时$L^+$不是$\epsilon -$附着于$(a_n)_{n=N_0}^\infty$的，即对任意$n \geq N_0$，都有，
+\begin{align*}
+   & |L^+ - a_n| > \epsilon                             \\
+   & \Rightarrow                                        \\
+   & a_n > L^+ + \epsilon \text{或} a_n < L^+ - \epsilon
+\end{align*}
+
+因为$L^+ := inf(a_N^+)_{N=m}^\infty$，
+那么对任意$N \geq m$都有$a_N^+ \geq L^+$。
+又$a_N^+ := sup(a_n)_{n=N}^\infty$。综上，我们可以得到，对任意$N \geq m, n \geq N$都有：
+\begin{equation}
+  \begin{cases*}
+    a_n \leq a_N^+ \\
+    L^+ \leq a_N^+
+  \end{cases*}
+\end{equation}
+
+（1）如果$n \geq N_0, a_n > L^+ + \epsilon$，那么，
+\begin{align*}
+  a_N^+ \geq a_n > L^+ + \epsilon
+\end{align*}
+而对于哪些$N < N_0$，由$a_N^+$的定义可知，$a_N+ \geq a_{N_0}^+$，
+于是此时$L^+ + \epsilon$是上极限，这与下确界的唯一性矛盾（上极限其实就是集合的下确界）。
+
+（2）如果$n \geq N_0, a_n < L^+ - \epsilon$，由此可知，$N \geq N_0$时，
+\begin{align*}
+  a_N^+ \leq L^+ - \epsilon
+\end{align*}
+这与$L^+ \leq a_N^+$矛盾。
+
+\textbf{（f）}
+
+\textbf{$\Rightarrow$}
+
+由命题6.4.5 可知$c$是极限点，如果$L^+ \neq c$，那么由（e）可知$L^+$也是极限点，这与命题6.4.5
+的后半部分相悖。
+
+\textbf{$\Leftarrow$}
+
+由于$L^+ = L^-$，由（e）可知，$(a_n)_{n=m}^\infty$有且只有一个极限点，也就是说$c$是极限点。
+接下来要证明序列收敛与$c$。
+
+反证法，假设$c$序列不收敛于$c$，
 
 \end{document}
