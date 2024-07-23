@@ -250,4 +250,27 @@ $d \leq c$同理。
 
 \textbf{（1）}
 
+不妨设
+\begin{align*}
+  M        & = sup(b_n)_{n=m}^\infty \\
+  M^\prime & = sup(a_n)_{n=m}^\infty
+\end{align*}
+反证法，假设$M^\prime > M$，取$m, M < m < M^\prime$，
+由命题6.3.6 可知至少存在一个$n \geq m$使得$m < a_n \leq M^\prime$，此时$a_n > m > M$，
+由于$M$是上确界，所以$b_n \leq M$，于是$a_n > b_n$，与题设相悖。
+
+\textbf{（3）}
+
+不妨设
+\begin{align*}
+  L^+          & = inf(b_N^+)_{n=m}^\infty \\
+  L^{+^\prime} & = inf(a_N^+)_{n=m}^\infty
+\end{align*}
+又因为对任意$N \geq m$都有
+\begin{align*}
+  a_N^+ & := sup(a_n)_{n=N}^\infty \\
+  b_N^+ & := sup(b_n)_{n=N}^\infty
+\end{align*}
+由（1）可知$b_N^+ \geq a_N^+$，于是由（2）可知 $L^{+^\prime} \leq L^+$
+
 \end{document}
