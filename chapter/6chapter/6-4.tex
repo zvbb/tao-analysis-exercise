@@ -230,6 +230,24 @@ $d \leq c$同理。
 由于$L^+ = L^-$，由（e）可知，$(a_n)_{n=m}^\infty$有且只有一个极限点，也就是说$c$是极限点。
 接下来要证明序列收敛与$c$。
 
-反证法，假设$c$序列不收敛于$c$，
+反证法，假设$c$序列不收敛于$c$，那么，存在$\epsilon > 0$，找不到$N \geq m$，使得$n \geq N$时，
+都有$|a_n -c| \leq \epsilon$，即：总是存在$|a_n -c| > \epsilon$。
+
+（1）如果$a_n > c+\epsilon$，由$L^+,a_N^+$的定义 可知对任意$N \geq m, n \geq N$都有，
+\begin{equation}
+  \begin{cases*}
+    a_n \leq a_N^+ \\
+    L^+ \leq a_N^+
+  \end{cases*}
+\end{equation}
+由此可得$a_N^+ \geq c+\epsilon=L^+ + \epsilon$对任意$N$均成立，由此可知上极限不是$L^+$，这与题设相悖。
+
+（2）如果$a_n < c - \epsilon$，同理可证其与下极限是$L^-$相悖。
+
+\section*{6.4.4}
+
+这里我只证明（1）（3），其他的可以类推。
+
+\textbf{（1）}
 
 \end{document}
