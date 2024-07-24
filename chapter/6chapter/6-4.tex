@@ -289,4 +289,34 @@ $d \leq c$同理。
 由此可知$L^{+^\prime}=L^{-^\prime}=L$，
 由命题6.4.12（f）可知$(b_n)_{n=m}^\infty$收敛于$L$
 
+\section*{6.4.6}
+
+定义$a_n := 1 - \frac{1}{n}, b_n := 1 - \frac{1}{n+1}$，
+满足$a_n < b_n$，此时$sup(a_n)_{n=1}^\infty=sup(b_n)_{n=1}^\infty=1$。
+
+引理6.4.13 中描述的是$a_n \leq b_n$，包含$a_n < b_n$的情况，
+其结果是$sup(a_n)_{n=m}^\infty \leq sup(b_n)_{n=m}^\infty$，
+也包含$sup(a_n)_{n=1}^\infty=sup(b_n)_{n=1}^\infty$的情况。
+
+\section*{6.4.7}
+
+（1）证明推论6.4.17。
+
+\textbf{$\Rightarrow$}
+
+极限$\lim \limits_{n \rightarrow \infty}a_n$存在且等于$0$，
+则对任意实数$\epsilon > 0$，存在$N$使得$n \geq N$时，$|x - 0| = |x| \leq \epsilon$均成立。
+由于$||x|-0| = |x| \leq \epsilon$，则$\lim \limits_{n \rightarrow \infty}|a_n| = 0$
+
+\textbf{$\Leftarrow$}
+
+因为$-|a_n| \leq a_n \leq |a_n|$，又由极限定律（定理6.1.19）可知
+$\lim \limits_{n \rightarrow \infty}-|a_n|=-1 \times 0 = 0$，
+由推论6.4.14可知 $\lim \limits_{n \rightarrow \infty}a_n$存在且等于$0$
+
+（2）换成其他某个数字，该推论不成立，因为夹逼定理的左右值无法相等。
+
+\section*{6.4.8}
+
+
 \end{document}
