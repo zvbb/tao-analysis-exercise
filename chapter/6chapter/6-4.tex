@@ -338,5 +338,23 @@ $\lim \limits_{n \rightarrow \infty}-|a_n|=-1 \times 0 = 0$，
 
 \section*{6.4.10}
 
+反证法，假设$c$不是$(a_n)_{n=m}^\infty$的极限点。
+即：存在$\epsilon ^\prime > 0, N_0 \geq m$，找不到$n \geq N_0$使得$|a_n - c| < \epsilon ^\prime$。
+下面要证明这个$N_0$是不存在的。
 
+$c$是$(b_n)_{n=m}^\infty$的极限点，那么，
+对任意$\epsilon > 0$，对每一个$N \geq m$都存在$n \geq N$使得
+$|b_n - c| \leq \epsilon$，即：$c - \epsilon \leq b_n \leq c + \epsilon$。
+
+又找到的$b_n$是$(a_n)_{n=m}^\infty$的极限点，那么，
+对每一个$N^\prime \geq m$都存在$n^\prime \geq N^\prime$使得
+$|a_n^\prime - b_n| \leq \epsilon$，即：$b_n - \epsilon \leq a_n^\prime \leq b_n + \epsilon$。
+
+由$c - \epsilon \leq b_n \leq c + \epsilon$ 可知，
+\begin{align*}
+  c - 2\epsilon \leq a_n^\prime \leq c + 2\epsilon
+\end{align*}
+
+对任意$\epsilon$（把$\epsilon ^\prime $看做$\frac{1}{2} \epsilon$），$N^\prime \geq m$上式都成立，
+可知 $N_0$是不存在的。
 \end{document}
