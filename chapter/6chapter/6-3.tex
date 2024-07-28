@@ -99,4 +99,19 @@ $M$是$E$的上界，由命题6.3.6可知，那么$sup(E) \leq M$。
 所以$|x - a_n| \leq \epsilon$，即序列是最终$\epsilon -$接近与$x$，由于$\epsilon$是任意的，
 所以序列收敛于$x$，即：$\lim\limits_{n \to \infty} a_n = x = sup(a_n)_{n=m}^\infty$
 
+\section*{6.3.4}
+
+反证法，假设$x > 1$时，$x^n$收敛于某个实数$c$。
+
+因为$(1/x)^nx^n =1$，可知$\lim\limits_{n \to \infty} (1/x)^nx^n = 1$。
+
+又$x > 1, 0 < 1/x < 1$，于是由极限定律6.1.19 和 命题6.3.10 可知
+\begin{align*}
+   & \lim\limits_{n \to \infty} (1/x)^nx^n                               \\
+   & = \lim\limits_{n \to \infty} (1/x)^n \lim\limits_{n \to \infty} x^n \\
+   & = 0 \times c                                                        \\
+   & = 0
+\end{align*}
+存在矛盾。
+
 \end{document}

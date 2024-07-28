@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{6.5 习题}
+\maketitle
+
+\section*{6.5.1}
+
+有理数$q > 0$，可以表示成正整数$a/b$的形式，其中$a,b > 0$。
+
+由定义5.6.7 可知$n^q = (n^{1/b})^a$，所以$1/n^q = (1/n^{1/b})^a$。
+
+由推论6.5.1 可知$\lim\limits_{n \rightarrow \infty}1/n^{1/b} = 0$。
+由极限定律（定理6.1.19）可知
+\begin{align*}
+   & \lim\limits_{n \rightarrow \infty}1/n^q           \\
+   & =\lim\limits_{n \rightarrow \infty}(1/n^{1/b})^a  \\
+   & = (\lim\limits_{n \rightarrow \infty}1/n^{1/b})^a \\
+   & = 0^a                                             \\
+   & = 0
+\end{align*}
+
+\section*{6.5.2}
+
+（1）$|x|<1$时。
+
+如果$0 < x < 1$，则由命题6.3.10 可知 极限$\lim\limits_{n \rightarrow \infty}x^n = 0$。
+
+如果$x=0$，则对任意$n$都有$x^n = 0^n = 0$，于是极限$\lim\limits_{n \rightarrow \infty}x^n = 0$。
+
+如果$-1 < x < 0$，则 $-1(-x)^n \leq x^n \leq (-x)^n$， 则由极限定律可知
+\begin{equation*}
+  \begin{cases*}
+    \lim\limits_{n \rightarrow \infty}-1(-x)^n = 0 \\
+    \lim\limits_{n \rightarrow \infty}(-x)^n = 0   \\
+  \end{cases*}
+\end{equation*}
+
+由夹逼定理可知 $\lim\limits_{n \rightarrow \infty}(x)^n = 0$。
+
+（2）$x = 1$时。
+
+对任意$n$都有$x^n = 1^n = 1$，于是极限$\lim\limits_{n \rightarrow \infty}x^n = 1$。
+
+（3.1）$x=-1$时。
+
+当$n$是偶数时，$x^n = (-1)^n = 1$，于是存在极限点$1$。
+
+当$n$是奇数时，$x^n = (-1)^n = -1$，于是存在极限点$-1$。
+
+极限点不是唯一的，由命题6.4.5 可知，此时$\lim\limits_{n \rightarrow \infty}x^n$不存在。
+
+（3.2）$|x|>1$时。
+
+（3.2.1）当$x > 1$时。
+
+由习题6.3.4 可知 $x > 1$时，序列$x^n$是发散的。
+
+（3.3.2）当$x < -1$时。
+
+反证法，假设极限$\lim\limits_{n \rightarrow \infty}x^n$存在。
+
+不妨设极限$\lim\limits_{n \rightarrow \infty}x^n$等于$c$，那么，
+对任意$\epsilon > 0$，存在$n \geq N$都有$|x^n - c| \leq \epsilon$均成立。
+又因为
+\begin{align*}
+   & |(-x)^n - |c||  \\
+   & = ||x^n| - |c|| \\
+   & \leq |x^n - c|  \\
+   & \leq \epsilon
+\end{align*}
+由此可知，$\lim\limits_{n \rightarrow \infty}(-x)^n$收敛于$|c|$，这与其是发散的这一事实矛盾。
+
+\section*{6.5.3}
+
+
+\end{document}
