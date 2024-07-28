@@ -104,5 +104,39 @@
 
 \section*{6.5.3}
 
+我只证明$x > 1$的情况。
+
+先证明极限$\lim\limits_{n \rightarrow \infty}x^{1/n}$存在。
+
+由引理5.6.6（e） 可知，$x^{1/n}$是关于$n$的减函数，
+又由5.6.6（d）可知$1^{1/n} < x^{1/n}$，即：$x^{1/n} > 1$，
+由上可知，$x^{1/n}$是关于$n$的减函数，且有下界，
+所以由命题6.3.8 可知，极限$\lim\limits_{n \rightarrow \infty}x^{1/n}$存在，不妨设为$c$，
+且由推论5.4.10 （更精确的说，是对应的实数版本）可知 $c \geq 1$。
+
+接下来，我们要证明$c = 1$。
+
+反证法，假设$c > 1$。
+
+设$0 < \epsilon < c - 1 - \delta$，其中$0 < \delta < c -1$，
+因为序列$x^{1/n}$收敛于$c$，那么，存在$N \geq 0, n \geq N$使得$|x^{1/n} -c| \leq \epsilon$均成立，
+于是，
+\begin{align*}
+  c - \epsilon & \leq x^{1/n} \leq c + \epsilon \\
+  1 + \delta   & < x^{1/n} \leq c + \epsilon
+\end{align*}
+
+要证明存在矛盾，现在要证明书中的提示。因为$\delta > 0$，所以$1 + \delta > 0$，
+$(1+\delta)^n$是递增的，又由引理6.5.2 可是其是发散的，由此可知其没有上界，否则就会存在矛盾。
+
+没有上界，也就意味着对任意实数$M$都存在$N^\prime, n \geq N^\prime$使得$(1+\delta)^n \geq M$，
+特别的$M = x$，此时$(1+\delta)^n \geq x$，即：$1+\delta \geq x^{1/n}$。
+
+取$K = max(N, N^\prime)$，那么，$n \geq K$时，应该有以下公式成立：
+\begin{align*}
+  1 + \delta & < x^{1/n}    \\
+  1+\delta   & \geq x^{1/n}
+\end{align*}
+显然，以上公式无法同时成立，假设不成立。
 
 \end{document}
