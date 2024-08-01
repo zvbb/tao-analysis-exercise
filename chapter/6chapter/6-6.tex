@@ -70,4 +70,77 @@
 \end{align*}
 
 由定义6.6.1 可知，此时$(c_n)_{n=0}^\infty$是$(a_n)_{n=0}^\infty$的子序列
+
+\section*{6.6.4}
+
+\textbf{（a）$\Rightarrow$ （b）}
+
+序列$(a_n)_{n=0}^\infty$收敛于$L$，
+那么，对任意$\epsilon > 0$，存在$N \geq 0$，
+使得$|a_n - L| \leq \epsilon$对$n \geq N$均成立。
+
+由子序列的定义（定义 6.6.1）可知，
+序列$(a_n)_{n=0}^\infty$的任意子序列$(b_n)_{n=0}^\infty$，
+都会存在一个严格递增的函数$f : \mathbb{N} \rightarrow \mathbb{N}$使得
+\begin{align*}
+  b_n = a_{f(n)} \text{对所有的$n \in \mathbb{N}$均成立}
+\end{align*}
+由$f$的定义可知$f(n) \geq n$，所以$n \geq N$时，$f(n) \geq N$，
+所以$|b_n - L| = |a_{f(n)} - L | \leq \epsilon$对$n \geq N$均成立。
+所以，序列$(b_n)_{n=0}^\infty$收敛于$L$。
+
+由于$(b_n)_{n=0}^\infty$是任意的子序列，所以命题得证。
+
+\textbf{（b）$\Rightarrow$ （a）}
+
+由自反性 可知$(a_n)_{n=0}^\infty$也是$(a_n)_{n=0}^\infty$的子序列，
+题设已经说明$(a_n)_{n=0}^\infty$收敛于$L$。
+
+\section*{6.6.5}
+
+\textbf{（a）$\Rightarrow$ （b）}
+
+证明存在性。这里采用的方法，是先构造出目标对象。
+这里需要考察的是，构造的目标是否满足要求。
+具体来说，对于本习题，需要确定构造的序列是存在的，并确定构造的序列是收敛于$L$的。
+
+（1）序列中的项的存在性。
+
+$j=0$时，定义$a_{n_0}=a_0$。
+
+当$j \neq 0, j \geq 0$时，现在要证明$a_{n_j}$是存在的。
+由$L$是极限点，所以取$\epsilon = 1/j > 0$，对每一个$N=n_{j-1}$，
+存在$n \geq N$使得$|a_n - L| \leq \epsilon$，满足该条件的$n$是一个集合，我们取其中最小值，
+此时的最小值就是$n_j$且可知$a_{n_j}$是存在的。
+（这段表述的目的，就是说明题中提示的$n_j$构造方式是正确的）
+
+（2）序列的收敛性
+
+对任意实数$\epsilon > 0$，存在$1/j \leq \epsilon$（存在的原因是$1/j$收敛于$0$）。
+通过序列$(a_{n_j})_{j=0}^\infty$的构造方式，
+可知，只要证明存在$N, n = N$有$|a_n - L| \leq 1/j$，那么，就有$n > N$有$|a_n - L| < 1/j$，
+即：$n \geq N$有$|a_n - L| \leq 1/j$。接下来只要证明这个$N$是存在的即可。
+由构造方式可知$|a_{n_j} - L | \leq 1/j \leq \epsilon$，
+所以，可取$N = n_j$，即$N$是存在的。
+
+
+\textbf{（b）$\Rightarrow$ （a）}
+
+设收敛于$L$的子序列是$(b_n)_{n=0}^\infty$，
+因为是子序列，存在一个严格递增的函数$f : \mathbb{N} \rightarrow \mathbb{N}$使得
+\begin{align*}
+  b_m = a_{f(n)} \text{对所有的$n \in \mathbb{N}$均成立}
+\end{align*}
+（注意：这里为了讨论的方便，把子序列的下标改为$m$）
+因为收敛于$L$，那么，对任意$\epsilon > 0$，存在$M \geq 0$，
+$|b_m - L| \leq \epsilon$对$m \geq M$均成立，
+因为$f$是严格递增的函数，且没有上界，
+对每一个$N$，都存在$n$使得$f(n) \geq max(M, N)$，
+因为$f(n) \geq M$，所以，
+\begin{align*}
+  |b_m - L|      & \leq \epsilon \\
+  |a_{f(n)} - L| & \leq \epsilon
+\end{align*}
+由$\epsilon$的任意性，可知，$L$是$(a_n)_{n=0}^\infty$的极限点。
+
 \end{document}
