@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{7.1 习题}
+\maketitle
+
+\section*{7.1.1}
+
+\textbf{【a】}
+
+由定义7.1.1 可知，
+
+\begin{align*}
+   & \sum \limits_{i=m}^n a_i       \\
+   & = a_m + a_{m+1} + \cdots + a_n
+\end{align*}
+
+\begin{align*}
+   & \sum \limits_{i=n+1}^p a_i         \\
+   & = a_{n+1} + a_{n+2} + \cdots + a_p
+\end{align*}
+
+\begin{align*}
+   & \sum \limits_{i=m}^p a_i                                          \\
+   & = a_m + a_{m+1} + \cdots + a_n + a_{n+1} + a_{n+2} + \cdots + a_p
+\end{align*}
+
+于是，
+\begin{align*}
+   & \sum \limits_{i=m}^n a_i + \sum \limits_{i=n+1}^p a_i \\
+   & = \sum \limits_{i=m}^p a_i
+\end{align*}
+
+\textbf{【b】【c】【d】的证明与【a】类似，证明略}
+
+\textbf{【e】}
+
+归纳法证明。
+
+归纳基始$m=n$，此时，
+\begin{align*}
+   & |\sum \limits_{i=m}^n a_i| = |a_m| \\
+   & \sum \limits_{i=m}^n |a_i| = |a_m|
+\end{align*}
+满足$|\sum \limits_{i=m}^n a_i| \leq \sum \limits_{i=m}^n |a_i|$
+
+归纳假设$m < n = j-1$时，命题成立。
+
+$n=j++$时，由（a）可知，
+\begin{align*}
+   & |\sum \limits_{i=m}^j a_i|                  \\
+   & = |\sum \limits_{i=m}^{j-1} a_i + a_j|      \\
+   & \leq |\sum \limits_{i=m}^{j-1} a_i| + |a_j|
+\end{align*}
+
+\begin{align*}
+   & \sum \limits_{i=m}^j |a_i|                                       \\
+   & = \sum \limits_{i=m}^{j-1} |a_i| + |a_j|                         \\
+   & \geq |\sum \limits_{i=m}^{j-1} a_i| + |a_j| & \textbf{【归纳假设保证的】}
+\end{align*}
+于是$|\sum \limits_{i=m}^j |a_i| \geq |\sum \limits_{i=m}^{j-1} a_i| + |a_j| \geq |\sum \limits_{i=m}^j a_i|$
+
+归纳完毕。
+
+\textbf{【f】} 与\textbf{【e】}类似，可通过归纳法证明。
+
+
+\end{document}
