@@ -42,24 +42,24 @@
 由定义7.1.1 可知，
 
 \begin{align*}
-   & \sum \limits_{i=m}^n a_i       \\
-   & = a_m + a_{m+1} + \cdots + a_n
+    & \sum \limits_{i=m}^n a_i       \\
+    & = a_m + a_{m+1} + \cdots + a_n
 \end{align*}
 
 \begin{align*}
-   & \sum \limits_{i=n+1}^p a_i         \\
-   & = a_{n+1} + a_{n+2} + \cdots + a_p
+    & \sum \limits_{i=n+1}^p a_i         \\
+    & = a_{n+1} + a_{n+2} + \cdots + a_p
 \end{align*}
 
 \begin{align*}
-   & \sum \limits_{i=m}^p a_i                                          \\
-   & = a_m + a_{m+1} + \cdots + a_n + a_{n+1} + a_{n+2} + \cdots + a_p
+    & \sum \limits_{i=m}^p a_i                                          \\
+    & = a_m + a_{m+1} + \cdots + a_n + a_{n+1} + a_{n+2} + \cdots + a_p
 \end{align*}
 
 于是，
 \begin{align*}
-   & \sum \limits_{i=m}^n a_i + \sum \limits_{i=n+1}^p a_i \\
-   & = \sum \limits_{i=m}^p a_i
+    & \sum \limits_{i=m}^n a_i + \sum \limits_{i=n+1}^p a_i \\
+    & = \sum \limits_{i=m}^p a_i
 \end{align*}
 
 \textbf{【b】【c】【d】的证明与【a】类似，证明略}
@@ -70,8 +70,8 @@
 
 归纳基始$m=n$，此时，
 \begin{align*}
-   & |\sum \limits_{i=m}^n a_i| = |a_m| \\
-   & \sum \limits_{i=m}^n |a_i| = |a_m|
+    & |\sum \limits_{i=m}^n a_i| = |a_m| \\
+    & \sum \limits_{i=m}^n |a_i| = |a_m|
 \end{align*}
 满足$|\sum \limits_{i=m}^n a_i| \leq \sum \limits_{i=m}^n |a_i|$
 
@@ -79,15 +79,15 @@
 
 $n=j++$时，由（a）可知，
 \begin{align*}
-   & |\sum \limits_{i=m}^j a_i|                  \\
-   & = |\sum \limits_{i=m}^{j-1} a_i + a_j|      \\
-   & \leq |\sum \limits_{i=m}^{j-1} a_i| + |a_j|
+    & |\sum \limits_{i=m}^j a_i|                  \\
+    & = |\sum \limits_{i=m}^{j-1} a_i + a_j|      \\
+    & \leq |\sum \limits_{i=m}^{j-1} a_i| + |a_j|
 \end{align*}
 
 \begin{align*}
-   & \sum \limits_{i=m}^j |a_i|                                       \\
-   & = \sum \limits_{i=m}^{j-1} |a_i| + |a_j|                         \\
-   & \geq |\sum \limits_{i=m}^{j-1} a_i| + |a_j| & \textbf{【归纳假设保证的】}
+    & \sum \limits_{i=m}^j |a_i|                                       \\
+    & = \sum \limits_{i=m}^{j-1} |a_i| + |a_j|                         \\
+    & \geq |\sum \limits_{i=m}^{j-1} a_i| + |a_j| & \textbf{【归纳假设保证的】}
 \end{align*}
 于是$|\sum \limits_{i=m}^j |a_i| \geq |\sum \limits_{i=m}^{j-1} a_i| + |a_j| \geq |\sum \limits_{i=m}^j a_i|$
 
@@ -95,5 +95,15 @@ $n=j++$时，由（a）可知，
 
 \textbf{【f】} 与\textbf{【e】}类似，可通过归纳法证明。
 
+\section*{7.1.2}
+
+\textbf{【a】}
+由于$X$是空集，所以定义7.1.6 中的$n=0$，于是，
+取一个从$\{i \in \mathbb{N}: 1 \leq i \leq 0\}$到$X$的双射$g$，所以，
+\begin{align*}
+    & \sum \limits_{x \in X}f(x)    \\
+    & =\sum \limits_{i=1}^0f(g(i)) \\
+    & = 0
+\end{align*}
 
 \end{document}
