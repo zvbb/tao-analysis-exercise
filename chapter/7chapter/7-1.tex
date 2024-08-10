@@ -304,4 +304,51 @@ $n=0$时，$(x+y)^0=1$。
 
 \section*{7.1.5}
 
+设$X$的基数为$K$，通过对$K$进行归纳，来证明该命题。
+
+归纳基始$K=0$，有命题7.1.11 可知，
+\begin{align*}
+        & \lim\limits_{n \rightarrow \infty} \sum\limits_{x \in X} a_n(x) \\
+        & = \lim\limits_{n \rightarrow \infty} 0                          \\
+        & = 0
+\end{align*}
+又因为
+\begin{align*}
+        & \sum\limits_{x \in X} \lim\limits_{n \rightarrow \infty} a_n(x) \\
+        & = 0
+\end{align*}
+所以，$K=0$时，命题成立。
+
+归纳假设$K = k$时，命题成立。
+
+$K = k + 1$，
+取一个从$\{i \in \mathbb{N}: 1 \leq i \leq k+1\}$到$X$的双射$g$，所以，
+\begin{align*}
+         & \sum\limits_{x \in X} \lim\limits_{n \rightarrow \infty} a_n(x)                \\
+         & = \sum\limits_{i = 1}^{k+1} \lim\limits_{n \rightarrow \infty} a_n(g(i))       \\
+         & = \sum\limits_{i = 1}^{k} \lim\limits_{n \rightarrow \infty} a_n(g(i))
+       +
+       \sum\limits_{i = k+1}^{k+1} \lim\limits_{n \rightarrow \infty} a_n(g(i))           \\
+         & = \lim\limits_{n \rightarrow \infty} \sum\limits_{x \in X-\{g(k+1)\}} a_n(x)
+       +
+       \sum\limits_{i = k+1}^{k+1} \lim\limits_{n \rightarrow \infty} a_n(g(i))           \\
+         & = \lim\limits_{n \rightarrow \infty} \sum\limits_{x \in X-\{g(k+1)\}} a_n(x)
+       +
+       \lim\limits_{n \rightarrow \infty} a_n(g(k+1))                                     \\
+         & = \lim\limits_{n \rightarrow \infty}  (\sum\limits_{x \in X-\{g(k+1)\}} a_n(x)
+       +
+       a_n(g(k+1))
+       ) & \textbf{定理6.1.19（a）}                                                           \\
+         & = \lim\limits_{n \rightarrow \infty}  (\sum\limits_{x \in X-\{g(k+1)\}} a_n(x)
+       +
+       \sum\limits_{i = k+1}^{k+1} a_n(g(i))
+       )                                                                                  \\
+         & = \lim\limits_{n \rightarrow \infty}  (\sum\limits_{x \in X-\{g(k+1)\}} a_n(x)
+       +
+       \sum\limits_{x \in \{g(k+1)\}} a_n(x)
+       )                                                                                  \\
+         & = \lim\limits_{n \rightarrow \infty} \sum\limits_{x \in X} a_n(x)
+\end{align*}
+
+归纳完成，命题得证。
 \end{document}
