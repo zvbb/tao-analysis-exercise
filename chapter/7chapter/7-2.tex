@@ -37,4 +37,70 @@
 
 \section*{7.2.1}
 
+\section*{7.2.2}
+
+$\bigstar \Rightarrow$
+
+因为$\sum \limits_{n=m} ^{\infty} a_n$收敛，
+那么这个级数的部分和序列$(S_N)_{N=m}^{\infty}$是收敛的，
+由定理6.4.18（实数的完备性）可知$(S_N)_{N=m}^{\infty}$也是柯西序列，
+于是，对任意的$\epsilon > 0$，存在$N \geq m$，$p,q \geq N$使得
+\begin{align}
+  |S_p - S_q|                & \leq \epsilon \\
+  |\sum \limits_{n=p}^q a_n| & \leq \epsilon
+\end{align}
+
+$\bigstar \Leftarrow$
+
+对任意$\epsilon > 0$都有$|\sum \limits_{n=p}^q a_n| \leq \epsilon$，
+可知级数的部分和序列$(S_N)_{N=m}^{\infty}$是柯西序列，
+由定理6.4.18（实数的完备性）可知其也是收敛的，
+由部分和收敛可知级数收敛。
+
+\section*{7.2.3}
+
+由命题7.2.5可知，$\sum \limits_{n=m} ^{\infty} a_n$收敛，
+对任意$\epsilon > 0$，都存在一个$N \geq m$使得$n \geq N$有
+\begin{align*}
+  |\sum \limits_{n=n}^n a_n| & \leq \epsilon \\
+  |a_n|                      & \leq \epsilon
+\end{align*}
+由$\epsilon$的任意性可知，$\lim \limits_{n \to \infty} a_n$收敛且收敛于$0$
+
+
+\section*{7.2.4}
+
+$\bigstar \text{绝对收敛} \Rightarrow \text{条件收敛}$
+
+$\sum \limits_{n=m} ^{\infty} a_n$是绝对收敛，
+即$\sum \limits_{n=m} ^{\infty} |a_n|$是收敛的，
+由命题7.2.5可知,对任意$\epsilon > 0$，都存在一个整数$N \geq m$，使得$q,p \geq N$，均有，
+\begin{align*}
+  |\sum \limits_{n=p}^q |a_n|| & \leq \epsilon
+\end{align*}
+由命题7.1.4（e）可知，
+\begin{align*}
+  |\sum \limits_{n=p}^q a_n| & \leq |\sum \limits_{n=p}^q |a_n|| \leq \epsilon \\
+  |\sum \limits_{n=p}^q a_n| & \leq \epsilon
+\end{align*}
+再次利用命题7.2.5可知，$\sum \limits_{n=m} ^{\infty} a_n$收敛
+
+$\bigstar \text{三角不等式}$
+
+不妨设$\sum \limits_{n=m} ^{\infty} |a_n|$的部分和序列为$(S_N^\prime)_{N=m}^{\infty}$，
+$|\sum \limits_{n=m} ^{\infty} a_n|$的部分和序列为$(S_N)_{N=m}^{\infty}$。
+显然，对任意$N \geq m$都有，
+\begin{align*}
+  S_N^\prime \geq S_N
+\end{align*}
+又因为两个序列的极限都存在，于是（推论5.4.10 的变形），
+\begin{align*}
+  \lim \limits_{N \rightarrow \infty} S_N^\prime
+  \geq \lim \limits_{N \rightarrow \infty} S_N
+\end{align*}
+即：
+\begin{align*}
+  \sum \limits_{n=m} ^{\infty} |a_n| \geq |\sum \limits_{n=m} ^{\infty} a_n|
+\end{align*}
+
 \end{document}
