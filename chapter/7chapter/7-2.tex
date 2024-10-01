@@ -37,6 +37,18 @@
 
 \section*{7.2.1}
 
+发散的。
+
+只需证明，级数的部分和序列$(S_N)_{N=1}^\infty$是发散的即可，证明如下：
+
+当$N$是奇数$S_N = -1$；
+
+当$N$是偶数$S_N = 0$；
+
+所以，该序列不是柯西序列，也就不会收敛，即是发散的。
+
+1.2.2的问题已解决，提到的答案都是不对的。
+
 \section*{7.2.2}
 
 $\bigstar \Rightarrow$
@@ -153,6 +165,49 @@ $\textbf{（1）}$ 如果$\sum \limits_{n=m} ^{\infty} a_n$收敛。
 
 $\textbf{（2）}$ 如果$\sum \limits_{n=m+k} ^{\infty} a_n$收敛。
 
+把$\sum \limits_{n=m} ^{m+k-1} a_n$，转换成一个新的序列$\sum \limits_{n=m} ^{\infty} b_n$，
+当$m \leq n \leq m + k - 1$时，$a_n = b_n$；当$n>m + k - 1$时，$b_n = 0$。
 
+此时新的序列$\sum \limits_{n=m} ^{\infty} b_n$收敛且收敛于$M$。
 
+设序列$\sum \limits_{n=m} ^{\infty} b_n$的部分和为$S_B$。
+
+那么，$S_N = S_B + S_N^\prime$，由极限定律（定理6.1.19）可知，
+序列$(S_N)_m^\infty$收敛，且收敛于$M + \sum \limits_{n=m+k} ^{\infty} a_n$。
+
+$\bigstar \text{（d）}$
+
+不妨设$\sum \limits_{n=m} ^{\infty} a_n$、$\sum \limits_{n=m+k} ^{\infty} a_{n-k}$
+的部分和分别为$S_N, S_{N^\prime}^\prime$。
+
+如果，序列$(S_{N^\prime}^\prime)_{N^\prime=m+k}^\infty$与$(S_N)_{N=N^\prime-k}^\infty$是等价的，
+则它们有相同的极限。
+
+对$N^\prime$进行归纳。
+
+$N^\prime = m+k$时，$S_N^\prime = a_m, S_N = S_{N^\prime - k} = S_m = a_m$，所以$S_N^\prime = S_N$。
+
+归纳假设，$N^\prime = q$时，$S_q^\prime = S_{q-k}$。
+
+当$N^\prime = q + 1$时，
+$S_{q+1}^\prime = S_q^\prime + a_{q+1-k}$；
+$S_{q+1-k} = S_{q-k} + a_{q+1-k}$，由归纳假设可知$S_q^\prime = S_{q-k}$，
+于是$S_{q+1}^\prime = S_{q+1-k}$。
+
+归纳完成。
+
+又由习题6.1.3可知，$(S_N)_{N=N^\prime-k}^\infty$与$(S_N)_{N=m}^\infty$收敛于同一个实数。
+
+于是序列$(S_{N^\prime}^\prime)_{N^\prime=m+k}^\infty$与$(S_N)_{N=m}^\infty$收敛于同一个实数。
+
+\section*{7.2.6}
+
+$\bigstar (a_n)_{n=0}^\infty \text{收敛于} 0$
+
+级数的部分和$S_N = a_0 - a_{N+1}$，由极限定律（定理6.1.19），以及$(a_n)_{n=0}^\infty$收敛于0，可知，
+序列$(S_N)_{N=0}^\infty$收敛于$a_0$。
+
+$\bigstar (a_n)_{n=0}^\infty \text{收敛于} L(L \neq 0) $
+
+同理可证，序列$(S_N)_{N=0}^\infty$收敛于$a_0 - L$。
 \end{document}
