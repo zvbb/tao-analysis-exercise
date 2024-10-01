@@ -103,4 +103,56 @@ $|\sum \limits_{n=m} ^{\infty} a_n|$的部分和序列为$(S_N)_{N=m}^{\infty}$�
   \sum \limits_{n=m} ^{\infty} |a_n| \geq |\sum \limits_{n=m} ^{\infty} a_n|
 \end{align*}
 
+\section*{7.2.5}
+
+$\bigstar \text{（a）}$
+
+$\sum \limits_{n=m} ^{\infty} a_n$收敛于$x$，
+于是其部分和序列$(A_N)_{N=m}^{\infty}$收敛于$x$。
+
+同理，$\sum \limits_{n=m} ^{\infty} b_n$收敛于$y$，
+于是其部分和序列$(B_N)_{N=m}^{\infty}$收敛于$y$。
+
+由题设可知，$\sum \limits_{n=m} ^{\infty} a_n + b_n$的部分和$S_N = A_N + B_N$，
+由定理6.1.19（极限定律）可知，序列$(S_N)_{n=m}^\infty$收敛于$x + y$。
+
+$\bigstar \text{（b）}$
+
+略，与（a）证明步骤类似。
+
+$\bigstar \text{（c）}$
+
+不妨设$\sum \limits_{n=m} ^{\infty} a_n$、$\sum \limits_{n=m+k} ^{\infty} a_n$
+的部分和分别为$S_N, S_N^\prime$，
+并设$M = \sum \limits_{n=m} ^{m+k-1} a_n$。
+
+当$N \geq m+k-1$时，$S_N = M + S_N^\prime$。
+
+$\textbf{（1）}$ 如果$\sum \limits_{n=m} ^{\infty} a_n$收敛。
+
+设$\sum \limits_{n=m} ^{\infty} a_n$收敛于$x$。
+
+
+由于$\sum \limits_{n=m} ^{\infty} a_n$收敛$x$，所以对任意$\epsilon > 0$，
+存在$N_0 \geq m$使得$|S_N - x| \leq \epsilon$，对任意$N \geq N_0$均成立。
+取$N_0^\prime = max(N_0, m+k-1)$，此时$|S_N - x| \leq \epsilon$，对任意$N \geq N_0^\prime$均成立。
+
+反证法，假设$\sum \limits_{n=m+k} ^{\infty} a_n$是发散的，
+则序列$(S_N^\prime)_{N=m+k}^\infty$是发散的，那么，也就不会收敛于$x-M$。
+
+所以，对存在$\epsilon > 0, N \geq N_0^\prime$，使得，
+\begin{align*}
+  |S_N^\prime + M - x| & > \epsilon     \\
+  S_N^\prime + M       & > x + \epsilon \\
+                       & \textbf{或}     \\
+  S_N^\prime + M       & < x - \epsilon
+\end{align*}
+
+因为$S_N = M + S_N^\prime$，所以$S_N > x + \epsilon$或$S_N < x - \epsilon$，
+这与 $|S_N - x| \leq \epsilon$矛盾，所以$\sum \limits_{n=m+k} ^{\infty} a_n$是收敛的。
+
+$\textbf{（2）}$ 如果$\sum \limits_{n=m+k} ^{\infty} a_n$收敛。
+
+
+
 \end{document}
