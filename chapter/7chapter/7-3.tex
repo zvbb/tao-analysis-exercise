@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{7.3 习题}
+\maketitle
+
+\section*{7.3.1}
+
+如果$\sum \limits_{n=m}^\infty$收敛，那么由命题7.3.1可知，存在一个实数M使得
+\begin{align*}
+  \sum \limits_{n=m}^N b_n \leq M
+\end{align*}
+又由题设可知，对任意的$n \geq m$均有$|a_n| \leq b_n$，所以，
+\begin{align*}
+  \sum \limits_{n=m}^N |a_n|  \leq \sum \limits_{n=m}^N b_n \leq M
+\end{align*}
+由此可知，$\sum \limits_{n=m}\infty a_n$绝对收敛。
+
+
+由命题7.2.9 可知，
+\begin{align*}
+  \big|\sum \limits_{n=m}^\infty a_n\big| \leq \sum \limits_{n=m}^\infty |a_n|
+\end{align*}
+
+不妨设，$\sum \limits_{n=m}^\infty b_n$的部分和为$S_N$，
+$\sum \limits_{n=m}^\infty |a_n|$的部分和为$S_N^\prime$。
+
+因为对任意$N$都有$S_N \geq S_N^\prime$，所以，两个序列的极限满足，
+\begin{align*}
+  \sum \limits_{n=m}^\infty b_n \geq \sum \limits_{n=m}^\infty |a_n|
+\end{align*}
+
+\section*{7.3.2}
+
+$\bigstar |x| \geq 1$时，
+
+显然，$\lim \limits_{n \rightarrow \infty} x^n$是发散的，
+由推论7.2.6（零判别法）可知$\sum \limits_{n=1}^\infty x^n$是发散的。
+
+$\bigstar |x| < 1$时，
+
+此时级数的部分和为
+\begin{align*}
+  S_N = \sum \limits_{n=0}^N x^n = \frac{1-x^{N+1}}{1-x}
+\end{align*}
+现在只需证明序列$(S_N)_{N=0}^\infty$的收敛性。
+
+因为$\lim \limits_{N \rightarrow \infty} 1-x^{N+1} = 1$（为了逻辑的清晰性，一些显然的结论，会省略掉）
+
+由极限定律（定理6.1.19）可知，
+\begin{align*}
+  \lim \limits_{N \rightarrow \infty} S_N & = \lim \limits_{N \rightarrow \infty} \frac{1-x^{N+1}}{1-x} \\
+                                          & = \frac{1}{1-x}
+\end{align*}
+
+\section*{7.3.3}
+
+反证法， 假设存在自然数$k$，此时$a_k \neq 0$。
+
+由命题7.2.14可知，
+$\sum \limits_{n=k+1}^\infty |a_n|$收敛于某个实数$x(x \geq 0)$；
+
+再次利用命题7.2.14可知，
+\begin{align*}
+  \sum \limits_{n=0}^\infty |a_n| & = \sum \limits_{n=0}^k |a_n| + \sum \limits_{n=k+1}^\infty |a_n|
+\end{align*}
+
+因为$a_k \neq 0$，所以$|a_k| > 0$，于是$\sum \limits_{n=0}^\infty |a_n| \geq |a_k| + x > 0$，
+这与题设矛盾。
+
+\end{document}
