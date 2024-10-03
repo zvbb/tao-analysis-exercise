@@ -36,6 +36,25 @@
 \maketitle
 
 \section*{7.4.1}
+结论很明显，难度在于如何阐明清楚。
 
+要证明$\sum \limits_{n=0}^\infty |a_{f(n)}|$有收敛，只要证明其部分和序列有上界。
+
+证明过程可以参考命题7.4.3（级数的重排序），这里还是比较好处理的，因为这里只需考虑收敛性。
+
+对任意正整数$N$，序列$(f^{-1}(n))_{n=0}^N$是有限的，从而是有界的，
+于是存在一个$M$使得对所有的$0 \leq n \leq N$都有$f^{-1}(n) \leq M$。
+
+特别地，对任意的$M^\prime \geq M$，集合$A = \{f(m): m \in \mathbb{N}; m \leq M^\prime \}$
+是$B = \{n \in \mathbb{N}; n \leq M^\prime\}$的子集。
+
+于是根据命题7.1.11，对任意的$M^\prime \geq M$都有
+\begin{align*}
+  \sum \limits_{m=0}^{M^\prime} |a_{f(m)}| & = \sum \limits_{n \in A} |a_{f(m)}| \\
+                                           & \leq \sum \limits_{n \in B} |a_n|
+\end{align*}
+因为$\sum \limits_{n \in B} |a_n|$是有界的，所以
+$\sum \limits_{m=0}^{M^\prime} |a_{f(m)}|$也是有界的。
+由$M^\prime$的任意性可知其收敛。
 
 \end{document}
