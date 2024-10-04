@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{7.5 习题}
+\maketitle
+
+\section*{7.5.1}
+记$L^\prime := \lim \inf\limits_{n \rightarrow \infty} \frac{c_{n+1}}{c_n}$，
+因为$\frac{c_{n+1}}{c_n}$总是正的，所以$L^\prime \geq 0$。
+
+设$\epsilon > 0$，由命题6.4.12（a）可知存在一个$N \geq m$
+使得$\frac{c_{n+1}}{c_n} \geq L^\prime - \epsilon$对所有的$n \geq N$均成立。
+所以$c_{n+1} \geq c_n(L^\prime - \epsilon)$对所有的$n \geq N$均成立。
+根据归纳法（对$n$进行归纳），这表明
+\begin{align*}
+  c_n \geq c_N(L^\prime - \epsilon)^{n-N}
+\end{align*}
+\textbf{对所有的$n \geq N$均成立}。
+
+如果我们记$A := c_N(L^\prime - \epsilon)^{-N}$，那么
+\begin{align*}
+  c_n \geq A(L^\prime - \epsilon)^n
+\end{align*}
+\textbf{对所有的$n \geq N$均成立}。
+
+从而
+\begin{align*}
+  c_n^{1/n} \geq A^{1/n}(L^\prime - \epsilon)
+\end{align*}
+\textbf{对所有的$n \geq N$均成立}。
+
+而根据极限定律（定理6.1.19）和引理6.5.3，我们有
+\begin{align*}
+  \lim \limits_{n \rightarrow \infty} A^{1/n}(L^\prime - \epsilon) = L^\prime - \epsilon
+\end{align*}
+于是由比较原理（引理6.4.13）可知，
+\begin{align*}
+  \lim \inf\limits_{n \rightarrow \infty} c_n^{1/n} \geq L^\prime - \epsilon
+\end{align*}
+而上式对任意的$\epsilon > 0$都成立，因此
+\begin{align*}
+  \lim \inf\limits_{n \rightarrow \infty} c_n^{1/n} \geq L^\prime
+\end{align*}
+（为什么？见下方的“说明”）
+这就是要证明的结论。
+
+
+\begin{zremark}
+  反证法，假设$\lim \inf\limits_{n \rightarrow \infty} c_n^{1/n} = K < L^\prime$，
+  那么取$\delta = (L^\prime - K) /2  > 0$，由命题6.4.12（b）可知，存在一个$N_1 \geq m$，使得
+  $c_n < K + \delta$对所有的$n \geq N_1$均成立。
+
+  取$\epsilon = \delta /2$，$L^\prime - \epsilon > K + \delta$是显然的。
+
+  \begin{align*}
+    \lim \inf\limits_{n \rightarrow \infty} c_n^{1/n} \geq L^\prime - \epsilon
+  \end{align*}可知，存在一个$N_2 \geq m$，使得
+  $c_n \geq L^\prime - \epsilon$对所有的$n \geq N_2$均成立。
+
+  取$N = max(N_1, N_2)$，此时对所有的$n \geq N$有
+  \begin{align}
+    c_n \geq L^\prime - \epsilon \\
+    c_n < K + \delta
+  \end{align}
+  与$L^\prime - \epsilon > K + \delta$矛盾。
+\end{zremark}
+
+\section*{7.5.2}
+
+比值判别法。
+
+\begin{align*}
+  \lim\sup\limits_{n \rightarrow \infty}\frac{|a_{n+1}|}{|a_{n}|}
+   & = \lim\sup\limits_{n \rightarrow \infty}\frac{|(n+1)^qx^{n+1}|}{|n^qx^{n}|} \\
+   & = \lim\sup\limits_{n \rightarrow \infty}|\big(\frac{n+1}{n}\big)^qx|        \\
+   & = 1^q |x|                                                                  \\
+   & = |x|
+\end{align*}
+因为$|x| < 1$，有推论7.5.3（比值判别法）可知级数是绝对收敛的。
+于是级数也是条件收敛的。
+又由推论7.2.6（零判别法）可知$\lim\limits_{n \rightarrow \infty}n^qx^n = 0$
+
+
+\textcolor{red}{注意}
+上面的等式使用了以下命题：
+
+\textbf{如果序列$(a_n)_{n=m}^\infty$的收敛于$x$，
+  那么$(a_n^r)_{n=m}^\infty$收敛于$x^r$，其中$r$是实数。}
+
+结论是显然的，但我想到的证明过程比较复杂，要使用公理8.1（选择公理），感兴趣的可以看看，
+个人认为可能不是最优解。
+
+
+
+
+\section*{7.5.3}
+
+\begin{align*}
+  \sum \limits_{n=1}^\infty 1/n^{2n}
+\end{align*}
+
+\end{document}
