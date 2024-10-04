@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{8.1 习题}
+\maketitle
+
+\section*{8.1.1}
+
+$\bigstar \Leftarrow$
+
+由命题3.6.14（c）知$X$不能为有限集，所以$X$是无限集（因为集合要么是无限的，要么是有限的）。
+
+
+$\bigstar \Rightarrow$
+
+\textbf{方法1}
+
+在无限集$X$中，一定能取出一列互不相同的元素$a_1,a_2,…$。
+事实上,在$X$中任取一个元素,记为$a_1$，
+因为$X$是无限集,集合$X-\{a_1\}$显然不空,
+这时再从集合$X-\{a_1\}$取一个元素$a_2$,
+同样,$X-\{a_1, a_2\}$不会是空集，可以不停地做下去,
+将从$X$中取出一列互不相同的元素$a_1,a_2,…$,记余集为$\hat{X} := X-\{a_1,a_2,…\}$。
+在$X$中取出一个真子集
+\begin{align*}
+  Y =: \hat{X} \cup \{a_2,a_3,…\}
+\end{align*}
+定义函数$f: X \rightarrow Y$如下：
+\begin{align*}
+  f(a_i) & = a_{i+1}, a_i \in \{a_1,a_2,…\} \\
+  f(x)   & = x, x \in \hat{X}
+\end{align*}
+显然$f$是双射，所以$X,Y$有相同的基数。
+
+\textcolor{red}{注意}
+方法1是非严格的证明，文中的“不停地”不够准确，引理8.5.14中有说明
+
+\textbf{方法2}
+
+todo 还未找到
+
+\section*{8.1.2}
+（1）如果$X$是有限集合，则由自然数的三歧性，经过有限次比较，就可以得到最小元素存在。
+
+（2）$X$是无限集
+
+$\bigstar$ \textbf{最大下界方式}
+
+因为$X$是自然数集的非空子集，则$x \in X, x \leq 0$，即：集合$X$有下界，
+由定理5.5.9可知集合$X$有最大下界，不妨设为$m$。
+
+现在需要证明$m \in X$。
+
+反证法，假设$m \not \in X$。
+
+由假设可知任意$x \in X, x > m$。
+因为$m \geq \lfloor m \rfloor$（注4.4.2中$\lfloor m \rfloor$表示$m$的整数部分），
+于是$x > \lfloor m \rfloor$，
+由命题2.2.12（e）可知$x \geq \lfloor m \rfloor + 1$，
+那么，$\lfloor m \rfloor + 1$也是$X$的下界，
+而$\lfloor m \rfloor + 1 > m$，这与$m$是$X$的最大下界矛盾。
+
+$\bigstar$ \textbf{无穷递降原理方式}
+
+假设$X$没有最小元素，即：任意$x \in X$，存在$x^\prime \in X, x^\prime < x$。
+
+现在构造出序列$(a_n)_{n=0}^\infty$。因为$X$是非空的，所以存在$x_0 \in X$，定义$a(0) := x_0$，
+递归定义$a(n+1) := x_{n+1} < a(n)$，由之前的说明可知$x_{n+1}$是存在的。
+
+显然这个序列与无穷递降原理矛盾。
+
+\end{document}
