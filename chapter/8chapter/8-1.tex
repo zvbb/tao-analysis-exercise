@@ -68,7 +68,7 @@ $\bigstar \Rightarrow$
 
 \textbf{方法2}
 
-todo 还未找到
+todo
 
 \section*{8.1.2}
 （1）如果$X$是有限集合，则由自然数的三歧性，经过有限次比较，就可以得到最小元素存在。
@@ -77,7 +77,7 @@ todo 还未找到
 
 $\bigstar$ \textbf{最大下界方式}
 
-因为$X$是自然数集的非空子集，则$x \in X, x \leq 0$，即：集合$X$有下界，
+因为$X$是自然数集的非空子集，那么对任意$x \in X, x \geq 0$，即：集合$X$有下界，
 由定理5.5.9可知集合$X$有最大下界，不妨设为$m$。
 
 现在需要证明$m \in X$。
@@ -96,8 +96,172 @@ $\bigstar$ \textbf{无穷递降原理方式}
 假设$X$没有最小元素，即：任意$x \in X$，存在$x^\prime \in X, x^\prime < x$。
 
 现在构造出序列$(a_n)_{n=0}^\infty$。因为$X$是非空的，所以存在$x_0 \in X$，定义$a(0) := x_0$，
-递归定义$a(n+1) := x_{n+1} < a(n)$，由之前的说明可知$x_{n+1}$是存在的。
+递归定义$a(n+1) := x_{n+1} (x_{n+1} < a(n))$，由之前的说明可知$x_{n+1}$是存在的。
 
 显然这个序列与无穷递降原理矛盾。
+
+$\bigstar \textbf{自然数替换成整数}$
+
+“最大下界方式”的证明方式，显然对整数也是合适，所以替换成整数，良序定理对整数是成立。
+
+$\bigstar \textbf{自然数替换成有理数}$
+
+\section*{8.1.3}
+
+$\bigstar \textbf{因为$X$是无限集，所以集合$\{x \in X: \text{对所有的$m < n$均有$x \neq a_m$}\}$也是无限集}$
+
+设$A =: \{x \in X: \text{对所有的$m < n$均有$x \neq a_m$}\}$，
+设$B =: \{a_m: i < n\}$。
+
+反证法，假设$A$不是无限集。又$B$是有限集，
+那么，由命题3.6.14（b）可知，$X$是有限集，这与$X$是无限集矛盾。
+
+$\bigstar (a_n)_{n=0}^\infty \textbf{是一个递增序列} $
+
+反证法，假设$(a_n)_{n=0}^\infty$不是递增序列。
+
+由假设可知，存在$k, a_k \geq a_{k+1}$。
+
+由序列的定义可知$a_{k+1} := min\{x \in X: \text{对所有的$m < k+1$均有$x \neq a_m$}\}$，
+因为$k < k+1$，所以$a_k = a_{k+1}$是不存在的。
+
+另外，$a_k > a_{k+1}$也是不可能的，因为$a_k$比$a_{k+1}$先定义，
+由$min$函数的定义可知，先取出的$a_k$肯定小于$a_{k+1}$。
+
+于是，与假设相悖。
+
+$\bigstar \textbf{对所有的}n \neq m \textbf{均有} a_n \neq a_m$
+
+由$(a_n)_{n=0}^\infty$严格递增保证。
+
+$\bigstar a_n \in X$。
+
+由$a_n$的定义方式保证。
+
+$\bigstar \textbf{表明}$
+
+由$n$的任意性保证的，因为如果存在$m$使得$a_m = x$，则前提不成立了。
+
+
+$\bigstar a_n \geq n$。
+
+对$n$进行归纳。
+
+归纳基始，$n=0$，由于$a_n$是自然数，所以$a_n \geq 0$。
+
+归纳假设，$n=k$，$a_k \geq k$。
+
+当$n=k+1$时，因为$a_n$是一个递增序列，所以$a_{k+1} > a_k$，即$a_{k+1} > k$，
+由命题2.2.12（e）可知$a_{k+1} \geq k+1$。
+
+归纳完成。
+
+$\bigstar \textbf{必然有?}$
+
+良序定理保证最小值的唯一性。
+
+\section*{8.1.4}
+
+有一点需要注意，值域$f(N)$可能不是$Y$，但在以下的证明中，可以把$Y$视为值域$f(N)$。
+
+$\bigstar$ $Y$是有限集时，命题显然成立。
+
+$\bigstar$ $Y$是无限集时。
+
+通过提示可知，$f$是从$A$到$f(A)$的双射是显然的。
+
+下面我们需要证明的是$f(A)$与$Y$是相等的集合，那个$Y$就是可数的了。
+
+由$f(A)$的定义方式可知，$f(A)$中的元素，一定属于$Y$。
+
+对任意$y \in Y$，存在自然数集合$B$，任意$b \in B$使得$f(b) = y$，
+取$B$中的最小值$n$，现在需要证明$n \in A$。
+
+对$n$进行强归纳。
+
+归纳基始，$n = 0$，因为不存在自然数$m < 0$，所以$0 \in A$。
+
+归纳假设，$n \leq k$时，$n \in A$。
+
+$n = k+1$时，反证法，假设$k + 1 \neq A$，那么，存在$m < k+1$使得$f(m) = f(k+1)$，
+此时，$m \in B$，且$m < k+1$，与$n$是$B$中的最小值矛盾，于是$k + 1 \in A$。
+
+归纳完成。
+
+所以，$n \in A$，即：$y \in f(A)$。
+
+\section*{8.1.5}
+
+因为$X$是可数集，那么存在一个双射$g: \mathbb{N} \rightarrow X$。
+
+所以，由定义3.3.10（复合）可以构造出函数$f \circ g: \mathbb{N} \rightarrow Y$，
+由命题8.1.8可知$f \circ g(\mathbb{N})$是至多可数的。
+
+又因为$f(X)$与$f \circ g(\mathbb{N})$是相等的集合（证明略），于是$f(X)$是至多可数的。
+
+\section*{8.1.6}
+
+$\bigstar \Rightarrow$
+
+$A$是至多可数的，如果$A$是有限集，则结论是显然的。
+
+如果$A$是可数集，那么存在一个双射$g: A \rightarrow \mathbb{N}$，
+令$f = g$。
+
+$\bigstar \Leftarrow$
+
+（1）如果$f(A)$是有限集，则结论是显然的。
+
+（2）如果$f(A)$是无限集，则需要进一步证明。
+
+因为$f$是单射，那么存在$f(A) \subseteq \mathbb{N}$。
+
+因为$A$不能是空集，存在元素$a_0 \in A$。
+
+现在定义函数$h: \mathbb{N} \rightarrow A$为
+\begin{align*}
+  h(n) & := f^{-1}(n) & \{n \in \mathbb{N}: n \in f(A) \}      \\
+  h(n) & := a_0       & \{n \in \mathbb{N}: n \not \in f(A) \} \\
+\end{align*}
+
+由命题8.1.8可知，$A$是至多可数的的。
+\section*{8.1.7}
+
+$h(\mathbb{N}) = X \cup Y$是显然的（证明略），由命题8.1.8可知$X \cup Y$是至多可数的。
+
+假设$X \cup Y$是有限集，那么由命题3.6.14（c）可知$X$是有限的，这与题设矛盾。
+
+\section*{8.1.8}
+
+由推论8.1.9可知，只要找到一个函数$f: \mathbb{N} \times \mathbb{N} \rightarrow X \times Y$，
+那么，$f(\mathbb{N} \times \mathbb{N})$是至多可数的。
+然后只需说明$X \times Y = f(\mathbb{N} \times \mathbb{N})$。那么，$X \times Y$也是至多可数的。
+
+因为$X$是可数集，所以存在一个双射函数$g: \mathbb{N} \rightarrow X$；
+
+同理，存在一个双射函数$h: \mathbb{N} \rightarrow Y$；
+
+现在定义函数$f: \mathbb{N} \times \mathbb{N} \rightarrow X \times Y$为
+\begin{align*}
+  f(n,m) := (g(n), h(m))
+\end{align*}
+
+接下来，要证明$X \times Y = f(\mathbb{N} \times \mathbb{N})$。
+
+反证法，假设$X \times Y \neq f(\mathbb{N} \times \mathbb{N})$，
+那么，至少存在一个元素$(x,y) \in X \times Y$且$(x,y) \not \in f(\mathbb{N} \times \mathbb{N})$。
+因为$x \in X, y\in Y$，所以存在$(n,m)$使得$x = g(n), y=h(m)$，
+又因为$(n,m) \in \mathbb{N} \times \mathbb{N}$，
+而$(g(n),h(m)) \in f(\mathbb{N} \times \mathbb{N})$，即：
+$(x,y) \in f(\mathbb{N} \times \mathbb{N})$，与假设矛盾。
+
+
+\section*{8.1.9}
+
+todo 
+
+
+\section*{8.1.10}
+没找到！
 
 \end{document}
