@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  linewidth=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{zgraytheorem}{}
+% 定义说明环境样式
+\newtheoremstyle{mystyle}% 说明环境样式的名称
+  {1em}% 上方间距
+  {1em}% 下方间距
+  {\normalfont}% 说明内容的字体样式
+  {}% 缩进量
+  {\bfseries}% 说明标记的字体样式
+  {.}% 说明标记和说明内容之间的标点
+  {1em}% 说明标记后的水平空间
+  {}% 说明标记后的垂直空间
+% 使用新定义的样式创建说明环境
+\theoremstyle{mystyle}
+\newtheorem*{zremark}{说明}
+
+
+\begin{document}
+\title{8.2 习题}
+\maketitle
+
+\section*{8.2.1}
+
+令
+\begin{align*}
+  S = \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \}
+\end{align*}
+
+$\bigstar \Rightarrow$
+
+如果$X$是有限集，这是命题是显然的。
+
+如果$X$是可数集。
+因为$X$是可数集，那么存在双射函数$g: \mathbb{N} \rightarrow X $，
+又因为级数$\sum \limits_{x \in X}f(x)$绝对收敛，那么
+\begin{align*}
+  \sum \limits_{x \in X} |f(x)| = \sum \limits_{n=0}^\infty |f(g(n))|
+\end{align*}
+
+任意元素$e \in S, e = \sum \limits_{x \in A} |f(x)|: A \subseteqq X$，所以
+有一个有限集$N^\prime, A = g(N^\prime)$，因为$N^\prime$是有限集，所有存在自然数$k$，
+使得$max(N^\prime) \leq k$，于是，
+\begin{align*}
+  e = \sum \limits_{x \in A} |f(x)| = \sum \limits_{n \in N^\prime} |f(g(n))| \leq \sum \limits_{n=0}^k |f(g(n))| \leq \sum \limits_{n=0}^\infty |f(g(n))| 
+\end{align*}
+所以，$e$是有限的，由$e$的任意性可知，集合$S$有上界，
+所以，
+\begin{align*}
+  \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \} < \infty
+\end{align*}
+
+$\bigstar \Leftarrow$
+
+反证法，假设级数$\sum \limits_{x \in X}f(x)$绝对发散。
+
+因为
+\begin{align*}
+  \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \} < \infty
+\end{align*}
+设$\sup S \leq M$。因为$\sum \limits_{x \in X}f(x)$绝对发散，
+所以存在自然数$N$使得
+\begin{align*}
+  \sum \limits_{n=0}^N |f(g(n))| > M
+\end{align*}
+令$A = g({n \in \mathbb{N}: 0 \leq n \leq N})$，因为$A$是有限集，且$A \in S$，
+所以
+\begin{align*}
+  \sum \limits_{x \in A} |f(x)| = \sum \limits_{n=0}^N |f(g(n))| \leq M
+\end{align*}
+存在矛盾。
+
+\end{document}

@@ -37,38 +37,39 @@
 
 \section*{8.1.1}
 
-$\bigstar \Leftarrow$
+\begin{itemize}
+  \item $\Leftarrow$即：$Y \subsetneq X$，$X,Y$有相同的基数，此时$X$是无限集。
 
-由命题3.6.14（c）知$X$不能为有限集，所以$X$是无限集（因为集合要么是无限的，要么是有限的）。
+        反证法，假设$X$一定是有限集。因为$Y$是$X$的真子集，由命题3.6.14可知，
+        $\sharp(X) < \sharp(Y)$，与$X,Y$有相同的基数相矛盾。
+  \item $\Rightarrow$假设$X$是一个无限序列，然后构造一个双射
+        $f: X \rightarrow Y$，$Y \subsetneq X$。
+
+        先以递归的方式定义一个无限序列$(A_n)_{n=0}^\infty$。
+        因为$X$是非空集合，所以存在$a_0 \in X$。我们定义$A_0 := \{x_0\}$。
+        那么，又因为$X$是无限集，所以$X \setminus A_0$也是无限集，于是可以用相同方式定义
+        $A_1 := A_0 \cup \{a_1\}$。
+        假设$A_n$已经以递归的方式定义出来，现在证明$A_{n+1}$的存在性，这样才能说明构造方式的正确性。
+        因为对所有的$A_i, i \leq n$都是有限集，所以$A \setminus \bigcup _{i=0}^n A_i$是无限集，
+        所以，我们可以从中找出一个元素$a_{n+1}$，令$A_{n+1} := A_n \cup \{a_{n+1}\}$。
+        至此，$A_n, n \in \mathbb{N}$的存在性得到证明（归纳原理），又因为选择公理可知，
+        $A := \bigcup _{n \in \mathbb{N}} A_n$是存在且非空的。
+
+        现在定义$Y := X \setminus \{ a_0 \}$，然后定义函数$f: X \rightarrow Y$如下：
+        \begin{equation*}
+          \begin{cases*}
+            \begin{aligned}
+               & f(x) = x       & \text{if } x \in X \setminus A \\
+               & f(x) = a_{n+1} & \text{if } x \in A, x = a_n
+            \end{aligned}
+          \end{cases*}
+        \end{equation*}
+        显然，$f$是双射函数，命题得证。
 
 
-$\bigstar \Rightarrow$
 
-\textbf{方法1}
 
-在无限集$X$中，一定能取出一列互不相同的元素$a_1,a_2,…$。
-事实上,在$X$中任取一个元素,记为$a_1$，
-因为$X$是无限集,集合$X-\{a_1\}$显然不空,
-这时再从集合$X-\{a_1\}$取一个元素$a_2$,
-同样,$X-\{a_1, a_2\}$不会是空集，可以不停地做下去,
-将从$X$中取出一列互不相同的元素$a_1,a_2,…$,记余集为$\hat{X} := X-\{a_1,a_2,…\}$。
-在$X$中取出一个真子集
-\begin{align*}
-  Y =: \hat{X} \cup \{a_2,a_3,…\}
-\end{align*}
-定义函数$f: X \rightarrow Y$如下：
-\begin{align*}
-  f(a_i) & = a_{i+1}, a_i \in \{a_1,a_2,…\} \\
-  f(x)   & = x, x \in \hat{X}
-\end{align*}
-显然$f$是双射，所以$X,Y$有相同的基数。
-
-\textcolor{red}{注意}
-方法1是非严格的证明，文中的“不停地”不够准确，引理8.5.14中有说明
-
-\textbf{方法2}
-
-todo
+\end{itemize}
 
 \section*{8.1.2}
 （1）如果$X$是有限集合，则由自然数的三歧性，经过有限次比较，就可以得到最小元素存在。
@@ -258,8 +259,37 @@ $(x,y) \in f(\mathbb{N} \times \mathbb{N})$，与假设矛盾。
 
 \section*{8.1.9}
 
-todo 
+这道题，直觉上是显然的，但着手证明时，又十分困难，主要有些问题难以处理：
 
+\begin{itemize}
+  \item $I，A_{\alpha}$都是至多可数的，这表明，既可以是有限集，也可以是可数集。
+  \item 直觉上，我们有一个至多可数的集合序列$A_{\alpha}$，而$A_{\alpha}$本身也是至多可数的，
+  好像$\bigcup \limits_{\alpha \in I} A_{\alpha}$中的元素，可以用两个下标表示，然后就会很自然的
+  想到$\mathbb{N} \times \mathbb{N}$与$\bigcup \limits_{\alpha \in I} A_{\alpha}$存在映射。
+  但题设中没有说明$A_{\alpha}$之间是不相交的，这样就不能假设该映射是双射的
+  （因为同一个$x$可以同时属于多个$A_{\alpha}$）。
+\end{itemize}
+
+如何克服这些困难，要说明集合$A$是至多可数的，无需找到一个双射函数，比如单射函数$f: A \rightarrow C$，
+其中$C$是之多可数的，那么$A$也是至多可数的（因为$A$与$f(A)$之间是双射，于是$A$与$f(A)$之间的基数相同，
+$f(A)$是$C$的子集，推论8.1.7可知$f(A)$是至多可数的，所以$A$也是之多可数的。）。
+特别的，如果$A$与$\mathbb{N}$间有单射函数，则$A$是至多可数的。
+
+以单射替换双射的方式，进行我们的证明。
+
+\begin{itemize}
+  \item 因为$I$是至多可数的，那么，存在一个双射$g: N \rightarrow I$，这里$N$是$\mathbb{N}$的子集。
+  \item 因为$A_{g(m)}$也是至多可数的，那么，存在一个单射$f_m : A_{g(m)} \rightarrow \mathbb{N}$。
+  对所有$m \in N$, 设$F_m$是所有$A_{g(m)} \rightarrow \mathbb{N}$的函数集合。由于$F_m$是非空的，
+  由选择定理可知，我们可以在每个集合中选一个单射函数，得到一个至多可数集合$\{f_m\}_{m \in N}$。
+  \item 现在可以考虑$x \in \bigcup \limits_{\alpha \in I} A_{\alpha} = \bigcup \limits_{m \in N} A_{g(m)}$，
+  $x$属于多个$A_{g(m)}$这个问题了。集合$\{m \in N : x \in A_{g(m)}\}$，因为集合是$\mathbb{N}$的子集，
+  由良序原理（命题8.1.4）可知，该集合存在一个最小值$n$。
+  \item 现在定义一个函数$h: \bigcup \limits_{m \in N} A_{g(m)} \rightarrow \mathbb{N} \times \mathbb{N}$，
+  对所有$x \in \bigcup \limits_{m \in N} A_{g(m)}$，定义$h(x) = (n, f_n(x))$，其中$n$是之前定义的最小值。
+  $h$是单射的，因为对任意$x$，$n$是唯一的，并且$f_n$是单射函数。
+  于是$\bigcup \limits_{m \in N} A_{g(m)}$是至多可数的。
+\end{itemize}
 
 \section*{8.1.10}
 没找到！

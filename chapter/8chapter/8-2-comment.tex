@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+
+$\bigstar \textbf{定义}8.2.1 \textbf{定义明确性}$
+
+假设双射函数$h: \mathbb{N} \rightarrow X$。
+需要证明：
+\begin{align*}
+    \sum \limits_{n=0}^\infty f(g(n)) = \sum \limits_{m=0}^\infty f(h(m))
+\end{align*}
+
+可以定义$a_n$为
+\begin{align*}
+    a_n := f(g(n))
+\end{align*}
+现在，根据命题7.4.3只需要找到一个双射。
+
+定义$w: \mathbb{N} \rightarrow \mathbb{N}$为
+\begin{align*}
+    w(m) := h^{-1} \circ g(m)
+\end{align*}
+
+因为$g$是$\mathbb{N} \rightarrow X$的双射，且
+$h$是$\mathbb{N} \rightarrow X$，那么$h^{-1}$是$\mathbb{N} \rightarrow X$的双射，
+所以，这两个函数的复合函数$w$是双射函数。又因为
+\begin{align*}
+    \sum \limits_{m=0}^\infty f(h(m)) = \sum \limits_{m=0}^\infty a_{w(m)}
+\end{align*}
+由命题7.4.3可知
+\begin{align*}
+    \sum \limits_{n=0}^\infty a_n                 & = \sum \limits_{m=0}^\infty a_{w(m)} \\
+    \Rightarrow \sum \limits_{n=0}^\infty f(g(n)) & = \sum \limits_{m=0}^\infty f(h(m))
+\end{align*}
+
+
+$\bigstar \textbf{定理}8.2.2$
+
+（1）书中
+\begin{align*}
+    \sum \limits_{n=0}^N \sum \limits_{m=0}^M \leq \sum \limits_{(n,m) \in X}f(n,m)
+\end{align*}
+应该是错的，这里应该是相等的，即：
+\begin{align*}
+    \sum \limits_{n=0}^N \sum \limits_{m=0}^M = \sum \limits_{(n,m) \in X}f(n,m)
+\end{align*}
+
+（2）书中“当$M \rightarrow \infty$时，对上面的式子取上确界可得（利用极限定律并对$N$使用归纳法）”
+
+应该是错的，这里是对$M$进行归纳，$N$是看做固定值的。
+
+（3）证明：$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f(n,m)$是绝对收敛的，那么
+$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{+}(n,m)$
+和$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{-}(n,m)$也都是绝对收敛的。
+
+反证法，假设$f_{+}$是发散的，
+由$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f(n,m)$的部分和$S_N$等于
+$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{+}(n,m)$的部分和$S_{N+}$，
+$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{-}(n,m)$的部分和$S_{N-}$相加，
+即：
+\begin{align*}
+    S_N = S_{N+} + S_{N-}
+\end{align*}
+（注意：这里的部分和都是序列每项取绝对值的部分和）。
+
+由于$(S_N)_{N=0}^\infty$收敛，所以，对任意$\epsilon > 0$，都存在一个整数$M^\prime$，
+当$N \geq M^\prime$使得
+\begin{align}
+    |S_N - L| \leq \epsilon
+\end{align}
+
+当如果$f_{+}$是发散的，那个，存在一个整数$M^{\prime\prime}$，
+当$N \geq M^{\prime\prime}$使得
+\begin{align*}
+     & S_{N+} > L + \epsilon
+\end{align*}
+又因为$S_{N-} \geq 0$，所以，取$M = max(M^\prime, M^{\prime\prime})$，
+当$N \geq M$使得
+\begin{align*}
+    |S_N - L| & = |S_{N+} + S_{N-} - L | \\
+              & > \epsilon
+\end{align*}
+显然，与（1）式存在矛盾。所以$f_{+}$是收敛的。同理可证$f_{-}$收敛。
+
+$\bigstar \textbf{前提一定要是绝对收敛么？} $
+
+是的。首先第二个等式用到了命题7.4.3，而该命题的前提就是要求级数是绝对收敛的。
+
+对于第一个等式，在刚刚（上一个）的证明过程中，用到了$f_{+},f_(-)$的收敛性。
+而在条件收敛中，是没有这个性质的，这里举一个反例
+\begin{align*}
+    \sum \limits_{n=1}^\infty (-1)^n / n
+\end{align*}
+
+由命题7.2.12（交错级数判别法）可知，该级数收敛。
+而级数$f_{+} := \sum \limits_{n=1}^\infty 1 / n$是调和函数，是发散的（推论7.3.7）。
+
+\end{document}
