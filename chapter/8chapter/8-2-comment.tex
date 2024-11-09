@@ -29,7 +29,7 @@ $\bigstar \textbf{定义}8.2.1 \textbf{定义明确性}$
 \end{align*}
 
 因为$g$是$\mathbb{N} \rightarrow X$的双射，且
-$h$是$\mathbb{N} \rightarrow X$，那么$h^{-1}$是$\mathbb{N} \rightarrow X$的双射，
+$h$是$\mathbb{N} \rightarrow X$的双射，那么$h^{-1}$是$\mathbb{N} \rightarrow X$的双射，
 所以，这两个函数的复合函数$w$是双射函数。又因为
 \begin{align*}
     \sum \limits_{m=0}^\infty f(h(m)) = \sum \limits_{m=0}^\infty a_{w(m)}
@@ -89,12 +89,75 @@ $\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{-}(n,m)$的部分和$S_
 \end{align*}
 显然，与（1）式存在矛盾。所以$f_{+}$是收敛的。同理可证$f_{-}$收敛。
 
-$\bigstar \textbf{前提一定要是绝对收敛么？} $
+$\textbf{（4）最后一句话，有个需要证明的部分。}$
+\begin{align*}
+    \sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f(n,m)
+    = \sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{+}(n,m)
+    +
+    \sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{-}(n,m)
+\end{align*}
+其中，$\sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{+}(n,m)$与
+$ \sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{-}(n,m)$绝对收敛的。
+
+感觉是结论是明显的，但这里有以下问题：
+\begin{itemize}
+    \item 书中没有明确定义双重级数。
+    \item 回到定义7.2.2（级数的收敛），部分和$S_N = \sum \limits_{n=0}^N \sum \limits_{m=0}^\infty f(n,m)$
+          因为其包含一个无限级数，处理起来没有想象中那么简单。
+\end{itemize}
+不妨设$\sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{+}(n,m)$与
+$ \sum \limits_{n=0}^\infty \sum \limits_{m=0}^\infty f_{-}(n,m)$的部分和分别是$S_{N+}$，$S_{N-}$。
+那么，如果能证明：
+\begin{align*}
+    S_N = S_{N+} + S_{N-}
+\end{align*}
+则利用极限定律，可以完成证明。
+
+对$m$进行归纳，$m = 0$时，由命题7.1.11（b）可知
+\begin{align*}
+    S_N    & = \sum \limits_{n=0}^N \sum \limits_{m=0}^0 f(n,m)          \\
+           & = \sum \limits_{n=0}^N f(n,0)                               \\
+    S_{N+} & = \sum \limits_{n=0}^\infty \sum \limits_{m=0}^0 f_{+}(n,m) \\
+           & = \sum \limits_{n=0}^N f_{+}(n,0)                           \\
+    S_{N-} & = \sum \limits_{n=0}^\infty \sum \limits_{m=0}^0 f_{-}(n,m) \\
+           & = \sum \limits_{n=0}^N f_{-}(n,0)                           \\
+\end{align*}
+因为$f(n,0) = f_{+}(n,0) + f_{-}(n,0)$，由引理7.1.4（c）可知
+\begin{align*}
+    S_N = S_{N+} + S_{N-}
+\end{align*}
+
+归纳假设$m=k$时，命题成立。
+
+$m = k+1$时，由引理7.1.4（a）可知
+\begin{align*}
+    S_N & = \sum \limits_{n=0}^N \sum \limits_{m=0}^{k+1} f(n,m)                       \\
+        & = \sum \limits_{n=0}^N \big (\sum \limits_{m=0}^{k} f(n,m) + f(n,k+1) \big )
+\end{align*}
+同理可知
+\begin{align*}
+    S_{N+} & = \sum \limits_{n=0}^N \big (\sum \limits_{m=0}^{k} f_{+}(n,m) + f_{+}(n,k+1) \big ) \\
+    S_{N-} & = \sum \limits_{n=0}^N \big (\sum \limits_{m=0}^{k} f_{-}(n,m) + f_{-}(n,k+1) \big )
+\end{align*}
+因为$k \in \mathbb{N}$（即：是有限值），所以
+\begin{align*}
+    S_N & = \sum \limits_{n=0}^N \big (\sum \limits_{m=0}^{k} f(n,m) + f(n,k+1) \big )         \\
+        & = \sum \limits_{n=0}^N \sum \limits_{m=0}^{k} f(n,m) + \sum \limits_{n=0}^N f(n,k+1) \\
+\end{align*}
+同理$S_{N+},S_{N-}$同样成立。
+
+利用归纳假设，可以证得$S_N = S_{N+} + S_{N-}$。
+
+至此，归纳完成。
+
+然后利用极限定律，即可完成证明。
+
+$\textbf{（5）前提一定要是绝对收敛么？} $
 
 是的。首先第二个等式用到了命题7.4.3，而该命题的前提就是要求级数是绝对收敛的。
 
-对于第一个等式，在刚刚（上一个）的证明过程中，用到了$f_{+},f_(-)$的收敛性。
-而在条件收敛中，是没有这个性质的，这里举一个反例
+对于第一个等式，在刚刚（3）中，$f$是绝对收敛，则$f_{+},f_{-}$也是绝对收敛的。
+而在$f$是条件收敛的情况下，是没有这个性质的，这里举一个反例
 \begin{align*}
     \sum \limits_{n=1}^\infty (-1)^n / n
 \end{align*}
