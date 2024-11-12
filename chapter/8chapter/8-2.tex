@@ -8,81 +8,199 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 
+
+% 定义新的带灰色背景的说明环境 zremark
 \newmdtheoremenv[
   backgroundcolor=gray!10,
-  linewidth=0pt,
-  innerleftmargin=10pt,
-  innerrightmargin=10pt,
-  innertopmargin=10pt,
-  innerbottommargin=10pt
-]{zgraytheorem}{}
-% 定义说明环境样式
-\newtheoremstyle{mystyle}% 说明环境样式的名称
-  {1em}% 上方间距
-  {1em}% 下方间距
-  {\normalfont}% 说明内容的字体样式
-  {}% 缩进量
-  {\bfseries}% 说明标记的字体样式
-  {.}% 说明标记和说明内容之间的标点
-  {1em}% 说明标记后的水平空间
-  {}% 说明标记后的垂直空间
-% 使用新定义的样式创建说明环境
-\theoremstyle{mystyle}
-\newtheorem*{zremark}{说明}
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
 
 
 \begin{document}
 \title{8.2 习题}
+\author{张志聪}
 \maketitle
 
 \section*{8.2.1}
 
 令
 \begin{align*}
-  S = \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \}
+  S = \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteq X , A \text{是有限集} \right \}
 \end{align*}
 
-$\bigstar \Rightarrow$
+\begin{itemize}
+  \item $\Rightarrow$
+        如果$X$是有限集，这是命题是显然的；
 
-如果$X$是有限集，这是命题是显然的。
+        如果$X$是可数集。
+        因为$X$是可数集，那么存在双射函数$g: \mathbb{N} \rightarrow X $，
+        又因为级数$\sum \limits_{x \in X}f(x)$绝对收敛，那么
+        \begin{align*}
+          \sum \limits_{x \in X} |f(x)| = \sum \limits_{n=0}^\infty |f(g(n))|
+        \end{align*}
 
-如果$X$是可数集。
-因为$X$是可数集，那么存在双射函数$g: \mathbb{N} \rightarrow X $，
-又因为级数$\sum \limits_{x \in X}f(x)$绝对收敛，那么
+        任意元素$e \in S, e = \sum \limits_{x \in A} |f(x)|: A \subseteq X$，所以
+        有一个有限集$N^\prime \subseteq \mathbb{N}, A = g(N^\prime)$，
+        因为$N^\prime$是有限集，所有存在自然数$k$，使得$max(N^\prime) \leq k$，于是，
+        \begin{align*}
+          e = \sum \limits_{x \in A} |f(x)| = \sum \limits_{n \in N^\prime} |f(g(n))| \leq \sum \limits_{n=0}^k |f(g(n))| \leq \sum \limits_{n=0}^\infty |f(g(n))|
+        \end{align*}
+        所以，$e$是有限的，由$e$的任意性可知，集合$S$有上界，
+        所以，
+        \begin{align*}
+          \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteq X , A \text{是有限集} \right \} < \infty
+        \end{align*}
+  \item $\Leftarrow$
+        反证法，假设级数$\sum \limits_{x \in X}f(x)$绝对发散。
+
+        因为
+        \begin{align*}
+          \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteq X , A \text{是有限集} \right \} < \infty
+        \end{align*}
+        设$\sup S \leq M$。因为$\sum \limits_{x \in X}f(x)$绝对发散，
+        所以存在自然数$N$使得
+        \begin{align*}
+          \sum \limits_{n=0}^N |f(g(n))| > M
+        \end{align*}
+        令$A = g({n \in \mathbb{N}: 0 \leq n \leq N})$，因为$A$是有限集，且$A \in S$，
+        所以
+        \begin{align*}
+          \sum \limits_{x \in A} |f(x)| = \sum \limits_{n=0}^N |f(g(n))| \leq M
+        \end{align*}
+        存在矛盾。
+\end{itemize}
+
+\section*{8.2.2}
+
+这道题没有证明的必要了，提示就是一个简要的证明了。
+
+\section*{8.2.3}
+
+\begin{zremark}
+  当X是不可数集时，
+  由于$\sum \limits_{x \in X}f(x) := \sum \limits_{x \in X: f(x)\not = 0}f(x)$，
+  所以，由引理8.2.5 可知，$\{x \in X: f(x)\not = 0\}$是至多可数的，
+  于是证明时只需说明至多可数的情况即可。
+
+  只讨论$X$可数集，$X$是有限集，命题7.2.14已经覆盖。
+\end{zremark}
+
+因为$\sum \limits_{x \in X} f(x)$，$\sum \limits_{x \in X} g(x)$绝对收敛，
+所以存在某个双射$h: \mathbb{N} \rightarrow X$，使得
+$\sum \limits_{n=0}^\infty f(h(n))$与
+$\sum \limits_{n=0}^\infty g(h(n))$是绝对收敛点的，且
 \begin{align*}
-  \sum \limits_{x \in X} |f(x)| = \sum \limits_{n=0}^\infty |f(g(n))|
+  \sum \limits_{x \in X} f(x) = \sum \limits_{n=0}^\infty f(h(n)) \\
+  \sum \limits_{x \in X} g(x) = \sum \limits_{n=0}^\infty g(h(n))
 \end{align*}
 
-任意元素$e \in S, e = \sum \limits_{x \in A} |f(x)|: A \subseteqq X$，所以
-有一个有限集$N^\prime, A = g(N^\prime)$，因为$N^\prime$是有限集，所有存在自然数$k$，
-使得$max(N^\prime) \leq k$，于是，
-\begin{align*}
-  e = \sum \limits_{x \in A} |f(x)| = \sum \limits_{n \in N^\prime} |f(g(n))| \leq \sum \limits_{n=0}^k |f(g(n))| \leq \sum \limits_{n=0}^\infty |f(g(n))| 
-\end{align*}
-所以，$e$是有限的，由$e$的任意性可知，集合$S$有上界，
-所以，
-\begin{align*}
-  \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \} < \infty
-\end{align*}
+\begin{itemize}
+  \item （a）
+        由定义8.2.1可知，$\sum \limits_{n=0}^\infty \big(f(h(n))+g(h(n))\big)$绝对收敛，
+        可以说明$\sum \limits_{x \in X} \big(f(x)+g(x)\big)$是绝对收敛的。
 
-$\bigstar \Leftarrow$
+        因为$\sum \limits_{n=0}^\infty f(h(n))$与$\sum \limits_{n=0}^\infty g(h(n))$绝对收敛，
+        由命题7.2.14（a）可知，$\sum \limits_{n=0}^\infty |f(h(n))|+|g(h(n))|$收敛，
+        设其收敛与$M$，又因为
+        \begin{align*}
+          |f(n) + g(n)| \leq |f(n)| + |g(n)|
+        \end{align*}
+        于是由命题7.3.1可知，$\sum \limits_{n=0}^\infty |f(h(n))+g(h(n))|$收敛，
+        所以$\sum \limits_{x \in X} \big(f(x)+g(x)\big)$是绝对收敛的。
 
-反证法，假设级数$\sum \limits_{x \in X}f(x)$绝对发散。
+        \begin{align*}
+          \sum \limits_{x \in X} \big(f(x)+g(x)\big) = \sum \limits_{x \in X} f(x) + \sum \limits_{x \in X} g(x) \\
+        \end{align*}
+        该公式的所有项都是绝对收敛的，也就是说其也是条件条件收敛的，由命题7.2.14（a）保证了该公式的正确性。
+  \item （b）$\sum \limits_{x \in X} f(x)$绝对收敛，
+        可知$\sum \limits_{n=0}^\infty f(h(n))$绝对收敛于某个实数$M$。
+        $\sum \limits_{n=0}^\infty |cf(h(n))|$的部分和$S_{Nc} \leq |c|M$，命题7.3.1保证了该级数收敛。
 
-因为
-\begin{align*}
-  \sup \left \{ \sum \limits_{x \in A} |f(x)|: A \subseteqq X , A \text{是有限集} \right \} < \infty
-\end{align*}
-设$\sup S \leq M$。因为$\sum \limits_{x \in X}f(x)$绝对发散，
-所以存在自然数$N$使得
-\begin{align*}
-  \sum \limits_{n=0}^N |f(g(n))| > M
-\end{align*}
-令$A = g({n \in \mathbb{N}: 0 \leq n \leq N})$，因为$A$是有限集，且$A \in S$，
-所以
-\begin{align*}
-  \sum \limits_{x \in A} |f(x)| = \sum \limits_{n=0}^N |f(g(n))| \leq M
-\end{align*}
-存在矛盾。
+        \begin{align*}
+          \sum \limits_{x \in X} cf(x) = c \sum \limits_{x \in X} f(x)
+        \end{align*}
+        由命题7.2.14（b）可知保证。
+
+  \item （c）$\Rightarrow$：$X_1,X_2$一定有一个是可数集，不妨设$X_1$是可数集。
+        反证法，假设$\sum \limits_{x \in X_{1}} f(x)$绝对发散，
+        不妨设$\sum \limits_{x \in X} f(x)$绝对收敛于$M$。
+        因为$X_1$是可数集，所以存在某个双射$h_1: \mathbb{N} \rightarrow X_1$，
+        由于$\sum \limits_{x \in X_{1}} f(x)$绝对发散，所以存在一个整数$N$使得
+        \begin{align*}
+          \sum \limits_{n=0}^N |f(h_1(n))| > M
+        \end{align*}
+        因为$X_1$是$X$的子集，所以有限集$Y := \{x \in X_1, f(x) \leq N\}$也是$X$的子集，
+        取$m = max(h^{-1}(Y))$，此时，
+        \begin{align*}
+          \sum \limits_{n=0}^m |f(h(n))| > M
+        \end{align*}
+        存在矛盾。
+
+        至于等式，证明起来，不是那么简单，因为这里的集合是不一致的，接下来的证明注意对集合的处理。
+
+        $\circ$ 如果$X_2$也是可数集，那么存在双射
+        $h_1: \mathbb{N} \rightarrow X_1$，
+        $h_2: \mathbb{N} \rightarrow X_2$，
+        定义$h: \mathbb{N} \rightarrow X$如下：
+        \begin{equation}
+          \begin{cases*}
+            h(2n) = h_1(n) \\
+            h(2n+1) = h_2(n)
+          \end{cases*}
+        \end{equation}
+        以上定义的$h$都是双射。因为
+        \begin{align*}
+           & \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N \big(f(h_1(n)) + f(h_2(n))\big) \\
+           & = \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N  f(h(n))
+        \end{align*}
+        于是，
+        \begin{align*}
+          \sum \limits_{x \in X_1} f(x) + \sum \limits_{x \in X_2} f(x) = \sum \limits_{x \in X} f(x)
+        \end{align*}
+
+        $\circ$如果$X_2$是有限集，设基数是$m$，定义$Y := \{i \in \mathbb{N} : i < m\}$，存在双射
+        $h_1: \mathbb{N} \setminus Y \rightarrow X_1$
+        \begin{zremark}
+          因为$X_1$是可数集，则存在双射$h_1: \mathbb{N} \rightarrow X_1$，
+          又因为$\sum \limits_{x \in X_1} f(x) $是绝对收敛的，所以
+          \begin{align*}
+             & \sum \limits_{x \in X_1} f(x)           \\
+             & = \sum \limits_{n=0}^\infty f(h_1(n))   \\
+             & = \sum \limits_{n=m}^\infty f(h_1(n-m)) \\
+          \end{align*}
+          第二个等式的成立可以通过部分和序列的相等证明，思路如下：
+          设$\sum \limits_{n=0}^\infty f(h_1(n))$、$\sum \limits_{n=m}^\infty f(h_1(n-m))$
+          的部分和分别为$S_N, S_{N}^\prime$。由$(S_N)_{N=0}^\infty$序列的收敛性，
+          并由命题7.2.5 可知，对任意$\epsilon > 0$，存在一个整数$K, n \geq K+m$，使得
+          \begin{align*}
+             & |S_n - S_{n}^\prime|                                                 \\
+             & = |\sum \limits_{n=p}^{p+m} f(h_1(n))| \leq \epsilon & \text{p大于等于K} \\
+          \end{align*}
+          这里的$n \geq K + m$的原因是，$S_0 = S_m^\prime$，所以$S_n$比$S_n^\prime$
+          多$m$个项，所以这$m$个项必须都是大于$K$的项，相加才会小于等于$\epsilon$，
+          所有两者的部分和是最终$-\epsilon$相等的，所以收敛于同一个值。
+        \end{zremark}
+
+        $h_2: Y \rightarrow X_2$，
+        定义$h: \mathbb{N} \rightarrow X$如下：
+        \begin{equation}
+          \begin{cases*}
+            h(n) = h_1(n-m) \text{  if  } n \geq m \\
+            h(n) = h_2(n) \text{  if  } n < m
+          \end{cases*}
+        \end{equation}
+
+        以上定义的$h$都是双射。因为
+        \begin{align*}
+           & = \sum \limits_{n=0}^{m-1} f(h_2(n)) + \lim \limits_{N \rightarrow \infty} \sum \limits_{n=m}^N f(h_1(n)) \\
+           & = \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N  f(h(n))
+        \end{align*}
+        于是，
+        \begin{align*}
+          \sum \limits_{x \in X_1} f(x) + \sum \limits_{x \in X_2} f(x) = \sum \limits_{x \in X} f(x)
+        \end{align*}
+
+\end{itemize}
 
 \end{document}
