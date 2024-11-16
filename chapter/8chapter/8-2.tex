@@ -270,7 +270,29 @@ $\sum \limits_{n=0}^\infty g(h(n))$是绝对收敛点的，且
 
         因为情形$I$与情形$II$的都是无限多次的，且在$A_{+},A_{-}$都是以递增的方式取出的，
         所以$a_{j+}, a_{j-}$最终都会大于$N$，于是$\lim \limits_{j \rightarrow \infty} a_{n_j} = 0$。
-  \item 说明其是柯西序列来证明其收敛性（定理6.4.18）??? 翻转
+  \item 由$\lim \limits_{j \rightarrow \infty} a_{n_j} = 0$ 可知，
+        对任意$\epsilon > 0$，存在整数$N$，对所有的$j \geq N$都有
+        \begin{align*}
+          |a_{n_j}| \leq \frac{1}{2} \epsilon
+        \end{align*}
+        因为情形$I$与情形$II$都会出现无限次，也就是说在$N$之后，即$j \geq N, j \rightarrow \infty$，
+        \begin{align*}
+          \sum \limits_{0 \leq i < j} a_{n_i}
+        \end{align*}
+        会翻转无限次，设翻转的位置为$k_0,k_1,...$。设$(a_{n_i})_{i=0}^\infty$序列的部分和为$S_N$，
+        对任意$n_1, n_2 \geq N, n_1 \neq n_2$，因为$n_1, n_2$一定在两个翻转点之间（或正好在翻转点上），
+        而这些翻转点与$L$的距离都小于$\frac{1}{2}\epsilon$，由命题4.3.7（f）可知，
+        \begin{equation*}
+          \begin{cases*}
+            |S_{n_1} - L| \leq \frac{1}{2} \epsilon \\
+            |S_{n_2} - L| \leq \frac{1}{2} \epsilon
+          \end{cases*}
+        \end{equation*}
+        由上式可得，
+        \begin{align*}
+           & |S_{n_1} - S_{n_2}| \leq \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知其收敛于$L$。
 \end{itemize}
 
 \section*{8.2.6}
