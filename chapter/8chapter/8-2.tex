@@ -149,10 +149,11 @@ $\sum \limits_{n=0}^\infty g(h(n))$是绝对收敛点的，且
             h(2n+1) = h_2(n)
           \end{cases*}
         \end{equation}
-        以上定义的$h$都是双射。因为
+        以上定义的$h$是双射。因为
         \begin{align*}
            & \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N \big(f(h_1(n)) + f(h_2(n))\big) \\
-           & = \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N  f(h(n))
+           & = \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N  f(h(n))                      \\
+          %  & = \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N f(h_1(n)) + \lim \limits_{N \rightarrow \infty} \sum \limits_{n=0}^N f(h_2(n)) \\
         \end{align*}
         于是，
         \begin{align*}
@@ -200,7 +201,80 @@ $\sum \limits_{n=0}^\infty g(h(n))$是绝对收敛点的，且
         \begin{align*}
           \sum \limits_{x \in X_1} f(x) + \sum \limits_{x \in X_2} f(x) = \sum \limits_{x \in X} f(x)
         \end{align*}
-
+        $\Leftarrow$ 绝对收敛的证明与上一个等式的等式一致（上个等式的证明不需要其是绝对收敛的），这里说一下思路：
+        因为，
+        \begin{align*}
+           & \sum \limits_{x \in X_1} |h(x)| + \sum \limits_{x \in X_2} |h(x)| = \sum \limits_{x \in X} |h(x)| \\
+        \end{align*}
+        证明方法与条件收敛的等式一致，因为，
+        $\sum \limits_{x \in X_1} |h(x)|,\sum \limits_{x \in X_2} |h(x)|$都是收敛的，所以
+        $\sum \limits_{x \in X} |h(x)|$也是收敛的。
+  \item （d）是命题7.1.11（c）的扩展，证明方式也是一致的，都是利用级数的值与双射的选取无关，具体证明略。
+        % 因为$X$是可数集，$\phi : Y \rightarrow X$是一个双射，所以$Y$与$X$的基数是相同的，
+        % 于是$Y$也是可数集。
 \end{itemize}
+
+\section*{8.2.4}
+\begin{zremark}
+  $\sum \limits_{n \in A_{+}} a_n$的含义是什么，因为$A_{+}$是一个集合，
+  也就意味着其中的元素是没有顺序的，那么，$\sum \limits_{n \in A_{+}} a_n$收敛，
+  是否任意顺序的求和都是收敛的？
+
+  回顾书中定义 8.2.1是没有明确说明的，我个人推测是任意顺序的收敛（如果能找到佐证，我会回来纠正）
+  。因为存在异议，所以接下来的证明，没有对顺序进行要求（或假设），
+  直观感受就是：你爱什么顺序就什么顺序，我们只利用收敛与发散的性质。
+
+  当然这里的$A_{+}$具有特殊性，因为$a_n: n \in A_{+}$都是非负数，
+  只要存在某个顺序的求和是收敛的，
+  也就意味着是绝对收敛的，命题7.4.3（级数的重排列）进而保证了，任意顺序求和也是收敛的。
+
+  $A_{-}$也具有特殊性，有命题7.2.14（b）也能保证，其是绝对收敛的，从而再次利用命题7.4.3（级数的重排列），
+  可以说明其任意顺序求和也是收敛的。
+\end{zremark}
+
+通过说明可知，这里的条件收敛与绝对收敛是一致的。
+
+\begin{itemize}
+  \item  如果两个级数都是收敛的，则由命题8.2.6（绝对收敛级数的定律）可知，
+        $\sum \limits_{n=0}^\infty a_n$也是绝对收敛的，与题设矛盾。
+  \item  如果只有一个是收敛的，也就意味着另一个是发散的。
+        这里不妨设$\sum \limits_{n \in A_{+}}$是收敛于$M$。
+        那么，对任意的$\epsilon > 0$，存在整数$N_{+}$使得$n \geq N_{+}$部分和
+        \begin{align*}
+          |S_{n}^{+} - M| \leq \epsilon
+        \end{align*}
+        也就是说$S_{n}^{+}$是一个有限值，
+        而$\sum \limits_{n \in A_{-}} a_n$是发散的，其部分和$S_{n}^{-}$可以小于任何实数。
+        即对任意实数$r$，存在$n$使得
+        \begin{align*}
+          |S_{n}^{-} + S_{n}^{+}| \geq r
+        \end{align*}
+        与题设$\sum \limits_{n=0}^\infty$收敛矛盾。
+\end{itemize}
+
+\section*{8.2.5}
+
+\begin{itemize}
+  \item 因为如果是有限集，则必定是条件收敛的，与命题8.2.7矛盾。
+  \item 与命题8.2.7矛盾。
+  \item 单射由$n_j$的定义保证的。【感觉没啥好说的啊，或者是我没读懂题】
+  \item 反证法，假设情形$I$出现了有限次，不妨设$K$后情形$I$不再满足，
+        即：$i = K$时，$\sum \limits_{0 \leq i < K} a_{n_i} = M \geq L$，
+        此时，$M = M_{+} + M_{-}$，其中$M_{+}$是$A_{+}$中元素$j$对应的$a_j$求和，
+        其中$M_{-}$是$A_{-}$中元素$j$对应的$a_j$求和。
+        因为$\sum \limits_{n \in A_{-}} a_{n}$是发散的，存在$N_{-}$，当$n \geq N_{-}$使得
+        其部分和$S_{n}^{-} < L - M^{+}$，此时，$M^{+} + S_{n}^{-} < L$，情形$II$不再满足。
+  \item 满射由$n_j$的定义保证的。【感觉没啥好说的啊，或者是我没读懂题】
+  \item 由推论7.2.6 可知 $\lim \limits_{n \rightarrow \infty} a_n = 0$，
+        即对任意$\epsilon > 0$，都存在整数$N, n \geq N$使得$|a_n - 0| \leq \epsilon$。
+
+        因为情形$I$与情形$II$的都是无限多次的，且在$A_{+},A_{-}$都是以递增的方式取出的，
+        所以$a_{j+}, a_{j-}$最终都会大于$N$，于是$\lim \limits_{j \rightarrow \infty} a_{n_j} = 0$。
+  \item 说明其是柯西序列来证明其收敛性（定理6.4.18）??? 翻转
+\end{itemize}
+
+\section*{8.2.6}
+
+$\sum \limits_{n \in A_{+}} a_n$就是发散的，所以其是发散到$+\infty$
 
 \end{document}
