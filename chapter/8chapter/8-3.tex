@@ -24,5 +24,56 @@
 
 \section*{8.3.1}
 
+对$n$进行归纳。
+
+归纳基始，$n=0$，此时，$X$是空集，$\#(X) = 0$，$2^0=1$，这与空集的子集只有它本身是一致的。
+
+归纳假设，$n=k$时，$\#(2^{X}) = 2^k$。
+
+当$n=k+1$时， 在$X$中任取一个元素$x_0$，此时，设$X^\prime = X \setminus \{x_0\}$。
+对$2^{X}$的任意子集$A$：
+\begin{itemize}
+  \item 如果$x_0 \not \in A$，此时$A \subseteq 2^{X^\prime}$，由归纳假设可知，这样的子集有$2^k$个。
+  \item 如果$x_0 \in A$，定义$A^\prime := A \setminus \{x_0\}$，显然$A^\prime \subseteq 2^{X^\prime}$，
+        因为$A^\prime$有$2^k$个，所以$A^\prime \cup \{x_0\}$有$2^k$。
+\end{itemize}
+综上，$2^k + 2^k = 2^{k+1}$。
+
+\section*{8.3.2}
+
+\begin{zremark}
+  一开始，觉得题目不对！
+  理由如下：由题设，$A \subseteq C$且单射$f: C \rightarrow A$可知，
+  $f(C)$与$C$是双射，而$f(C) \subseteq A$，所以只有$C=A$才能满足题设，进而$A=B=C$。
+  那么，$D_0 = B \setminus A = \varnothing$，就没有证明的必要了。
+
+  问题出在对习题3.6.7的理解上了，这里只能证明$\#(A) = \#(B) = \#(C)$，而无法证明$A = B = C$，
+  举一个反例，自然数$N$与偶数集合的基数相等，也可以构建一个单射，
+  但不妨碍偶数集合是自然数子集这一事实。
+\end{zremark}
+
+（1）命题与$D_{n} \cap D_{n+1} = \varnothing$等价。对$n$进行归纳。
+
+归纳基始，$n = 0$时，$D_0 := B \setminus A, D_1 := f(D_0)$。
+反证法，假设$D_0 \cap D_1 \neq \varnothing $，由题设可知$D_1 \subseteq A$，
+因为$D_0 \cap D_1 \neq \varnothing $，所以存在元素$x \in D_0, D_1, A$，
+这与$D_0 := B \setminus A$矛盾。
+
+归纳假设，$n = k$时，命题$D_{k} \cap D_{k+1} = \varnothing$成立。
+
+当$n = k+1$时，$D_{k+2} := f(D_{k+1})$。
+反证法，假设$D_{k+2} \cap D_{k+1} \neq \varnothing$，
+即存在$d_0 \in D_{k+2}, D_{k+1}$，又因为$D_{k+1} = f(D_k)$，
+于是，存在$x_0, x_1$使得
+\begin{equation*}
+  \begin{cases*}
+    d_0 = f(x_0) \text{ 其中} x_0 \in D_k, f(x_0) \in D_{k+1} \\
+    d_0 = f(x_{1}) \text{ 其中}  x_{1} \in D_{k+1}, f(x_1) \in D_{k+2}
+  \end{cases*}
+\end{equation*}
+由归纳假设可知$x_0 \neq x_1$，这与$f$是单射的矛盾。
+
+（2）$A$和$B$有相同的基数，在说明中已阐述。
+
 
 \end{document}
