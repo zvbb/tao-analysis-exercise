@@ -75,5 +75,22 @@
 
 （2）$A$和$B$有相同的基数，在说明中已阐述。
 
+\begin{itemize}
+  \item 单射；函数$g$的定义域被定义成两个部分，各自显然是单射的，现在要证明两个部分的值域没有交集。
+        反证法，假设存在$x_0 \in \bigcup \limits_{n=0}^\infty D_n, x_1 \not \in \bigcup \limits_{n=0}^\infty D_n, x_0 \neq x_1$，
+        使得$g(x_0) = g(x_1)$，即：$f^{-1}(x_0) = x_1$，$f(x_1) = x_0$。
+
+        因为$x_0 \in \bigcup \limits_{n=0}^\infty D_n$，
+        所以存在$x^\prime \in \bigcup \limits_{n=0}^\infty D_n$使得$f(x^\prime) = x_0$。
+        因为$x_1 \not \in \bigcup \limits_{n=0}^\infty D_n$，所以$x^\prime \neq x_1$，
+        于是$f(x^\prime) = f(x_1)$，这与$f$是单射矛盾。
+
+
+  \item 满射；对任意$y \in B$，
+        如果$y \in \bigcup \limits_{n=0}^\infty D_n$，由$f$的定义可知，
+        $f(y) \in A, f(y) \in \bigcup \limits_{n=0}^\infty D_n$，
+        满足$g$的定义，于是$f^{-1}(f(y)) = y$；
+        如果$y \not \in \bigcup \limits_{n=0}^\infty D_n$，有$g(y) = y$；
+\end{itemize}
 
 \end{document}
