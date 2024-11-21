@@ -73,8 +73,7 @@
 \end{equation*}
 由归纳假设可知$x_0 \neq x_1$，这与$f$是单射的矛盾。
 
-（2）$A$和$B$有相同的基数，在说明中已阐述。
-
+（2）
 \begin{itemize}
   \item 单射；函数$g$的定义域被定义成两个部分，各自显然是单射的，现在要证明两个部分的值域没有交集。
         反证法，假设存在$x_0 \in \bigcup \limits_{n=0}^\infty D_n, x_1 \not \in \bigcup \limits_{n=0}^\infty D_n, x_0 \neq x_1$，
@@ -92,5 +91,34 @@
         满足$g$的定义，于是$f^{-1}(f(y)) = y$；
         如果$y \not \in \bigcup \limits_{n=0}^\infty D_n$，有$g(y) = y$；
 \end{itemize}
+
+\section*{8.3.3}
+
+\begin{zremark}
+  这个习题，容易觉得无需证明，
+  \begin{equation*}
+    \begin{cases*}
+      \#(A) \leq \#(B) \\
+      \#(A) \geq \#(B)
+    \end{cases*}
+  \end{equation*}
+  得到$\#(A) = \#(B)$是显然。
+  但是，这里是把基数看做自然数了，这个假设不成立的。
+  自然数集合的基数明显不是自然数。
+
+  于是，我们只能老老实实利用基数相等的定义证明了。
+\end{zremark}
+
+目标是构造一个双射函数$g: A \rightarrow B$。利用习题8.3.2，只需找到满足条件的$A,B,C$与$f$即可。
+不妨设$f_1: A \rightarrow B$的单射，$f_2: B \rightarrow A$的单射。
+显然，$A,f_1(A)$的基数相同，$f_1(A) \subseteq B$,于是，如下定义，即可满足条件：
+\begin{equation*}
+  \begin{cases*}
+    A := f_1(A) \\
+    B := B      \\
+    C := B      \\
+    f := f_2
+  \end{cases*}
+\end{equation*}
 
 \end{document}
