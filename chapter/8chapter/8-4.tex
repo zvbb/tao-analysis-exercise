@@ -24,5 +24,45 @@
 
 \section*{8.4.1}
 
+\begin{itemize}
+  \item $\Rightarrow$ 书中的提示已经很明显了，这里不做证明了。
+  \item $\Leftarrow$ 把$X$看做选择公理的集合$I$，由题设可知对每一个$\alpha \in I$，
+        都至少存在一个$y \in Y$使得$P(\alpha,y)$为真，
+        定义$X_{\alpha} := \{y \in Y : P(\alpha,y) \text{为真}\}$，显然，$X_{\alpha}$是非空的。
+
+        接下来，要验证$\prod \limits_{\alpha \in I} X_\alpha$是非空的。
+
+        由命题8.4.7可知，存在一个函数$f: I \rightarrow Y$使得$P(\alpha,f(\alpha))$对所有的$\alpha \in I$均成立。
+        又由$X_{\alpha}$的定义可知$f(\alpha) \in X_{\alpha}$，于是，$f \in \prod \limits_{\alpha \in I} X_\alpha$，
+        所以$\prod \limits_{\alpha \in I} X_\alpha$是非空的。
+\end{itemize}
+
+\section*{8.4.2}
+
+\begin{itemize}
+  \item $\Rightarrow$ 由题设与选择公理可知，
+        $\prod \limits_{\alpha \in I} X_{\alpha}$是非空的，
+        即:存在一个函数$f$对每一个$\alpha \in I$都指定了一个元素$f(\alpha) \in X_\alpha$。
+        定义$Y := \{f(\alpha) : \alpha \in I\}$，此时$\#(Y \cap X_\alpha) = 1$。
+        反证法，假设存在某个$\alpha$使得$\#(Y \cap X_\alpha) \neq 1$，即：集合$Y$中有多个元素
+        属于$X_\alpha$，即存在$\alpha , \beta \in I$使得$f(\alpha), f(\beta) \in X_\alpha$，
+        这与题设$X_\alpha \cap X_\beta = \varnothing$矛盾。
+  \item $\Leftarrow$ 假设$I, X_\alpha$满足选择公理的前置条件，
+        通过$\{\alpha\} \times X_\alpha = \{(\alpha, x) : x \in X_\alpha \}$替换$X_\alpha$，可以构造出
+        一个不相交的集合簇$X_\alpha$，此时$\Rightarrow$的前置条件已满足，
+        于是，可以找到一个集合$Y$使得$\#(Y \cap X_\alpha) = 1$，
+        此时，我们可以定义一个函数$f$对每一个$\alpha \in I$都指定一个元素$(\alpha, x_\alpha) = Y \cap X_\alpha$，
+        这个$x_\alpha \in X_\alpha$（这里是一开始的$X_\alpha$）
+\end{itemize}
+
+\section*{8.4.3}
+
+\begin{itemize}
+  \item $\Rightarrow$对每一个$\alpha \in A$，定义$X_\alpha := \{ x : x \in B, g(x) = \alpha\}$，
+        由于$g$是满射，所以$X_\alpha$是非空的，由选择公理可知，存在一个函数$f$对每一个$\alpha \in A$
+        都指定一个元素$x_\alpha \in X_\alpha$，因为$x_\alpha \in B$，所以$f$是$A \rightarrow B$的单射。
+
+  \item $\Leftarrow$
+\end{itemize}
 
 \end{document}

@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{8.4 注释}
+\author{张志聪}
+\maketitle
+
+\section*{公理 8.1（选择公理）}
+
+一看到这个公理我就感到困惑，“为什么笛卡尔积的有限选取（引理3.5.12）不能自动推广到无限选取”。
+而3.5.12中是对$n$进行了归纳的，是可以推广到无限自然数的。
+
+无法推广的原因可能如下：
+
+\begin{itemize}
+  \item $I$不一定是可数集，此时数学归纳法失效。
+  \item 循环论证的问题。书中8.4.3 说明了选择公理可以推导出一些$\textbf{非构造性}$的证明，而
+        引理3.1.6就是选择公理的极端情况，而引理3.5.12的证明用到了引理3.1.6
+\end{itemize}
+
+
+\end{document}
