@@ -62,7 +62,33 @@
         由于$g$是满射，所以$X_\alpha$是非空的，由选择公理可知，存在一个函数$f$对每一个$\alpha \in A$
         都指定一个元素$x_\alpha \in X_\alpha$，因为$x_\alpha \in B$，所以$f$是$A \rightarrow B$的单射。
 
-  \item $\Leftarrow$
+  \item $\Leftarrow$ 提示让我们利用习题8.4.2。这里显然是利用其逆命题，
+        所以我们要找到满足8.4.2的前置条件的集合$Y$。
+
+        公理8.1的前置条件中，显然是不满足对任意$\alpha, \beta \in I$都有$X_\alpha \cap X_\beta = \varnothing$，
+        但可以像之前8.4.2中一样处理，通过$\{\alpha\} \times X_\alpha = \{(\alpha, x) : x \in X_\alpha \}$替换$X_\alpha$，
+        此时的$X_\alpha$就是满足8.4.2的前置条件了。
+
+        现在我们需要找到对任意$\alpha \in I$的满射函数$g_\alpha : X_\alpha \rightarrow \{\alpha\}$为
+        \begin{align*}
+          g_\alpha(x) = \alpha
+        \end{align*}
+        所以，由习题8.4.3找到一个单射$f_\alpha : \{\alpha\} \rightarrow X_\alpha$。
+
+        现在定义集合$Y$如下：
+        \begin{align*}
+          Y := \{f_\alpha(\alpha) : \alpha \in I\}
+        \end{align*}
+        显然$\#(Y \cap X_\alpha) = 1$对所有的$\alpha \in I$均成立。
+
+        既然$Y$已经构造出来，那么由8.4.2的逆命题，可以说明此时选择公理也成立。
+
 \end{itemize}
+
+\begin{zremark}
+  8.4.2的逆命题，需要保证$Y$的存在性，
+  为了避免循环论证，我们不能使用选择公理来说明$Y$的存在性，
+  我们需要自己构造出$Y$，且不能使用选择公理构造（这里是利用习题8.4.3构造的）。
+\end{zremark}
 
 \end{document}
