@@ -155,9 +155,18 @@ $n = k + 1$，设$Y^\prime = Y \setminus \{x\}$，$x$可以是$Y$中的任意元
 \section*{8.5.13}
 
 \begin{zremark}
-  这个结论不是太直观，书中定义“好的”，其实是想保证子集$Y$是按照大小顺序放入元素的，
-  举个栗子，比如$x_0 = 0$，那么，$Y$可以是$\{0, 1, 2, 3,...\}$，而不能是$0, 2, 3, 4,...$，
-  因为后者无法满足“好的”性质，书中的下文也有说明，只是不够直观。
+  这个结论不是太直观，书中定义“好的”，其实是想保证子集$Y$都是按照相同顺序放入元素的。
+
+  举个直观的例子，比如$x_0 = 0$，那么，定义不满足条件的子集$Y,Y^\prime$如下：
+  \begin{align*}
+    Y        & := \{0, 1, 2, 3, 4,...\} \\
+    Y^\prime & := \{ 0, 1, 2, 4,... \}
+  \end{align*}
+
+  前者$\{y \in Y: y < 3\} = \{0, 1, 2\}, s(\{y \in Y: y < 3\}) = 3$；
+  后者是$\{y \in Y^\prime: y < 4\} = \{0, 1, 2\}, s(\{y \in Y^\prime: y < 4\}) = 4$。
+
+  这与函数的定义矛盾，相同的自变量$\{0, 1, 2\}$对应函数值$s(\{0, 1, 2\})$却不一样。
 \end{zremark}
 
 按照提示进行证明。
@@ -168,39 +177,36 @@ $n = k + 1$，设$Y^\prime = Y \setminus \{x\}$，$x$可以是$Y$中的任意元
   \end{align*}
   对所有的$a \in Y \cap Y^\prime$均成立。}
 
-$Y \cap Y^\prime \neq \varnothing$，因为两个集合中至少有一个元素$x_0$。
+$Y \cap Y^\prime \neq \varnothing$，因为两个集合中至少有一个元素$x_0$，设$a \in Y \cap Y^\prime$，
+接下来对$a$进行强归纳。
 
-对$a$进行强归纳，
-
-对每一个$n \in Y \cap Y^\prime$，等式对所有满足$m < n$的$m \in Y \cap Y^\prime$成立，
+对每一个$n \in Y \cap Y^\prime$，对所有满足$m < n, m \in Y \cap Y^\prime$的$m$命题均成立，
 现在需要证明$a=n$等式也成立。
 
-反证法，假设$a=n$时等式不成立，即存在一个非空集合
+\textit{（说明：证明思路和说明中一致，只是更加严谨）}
+
+反证法，假设$a=n$时不成立，即在$m, n$之间存在元素$y_0 \not \in Y \cap Y^\prime$， 那么，集合
 \begin{align*}
-  W := \{ y \in Y \cup Y^\prime: m,n \in Y \cap Y^\prime,y \not \in Y \cap Y^\prime,  m < y < n \}
+  W := \{ y: m < y <n, y \not \in Y \cap Y^\prime, y \in Y \text{or } y \in Y^\prime \}
 \end{align*}
-（即：在$m,n$之间$Y,Y^\prime$存在不一样的元素）
+是非空集合。
 
-定义一个$W$的子集，$W^{Y} := {y \in W, y \in Y}$
-
-因为$W$是良序集，所以存在最小值$w$，不妨设$w \in Y$，因为$w \not \in Y \cap Y^\prime$，那么，
+因为$Y,Y^\prime$都是良序集，所以$W$也是良序集，所以存在最小元素$w \in W$，
+不妨设$w \in Y$，另外取$w^\prime$是$W$中$Y^\prime$的最小值（没有，则取$n$）（可以取到最小值的原因是$W \setminus Y$也是良序集），
+此时$s(\{ y \in Y: y < w \}) = w$, $s(\{ y \in Y^\prime: y < w^\prime \}) = w^\prime$，
+但由归纳假设可知，$\{y \in Y: y \leq m \} = \{y \in Y^\prime: y \leq m \}$，那么，
 \begin{align*}
-   & \{ y \in Y : y < m \} = \{ y \in Y : y < w \}                        \\
-   & \Rightarrow                                                          \\
-   & s(\{ y \in Y : y < n \}) \text{对所有 $x \in Y \setminus \{x_0\}$均成立}   \\
-   & = n
-
-   & = s(\{ y \in Y : y < w \}) \text{对所有 $x \in Y \setminus \{x_0\}$均成立} \\
-   & = w
+  \{ y \in Y: y < w \} = \{ y \in Y^\prime: y < w^\prime \}
 \end{align*}
-这与$Y$是“好的”矛盾。于是，等式成立。
+但函数$s$对应的函数值却不一致，这与函数定义矛盾。
+
 
 \textbf{（2）接下来，证明$Y \cap Y^\prime$是好的。}
 
 反证法，假设$Y \cap Y^\prime$不是好的，即存在$k \in Y \cap Y^\prime$，
 使得$s({y \in Y \cap Y^\prime : y < k }) \neq k$。
 
-由等式可知$\{y \in Y : y \leq k \} = \{y \in Y \cap Y^\prime : y \leq k \}$，
+由（1）可知$\{y \in Y : y \leq k \} = \{y \in Y \cap Y^\prime : y \leq k \}$，
 \begin{equation*}
   \begin{cases*}
     \{y \in Y : y \leq k \} \setminus \{k\}                = \{y \in Y : y < k \} \\
@@ -213,10 +219,49 @@ $Y \cap Y^\prime \neq \varnothing$，因为两个集合中至少有一个元素$
 \end{align*}
 于是，$s(\{y \in Y : y < k \}) \neq k$与$Y$是“好的”矛盾
 
-\textbf{（3）如果$Y^\prime \setminus Y$是非空的，$s(Y \cap Y^\prime) = min(Y^\prime \setminus Y )$}
+\textbf{（3）如果$Y^\prime \setminus Y$是非空的，$s(Y \cap Y^\prime) = min(Y^\prime \setminus Y )$
+  并且$Y^\prime \setminus Y$的每个元素都是$Y$的严格上界。}
+
+不妨设$y_{min}=min(Y^\prime \setminus Y)$，由严格上界的定义可知，我们需要证明，对任意$y \in Y$都有$y_{min} > y$。
+下面对$y$进行强归纳。
+
+假设对所有$y_m < y_n$的$y_m \in Y$时命题都为真，下面需证明$y_n$时命题也为真。
 
 \begin{itemize}
-  \item 
+  \item 归纳基始$y_n = x_0$，由$Y,Y^\prime$都是以$x_0$为最小元素的良序集可知$y_{min} > x_0$。
+  \item  反证法，$y_n \geq y_{min}$，因为$y_{min} \not \in Y$所以$y_n \neq y_{min}$，于是$y_n > y_{min}$。
+
+        先证明下，$y_{min}$之前$Y, Y^\prime$的元素相同。
+        反证法，如果不相同，会导致$Y \cap Y^\prime$出现空洞，而由（2）可知，$Y \cap Y^\prime$也是好的，
+        进而会出现与“说明”中一样的问题，这里就不在赘述了。
+
+        于是
+        \begin{align*}
+          \{ y : y \in Y, y < y_{min}\} & = \{ y : y \in Y^\prime, y < y_{min} \} \\
+        \end{align*}
+        又因为$y_{min} \not \in Y$且$y_n > y_{min}$和归纳假设对所有$y_m < y_n$都有$y_{min} > y_m $
+        所以，
+        \begin{align*}
+          \{ y : y \in Y, y < y_{min}\} = \{ y : y \in Y, y < y_{n}\} & = \{ y : y \in Y^\prime, y < y_{min} \} \\
+        \end{align*}
+
+        因为$y_{min} \in Y^\prime, y_n \in Y$且是好的，所以
+        \begin{align*}
+          s(\{ y : y \in Y, y < y_n\})            & = y_n     \\
+          s(\{ y : y \in Y^\prime, y < y_{min}\}) & = y_{min} \\
+        \end{align*}
+        因为
+        \begin{align*}
+          \{ y : y \in Y, y < y_{n}\} & = \{ y : y \in Y^\prime, y < y_{min} \} \\
+        \end{align*}
+        于是
+        \begin{align*}
+          y_n = y_{min}
+        \end{align*}
+        于是与$y_n > y_{min}$存在矛盾。
 \end{itemize}
+
+
+
 
 \end{document}
