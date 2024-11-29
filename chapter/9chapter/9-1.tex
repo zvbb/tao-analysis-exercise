@@ -22,4 +22,131 @@
 \author{张志聪}
 \maketitle
 
+\section*{9.1.1}
+
+$\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \overline{Y} \subseteq \overline{X}$。
+
+\begin{itemize}
+      \item $\overline{X} \subseteq \overline{Y}$。
+
+            任意$x \in \overline{X}$，因为$x$是附着点，所以对任意$\epsilon > 0$，都存在$y \in X$
+            使得$|x - y| \leq \epsilon$。
+
+            由题设$X \subseteq Y$可知，$y \in Y$，于是由定义9.1.8（附着点）可得，
+            $x$也是$\overline{Y}$的附着点，即$x \in \overline{Y}$。
+
+            由$x$的任意性可知$\overline{X} \subseteq \overline{Y}$。
+      \item $\overline{Y} \subseteq \overline{X}$。
+
+            任意$x \in \overline{Y}$，因为$x$是附着点，所以对任意$\frac{1}{2}\epsilon > 0$，
+            都存在$y \in Y$使得$|x - y| \leq \frac{1}{2}\epsilon$。
+
+            由题设$Y \subseteq \overline{X}$可知，$y \in \overline{X}$，所以$y$是$X$的附着点，
+            于是存在$y_x \in X$使得$|y - y_x| \leq \frac{1}{2}\epsilon$。
+
+            于是由命题4.3.7（c）可知$|x - y_x| \leq \epsilon$，所以$x$也是$X$的附着点。
+
+            由$x$的任意性可知$\overline{Y} \subseteq \overline{X}$。
+\end{itemize}
+
+\section*{9.1.2}
+
+\begin{itemize}
+      \item $X \subseteq  \overline{X}$。
+
+            任意$x \in X$，对于任意的$\epsilon > 0$，有$|x - x| \leq \epsilon$，所以$x$是$X$的附着点。
+
+            由$x$的任意性可知$X \subseteq \overline{X}$。
+
+      \item $\overline{X \cup Y} = \overline{X} \cup \overline{Y}$。
+            \begin{itemize}
+                  \item[$\circ$] $\overline{X \cup Y} \subseteq \overline{X} \cup \overline{Y}$。
+
+                        任意$x \in \overline{X \cup Y}$，因为$x$是附着点，所以对任意$\epsilon > 0$，
+                        都存在$y \in X \cup Y$使得$|x - y| \leq \epsilon$。
+
+                        如果$y \in X$则由定义9.1.8（附着点）可得，
+                        $x$也是$X$的附着点。
+
+                        如果$y \in Y$则由定义9.1.8（附着点）可得，
+                        $x$也是$Y$的附着点。
+
+                        综上$x \in \overline{X} \cup \overline{Y}$。
+
+                  \item[$\circ$] $\overline{X} \cup \overline{Y} \subseteq \overline{X \cup Y}$。
+
+                        任意$x \in \overline{X} \cup \overline{Y}$，于是要么$x \in \overline{X}$，要么$x \in \overline{Y}$（或者两个皆成立）。
+
+                        以$x \in \overline{X}$为例，因为$x$是$X$的附着点，所以对任意$\epsilon > 0$，
+                        存在$y \in X$使得$|x - y| \leq \epsilon$。
+
+                        因为$y \in X \cup Y$则由定义9.1.8（附着点）可得，
+                        $x$也是$X \cup Y$的附着点。
+
+                        同理，$x \in \overline{Y}$时也成立。
+
+                        综上$x \in \overline{X \cup Y}$。
+
+            \end{itemize}
+      \item $\overline{X \cap Y} \subseteq \overline{X} \cap \overline{Y}$。
+
+            任意$x \in \overline{X \cap Y}$，因为$x$是$X \cap Y$的附着点，
+            所以对任意的$\epsilon > 0$，存在$y \in X \cap Y$，使得$|x - y| \leq \epsilon$。
+
+            因为$y \in X \cap Y$，所以$y \in X$且$y \in Y$，则由定义9.1.8（附着点）可得
+            $x$是$X$的附着点且是$Y$的附着点，即$x \in \overline{X} \cap \overline{Y}$
+
+      \item 如果$X \subseteq Y$，那么$\overline{X} \subseteq \overline{Y}$。
+
+            任意$x \in \overline{X}$，因为$x$是$X$的附着点，
+            所以对任意的$\epsilon > 0$，存在$y \in X$，使得$|x - y| \leq \epsilon$。
+
+            因为$X \subseteq Y$，所以$y \in Y$则由定义9.1.8（附着点）可得
+            $x$也是$Y$的附着点，即$x \in \overline{Y}$。
+
+\end{itemize}
+
+\section*{9.1.3}
+
+\begin{itemize}
+      \item $\mathbb{N}$的闭包是$\mathbb{N}$。
+
+            由引理9.1.11可得$\mathbb{N} \subseteq \overline{\mathbb{N}}$。
+
+            现在证明附着于$\mathbb{N}$的点只能是$\mathbb{N}$的元素。
+
+            假设实数$x$是$\mathbb{N}$的附着点且$x \notin \mathbb{N}$，
+            由命题5.4.12（有理数对实数的界定）与命题4.4.1（由有理数确定的整数散布）可得，
+            存在唯一的整数$n$使得$n < x < n + 1$（即：$x$在两个自然数之间）。
+
+            设$\epsilon = \frac{1}{2}min(x - n, n + 1 - x )$，
+            此时不存在$y \in \mathbb{N}$使得$|x - y| \leq \epsilon$，与$x$是附着点矛盾。
+
+      \item $\mathbb{Z}$的闭包是$\mathbb{Z}$。
+
+            由引理9.1.11可得$\mathbb{Z} \subseteq \overline{\mathbb{Z}}$。
+
+            现在证明附着于$\mathbb{Z}$的点只能是$\mathbb{Z}$的元素。
+
+            证明过程与$\mathbb{N}$一致，这里不做赘述。
+
+      \item $\mathbb{Q}$的闭包是$\mathbb{R}$。
+
+            即任意实数$x$都是$\mathbb{Q}$的附着点。
+            对任意$\epsilon > 0$，取$y = x + \epsilon$，由命题5.4.14可知，存在有理数$q \in \mathbb{Q}$使得
+            $x < q < y$，此时$|x - q| \leq \epsilon$。
+
+      \item $\mathbb{R}$的闭包是$\mathbb{R}$。
+
+            由引理9.1.11可得$\mathbb{R} \subseteq \overline{\mathbb{R}}$。
+
+            而有定义9.1.8可知，不存在$\mathbb{R}$外的附着点，否则不满足定义了。
+
+      \item $\varnothing$的闭包是$\varnothing$。
+
+            因为$\varnothing$中没有元素，也就没有$x \in R$能够满足定义9.1.8（附着点）的定义。
+\end{itemize}
+
+\section*{9.1.4}
+
 \end{document}

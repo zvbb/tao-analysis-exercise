@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{实数的连续性}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+    在《陶哲轩实分析》（第三版）这个本书中，没有证明实数是“连续统”的，
+    在第9章开头，作者将实数定义为“连续统”，并且没有给出证明。
+\end{zremark}
+
+\section*{1.直观}
+
+离散集合与连续统是相对的概念。粗略的说，如果集合中的每一个元素与剩余元素之间有一段非零的距离，
+那么这个集合就是离散的；如果一个集合是连通的并且没有“洞”，那么这个集合就是一个连续统。
+
+\end{document}
