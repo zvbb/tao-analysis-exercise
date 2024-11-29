@@ -225,7 +225,7 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
 \end{itemize}
 
 \section*{9.1.7}
-为了描述方便，设
+设
 \begin{align*}
       X := X_1 \cup X_2 \cup \cdots \cup X_n = \bigcup_{i \in \{1,2,...,n\}} X_i
 \end{align*}
@@ -238,7 +238,75 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
       |x - y| \leq \epsilon
 \end{align*}
 
-因为$y \in X$，所以存在$X_i$使得$y \in X_i$，于是$x \in \overline{X_i}$，由题设可知$X_i = \overline{X_i}$，
+因为$y \in X$，由公理3.11（并集）可知存在$X_i$使得$y \in X_i$，
+于是$x \in \overline{X_i}$，由题设可知$X_i = \overline{X_i}$，
 所以$x \in X_i$，于是$x \in X$。
+
+\section*{9.1.8}
+
+设
+\begin{align*}
+      X := \bigcap \limits_{\alpha \in I} X_{\alpha}
+\end{align*}
+换句话说，要证明$\overline{X} = X$。
+
+由引理9.1.11可知，$X \subseteq \overline{X}$，接下来我们需要证明$\overline{X} \subseteq X$。
+
+任意$x \in \overline{X}$，对任意$\epsilon > 0$，都存在$y \in X$使得
+\begin{align*}
+      |x - y| \leq \epsilon
+\end{align*}
+
+因为$y \in X$，由式（3.4）可知对任意$X_{\alpha}$都有$y \in X_{\alpha}$，
+于是$x \in \overline{X_{\alpha}}$，由题设可知$X_{\alpha} = \overline{X_{\alpha}}$，
+再次由式（3.4）可知$x \in X$。
+
+\section*{9.1.9}
+
+\begin{itemize}
+      \item $\Rightarrow$
+
+            任意$x \in \overline{X}$，对任意$\epsilon > 0$，都有存在$y \in X$使得
+            \begin{align*}
+                  |x - y| \leq \epsilon
+            \end{align*}
+
+            即$W_x :=\{y: y \in X, |x-y| \leq \epsilon \}$是非空集；
+
+            \begin{itemize}
+                  \item[$\circ$] $W_x \setminus \{x\} \neq \varnothing$，则$x$
+                        也是$X \setminus \{x\}$的附着点，所以$x$是极限点。
+                  \item[$\circ$] $W_x \setminus \{x\} = \varnothing$，可知$x \in X$，
+                        且因为$W_x \setminus \{x\}$是空集，
+                        所以任意$y \in X \setminus \{x\}$都满足$|x-y| > \epsilon$
+                        （特别地$X \setminus \{x\} = \varnothing$，则空虚的成立），
+                        所以$x$是$X$的孤立点。
+            \end{itemize}
+      \item $\Leftarrow$
+
+            观察定义，如果$x$是$X$的极限点，无法说明$x \in X$，如果是孤立点却能保证$x \in X$，
+            而根据引理9.1.11可知$X \subseteq \overline{X}$，所以孤立点肯定是附着点。
+
+            接下来要对极限点进行说明。
+            按照定义9.1.18可知，$X$的任意极限点$x$是$X \setminus \{x\}$的附着点，
+            因为$X \setminus \{x\} \subseteq X$，所以$x$是$X$的附着点。
+\end{itemize}
+
+
+\begin{zremark}
+      错误推论：$X$是实直线的一个子集，对于任意实数$x$，要么是$X$的极限点，要么是$X$的孤立点。
+
+      按照定义9.1.8可知，一个实数$x$要么是$X$的附着点，要么不是。
+
+      习题9.1.9中已经证明，当$x$是附着点，则$x$要么是$X$的极限点，要么是孤立点。
+
+      当$x$不是附着点，则$x \notin X$（否则肯定是附着点），按照定义9.1.18可知$x$不会是孤立点；
+      $x$也不会极限点，因为$X \setminus \{x\} = X$（因为$x \notin X$），
+      所以如果是极限点，则是附着点（习题9.1.10的反推），与假设矛盾。至此可知，此时的$x$既不是孤立点也不是极限点。
+
+\end{zremark}
+
+\section*{9.1.10}
+
 
 \end{document}
