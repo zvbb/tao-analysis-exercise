@@ -149,4 +149,96 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
 
 \section*{9.1.4}
 
+\begin{align*}
+      X := [0, 1) \\
+      Y := (1, 2] \\
+\end{align*}
+此时，
+\begin{align*}
+      \overline{X \cap Y}            & = \varnothing \\
+      \overline{X} \cap \overline{Y} & = \{1\}
+\end{align*}
+
+\section*{9.1.5}
+
+\begin{itemize}
+      \item $\Rightarrow$
+
+            任意$\alpha \in \overline{X}$，
+            对任意的正自然数$n$，设$X_n$表示集合
+            \begin{align*}
+                  X_n := \{ x \in X, |x - \alpha| \leq 1/n \}
+            \end{align*}
+            由于$\alpha$是附着点，所以$X_n$是非空集合。
+
+            利用选择公理，能够找到一个序列$(a_n)_{n=1}^\infty$使得$a_n \in X_n$对所有的$n \geq 1$均成立。
+
+            以上构造的序列$(a_n)_{n=1}^\infty$是收敛于$x$且每一个元素都属于$X$。
+
+      \item $\Leftarrow$
+
+            对任意$\epsilon > 0$，由$(a_n)_{n=0}^\infty$收敛于$x$可知，
+            存在$N$使得$n \geq N$时，
+            \begin{align*}
+                  |a_n - x| \leq \epsilon
+            \end{align*}
+            因为序列中的完全是由$X$中的元素构成的，于是可得$x$是附着点。
+\end{itemize}
+
+\section*{9.1.6}
+
+\begin{zremark}
+      这里所说的闭集，应该是和定义9.1.15对应的，所以应该是$\overline{\overline{X}} = \overline{X}$
+\end{zremark}
+
+\begin{itemize}
+      \item $\overline{X}$是闭集（即$\overline{\overline{X}} = \overline{X}$）
+
+            由引理9.1.11可知$\overline{X} \subseteq \overline{\overline{X}}$，
+            现在需要证明$\overline{\overline{X}} \subseteq \overline{X}$。
+
+            设任意$x^{\prime\prime} \in \overline{\overline{X}}$，
+            对任意$\epsilon > 0$，都存在$y^\prime \in \overline{X}$，使得
+            \begin{align*}
+                  |x^{\prime\prime} - y^\prime| \leq \frac{1}{2} \epsilon
+            \end{align*}
+
+            因为$y^\prime$也是$X$的附着点，所以存在$y \in X$使得
+            \begin{align*}
+                  |y - y^\prime| \leq \frac{1}{2} \epsilon
+            \end{align*}
+            于是由命题4.3.7（c）可知，
+            \begin{align*}
+                  |x^{\prime\prime} - y| \leq \epsilon
+            \end{align*}
+
+            所以$x^{\prime\prime}$也是$X$的附着点，即$x^{\prime\prime} \in \overline{X}$。
+
+      \item 换个表达方式：$X \subseteq Y, \overline{Y} = Y$，那么$\overline{X} \subseteq Y$（即：$\overline{X} \subseteq \overline{Y}$）。
+
+            任意$x \in \overline{X}$，所以对于任意$\epsilon > 0$，都存在$y \in Y$使得
+            \begin{align*}
+                  |x - y| \leq \epsilon
+            \end{align*}
+            因为$X \subseteq Y$，
+            于是$y \in Y$，所以$x$也是$Y$的附着点，即$x \in \overline{Y}$。
+\end{itemize}
+
+\section*{9.1.7}
+为了描述方便，设
+\begin{align*}
+      X := X_1 \cup X_2 \cup \cdots \cup X_n = \bigcup_{i \in \{1,2,...,n\}} X_i
+\end{align*}
+换句话说，要证明$\overline{X} = X$。
+
+由引理9.1.11可知，$X \subseteq \overline{X}$，接下来我们需要证明$\overline{X} \subseteq X$。
+
+任意$x \in \overline{X}$，对任意$\epsilon > 0$，都存在$y \in X$使得
+\begin{align*}
+      |x - y| \leq \epsilon
+\end{align*}
+
+因为$y \in X$，所以存在$X_i$使得$y \in X_i$，于是$x \in \overline{X_i}$，由题设可知$X_i = \overline{X_i}$，
+所以$x \in X_i$，于是$x \in X$。
+
 \end{document}

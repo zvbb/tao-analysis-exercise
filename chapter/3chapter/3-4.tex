@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{3.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{3.4.8}
+
+\begin{zremark}
+      这里要先理解题意了。是要求我们利用“并集公理”与“双元素集公理”构造出“两集合公理”。
+      怎么才算构造成功呢？假设$X,Y$是集合，那么需要构造出一个集合$W$，满足对任意对象$x$，
+      \begin{align*}
+            x \in W \Leftrightarrow (x \in X \text{ 或 } x \in Y)
+      \end{align*}
+\end{zremark}
+假设$X,Y$是集合，由公理3.1（集合是对象）和公理3.3（单元素集与双元素集）可知，
+存在一个集合$A := \{X, Y\}$。
+
+由公理3.11我们可以构造$W := \cup A$，于是，
+\begin{align*}
+      x \in  W  \Leftrightarrow (\text{存在}S \in A \text{使得} x \in S)
+\end{align*}
+由公理3.3可知，“$\text{存在}S \in A \text{使得} x \in S$”即：$S=X \text{ 或 } S=Y$使得$x \in S$。
+所以构造的$W$是满足要求的。
+
+
+\end{document}
