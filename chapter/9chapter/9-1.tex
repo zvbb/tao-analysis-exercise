@@ -279,12 +279,14 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
                   \item[$\circ$] $W_x \setminus \{x\} = \varnothing$，可知$x \in X$，
                         且因为$W_x \setminus \{x\}$是空集，
                         所以任意$y \in X \setminus \{x\}$都满足$|x-y| > \epsilon$
-                        （特别地$X \setminus \{x\} = \varnothing$，则空虚的成立），
+                        （特别地$X \setminus \{x\} = \varnothing$空虚的成立），
                         所以$x$是$X$的孤立点。
             \end{itemize}
       \item $\Leftarrow$
 
-            观察定义，如果$x$是$X$的极限点，无法说明$x \in X$，如果是孤立点却能保证$x \in X$，
+            观察定义，如果$x$是$X$的极限点，无法说明$x \in X$，如果是孤立点却能保证$x \in X$
+            （定义9.1.18孤立点是按蕴含关系定义的，应该是表述的不准确应是当且仅当的关系，
+            否则无法推出$x \in X$），
             而根据引理9.1.11可知$X \subseteq \overline{X}$，所以孤立点肯定是附着点。
 
             接下来要对极限点进行说明。
@@ -307,6 +309,29 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
 \end{zremark}
 
 \section*{9.1.10}
+
+\begin{itemize}
+      \item $\Rightarrow$ $X$是有界的，按照定义9.1.22可知，存在某个实数$M > 0$使得
+            $X \subset [-M, M]$，即任意$x \in X$都满足$|x| \leq M$，那么由定义5.5.1（上界）可知
+            $M$是$X$的一个上界，由定理5.5.9（最小上界的存在性）可知$sup(X)$是存在，且由定义5.5.5（最小上界）
+            可知$sup(X) \leq M$；
+            同理可得最大下界$inf(X)$且$-M \leq inf(X)$；
+
+            又因为$inf(X) \leq sup(X)$可得（可以直接通过定义证明，但不能直接使用引理6.4.13，因为实数子集可能不是至多可数的）
+            \begin{align*}
+                  -M \leq inf(X) \leq sup(X) \leq M
+            \end{align*}
+
+      \item $\Leftarrow$ 设$M := max(|inf(X)|, |sup(X)|)$，有最小上界的定义可知，
+            对任意$x \in X$都有
+            \begin{align*}
+                -M \leq  inf(X) \leq x \leq sup(X) \leq M
+            \end{align*}
+
+            所以$X \subset [-M, M]$，由此可知$X$是有界的。
+\end{itemize}
+
+\section*{9.1.11}
 
 
 \end{document}
