@@ -325,7 +325,7 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
       \item $\Leftarrow$ 设$M := max(|inf(X)|, |sup(X)|)$，有最小上界的定义可知，
             对任意$x \in X$都有
             \begin{align*}
-                -M \leq  inf(X) \leq x \leq sup(X) \leq M
+                  -M \leq  inf(X) \leq x \leq sup(X) \leq M
             \end{align*}
 
             所以$X \subset [-M, M]$，由此可知$X$是有界的。
@@ -333,5 +333,44 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
 
 \section*{9.1.11}
 
+反证法，假设$\overline{X}$不是有界的。
 
+因为$X$是有界，那么存在$M > 0$使得$X \subset [-M, M]$，即任意$x \in X$都满足$-M \leq x \leq M$；
+
+因为$\overline{X}$不是有界的，
+那么对任意实数$M + \epsilon, \epsilon > 0$，
+存在$x \in \overline{X}$，$x > M + \epsilon$或$x < -M - \epsilon$，这里以$x > M + \epsilon$为例；
+
+因为$x$是$X$的附着点，都存在$y \in X$使得
+\begin{align*}
+      |x - y|           & \leq \epsilon       \\
+                        & \Rightarrow         \\
+      y - \epsilon \leq & x \leq y + \epsilon
+\end{align*}
+因为$y \in X$，所以$-M \leq y \leq M$，于是可得
+\begin{align*}
+      -M - \epsilon \leq x \leq M + \epsilon
+\end{align*}
+这与$x > M + \epsilon$矛盾。
+
+\section*{9.1.12}
+
+\begin{itemize}
+      \item 有限个；
+
+            不妨设集合个数为$n, n \in \mathbb{N}$，设每个有界子集的找到$M$分别为
+            $M_1, M_2, \dots, M_n$，
+            那么定义$M := max(M_1, M_2, \dots, M_n)$（对$n$进行归纳，就可以确定该$M$是可以得到的，
+            参照引理5.1.14的证明），
+            可证并集$X \subset [-M, M]$（证明略）
+
+      \item 无限个；
+
+            这里无法使用归纳原理进行证明，因为实数子集可能不是至多可数的。
+
+
+
+
+
+\end{itemize}
 \end{document}
