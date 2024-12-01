@@ -365,12 +365,84 @@ $\overline{X} = \overline{Y}$等价于$\overline{X} \subseteq \overline{Y}, \ove
             可证并集$X \subset [-M, M]$（证明略）
 
       \item 无限个；
-
-            这里无法使用归纳原理进行证明，因为实数子集可能不是至多可数的。
-
-
-
+            \begin{zremark}
+                  这里无法使用归纳原理进行证明，因为实数子集可能不是至多可数的。
+            \end{zremark}
 
 
+            反证法，假设并集$X$不是有界的。
+
+            那么，存在$x \in X$大于任意实数；
+            由公理3.11（并集）可知，存在某个子集$S \in X \text{使得}x \in S$，
+            由题设子集$S$是由上界的，即存在$M$使得$S \subset [-M, M]$，所以$-M < x < M$；
+            存在矛盾。
 \end{itemize}
+
+\section*{9.1.13}
+
+\begin{itemize}
+      \item （a） $\Rightarrow$ （b）
+
+            由题设（a）$X$是有界的可知，序列$(a_n)_{n=0}^\infty$是有界序列，利用定理6.6.8可知，
+            $(a_n)_{n=0}^\infty$至少有一个收敛的子序列$(a_{n_j})_{j=0}^\infty$，
+            不妨设子序列收敛于$L$。
+
+            由引理9.1.14可知，$L$是$X$的一个附着点，由题设（a）$X$是闭的可知，任意附着点$x \in X$，
+            所以$L \in X$
+
+      \item （b）$\Rightarrow$ （a）
+
+            由题设（b）和推论9.1.17可知，$X$是闭的。
+
+            反证法，假设$X$不是有界的，那么，对任意的正自然数$n$，设$X_n$表示集合
+            \begin{align*}
+                  X_n := \{x \in X : |x| > n\}
+            \end{align*}
+            是非空的。利用选择公理，能够找到一个序列$(a_n)_{n=0}^\infty$使得$a_n \in X_n$对所有的$n \geq 1$均成立
+            （特别的，$a_0$可以任取$X$中的元素）。
+            设序列$(a_n)_{n=0}^\infty$的任意子序列为$(a_{n_j})_{j=0}^\infty$，
+            由定义6.6.1（子序列）可知$n_j \geq j$，于是$j>0$时$|a_{n_j}| > j$，可得子序列是无界的，
+            所以该子序列发散，与题设矛盾。
+\end{itemize}
+
+\section*{9.1.14}
+证明框架：
+
+设有限子集为$X$，因为是有限集，所以肯定是有界的（可以通过元素个数$n$进行归纳，这里不做赘述）。
+
+$X$有界且$X$是有限集，可得满足定理9.1.24（b）前置条件，于是可得$X$是闭的。
+
+\section*{9.1.15}
+
+\begin{itemize}
+      \item $S$是$E$的附着点。
+
+            反证法，假设$S$不是$E$的附着点，即存在$\epsilon > 0$，使得
+            \begin{align*}
+                  |S - y| > \epsilon
+            \end{align*}
+            对所有的$y \in E$均成立。
+
+            由上式可得，
+            如果$y > S + \epsilon$，则$S$不是上界，这与$S$是$E$的最小上界矛盾；
+            如果$y < S - \epsilon$，则$S - \epsilon$也是上界且比$S$小，这与$S$是$E$的最小下界矛盾。
+
+      \item $S$是$\mathbb{R} \setminus E$的附着点。
+
+            由集合公理可得，一个实数$x$要么属于$E$要么属于$\mathbb{R} \setminus E$。
+
+            反证法，假设$S$不是$\mathbb{R} \setminus E$的附着点，即存在$\epsilon > 0$，使得
+            \begin{align*}
+                  |S - y| > \epsilon
+            \end{align*}
+            对所有的$y \in \mathbb{R} \setminus E$均成立。
+
+            由上式可得，
+            如果 $y > S + \epsilon$，那么存在实数$x \in (S, S+\epsilon]$
+                  则既不属于$E$也属于$\mathbb{R} \setminus E$，与事实矛盾；
+                  同理如果$y < S - \epsilon$，那么存在实数$x \in [S-\epsilon, S)$
+            则既不属于$E$也属于$\mathbb{R} \setminus E$，与事实矛盾；
+\end{itemize}
+
+
 \end{document}
