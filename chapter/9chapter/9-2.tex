@@ -24,5 +24,54 @@
 
 \section*{9.2.1}
 
+\begin{itemize}
+  \item $(f + g) \circ h = (f \circ h) + (g \circ h)$
+
+        成立；因为对任意$x \in R$都有（用到了定义3.3.10）
+        \begin{align*}
+          ((f + g) \circ h)(x) & = (f + g)(h(x))               \\
+                               & = f(h(x)) + g(h(x))           \\
+                               & = f \circ h(x) + g \circ h(x) \\
+        \end{align*}
+
+  \item $f \circ (g + h) = (f \circ h) + (f \circ h)$
+
+        不成立；设$f(x) = x^2, g(x)=x, h(x) = -x$，则
+        \begin{align*}
+          f \circ (g + h)(1) & = f((g+h)(1))    \\
+                             & = f(g(1) + h(1)) \\
+                             & = f(1 - 1)       \\
+                             & = f(0)           \\
+                             & = 0^2            \\
+                             & = 0
+        \end{align*}
+        \begin{align*}
+          (f \circ h) + (f \circ h) & = f(h(1)) + f(h(1)) \\
+                                    & = f(1) + f(-1)      \\
+                                    & = 1^2 + (-1)^2      \\
+                                    & = 1 + 1             \\
+                                    & = 2
+        \end{align*}
+        $f \circ (g + h)(1) \neq (f \circ h) + (f \circ h)$
+  \item $(f + g) \cdot h = (f \cdot h) + (g \cdot h)$
+
+        成立；因为对任意$x \in R$都有（第3个等式用到了命题5.3.11），
+        \begin{align*}
+          ((f + g) \cdot h)(x) & = (f + g)(x) \cdot h(x)             \\
+                               & = (f(x) + g(x))\cdot h(x)           \\
+                               & = f(x) \cdot h(x) + g(x) \cdot h(x) \\
+                               & = (f \cdot h)(x) + (g \cdot h)(x)   \\
+        \end{align*}
+  \item $f \cdot (g + h) = (f \cdot g) + (f \cdot h)$
+
+        成立；因为对任意$x \in R$都有（第3个等式用到了命题5.3.11），
+        \begin{align*}
+          (f \cdot (g + h))(x) & = f(x) \cdot (g + h)(x)             \\
+                               & = f(x) \cdot (g(x) + h(x))          \\
+                               & = f(x) \cdot g(x) + f(x) \cdot h(x) \\
+                               & = (f \cdot g)(x) + (f \cdot h)(x)   \\
+        \end{align*}
+\end{itemize}
+
 
 \end{document}
