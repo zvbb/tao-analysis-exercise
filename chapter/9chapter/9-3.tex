@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.3.1}
+
+\begin{itemize}
+  \item （a）$\Rightarrow$ （b）
+
+        对任意$\epsilon > 0$，由（a）f在$x_0$处沿着$E$收敛于$L$可知，
+        都存在$\delta > 0$使得$f$被限制在集合$\{x \in E: |x - x_0| < \delta\}$上时，
+        $f$是$\epsilon-$接近于$L$的，即$|f(x) - L| \leq \epsilon$。
+
+        由于$(a_n)_{n=0}^\infty$收敛于$x_0$，那么存在正整数$N$，使得
+        \begin{align*}
+          |a_n - x_0| \leq \frac{1}{2} \delta
+        \end{align*}
+        对$n \geq N$均成立。又因为此时$a_n \in \{x \in E: |x - x_0| < \delta\}$，
+        所以
+        \begin{align*}
+          |f(a_n) - L| \leq \epsilon
+        \end{align*}
+        由$\epsilon$的任意性，可得$f((a_n))_{n=0}^\infty$收敛于$L$。
+
+  \item （b）$\Rightarrow$（a）
+
+        反证法，假设（a）不成立，即对某一个$\epsilon _{0} > 0$不存在$\delta > 0$使得
+        \begin{align*}
+          |f(x) - L| \leq \epsilon_{0}
+        \end{align*}
+        对所有满足$|x - x_0| < \delta$对$x \in E$均成立。
+
+        那么，对于任意的正整数$n$，设$X_n$表示集合
+        \begin{align*}
+          X_n := \{x: |f(x) - L| > \epsilon_{0}, |x - x_0| < 1/n\}
+        \end{align*}
+        是非空集合（其中$|x - x_0| < 1/n$由$x_0$是附着点保证，
+        $|f(x) - L| > \epsilon_{0}$由假设（a）不成立保证）。
+
+        利用选择公理，能够找到一个序列$(a_n)_{n=0}^\infty$使得$a_n \in X_n$对所有的$n \geq 1$均成立（特别的，
+        $a_0$可以任选$E$中的一个元素）。
+        于是这里构造的序列$(a_n)_{n=0}^\infty$收敛于$x_0$，由题设（b）可知，序列$f((a_n))_{n=0}^\infty$收敛于$L$，
+        即存在正整数$N$，使得
+        \begin{align*}
+          |f(a_n) - L| \leq \epsilon_{0}
+        \end{align*}
+        对$n \geq N$均成立。因为$a_n \in X_n$所以$|f(a_n) -L| > \epsilon_{0}$，存在矛盾。
+
+\end{itemize}
+
+\end{document}
