@@ -106,21 +106,17 @@ $fg$在$x_0$处沿着$E$有极限$LM$。
         \end{align*}
         对所有满足$|x - x_0| < \delta^\prime$的$x \in E \cap (x_0 - \delta, x_0 + \delta)$均成立。
 
-        取$\delta^{\prime\prime} = min(\delta, \frac{1}{2}\delta^\prime)$
-        （这里用$\frac{1}{2}\delta^\prime$是因为有个细节要处理，在定义9.3.6中是$|x-x_0| < $某个值，
-        而在定义9.1.8（附着点）中是$|x - x_0 \leq |$某个值，需要处理边界问题），
-        因为$x_0$是$E$的附着点，所以存在$x \in E$使得
+        令$\delta^{\prime\prime} := min(\delta, \frac{1}{2}\delta^\prime)$
+        那么，当$x \in E$（$x$的存在性由$x_0$是$E$的附着点保证）并满足
         \begin{align*}
           |x - x_0| \leq \delta^{\prime\prime}
         \end{align*}
-        此时的$x$也满足$|x - x_0| < \delta^\prime$和$x \in E \cap (x_0 - \delta, x_0 + \delta)$，
-        所以$\delta^{\prime\prime}$使得
+        时，也是满足$|x - x_0| < \delta^\prime$和$x \in E \cap (x_0 - \delta, x_0 + \delta)$。
+        所以
         \begin{align*}
           |f(x) - L| \leq \epsilon
         \end{align*}
-        对所有满足$|x - x_0| < \delta^{\prime\prime}$的$x \in E$均成立。
-        所以$f$在$x_0$处沿着$E$也是极限$L$。
-
+        于是$f$在$x_0$处沿着$E$也是极限$L$。
 \end{itemize}
 
 \end{document}
