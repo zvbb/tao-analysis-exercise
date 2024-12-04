@@ -23,5 +23,43 @@
 \maketitle
 
 \section*{9.5.1}
+（1）
+
+仿照定义9.3.5（函数在一点处收敛）
+
+\begin{itemize}
+  \item  $\lim\limits_{x \to a; x \in E}f(x) = +\infty$，当且仅当对于任意的$M > 0$，
+        都存在一个$\delta > 0$，使得$f(x) > M$对所有满足$|x - x_0| < \delta$的$x \in E$均成立。
+
+  \item $\lim\limits_{x \to a; x \in E}f(x) = -\infty$，当且仅当对于任意的$M < 0$，
+        都存在一个$\delta > 0$，使得$f(x) < M$对所有满足$|x - x_0| < \delta$的$x \in E$均成立。
+
+\end{itemize}
+
+（2）
+
+\begin{itemize}
+  \item $f(0+) = +\infty$
+
+        任意$M > 0$，存在$\delta = 1/M$，使得$f(x) > M$对所有满足$|x - 0| < \delta$的$x \in E \cap (0, +\infty)$均成立。
+
+  \item $f(0-) = -\infty$
+
+        任意$M < 0$，存在$\delta = 1/M$，使得$f(x) < M$对所有满足$|x - 0| < \delta$的$x \in E \cap (-\infty, 0)$均成立。
+\end{itemize}
+
+
+（3）
+
+仿照命题9.3.9，下面两个命题在逻辑上是等价的。
+
+\begin{itemize}
+  \item $(a)$ $f$在$x_0$处沿着$E$收敛于$+\infty$（或$-\infty$）。
+  \item $(b)$ 对于任意的一个完全由$E$中的元素构成并且收敛于$x_0$的序列$(a_n)_{n=0}^\infty$，
+        序列$(f(a_n))_{n=0}^\infty$也收敛于$+\infty$（或$-\infty$）。
+\end{itemize}
+
+证明方式与习题9.3.1类似，不做赘述。
+
 
 \end{document}
