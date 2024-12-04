@@ -183,6 +183,21 @@ $\lim\limits_{x \rightarrow x_0} f(a_n) = f(x_0)$，
 
 \section*{9.4.7}
 
+对$n$进行归纳。
 
+归纳基始$n = 0$，$P(x) = c_0 x^0 = c_0$，由例9.4.2可知此时$P$是连续的。
+
+归纳假设$n = k$时，$P$是连续的。
+
+$n = k+1$时，
+\begin{align*}
+  P(x) & = \sum\limits_{i=0}^{k+1}c_i x^i                \\
+       & = \sum\limits_{i=0}^{k}c_i x^i + c_{k+1}x^{k+1}
+\end{align*}
+
+由例9.4.3可知$f(x) = x$是连续函数，于是由命题9.4.9可知$c_{k+1}x^{k+1}$是连续的，
+又由归纳假设可知$\sum\limits_{i=0}^{k}c_i x^i$是连续的，
+再次利用命题9.4.9可知$\sum\limits_{i=0}^{k}c_i x^i + c_{k+1}x^{k+1}$是连续的，
+即$P(x)$是连续的。
 
 \end{document}
