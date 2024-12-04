@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.4.1}
+按照定义9.4.1可知（a）等价于$f$在$x_0$处沿着$X$收敛于$f(x_0)$（定义9.3.6），
+即：$(a) \Leftrightarrow$ $f$在$x_0$处沿着$X$收敛于$f(x_0)$
+
+\begin{itemize}
+  \item (b) $\Rightarrow$ $f$在$x_0$处沿着$X$收敛于$f(x_0)$
+
+        （b）满足9.3.9（b），所以$f$在$x_0$处沿着$X$收敛于$f(x_0)$。
+  \item (c) $\Rightarrow$ $f$在$x_0$处沿着$X$收敛于$f(x_0)$
+
+        $|f(x) - f(x_0)| < \epsilon$成立，那么$|f(x) - f(x_0)| \leq \epsilon$成立，
+        于是满足定义9.3.6，
+        所以$f$在$x_0$处沿着$X$收敛于$f(x_0)$。
+  \item (d) $\Rightarrow$ $f$在$x_0$处沿着$X$收敛于$f(x_0)$
+
+        因为$(x_0 - \delta, x_0 + \delta) \subset [x_0 - \delta, x_0 + \delta]$，
+        所以$|x - x_0| \leq \delta$命题成立，于是$|x - x_0| < \delta$时命题也成立。
+
+        于是满足定义9.3.6，
+        所以$f$在$x_0$处沿着$X$收敛于$f(x_0)$。
+\end{itemize}
+
+\section*{9.4.2}
+
+例9.4.2、例9.4.3已经说明了证明过程，唯一的区别是定义域的不同的。
+
+\section*{9.4.3}
+
+任意$x_0 \in R$，设序列$(a_n)_{n=0}^\infty$是任意一个完全由$R$中元素构成并且收敛于$x_0$的序列。
+
+对任意$\epsilon > 0$，我们希望
+
+\begin{align*}
+  |f(x) - f(x_0)| \leq \epsilon           \\
+  |a^x - a^{x_0}| \leq \epsilon           \\
+  a^{x_0} |a^{x-x_0} - 1| \leq \epsilon   \\
+  |a^{x-x_0} - 1| \leq \epsilon / a^{x_0} \\
+\end{align*}
+
+\begin{itemize}
+  \item  当$x - x_0 > 0$，
+        由引理6.5.3可知，存在正整数$N^\prime$，使得
+        \begin{align*}
+          |a^{x-x_0} - 1| \leq \epsilon / a^{x_0}
+        \end{align*}
+        当$x-x_0 \leq 1/N^\prime$时成立。
+
+        所以当$\delta^\prime = 1/N^\prime$时，$|f(x) - f(x_0)| \leq \epsilon$对
+        所有满足$|x - x_0| < \delta^\prime$的$x \in R$均成立。
+        % 于是$f$在$x_0$处沿着$R$收敛于$f(x_0)$。
+  \item 当$x - x_0 < 0$，
+        由引理6.5.3和极限定律可知，$\lim\limits_{n \rightarrow \infty} x^{-(1/n)} = 1$，
+        类似地，存在正整数$N^{\prime\prime}$，使得
+        \begin{align*}
+          |a^{x-x_0} - 1| \leq \epsilon / a^{x_0}
+        \end{align*}
+        当$x-x_0 \geq -(1/N^{\prime\prime})$即$x_0 - x \leq 1/N^{\prime\prime}$时成立。
+
+        所以当$\delta^{\prime\prime} = 1/N^{\prime\prime}$时，$|f(x) - f(x_0)| \leq \epsilon$对
+        所有满足$|x - x_0| < \delta^{\prime\prime}$的$x \in R$均成立。
+\end{itemize}
+取$\delta = min(\delta^\prime, \delta^{\prime\prime})$时，
+$|f(x) - f(x_0)| \leq \epsilon$对
+所有满足$|x - x_0| < \delta$的$x \in R$均成立。
+于是$f$在$x_0$处沿着$R$收敛于$f(x_0)$。
+
+\section*{9.4.4}
+
+
+
+
+
+\end{document}
