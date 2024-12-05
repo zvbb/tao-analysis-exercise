@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.7 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.7.1}
+
+由命题9.6.7（最大值原理）可知，存在$x_{max} \in [a, b]$使得$f(x_{max}) = M$，
+类似地，存在$x_{min} \in [a, b]$使得$f(x_{min}) = m$。
+
+由习题9.4.6可知$f$在$[x_{min}, x_{max}]$（这里假设$x_{min} \leq x_{max}$，其他证明类似）上也是连续的。
+由定理9.7.1（介值定理）可知，任意$y \in [m, M]$（即：$m \leq y \leq M$）
+都存在$c \in [x_{min}, x_{max}]$（此时$c \in [a, b]$也是成立的）使得$f(c) = y$。
+
+\section*{9.7.2}
+
+定义函数$g$如下：
+\begin{align*}
+  g(x) := f(x) - x
+\end{align*}
+其中函数$g$的定义域为$[0, 1]$。因为$f,x$都是$[0, 1]$上的连续函数，
+由命题9.4.9可知，于是函数$g$也是$[0, 1]$上的连续函数。
+
+思路是证明存在$x \in [0, 1]$使得$g(x) \leq 0$（$g(x) \geq 0$），然后利用介值定理。
+
+\begin{itemize}
+  \item 存在$x \in [0, 1]$使得$g(x) \leq 0$。
+
+        当$x = 1$时，$g(1) = f(1) - 1$，因为函数$f$的值域是$[0, 1]$，即任意$x \in [0, 1]$都满足$0 \leq f(x) \leq 1$，
+        所以$g(1) \leq 0$。
+
+  \item 存在$x \in [0, 1]$使得$g(x) \geq 0$。
+
+        当$x = 0$时，$g(0) = f(0) - 0$，因为函数$f$的值域是$[0, 1]$，即任意$x \in [0, 1]$都满足 $ 0 \leq f(x) \leq 1$，
+        所以$g(0) \geq 0$。
+\end{itemize}
+
+因为$g(0) \leq 0 \leq g(1)$，且$g$是$[0, 1]$上的连续函数，
+由定理9.7.1（介值定理）可知，存在$c \in [0, 1]$使得$g(c) = 0$，此时$f(c) = c$。
+
+\end{document}
