@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.6 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.6.1}
+
+\begin{itemize}
+  \item (a)
+
+        $f(x) := |x - 1.5|$
+        该函数在$x = 1.5$达到最小值$0$，没有最大值
+
+  \item (b)
+
+        $f(x) := -(x-2)^2$
+
+        该函数在$x = 2$达到最大值$0$，没有最小值
+
+  \item (c)
+        \begin{equation*}
+          f(x) =
+          \begin{cases*}
+            0,  x=-1,x=1 \\
+            x,  x \in (-1, 1)
+          \end{cases*}
+        \end{equation*}
+
+  \item (d)
+        \begin{equation*}
+          f(x) =
+          \begin{cases*}
+            0,  x=0 \\
+            x,  1/x \in [-1, 0) \cup (0, 1]
+          \end{cases*}
+        \end{equation*}
+\end{itemize}
+
+例子都没有满足最大值原理的前置条件。
+
+\end{document}
