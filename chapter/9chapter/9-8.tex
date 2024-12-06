@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 
 % 定义新的带灰色背景的说明环境 zremark
@@ -51,8 +52,89 @@ $f(x_0) \leq f(b)$，于是由定义9.6.5可知，此时的$f(b)$就是最大值
 
 \section*{9.8.3}
 
+因为$f: [a, b] \to \mathbb{R}$是即连续又一对一的函数，所以$f(a) \neq f(b)$。
+
+于是
 \begin{itemize}
-  \item 
+  \item $f(a) < f(b)$
+
+        显然，如果$f$是严格单调的，只能是严格递增的。反证法，假设不是严格递增的，
+        即存在$x_0, x_1 \in [a,b]$且$x_0 < x_1$使得$f(x_0) > f(x_1)$。
+
+        \begin{itemize}
+          \item[$\circ$]如果$f(x_0) < f(b)$
+
+                于是$\{y : f(a) < y < f(x_0) \text{且} f(x_1) < y < f(b) \}$是非空集合，
+                从中任意一个值$y_0$，由介值定理，存在$c_0 \in [a, x_0]$使得$f(c_0) = y_0$，
+                且存在$c_1 \in [x_1, b]$使得$f(c_1) = y_0$。
+
+                此时$f(c_0) = y_0 = f(c_1)$，这与题设$f$是即连续又一对一的函数矛盾。
+
+          \item[$\circ$]如果$f(x_0) > f(b)$
+                于是$\{y : f(a) < y < f(x_0) \text{且} f(b) < y < f(x_0) \}$是非空集合，
+                从中任意一个值$y_0$，由介值定理，存在$c_0 \in [a, x_0]$使得$f(c_0) = y_0$，
+                且存在$c_1 \in [x_0, b]$使得$f(c_1) = y_0$。
+
+                此时$f(c_0) = y_0 = f(c_1)$，这与题设$f$是即连续又一对一的函数矛盾。
+        \end{itemize}
+
+        于是有矛盾可知，$f$是严格递增的。
+
+  \item $f(a) > f(b)$
+
+        显然，如果$f$是严格单调的，只能是严格递减的。
+        证明方法和上同理。
 \end{itemize}
+
+综上，$f$是严格单调的。
+
+\section*{9.8.4}
+
+分别证明$f^{-1}$连续性和严格单调递增性。
+
+\begin{itemize}
+  \item 连续性
+
+        任意$y_0 \in [f(a), f(b)]$，由于$f$在$[a, b]$上连续又严格递增，
+        那么，$f(a) \leq y_0 \leq f(b)$由介值定理可知存在$x_0 \in [a, b]$使得$f(x_0) = y_0$。
+
+        对于任意$\epsilon > 0$，
+
+        设$f([a, b] \cap [x_0 - \epsilon, x_0 + \epsilon]) = [y^\prime, y^{\prime\prime}]$，
+        因为$f$是连续又严格递增，那么任意$y^\prime \leq y \leq y^{\prime\prime}$，
+        只能在$[a, b] \cap [x_0 - \epsilon, x_0 + \epsilon]$找到唯一的$x$使得$y = f(x)$
+        （介值定理保证是存在的，严格递增保证是唯一的）。
+
+        于是取$\delta = min(y_0 - y^\prime, y^{\prime\prime} - y_0)$，使得
+        \begin{align*}
+           & |f^{-1}(y) - f^{-1}(y_0)| \\
+           & = |x - x_0| \leq \epsilon
+        \end{align*}
+        对所有满足$|y - y_0| < \delta$的$y \in [f(a),f(b)]$均成立
+        （因为满足条件的$x$只会在区间$[a, b] \cap [x_0 - \epsilon, x_0 + \epsilon]$）。
+
+  \item 严格单调递增性
+
+        任意$y_0, y_1 \in [f(a), f(b), y_0 < y_1]$，由于$f$在$[a, b]$上连续又严格递增，
+        那么，$f(a) \leq y_0 < y_1 \leq f(b)$
+        由介值定理可知存在$x_0,x_1 \in [a, b]$使得$f(x_0) = y_0, f(x_1) = y_1$。
+
+        首先说明$x_0, x_1$的唯一性，然后说明$x_0 < x_1$。
+
+        \begin{itemize}
+          \item[$\circ$] 唯一性
+
+                假设有多个$x$使得其函数值相同，这与$f$严格递增矛盾。
+          \item[$\circ$] $x_0 < x_1$
+
+              如果$x_1 < x_0$，那么$f(x_1) > f(x_0)$（因为$y_0 < y_1$），这与$f$严格递增矛盾。
+        \end{itemize}
+
+        综上，$f^{-1}(y_0) < f^{-1}(y_1)$。所以$f^{-1}$严格递增。
+\end{itemize}
+
+\section*{9.8.5}
+
+不是命题，不想证，哈哈哈
 
 \end{document}
