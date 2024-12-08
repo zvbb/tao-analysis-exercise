@@ -123,5 +123,27 @@ $(f(x_{n_j}))_{n=0}^\infty$是收敛序列。
 
 \section*{9.9.6}
 
+任意$\epsilon > 0$，因为函数$g: Y \to Z$是$Y$上的一致连续函数，
+存在一个$\delta_g > 0$使得
+\begin{align*}
+  |g(x) - g(y)| \leq \epsilon 
+\end{align*}
+对任意$x, y \in Y, |x - y| \leq \delta_g$均成立。
+
+因为函数$f: X \to Y$是$X$上的一致连续函数，
+存在一个$\delta_f > 0$使得
+\begin{align*}
+  |f(x) - f(y)| \leq \delta_g
+\end{align*}
+对任意$x, y \in X, |x - y| \leq \delta_f$均成立。
+
+综上，
+
+\begin{align*}
+  |(g \circ f)(x) - (g \circ f)(y)| \leq \epsilon
+\end{align*}
+对任意$x, y \in X, |x - y| \leq \delta_f$均成立。
+
+所以，$g \circ f$是$X$上的一致连续函数。
 
 \end{document}
