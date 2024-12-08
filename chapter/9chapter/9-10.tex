@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.10 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.10.1}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        设$\lim\limits_{n \rightarrow \infty; n \in N}a_n = L$，
+        由定义9.10.3，对任意$\epsilon > 0$，存在$M$使得
+        \begin{align*}
+          |a_n - L| \leq \epsilon
+        \end{align*}
+        取$N = \lfloor M \rfloor + 1$（注4.4.2中$\lfloor M \rfloor$表示$M$的整数部分）
+        对$n \geq N$的$n \in \mathbb{N}$均成立。
+
+        由定义6.1.8，序列是收敛于$L$的，即$\lim\limits_{n \to \infty} a_n = L$
+
+  \item $\Leftarrow$
+
+        设$\lim\limits_{n \to \infty} a_n = L$，
+        由定义6.1.8，对任意$\epsilon > 0$，存在正整数$N$使得
+        \begin{align*}
+          |a_n - L| \leq \epsilon
+        \end{align*}
+        对$n \geq N$均成立。
+        令$N$为定义9.10.3中的$M$，即$M=N$，于是，$\lim\limits_{n \rightarrow \infty; n \in N}a_n = L$
+\end{itemize}
+
+\end{document}
