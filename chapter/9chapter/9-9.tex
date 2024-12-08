@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{9.9 习题}
+\author{张志聪}
+\maketitle
+
+\section*{9.9.1}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        对于任意$\epsilon > 0$，
+        因为序列$(a_n)_{n=1}^\infty, (b_n)_{n=1}^\infty$是等价的，
+        由定义9.9.5两者是最终$\epsilon -$接近的，即存在
+        正整数$N \geq 1$使得$|a_n - b_n| \leq \epsilon$对任意$n \geq N$均成立，
+        即序列$(a_n - b_n)_{n=1}^\infty$是最终$\epsilon -$接近于$0$，
+        由定义6.1.5（序列的收敛）可知序列$(a_n - b_n)_{n=1}^\infty$收敛于$0$，
+        即$\lim\limits_{n \rightarrow \infty}(a_n - b_n) = 0$。
+
+  \item $\Leftarrow$
+
+        $\lim\limits_{n \rightarrow \infty}(a_n - b_n) = 0$，那么，
+        对于任意$\epsilon > 0$，都存在
+        正整数$N \geq 1$使得$|a_n - b_n| \leq \epsilon$对任意$n \geq N$均成立，
+        于是可得，序列$(a_n)_{n=1}^\infty, (b_n)_{n=1}^\infty$是最终$\epsilon-$接近的。
+        由定义9.9.5可知，序列$(a_n)_{n=1}^\infty, (b_n)_{n=1}^\infty$是等价的。
+\end{itemize}
+
+\section*{9.9.2}
+
+\begin{itemize}
+  \item $(a) \implies (b)$
+
+        $f$在$X$是一致连续的，则对任意$\epsilon > 0$都存在$\delta > 0$使得
+        $|f(x) - f(y)| \leq \epsilon$对任意$x, y \in X, |x - y| \leq \delta$均成立。
+
+        因为$(x_n)_{n=0}^\infty$和$(y_n)_{n=0}^\infty$是由$X$中元素构成的等价序列，
+        那么，存在正整数$N$使得
+        \begin{align*}
+          |x_n - y_n| \leq \delta
+        \end{align*}
+        此时
+        \begin{align*}
+          | f(x_n) - f(y_n) | \leq \epsilon
+        \end{align*}
+
+        由定义9.9.5可知
+        $(f(x_n))_{n=0}^\infty$和$(f(y_n))_{n=0}^\infty$是等价的。
+
+
+  \item $(b) \implies (a)$
+
+        反证法，假设$f$在$X$上不是一致连续的。那么，存在$\epsilon_0 > 0$，
+        对任意$n \in \mathbb{N}$存在$x_n, y_n \in X$当$|x_n - y_n| < 1/n$都有$|f(x_n) - f(y_n)| > \epsilon_0$。
+
+        由定义9.9.5可知，$(x_n)_{n=1}^\infty, (y_n)_{n=1}^\infty$是等价的，
+        但因为对任意$n$都有$|f(x_n) - f(y_n)| > \epsilon_0$可知，
+        $(f(x_n))_{n=1}^\infty,(f(y_n))_{n=0}^\infty$不是等价的。
+        这与题设$(b)$矛盾。
+\end{itemize}
+
+\section*{9.9.3}
+
+$f$在$X$是一致连续的，则对任意$\epsilon > 0$都存在$\delta > 0$使得
+$|f(x) - f(y)| \leq \epsilon$对任意$x, y \in X, |x - y| \leq \delta$均成立。
+
+因为$(x_n)_{n=0}^\infty$是柯西序列，即存在$N$使得对任意$n,m \geq N$都有
+\begin{align*}
+  |x_n - x_m| \leq \delta
+\end{align*}
+此时
+\begin{align*}
+  |f(x_n) - f(x_m)| \leq \epsilon
+\end{align*}
+于是可得$(f(x_n))_{n=0}^\infty$是柯西序列。
+
+\end{document}
