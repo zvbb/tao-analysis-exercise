@@ -32,7 +32,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 是存在的，不妨设极限是$L$。由定义9.3.6可知，
 对任意$\epsilon > 0$，存在$\delta > 0$，使得
 \begin{align*}
-  |\frac{f(x) - f(x_0)}{x - x_0} - L | < \epsilon
+  |\frac{f(x) - f(x_0)}{x - x_0} - L | \leq \epsilon
 \end{align*}
 对任意$x \in \big((x_0 - \delta, x_0 + \delta) \cap X \setminus \{x_0\}\big)$
 均成立。
@@ -41,7 +41,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 因为$Y \subset X$，所以$y \in \big((x_0 - \delta, x_0 + \delta) \cap X \setminus \{x_0\}\big)$，
 所以
 \begin{align*}
-  |\frac{f(y) - f(x_0)}{y - x_0} - L | < \epsilon
+  |\frac{f(y) - f(x_0)}{y - x_0} - L | \leq \epsilon
 \end{align*}
 由定义9.3.6可知，
 \begin{align*}
@@ -53,6 +53,38 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 与10.1.2不矛盾的原因：
 
 点$3$不是$[1,2] \cup \{3\}$的极限点，不满足习题10.1.1习题的前置条件。
+
+\section*{10.1.2}
+
+\begin{itemize}
+  \item $(a) \implies (b)$
+
+        $f$在$X$中的$x_0$处是可微的，且导数为$L$，由定义10.1.1可知，极限
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+        \end{align*}
+
+        于是，由定义9.3.6可知，
+        对任意$\epsilon > 0$，存在$\delta > 0$，使得
+        \begin{align*}
+          |\frac{f(x) - f(x_0)}{x - x_0} - L | \leq \epsilon
+        \end{align*}
+        对$|x - x_0| < \delta, x \in X \setminus \{x_0\}$均成立。
+
+        对上式进行算术运算，
+        \begin{align*}
+          |\frac{f(x) - f(x_0)}{x - x_0} - L |       & \leq \epsilon           \\
+          |\frac{f(x) - f(x_0) - L(x-x_0)}{x - x_0}| & \leq \epsilon           \\
+          |f(x) - f(x_0) - L(x-x_0)|                 & \leq \epsilon |x - x_0| \\
+          |f(x) - \big( f(x_0) + L(x-x_0) \big)|     & \leq \epsilon |x - x_0|
+        \end{align*}
+
+  \item $(b) \implies (a)$
+  
+        直接进行算术运算，略
+\end{itemize}
+
+\section*{10.1.3}
 
 
 \end{document}
