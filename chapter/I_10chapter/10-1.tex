@@ -24,5 +24,35 @@
 
 \section*{10.1.1}
 
+（1）
+$f$在$x_0$处可微分，由定义10.1.1可知，极限
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}
+\end{align*}
+是存在的，不妨设极限是$L$。由定义9.3.6可知，
+对任意$\epsilon > 0$，存在$\delta > 0$，使得
+\begin{align*}
+  |\frac{f(x) - f(x_0)}{x - x_0} - L | < \epsilon
+\end{align*}
+对任意$x \in \big((x_0 - \delta, x_0 + \delta) \cap X \setminus \{x_0\}\big)$
+均成立。
+
+任意$y \in \big((x_0 - \delta, x_0 + \delta) \cap Y \setminus \{x_0\}\big)$，
+因为$Y \subset X$，所以$y \in \big((x_0 - \delta, x_0 + \delta) \cap X \setminus \{x_0\}\big)$，
+所以
+\begin{align*}
+  |\frac{f(y) - f(x_0)}{y - x_0} - L | < \epsilon
+\end{align*}
+由定义9.3.6可知，
+\begin{align*}
+  \lim\limits_{y \to x_0; y \in Y \setminus \{x_0\}} \frac{f|_Y(y) - f|_Y(x_0)}{y - x_0}
+\end{align*}
+的极限存在，所以$f|_Y$在$x_0$处可微。
+
+（2）
+与10.1.2不矛盾的原因：
+
+点$3$不是$[1,2] \cup \{3\}$的极限点，不满足习题10.1.1习题的前置条件。
+
 
 \end{document}
