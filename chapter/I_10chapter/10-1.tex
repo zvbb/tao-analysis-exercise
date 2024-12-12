@@ -266,7 +266,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
   \item (f)
 
-        设函数$h : X \to \mathbb{R}$为$h(x) = -g(x)$，于是$(f-h)(x) = (f+g)(x)$，函数相等一定有相同的导数（注10.1.4），
+        设函数$h : X \to \mathbb{R}$为$h(x) = -g(x)$，于是$(f-g)(x) = (f+h)(x)$，函数相等一定有相同的导数（注10.1.4），
         于是利用(d)可得
 
         \begin{align*}
@@ -275,7 +275,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
            & = f^\prime(x_0) + h^\prime(x_0)
         \end{align*}
 
-        由(e)可知，$h^\prime(x_0) = (-g)^\prime(x_0) = -g^\prime(x_0)$，把(e)中的$c$看做$-1$，
+        由(e)可知，$h^\prime(x_0) = (-g)^\prime(x_0) = -g^\prime(x_0)$，这里把(e)中的$c$看做$-1$。
 
         综上可得
         \begin{align*}
@@ -295,7 +295,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
         由于$g$在$x_0$处可微，所以
         \begin{align*}
-           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(x_0) - g(x)}{x - x_0} \\
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} \\
            & = f^\prime(x_0)
         \end{align*}
 
@@ -315,7 +315,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
   \item (h)
 
-        因为$\big(\frac{f}{g}\big)(x) = f(x)\frac{1}{g(x)}$，于是利用(d)(g)可知，
+        因为$\big(\frac{f}{g}\big)(x) = \big(f\frac{1}{g}\big)(x)$，于是利用(d)(g)可知，
         \begin{align*}
           \big(\frac{f}{g}\big)^\prime(x_0) & = \big(f\frac{1}{g}\big)^\prime(x_0)                                           \\
                                             & = f^\prime(x_0)\frac{1}{g(x_0)} + f(x_0)\big(\frac{1}{g}\big)^\prime(x_0)            \\
