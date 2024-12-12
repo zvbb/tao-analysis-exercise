@@ -112,14 +112,14 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
         按照极限定律（命题9.3.14）可得
         \begin{align*}
-           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} fg             \\
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} fg              \\
            & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} f(x) - f(x_0) \\
-           & = L \times 0                                                      \\
+           & = L \times 0                                                       \\
            & = 0
         \end{align*}
 
         于是对任意$\epsilon > 0$，都存在$\delta > 0$使得$|f(x) - f(x_0)| < \epsilon$对所有满足
-        $|x - x_0| < \delta$的$X \setminus \{x_0\}$均成立。特别地$x = x_0$时$f(x) - f(x_0) = 0 < \delta$也成立。
+        $|x - x_0| < \delta$的$x \in X \setminus \{x_0\}$均成立。特别地$x = x_0$时$f(x) - f(x_0) = 0 < \delta$也成立。
 
         所以由命题9.4.7(d)可知，$f$在$x_0$处连续。
 
@@ -148,7 +148,184 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
 \section*{10.1.4}
 
+\begin{itemize}
+  \item (a)
 
+        对任意$\epsilon > 0$，对任意$\delta > 0$，都存在
+        \begin{align*}
+           & \frac{f(x) - f(x_0)}{x - x_0} \\
+           & = \frac{c - c}{x - x_0}       \\
+          %  & = \frac{0}{x - x_0}           \\
+           & = 0
+        \end{align*}
+        对所有满足$|x - x_0| < \delta$的$x \in X \setminus \{x_0\}$均成立。
+        于是由命题9.4.7(c)可得
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}}  \frac{f(x) - f(x_0)}{x - x_0} = 0
+        \end{align*}
+        即$f^\prime(x_0) = 0$
+
+  \item (b)
+
+        对任意$\epsilon > 0$，对任意$\delta > 0$，都存在
+        \begin{align*}
+           & \frac{f(x) - f(x_0)}{x - x_0} \\
+           & = \frac{x - x_0}{x - x_0}     \\
+           & = 1
+        \end{align*}
+        对所有满足$|x - x_0| < \delta$的$x \in X \setminus \{x_0\}$均成立。
+        于是由命题9.4.7(c)可得
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}}  \frac{f(x) - f(x_0)}{x - x_0} = 1
+        \end{align*}
+        即$f^\prime(x_0) = 1$
+
+  \item (c)
+
+        设$f^\prime(x_0) = L, g^\prime(x_0) = M$
+
+        $f$在$x_0$处可微，由定义10.1.1可知，极限
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+        \end{align*}
+        由定义9.3.6可知，
+        对任意$\epsilon > 0, \frac{1}{2}\epsilon > 0$，存在$\delta_f > 0$，使得
+        \begin{align*}
+          |\frac{f(x) - f(x_0)}{x - x_0} - L | \leq \frac{1}{2}\epsilon
+        \end{align*}
+        对所有满足$|x - x_0| < \delta_f$的$x \in X \setminus \{x_0\}$均成立。
+
+        同理可得，
+        存在$\delta_g > 0$，使得
+        \begin{align*}
+          |\frac{g(x) - g(x_0)}{x - x_0} - M | \leq \frac{1}{2}\epsilon
+        \end{align*}
+        对所有满足$|x - x_0| < \delta_g$的$x \in X \setminus \{x_0\}$均成立。
+
+        令$\delta = min(\delta_f, \delta_g)$，于是，
+        \begin{align*}
+           & \big|\frac{(f(x) + g(x)) - (f(x_0) - g(x_0))}{x - x_0} - (L + M)  \big|                          \\
+           & = \big|\frac{f(x) - f(x_0)}{x - x_0} - L + \frac{g(x) - g(x_0)}{x - x_0} - M \big|               \\
+           & \leq \big|\frac{f(x) - f(x_0)}{x - x_0} - L \big| + \big|\frac{g(x) - g(x_0)}{x - x_0} - M \big| \\
+           & = \frac{1}{2}\epsilon + \frac{1}{2}\epsilon                                                      \\
+           & = \epsilon
+        \end{align*}
+        对所有满足$|x - x_0| < \delta$的$x \in X \setminus \{x_0\}$均成立。
+        所以$(f + g)^\prime(x_0) = L + M$。
+
+        于是$(f + g)^\prime(x_0) = f^\prime(x_0) + g^\prime(x_0) = L + M$。
+
+  \item (d)
+
+        设$f^\prime(x_0) = L, g^\prime(x_0) = M$
+
+        $f$在$x_0$处可微，由定义10.1.1可知，极限
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+        \end{align*}
+
+        同理可得，
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} = M
+        \end{align*}
+
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x)g(x) - f(x_0)g(x_0)}{x - x_0} \\
+           & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x)\big(g(x) - g(x_0)\big)
+          + \big(f(x) - f(x_0)\big)g(x_0)}{x - x_0}                                                     \\
+           & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} f(x) \frac{g(x) - g(x_0)}{x - x_0}
+          + g(x_0) \frac{f(x) - f(x_0)}{x - x_0}                                                        \\
+        \end{align*}
+        又$f$在$x_0$处可微，由命题10.1.0可知$f$在$x_0$处连续
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X} f(x) = f(x_0) \\
+        \end{align*}
+        于是通过命题9.4.7(c)可知（$x = x_0$是特例），
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} f(x) = f(x_0)
+        \end{align*}
+        于是利用极限定律（命题9.3.14）可得
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} f(x) \frac{g(x) - g(x_0)}{x - x_0}
+          + g(x_0) \frac{f(x) - f(x_0)}{x - x_0}                                                   \\
+           & = f(x_0)M + g(x_0)L
+        \end{align*}
+        所以$(fg)^\prime(x_0) = f^\prime(x_0)g(x_0) + f(x_0)g^\prime(x_0)$。
+
+  \item (e)
+
+        设函数$h : X \to \mathbb{R}$为$h(x) = c$，于是$(cf)(x) = h(x)f(x)$，函数相等一定有相同的导数（注10.1.4），
+        于是利用(d)可得
+        \begin{align*}
+           & (cf)^\prime(x_0)                            \\
+           & = (hf)^\prime(x_0)                          \\
+           & = h^\prime(x_0)f(x_0) + h(x_0)f^\prime(x_0) \\
+           & = 0 \times f(x_0) + c \times f^\prime(x_0)  \\
+           & = cf^\prime(x_0)
+        \end{align*}
+
+  \item (f)
+
+        设函数$h : X \to \mathbb{R}$为$h(x) = -g(x)$，于是$(f-h)(x) = (f+g)(x)$，函数相等一定有相同的导数（注10.1.4），
+        于是利用(d)可得
+
+        \begin{align*}
+           & (f-g)^\prime(x_0)               \\
+           & = (f+h)^\prime(x_0)             \\
+           & = f^\prime(x_0) + h^\prime(x_0)
+        \end{align*}
+
+        由(e)可知，$h^\prime(x_0) = (-g)^\prime(x_0) = -g^\prime(x_0)$，把(e)中的$c$看做$-1$，
+
+        综上可得
+        \begin{align*}
+           & (f-g)^\prime(x_0)               \\
+           & = f^\prime(x_0) - g^\prime(x_0)
+        \end{align*}
+
+
+  \item (g)
+
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0}               \\
+           & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{\frac{g(x_0) - g(x)}{g(x)g(x_0)}}{x - x_0}              \\
+           & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{1}{g(x)g(x_0)} \frac{g(x_0) - g(x)}{x - x_0}            \\
+           & = \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{1}{g(x)} \frac{1}{g(x_0)} \frac{g(x_0) - g(x)}{x - x_0} \\
+        \end{align*}
+
+        由于$g$在$x_0$处可微，所以
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(x_0) - g(x)}{x - x_0} \\
+           & = f^\prime(x_0)
+        \end{align*}
+
+        由于$g$在$x_0$处可微，由命题10.1.0可知$g$在$x_0$处连续，且$g(x)$在$X$上不为零，
+        由命题9.3.14（函数的极限定理）可得
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{1}{g(x)} = \frac{1}{g(x_0)}
+        \end{align*}
+
+
+        再次利用命题9.3.14（函数的极限定理）可得
+        \begin{align*}
+           & \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{1}{g(x)} \frac{1}{g(x_0)} \frac{g(x_0) - g(x)}{x - x_0} \\
+           & = \frac{1}{g(x_0)} \frac{1}{g(x_0)} \big( - g^\prime(x_0)\big)                                                   \\
+           & = -\frac{g^\prime(x_0)}{g(x_0)^{2}}
+        \end{align*}
+
+  \item (h)
+
+        因为$\big(\frac{f}{g}\big)(x) = f(x)\frac{1}{g(x)}$，于是利用(d)(g)可知，
+        \begin{align*}
+          \big(\frac{f}{g}\big)^\prime(x_0) & = \big(f\frac{1}{g}\big)^\prime(x_0)                                           \\
+                                            & = f^\prime(x_0)\frac{1}{g(x_0)} + f(x_0)\big(\frac{1}{g}\big)^\prime(x_0)            \\
+                                            & = f^\prime(x_0)\frac{1}{g(x_0)} + f(x_0) \big(-\frac{g^\prime(x_0)}{g(x_0)^{2}}\big) \\
+                                            & = \frac{f^\prime(x_0)}{g(x_0)} - \frac{f(x_0) g^\prime(x_0)}{g(x_0)^{2}}             \\
+                                            & = \frac{f^\prime(x_0) g(x_0) - f(x_0) g^\prime(x_0)}{g(x_0)^{2}}
+        \end{align*}
+
+
+\end{itemize}
 
 
 
