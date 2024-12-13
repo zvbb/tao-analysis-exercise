@@ -24,5 +24,110 @@
 
 \section*{10.2.1}
 
+$f$在$x_0$处可微，设其导数是$L$，即极限
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L
+\end{align*}
+
+接下来证明$L > 0$和$L < 0$都会导致矛盾，来确定$L$只能等于$0$。
+
+定义序列$(a_n)_{n=1}^\infty$如下，
+\begin{equation*}
+  a_n
+  \begin{cases*}
+    = x_0; \text{if } (x_0 + (-1)^n\frac{1}{n}) \notin (a, b)                  \\
+    = x_0 + (-1)^n\frac{1}{n}; \text{if } (x_0 + (-1)^n\frac{1}{n}) \in (a, b) \\
+  \end{cases*}
+\end{equation*}
+
+因为$\lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = L$，
+由定义9.3.9(b)可知，对于完全由$X$中元素构成并且收敛于$x_0$的序列$(a_n)_{n=1}^\infty$，序列
+$(f(a_n))_{n=1}^\infty$都收敛于$L$。
+
+\begin{itemize}
+  \item $L > 0$
+
+        那么，存在正整数$N$使得
+        \begin{align*}
+           & \left| \frac{f(a_n) - f(x_0)}{a_n - x_0} - L\right| \leq \frac{1}{2}L  \\
+           & \implies                                                               \\
+           & \frac{1}{2} L \leq \frac{f(a_n) - f(x_0)}{a_n - x_0} \leq \frac{3}{2}L \\
+           & \implies                                                               \\
+           & \frac{f(a_n) - f(x_0)}{a_n - x_0} > 0
+        \end{align*}
+        对$n \geq N$均成立。
+
+        当$a_n > x_0$时（由序列的构造方式可知，这样的$a_n$是存在的），$f(x) > f(x_0)$；
+        当$a_n < x_0$时（由序列的构造方式可知，这样的$a_n$是存在的），$f(x) < f(x_0)$；
+        此时$f(x_0)$既不是局部最大值，也不是局部最小值。
+
+  \item $L < 0$
+
+        同理可得，$L < 0$时，此时$f(x_0)$既不是局部最大值，也不是局部最小值。
+
+\end{itemize}
+
+综上可得$L = 0$，即$f^\prime(x_0) = 0$
+
+\section*{10.2.2}
+
+函数$f: (-1, 1) \to \mathbb{R}$定义为$f(x) = -|x|$。
+
+与命题10.2.6不矛盾的原因是，不满足命题的前置条件：$f$在$0$处可微。
+
+\section*{10.2.3}
+
+\begin{align*}
+  f(x)
+  \begin{cases*}
+    = x; \text{if } x \in (-1, -\frac{1}{2}] \cup [\frac{1}{2}, 1) \\
+    = 0; \text{if } x \in (-\frac{1}{2}, \frac{1}{2})              \\
+  \end{cases*}
+\end{align*}
+
+与命题10.2.6不矛盾的原因是，不满足命题的前置条件：$f$在$0$处达到局部最大值或局部最小值。
+
+\section*{10.2.4}
+
+因为$f$是$[a, b]$上的连续函数，由命题9.6.7（最大值原理）可知，
+存在$x_{min}, x_{max} \in [a, b]$分别取到最小值和最大值。
+
+\begin{itemize}
+  \item $g(a)$同时是最大值和最小值
+
+        此时任意$x \in [a, b]$都有$g(x) = g(a)$，
+        由定理10.1.13(a)可知，任意$x_0 \in [a, b]$都有$f^\prime(x_0) = 0$。
+
+        命题成立。
+
+  \item $g(a)$处是最大值或最小值
+
+        $g(a)$是最小值，因为$g(a) = g(b)$所以$g(b)$也是最小值，
+        于是$x_{max} \in (a, b)$，又函数$f$在$(a, b)$上可微，所以$f$在$x_{max}$处是可微的，
+        并且$f$在$x_{max}$处是全局最大值，那么也是局部最大值，由命题10.2.6可知，
+        \begin{align*}
+          f^\prime(x_{max}) = 0
+        \end{align*}
+
+        类似的，$g(a)$是最大值，那么，
+        \begin{align*}
+          f^\prime(x_{min}) = 0
+        \end{align*}
+
+  \item $x_{min}, x_{max} \in (a, b)$
+
+        $x_{max} \in (a, b)$，又函数$f$在$(a, b)$上可微，所以$f$在$x_{max}$处是可微的，
+        并且$f$在$x_{max}$处是全局最大值，那么也是局部最大值，由命题10.2.6可知，
+        \begin{align*}
+          f^\prime(x_{max}) = 0
+        \end{align*}
+
+        类似的，
+        \begin{align*}
+          f^\prime(x_{min}) = 0
+        \end{align*}
+
+\end{itemize}
+
 
 \end{document}
