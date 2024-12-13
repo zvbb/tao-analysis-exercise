@@ -317,7 +317,7 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
         因为$\big(\frac{f}{g}\big)(x) = \big(f\frac{1}{g}\big)(x)$，于是利用(d)(g)可知，
         \begin{align*}
-          \big(\frac{f}{g}\big)^\prime(x_0) & = \big(f\frac{1}{g}\big)^\prime(x_0)                                           \\
+          \big(\frac{f}{g}\big)^\prime(x_0) & = \big(f\frac{1}{g}\big)^\prime(x_0)                                                 \\
                                             & = f^\prime(x_0)\frac{1}{g(x_0)} + f(x_0)\big(\frac{1}{g}\big)^\prime(x_0)            \\
                                             & = f^\prime(x_0)\frac{1}{g(x_0)} + f(x_0) \big(-\frac{g^\prime(x_0)}{g(x_0)^{2}}\big) \\
                                             & = \frac{f^\prime(x_0)}{g(x_0)} - \frac{f(x_0) g^\prime(x_0)}{g(x_0)^{2}}             \\
@@ -327,6 +327,78 @@ $f$在$x_0$处可微分，由定义10.1.1可知，极限
 
 \end{itemize}
 
+\section*{10.1.5}
 
+对$n$进行归纳。
+
+归纳基始$n = 0$时，$f(x) = x^0 = 1$，由定理10.1.13(a)可知$f^\prime(x) = 0$，命题成立。
+
+归纳假设$n = k$时，命题成立。
+
+$n = k+1$时，$f(x) = x^{k + 1} = x^k x$，由定理10.1.13(d)和归纳假设可知
+\begin{align*}
+  (x^k x)^\prime
+   & = (x^k)^\prime x + x^k x^\prime \\
+   & = kx^{k-1} x + x^k 1            \\
+   & = kx^k + x^k                    \\
+   & = (k+1)x^k
+\end{align*}
+
+归纳完成，命题成立。
+
+\section*{10.1.6}
+
+因为$n$是负整数，令$n=-k$是正整数，于是$f(x) = x^n = \frac{1}{x^{k}}$，然后利用10.1.13(g)
+和习题10.1.5可知，
+\begin{align*}
+  (\frac{1}{x^{k}})^\prime & = - \frac{kx^{k-1}}{(x^{k})^2} \\
+                           & = - \frac{kx^{k-1}}{x^{2k}}    \\
+                           & = - kx^{-k-1}                  \\
+                           & = nx^{n-1}                     \\
+\end{align*}
+
+\section*{10.1.7}
+
+设$g$在$y_0$处的导数为L，$f$在$x_0$处的导数为$M$。
+\begin{itemize}
+  \item 方法1，牛顿逼近法（命题10.1.7）
+        由命题10.1.7（牛顿逼近法）可得，对任意的$\epsilon > 0$都存在一个$\delta > 0$使得，只有
+        $y \in Y$是$\delta-$接近于$y_0$的，就有
+        \begin{align}
+          \big| g(y) - \big(g(y_0) + L(y - y_0) \big) \big| \leq \epsilon|y - y_0|
+        \end{align}
+
+        因为$f$在$x_0$处可微，由命题10.1.10可知$f$在$x_0$处连续，于是存在$\delta_f > 0$，
+        使得
+        \begin{align*}
+          |f(x) - f(x_0)| \leq \delta
+        \end{align*}
+        对所有满足$|x - x_0| < \delta_f$的$x \in X$均成立。
+
+        综上，当满足$|x - x_0| < \delta_f, x \in X$，并将$y = f(x), y_0 = f(x_0)$代入(1)式可得，
+        \begin{align*}
+          \big| g(f(x)) - \big(g(f(x_0)) + L(f(x) - f(x_0)) \big) \big| \leq \epsilon|f(x) - f(x_0)|                                       \\
+          \big| \frac{g(f(x)) - g(f(x_0))}{x - x_0} - \frac{L(f(x) - f(x_0))}{x - x_0}  \big| \leq \epsilon|\frac{f(x) - f(x_0)}{x - x_0}| \\
+          - \epsilon|\frac{f(x) - f(x_0)}{x - x_0}| \leq \frac{g(f(x)) - g(f(x_0))}{x - x_0} - \frac{L(f(x) - f(x_0))}{x - x_0} \leq \epsilon|\frac{f(x) - f(x_0)}{x - x_0}|
+        \end{align*}
+
+        因为
+        \begin{align}
+          \lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} - \epsilon|\frac{f(x) - f(x_0)}{x - x_0}| = -\epsilon M \\
+          \lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} \epsilon|\frac{f(x) - f(x_0)}{x - x_0}| = \epsilon M
+        \end{align}
+
+        由$\epsilon$的任意性与夹逼定理，且$\lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{L(f(x) - f(x_0))}{x - x_0} = LM$可得，
+
+        \begin{align*}
+           & \lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(f(x)) - g(f(x_0))}{x - x_0} - \frac{L(f(x) - f(x_0))}{x - x_0} = 0 \\
+           & \implies                                                                                                                       \\
+          % & \lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(f(x)) - g(f(x_0))}{x - x_0} - LM = 0                               \\
+          % & \implies                                                                                                                       \\
+           & \lim \limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{g(f(x)) - g(f(x_0))}{x - x_0} = LM                                   \\
+        \end{align*}
+
+  \item 方法2，命题9.3.9
+\end{itemize}
 
 \end{document}
