@@ -25,5 +25,67 @@
 \section*{10.3.1}
 
 
+反证法，假设$f^\prime(x_0) < 0$。
+
+$f$在$x_0$处可微，那么，以下极限存在
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in X \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f^\prime(x_0)
+\end{align*}
+由定义9.3.6可知，对$\epsilon = -\frac{1}{2}f^\prime(x_0) > 0$，存在$\delta > 0$使得
+\begin{align*}
+   & \left|\frac{f(x) - f(x_0)}{x - x_0} - f^\prime(x_0) \right| \leq -\frac{1}{2}f^\prime(x_0) \\
+   & \implies                                                                                   \\
+   & \frac{3}{2}f^\prime(x_0) \leq \frac{f(x) - f(x_0)}{x - x_0} \leq \frac{1}{2}f^\prime(x_0)  \\
+   & \implies                                                                                   \\
+   & \frac{f(x) - f(x_0)}{x - x_0} < 0
+\end{align*}
+对所有满足$|x - x_0| < \delta$的$x \in X$均成立。
+
+这显然是矛盾的，因为，
+当$x > x_0$时，由$\frac{f(x) - f(x_0)}{x - x_0} < 0$可得，$f(x) < f(x_0)$；
+当$x < x_0$是，由$\frac{f(x) - f(x_0)}{x - x_0} < 0$可得，$f(x) > f(x_0)$；
+这与$f$是单调递增的矛盾。
+
+\section*{10.3.2}
+
+\begin{equation*}
+  f(x)=
+  \begin{cases*}
+    x; x \in (-1, 0) \\
+    x^2; x \in [0, 1)
+  \end{cases*}
+\end{equation*}
+
+与命题10.3.1不矛盾的原因是，不满足命题的前置条件：$f$在$0$处是可微的。
+
+\section*{10.3.3}
+
+\begin{equation*}
+  f(x) = x^3; x \in (-1, 1)
+\end{equation*}
+$f$在$0$处可微的，且$f^\prime(0) = 0$，而$f$是严格单调递增的。
+
+\section*{10.3.4}
+
+只证明$f$严格单调递增的情况，严格单调递减证明类似。
+
+反证法，假设$f$不是严格单调递增的，那么，存在$x, y \in [a, b], x < y$且$f(x) \geq f(y)$，
+由推论10.2.9（中值定理）可知，存在$c \in (x, y)$使得
+\begin{align*}
+  f^\prime(c) = \frac{f(y) - f(x)}{y - x} \leq 0
+\end{align*}
+与题设任意$x \in [a, b]$均有$f^\prime(x) > 0$矛盾。
+
+\section*{10.3.5}
+
+\begin{equation*}
+  f(x)=
+  \begin{cases*}
+    x + 1; x \in (-1, -\frac{1}{2}) \\
+    x - 1; x \in (\frac{1}{2}, 1)
+  \end{cases*}
+\end{equation*}
+
+区别在于：定义域不是连续的
 
 \end{document}
