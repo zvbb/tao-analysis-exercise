@@ -100,34 +100,76 @@ $(f(a_n))_{n=1}^\infty$都收敛于$L$。
 
         命题成立。
 
-  \item $g(a)$处是最大值或最小值
+  \item 存在$x_{min} \in (a, b)$或$x_{max} \in (a, b)$（包含了$g(a)$处是最大值或最小值这种情况）
 
-        $g(a)$是最小值，因为$g(a) = g(b)$所以$g(b)$也是最小值，
-        于是$x_{max} \in (a, b)$，又函数$f$在$(a, b)$上可微，所以$f$在$x_{max}$处是可微的，
+        $x_{max} \in (a, b)$，函数$f$在$(a, b)$上可微，所以$f$在$x_{max}$处是可微的，
         并且$f$在$x_{max}$处是全局最大值，那么也是局部最大值，由命题10.2.6可知，
         \begin{align*}
           f^\prime(x_{max}) = 0
         \end{align*}
 
-        类似的，$g(a)$是最大值，那么，
+        类似的，$x_{min} \in (a, b)$，那么，
         \begin{align*}
           f^\prime(x_{min}) = 0
         \end{align*}
 
-  \item $x_{min}, x_{max} \in (a, b)$
-
-        $x_{max} \in (a, b)$，又函数$f$在$(a, b)$上可微，所以$f$在$x_{max}$处是可微的，
-        并且$f$在$x_{max}$处是全局最大值，那么也是局部最大值，由命题10.2.6可知，
-        \begin{align*}
-          f^\prime(x_{max}) = 0
-        \end{align*}
-
-        类似的，
-        \begin{align*}
-          f^\prime(x_{min}) = 0
-        \end{align*}
+        综上，命题成立。
 
 \end{itemize}
+
+\section*{10.2.5}
+
+定义函数$h: [a, b] \to \mathbb{R}$为$h(x) := f(x) - \frac{f(b)-f(a)}{b-a}(x - a)$
+
+因为$f(x), x$都是$[a, b]$上的连续函数，由命题9.4.9可知，函数$h$也是$[a, b]$上的连续函数。
+
+
+因为$f(x), x$都是$(a, b)$上的可微的，由定理10.1.13可得，任意$x_0 \in (a, b)$，函数$h$在$x_0$处都是可微的，
+于是由定义10.1.11可知，函数$h$在$(a, b)$上是可微的。
+
+又因为$h(a) = h(b)$。
+
+由定理10.2.7（罗尔定理）可得，存在$x \in (a, b)$使得
+\begin{align*}
+  h^\prime(x) = 0
+\end{align*}
+即：
+\begin{align*}
+  h^\prime(x) & = f^\prime(x) - \frac{f(b)-f(a)}{b-a} = 0 \\
+              & \implies                                  \\
+  f^\prime(x) & = \frac{f(b)-f(a)}{b-a}
+\end{align*}
+
+\section*{10.2.6}
+
+对任意的$x, y \in [a, b]$，由$[x, y] \subseteq [a, b]$，
+于是由题设可得，$f$在$[x, y]$上连续，在$(x, y)$上可微。
+
+利用推论10.2.9（中值定理）可得，存在$c \in (x, y)$使得
+\begin{align*}
+  f^\prime(c) = \frac{f(x) - f(y)}{x - y}
+\end{align*}
+
+因为$f$的导数都是有界的，
+所以$|f^\prime(c)| \leq M$，即
+\begin{align*}
+   & \left|\frac{f(x) - f(y)}{x - y}\right| \leq M \\
+   & \implies                                      \\
+   & |f(x) - f(y)| \leq M|x - y|                   \\
+\end{align*}
+
+\section*{10.2.7}
+
+$f^\prime$是有界的，那么不妨设其上界为$M$。
+
+对任意$\epsilon > 0$，$x, y \in R$，存在$\delta = \frac{\epsilon}{M}$，那么，当$|x - y| \leq \delta$
+（即：$\delta-$接近时），于是由习题10.2.6知得
+\begin{align*}
+  |f(x) - f(y)| & \leq M|x - y|         \\
+                & \leq M\frac{\epsilon}{M} = \epsilon
+\end{align*}
+
+由定义9.9.2可知，$f$是一致连续的。
 
 
 \end{document}
