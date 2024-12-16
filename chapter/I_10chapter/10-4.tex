@@ -123,51 +123,49 @@ $q$是有理数，所以可以表示成$q = \frac{a}{b}$其中$a, b$都是整数
           \lim\limits_{x \to 1; x \in (1, +\infty) } \frac{f(x) - f(1)}{x - 1}
         \end{align*}
         根据命题9.3.9可知，只需证明：对任意一个由$(1, +\infty)$中的元素构成的且收敛于
-        $1$的序列$(a_n)_{n=1}^\infty$，对应的以下极限存在
+        $1$的序列$(a_n)_{n=1}^\infty$都有
         \begin{align*}
-          \lim\limits_{n \to \infty} \frac{f(a_n) - f(1)}{a_n - 1}
+          \lim\limits_{n \to \infty} \frac{f(a_n) - f(1)}{a_n - 1} = \alpha
         \end{align*}
-        即可。
 
-        对任意$\epsilon > 0$，由命题5.4.14可知，存在有理数$q_1, q_2$使得
+        对任意$\epsilon > 0$，由命题5.4.14可知，存在有理数$q, p$使得
         \begin{align*}
-          \alpha - \frac{1}{2}\epsilon < q_0 < \alpha \\
-          \alpha < q_1 < \alpha + \frac{1}{2}\epsilon \\
+          \alpha - \frac{1}{2}\epsilon < q < \alpha \\
+          \alpha < p < \alpha + \frac{1}{2}\epsilon \\
         \end{align*}
-        由命题4.3.3(g)可知$d(q_1, q_2) < \epsilon$。
+        由命题4.3.3(g)可知$d(p, q) < \epsilon$。
 
-        由引理5.6.9(e)可知，$a_n > 1$时，$a_n^{q_0} < a_n^\alpha < a_n^{q_1}$，
-        于是，
+        由引理5.6.9(e)可知，$a_n > 1$时$a_n^{q} < a_n^\alpha < a_n^{p}$于是，
         \begin{align*}
-          \frac{a_n^{q_1} - f(1)}{a_n - 1} < \frac{f(a_n) - f(1)}{a_n - 1} < \frac{a_n^{q_1} - f(1)}{a_n - 1}
+          \frac{a_n^{p} - f(1)}{a_n - 1} < \frac{f(a_n) - f(1)}{a_n - 1} < \frac{a_n^{p} - f(1)}{a_n - 1}
         \end{align*}
         由命题10.4.2(b)可知，
         \begin{align*}
-          \lim\limits_{n \to \infty} \frac{a_n^{q_0} - f(1)}{x - 1} = q_0 \\
-          \lim\limits_{n \to \infty} \frac{a_n^{q_1} - f(1)}{x - 1} = q_1 \\
+          \lim\limits_{n \to \infty} \frac{a_n^{q} - f(1)}{x - 1} = q \\
+          \lim\limits_{n \to \infty} \frac{a_n^{p} - f(1)}{x - 1} = p \\
         \end{align*}
 
         由夹逼定理可得
         \begin{align*}
-          q_0 \leq \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq q_1 \\
-          q_0 \leq \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq q_1 \\
+          q \leq \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq p \\
+          q \leq \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq p \\
         \end{align*}
-        由$d(q_0, q_1) < \epsilon$且$\epsilon$是任意的，可得，
+        由$d(q, p) < \epsilon$且$\epsilon$是任意的，可得，
         \begin{align*}
           \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty = \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty = \alpha
         \end{align*}
         如果不相等，则会出现以下矛盾，（注意：上确界与下确界是确定，所以两者的差值也是确定的）
         \begin{align*}
-          d(q_0, q_1) > \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty - \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty
+          d(q, p) > \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty - \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty
         \end{align*}
         由上可得，右极限是存在的，不妨设为$L$。
 
         如果$L \neq \alpha$，设$L > \alpha, \delta = L - \alpha$，取$\epsilon < \delta $，
-        此时$L > \alpha + \epsilon > p_1$，与$L \leq q_1$存在矛盾。
+        此时$L > \alpha + \epsilon > p_1$，与$L \leq p$存在矛盾。
 
-        由此可得右极限存在且等于$\alpha$。
+        由此可得，右极限存在且等于$\alpha$。
 
-        类似地，左极限也存在且等于$\alpha$。（注意在左极限中$x - 1 < 0, x^{q_0} > x^{p_1}$）
+        类似地，左极限也存在且等于$\alpha$。（注意在左极限中$x - 1 < 0, x^{q} > x^{p_1}$）
 
   \item (b)
 
