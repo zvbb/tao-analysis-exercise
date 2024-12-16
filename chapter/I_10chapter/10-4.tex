@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{10.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{10.4.1}
+
+\begin{itemize}
+  \item (a)
+
+        $g$的反函数为$g^{-1}: (0, +\infty) \to (0, +\infty),g^{-1}(y) = y^n$，
+        因为$g^{-1}(x) = x^n$是既连续又严格单调递增（这里没有做详细证明），由命题9.8.3可知，
+        它的反函数$g$也是既连续又严格单调递增的。
+
+  \item (b)
+
+        由题设和(a)，并利用定理10.4.3（反函数定理）可知，$g$在$(0, +\infty)$上可微的，并且，
+        对任意$x_0 \in (0, +\infty), y_0 = g(x_0) = x_0^{\frac{1}{n}}$
+        \begin{align*}
+          g^\prime(x_0) & = \frac{1}{g^{-1}(y_0)}                          \\
+                        & = \frac{1}{ny_0^{n-1}}                           \\
+                        & = \frac{1}{n}\frac{1}{y_0^{n-1}}                 \\
+                        & = \frac{1}{n}\frac{1}{(x_0^{\frac{1}{n}})^{n-1}} \\
+                        & = \frac{1}{n}\frac{1}{x_0^{1 - \frac{1}{n}}}     \\
+                        & = \frac{1}{n}x_0^{\frac{1}{n} - 1}               \\
+        \end{align*}
+\end{itemize}
+
+\section*{10.4.2}
+
+$q$是有理数，所以可以表示成$q = \frac{a}{b}$其中$a, b$都是整数，且$b$是不等于零的正整数。
+
+于是$f(x) = x^q$可以表示成$f(x) = x^{\frac{a}{b}}$。
+
+\begin{itemize}
+  \item (a)
+
+        \begin{align*}
+          f(x) & = x^{\frac{a}{b}}     \\
+               & = (x^{\frac{1}{b}})^a
+        \end{align*}
+
+        \begin{itemize}
+          \item[$\circ$]  $p = 0, a = 0$
+
+                此时，$f(x) = x^0 = 1$，$f^\prime(x) = 0$，命题成立。
+          \item[$\circ$]  $p > 0, a > 0$
+
+                令$g : (0, +\infty) \to (0, +\infty), g(x) = x^{\frac{1}{b}}$、
+                $h : (0, +\infty) \to (0, +\infty), h(x) = x^a$。
+
+                于是可得$f(x) = (h \circ g)(x)$，因为$g, h$在定义域上可微（$g$的可微习题10.4.1(b)保证），
+                由定理10.1.15（链式法则）可得，$f$在定义域上可微。
+
+                由定理10.1.15（链式法则）和习题10.4.1(b)可得，
+                对任意$x_0 \in (0, +\infty), y_0 = g(x_0) = x_0^{\frac{1}{b}}$
+                \begin{align*}
+                  f^\prime(x_0) & = (h \circ g)^\prime(x_0)                                      \\
+                                & = h^\prime(y_0)g^\prime(x_0)                                   \\
+                                & = a(y_0)^{a - 1}\frac{1}{b}x_0^{\frac{1}{b} - 1}               \\
+                                & = a(x_0^{\frac{1}{b}})^{a - 1}\frac{1}{b}x_0^{\frac{1}{b} - 1} \\
+                                & = \frac{a}{b}x_0^{\frac{a-1}{b}} x_0^{\frac{1}{b} - 1}         \\
+                                & = \frac{a}{b}x_0^{\frac{a}{b} - 1}                             \\
+                                & = q x_0^{q - 1}
+                \end{align*}
+
+          \item[$\circ$] $q < 0, a < 0$
+
+                令$p = -q$，于是$p > 0, f(x) = x^p = x^{-p} = \frac{1}{x^p}$。
+
+                由前一个证明和定理10.1.13(g)可知，
+                \begin{align*}
+                  f^\prime(x_0) & = - \frac{p x_0^{p - 1}}{(x_0^p)^2} \\
+                                & = - \frac{p x_0^{p - 1}}{x_0^{2p}}  \\
+                                & = - p x_0^{-p - 1}                  \\
+                                & = q x_0^{q - 1}
+                \end{align*}
+
+        \end{itemize}
+
+  \item (b)
+
+        \begin{zremark}
+          习题有点问题$x - 1$是不能等于零的，所以$x \in (0, +\infty) \ \{1\}$
+        \end{zremark}
+
+        \begin{align*}
+          \lim\limits_{x \to 1; x \in (0, +\infty) \setminus \{1\}} \frac{x^q - 1}{x - 1}
+          = \lim\limits_{x \to 1; x \in (0, +\infty) \setminus \{1\}} \frac{x^q - 1^q}{x - 1} \\
+        \end{align*}
+        可见，这里是函数在$x=1$处的导数，于是$f^\prime(1) = q1^0 = q$
+\end{itemize}
+
+\section*{10.4.3}
+
+
+\begin{itemize}
+  \item (a)
+
+        证明框架：通过证明左右极限存在且相等，证明极限的存在。
+
+        证明右极限，我们必须证明
+        \begin{align*}
+          \lim\limits_{x \to 1; x \in (1, +\infty) } \frac{f(x) - f(1)}{x - 1}
+        \end{align*}
+        根据命题9.3.9可知，只需证明：对任意一个由$(1, +\infty)$中的元素构成的且收敛于
+        $1$的序列$(a_n)_{n=1}^\infty$，对应的以下极限存在
+        \begin{align*}
+          \lim\limits_{n \to \infty} \frac{f(a_n) - f(1)}{a_n - 1}
+        \end{align*}
+        即可。
+
+        对任意$\epsilon > 0$，由命题5.4.14可知，存在有理数$q_1, q_2$使得
+        \begin{align*}
+          \alpha - \frac{1}{2}\epsilon < q_0 < \alpha \\
+          \alpha < q_1 < \alpha + \frac{1}{2}\epsilon \\
+        \end{align*}
+        由命题4.3.3(g)可知$d(q_1, q_2) < \epsilon$。
+
+        由引理5.6.9(e)可知，$a_n > 1$时，$a_n^{q_0} < a_n^\alpha < a_n^{q_1}$，
+        于是，
+        \begin{align*}
+          \frac{a_n^{q_1} - f(1)}{a_n - 1} < \frac{f(a_n) - f(1)}{a_n - 1} < \frac{a_n^{q_1} - f(1)}{a_n - 1}
+        \end{align*}
+        由命题10.4.2(b)可知，
+        \begin{align*}
+          \lim\limits_{n \to \infty} \frac{a_n^{q_0} - f(1)}{x - 1} = q_0 \\
+          \lim\limits_{n \to \infty} \frac{a_n^{q_1} - f(1)}{x - 1} = q_1 \\
+        \end{align*}
+
+        由夹逼定理可得
+        \begin{align*}
+          q_0 \leq \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq q_1 \\
+          q_0 \leq \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty  \leq q_1 \\
+        \end{align*}
+        由$d(q_0, q_1) < \epsilon$且$\epsilon$是任意的，可得，
+        \begin{align*}
+          \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty = \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty = \alpha
+        \end{align*}
+        如果不相等，则会出现以下矛盾，（注意：上确界与下确界是确定，所以两者的差值也是确定的）
+        \begin{align*}
+          d(q_0, q_1) > \sup(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty - \inf(\frac{f(a_n) - f(1)}{a_n - 1})_{n=1}^\infty
+        \end{align*}
+        由上可得，右极限是存在的，不妨设为$L$。
+
+        如果$L \neq \alpha$，设$L > \alpha, \delta = L - \alpha$，取$\epsilon < \delta $，
+        此时$L > \alpha + \epsilon > p_1$，与$L \leq q_1$存在矛盾。
+
+        由此可得右极限存在且等于$\alpha$。
+
+        类似地，左极限也存在且等于$\alpha$。（注意在左极限中$x - 1 < 0, x^{q_0} > x^{p_1}$）
+
+  \item (b)
+
+        由定义10.1.1可知，要证明对任意$x_0 \in (0, +\infty)$，以下极限的存在性，
+        \begin{align*}
+           & \lim \limits_{x \to x_0; x \in (0, +\infty) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0}                                                    \\
+           & = \lim \limits_{x \to x_0; x \in (0, +\infty) \setminus \{x_0\}} \frac{x^{\alpha} - x_0^{\alpha}}{x - x_0}                                      \\
+           & = \lim \limits_{x \to x_0; x \in (0, +\infty) \setminus \{x_0\}} \frac{(\frac{x}{x_0})^{\alpha} - 1}{\frac{x}{x_0} - 1}\frac{x_0^{\alpha}}{x_0} \\
+           & = \lim \limits_{x \to x_0; x \in (0, +\infty) \setminus \{x_0\}} \frac{(\frac{x}{x_0})^{\alpha} - 1}{\frac{x}{x_0} - 1}x_0^{\alpha - 1}         \\
+           & = \alpha x_0^{\alpha - 1}
+        \end{align*}
+        最后一个等式使用了命题9.3.14（函数的极限定律）
+
+\end{itemize}
+
+\begin{zremark}
+  \begin{align*}
+    \lim \limits_{x \to x_0; x \in (0, +\infty) \setminus \{x_0\}} \frac{(\frac{x}{x_0})^{\alpha} - 1}{\frac{x}{x_0} - 1} = \alpha
+  \end{align*}
+  这一步可以通过定义9.3.6证明。
+\end{zremark}
+
+
+\end{document}
