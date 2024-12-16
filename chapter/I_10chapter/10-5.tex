@@ -24,5 +24,42 @@
 
 \section*{10.5.1}
 
+首先证明存在$\delta > 0$使得对所有的$x \in \left( X \cap (x_0 - \delta, x_0 + \delta) \right) \setminus \{x_0\}$
+都有$g(x) \neq 0$。
+由命题10.1.7（牛顿逼近法）(b)可得，特别地，取$\epsilon = \frac{1}{2}|g^\prime(x_0)| > 0$，存在$\delta > 0$使得，
+\begin{align*}
+  |g(x) - (g(x_0) + g^\prime(x_0)(x - x_0))| \leq \frac{1}{2}|g^\prime(x_0)||x - x_0| \\
+  |g(x) - g^\prime(x_0)(x - x_0)| \leq \frac{1}{2}|g^\prime(x_0)||x - x_0|
+\end{align*}
+此时，如果存在$x \in (X \cap (x_0 - \delta, x_0 + \delta))$，使得$g(x) = 0$，那么，
+\begin{align*}
+  |g(x) - g^\prime(x_0)(x - x_0)| \leq \frac{1}{2}|g^\prime(x_0)||x - x_0| \\
+  |0 - g^\prime(x_0)(x - x_0)| \leq \frac{1}{2}|g^\prime(x_0)||x - x_0|    \\
+  |g^\prime(x_0)(x - x_0)| \leq \frac{1}{2}|g^\prime(x_0)||x - x_0|
+\end{align*}
+显然以上等式是不成立的，所以$g(x) \neq 0$。
+
+由于$f, g$都在$x_0$处可微，所以
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x) - f(x_0)}{x - x_0} = f^\prime(x_0) \\
+  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{g(x) - g(x_0)}{x - x_0} = g^\prime(x_0)
+\end{align*}
+
+因为
+\begin{align*}
+   & \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x)}{g(x)}                                                       \\
+   & =   \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{\frac{f(x) - f(x_0)}{x - x_0}}{\frac{g(x) - g(x_0)}{x - x_0}} \\
+\end{align*}
+于是利用命题9.3.14（函数的极限定律）可知，
+\begin{align*}
+   & \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x)}{g(x)} \\
+   & = \frac{f^\prime(x_0)}{g^\prime(x_0)}
+\end{align*}
+
+\section*{10.5.2}
+
+（1）不满足命题的前置条件：$g(0) = 0$
+
+（2）不满足命题的前置条件：$\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$存在。
 
 \end{document}
