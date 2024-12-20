@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{10.5 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  \textbf{综合1,2，个人判断，陶哲轩书中的洛必达法则的表述存在问题。}
+\end{zremark}
+
+\section*{1 \textbf{书中洛必达法则I和II有区别，感觉两者表达的不一致？}}
+主要有以下问题：
+\begin{itemize}
+  \item I中直接就是$\frac{f^\prime(x_0)}{g^\prime(x_0)}$，但II中却要
+        $\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$存在。
+  \item II中
+        $\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$难道不是一定存在么？
+
+        题设中$f,g$在$[a, b]$上是可微的，且任意$x \in [a,b], g^\prime(x) \neq 0$，
+        即$f^\prime(a),g^\prime(a)$存在，且$g^\prime(a) \neq 0$，
+        此时，按照定义10.1.1可得，
+        \begin{align*}
+          \lim\limits_{x \to a; x \in [a, b] \setminus \{a\}} \frac{f(x) - f(a)}{x - a}
+          = f^\prime(a) \\
+          \lim\limits_{x \to a; x \in [a, b] \setminus \{a\}} \frac{g(x) - g(a)}{x - a}
+          = g^\prime(a) \\
+        \end{align*}
+
+        集合$[a, b] \setminus \{a\} = (a, b]$，按照命题9.3.14，极限就是，
+        \begin{align*}
+           & \lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}                               \\
+           & = \lim\limits_{x \to a; x \in (a, b]} \frac{\frac{f(x) - f(a)}{x - a}}{\frac{g(x) - g(a)}{x - a}} \\
+           & = \frac{f^\prime(a)}{g^\prime(a)}
+        \end{align*}
+        此时为啥还要判断存在性呢？？？
+
+\end{itemize}
+
+
+\section*{2 \textbf{和我本科期间学的洛必达定理表达不一样？}}
+
+\begin{itemize}
+  \item 本科期间是$\lim\limits_{x \to a} f(x) = 0$，而不是$f(a) = 0$，后者的条件更强了。
+  \item 维基百科与百度百科表达的方式与本科期间一致。
+\end{itemize}
+
+
+
+
+\end{document}

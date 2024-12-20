@@ -39,20 +39,19 @@
 \end{align*}
 显然以上等式是不成立的，所以$g(x) \neq 0$。
 
-由于$f, g$都在$x_0$处可微，所以
+由于$f, g$都在$x_0$处可微，并由命题9.3.18（极限是局部的）可知，
 \begin{align*}
-  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x) - f(x_0)}{x - x_0} = f^\prime(x_0) \\
-  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{g(x) - g(x_0)}{x - x_0} = g^\prime(x_0)
+  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x) - f(x_0)}{x - x_0} = f^\prime(x_0) \\
+  \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{g(x) - g(x_0)}{x - x_0} = g^\prime(x_0)
 \end{align*}
 
 因为
 \begin{align*}
-   & \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x)}{g(x)}                                                       \\
-   & =   \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{\frac{f(x) - f(x_0)}{x - x_0}}{\frac{g(x) - g(x_0)}{x - x_0}} \\
+   \frac{f(x)}{g(x)} = \frac{\frac{f(x) - f(x_0)}{x - x_0}}{\frac{g(x) - g(x_0)}{x - x_0}} \\
 \end{align*}
 于是利用命题9.3.14（函数的极限定律）可知，
 \begin{align*}
-   & \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta))} \frac{f(x)}{g(x)} \\
+   & \lim\limits_{x \to x_0; x \in (X \cap (x_0 - \delta, x_0 + \delta)) \setminus \{x_0\}} \frac{f(x)}{g(x)} \\
    & = \frac{f^\prime(x_0)}{g^\prime(x_0)}
 \end{align*}
 
