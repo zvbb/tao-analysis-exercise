@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{11.2.1}
+
+划分$P^\prime$比$P$更细，由命题11.1.14可知，
+任意$J \subseteq P^\prime$，都存在$K \subseteq P$使得$J \subseteq K$。
+此时$J \subseteq K \subseteq P$，由于$f$是关于$P$上的分段常数函数，
+那么$f$在$K$上是常值的，于是$f$在$J$上也是常值的。
+
+由$J$的任意性可知，$f$也是关于$P^\prime$上的分段常数函数。
+
+\section*{11.2.2}
+
+由于$f,g$都是$I$上的分段常数函数，于是存在$I$上的划分$P_f, P_g$分别使得
+$f$是关于$P_f$上的分段常数函数，$g$是关于$P_g$上的分段常数函数。
+
+由引理11.1.18可知，$P := P_f \# P_g$是$I$的划分，且比$P_f$和$P_g$更细。
+由引理11.2.7可知，$f,g$都是关于$P$的分段常数函数，
+那么，由定义11.2.3，对任意$J \subseteq P$，$f|_J$是常数函数，$g|_J$是常数函数，
+于是$(f-g)|J$也是常量函数，由$J$的任意性可知，$f-g$是关于$P$的分段常数函数，
+由定义11.2.5可知，$f-g$是$I$上的分段函数。
+
+其他情况类似。
+
+\section*{11.2.3}
+
+令$Q := P \# P^\prime$，由引理11.2.7可知，$f$是关于$Q$上的分段常数函数。
+
+接下来证明:
+\begin{align}
+  p.c.\int_{[P]} f = p.c.\int_{[Q]}f \\
+  p.c.\int_{[P^\prime]} f = p.c.\int_{[Q]}f
+\end{align}
+
+对任意$K \in P$，定义
+\begin{align*}
+  Q_K := \{X \in Q : X \subseteq K\}
+\end{align*}
+证明$K = Q_K$。反证法，假设$K \neq Q_K$。由$Q_K$的构造方式，易知$Q_K \subseteq K$，
+如果假设成立，那么，存在$x \in K$，$x \notin Q_K$。
+
+$Q$中一定存在$J$使得$x \in J$，由$Q$比$P$更细，可知存在$W \in P$使得$J \subseteq W$，
+由划分的定义可知$W = K$，因为如果$W \neq K$，则与定义11.1.10（划分）中每个元素恰好
+属于$P$中的一个有界区间矛盾，存在了两个区间都包含$x$。于是可知$J \in Q_K$，与假设矛盾。
+
+由$K = Q_K$可知，$p.c.\int_{[K]} f = p.c.\int_{[Q_K]}f$，由$K$的任意性，可知（1）式成立。
+
+类似地，可证（2）式成立。
+
+\section*{11.2.4}
+
+设$P_f,P_g$是满足条件的划分，即$f,g$分别是关于$P_f,P_g$的分段常数函数。
+令$P := P_f \# P_g$，由引理11.1.18和命题11.2.13可知，
+\begin{align*}
+  p.c.\int_{I} f = p.c.\int_{[P]}f \\
+  p.c.\int_{I} g = p.c.\int_{[P]}g
+\end{align*}
+
+\begin{itemize}
+  \item (a)
+
+        由定义11.2.9可知，
+        \begin{align*}
+          p.c.\int_{I} (f + g) = \sum\limits_{J \in P} (F_J + G_J) |J|
+        \end{align*}
+        其中$F_J, G_J$表示$f,g$分别在$J$上的常数值。
+        由命题7.1.11可知，
+
+        \begin{align*}
+          p.c.\int_{I} (f + g) & = \sum\limits_{J \in P} (F_J + G_J) |J|                         \\
+                               & = \sum\limits_{J \in P} F_J |J| + \sum\limits_{J \in P} G_J |J| \\
+                               & = p.c.\int_{[P]} f + p.c.\int_{[P]} g                           \\
+                               & = p.c.\int_{I} f + p.c.\int_{I} g
+        \end{align*}
+
+  \item (b)
+
+        证明与(a)类似，略
+  \item (c)
+
+        利用(a),(b)可证，略
+
+  \item (d)
+
+        由定义11.2.9可知，
+        \begin{align*}
+          p.c.\int_{I} f = \sum\limits_{J \in P} F_J |J|
+        \end{align*}
+        其中$F_J$表示$f$在$J$上的常数值。
+
+        由题设可知，$F_J \geq 0$，又由定义11.1.8可知$|J| \geq 0$，
+        于是，任意$J \in P$都有$F_J |J| \geq 0$，所以，
+        \begin{align*}
+          \sum\limits_{J \in P} F_J |J| \geq 0
+        \end{align*}
+        即:
+        \begin{align*}
+          p.c.\int_{I} f \geq 0
+        \end{align*}
+
+  \item (e)
+
+        证明框架：对$P$的基数$n$进行归纳。略
+
+  \item (f)
+
+        由定义11.2.9可知，
+        \begin{align*}
+          p.c.\int_{I} f = \sum\limits_{J \in P} F_J |J|
+        \end{align*}
+        其中$F_J$表示$f$在$J$上的常数值，又$f$是常量函数$f(x) = c$，所以总是$F_J = c$，于是，
+        \begin{align*}
+          p.c.\int_{I} f & = \sum\limits_{J \in P} F_J |J| \\
+                         & = \sum\limits_{J \in P} c |J|   \\
+                         & = c\sum\limits_{J \in P} |J|    \\
+                         & = c|I|
+        \end{align*}
+        最有一个等式利用了定理11.1.13
+
+
+  \item (g)
+
+        \begin{align*}
+          J_L := \{x \in J: x \leq min(P) ; x \notin P \} \\
+          J_R := \{x \in J: x \geq max(P) ; x \notin P \}
+        \end{align*}
+        $\{J_L, P, J_R\}$划分是符合定义11.1.10（划分）的。
+
+        于是，
+        \begin{align*}
+          p.c.\int_{J} F & = \sum\limits_{K \in J} C_K |K|                                                                     \\
+                         & = \sum\limits_{K \in J_L} C_K |K| + \sum\limits_{K \in P} C_K |K| + \sum\limits_{K \in J_R} C_K |K| \\
+                         & = 0 + \sum\limits_{K \in P} C_K |K| + 0                                                             \\
+                         & = \sum\limits_{K \in P} C_K |K|                                                                     \\
+                         & = p.c.\int_{I} f
+        \end{align*}
+        其中，$K \in J, C_K$表示$F$在$K$上的常数值。
+        而$x \in J_L$时，$C_K = 0$，即此时的$C_J = 0$；
+        $x \in J_R$时，$C_K = 0$，即此时的$C_J = 0$。
+
+  \item (h)
+
+        \begin{itemize}
+          \item[$\circ$]
+
+                \begin{align*}
+                  J_P := \{J \cap X: X \in P\} \\
+                  K_P := \{K \cap X: X \in P\} \\
+                \end{align*}
+                可见$J_P, K_P$分别是$J, K$的划分。
+
+                对任意$X \in J_P$，按照$J_P$的构造方式存在$Y \in P$使得$X \subseteq Y$，
+                因为$f$是关于$P$的分段常数函数，所以$f$在$Y$上都是常值的，那么在$X$上也是常值的，由定义11.2.3
+                可得$f|_J$是关于$J_P$的分段常数函数。于是$f|_J$是$J$上的分段常数函数。
+
+                类似地，$f|_K$是$K_P$上的分段常数函数。
+
+          \item[$\circ$]
+
+                定义
+                \begin{equation*}
+                  F(x) :=
+                  \begin{cases*}
+                    f_J(x) & $x \in J$             \\
+                    0      & $x \in I \setminus J$
+                  \end{cases*}
+                \end{equation*}
+
+                \begin{equation*}
+                  G(x) :=
+                  \begin{cases*}
+                    f|_K(x) & $x \in K$             \\
+                    0       & $x \in I \setminus K$
+                  \end{cases*}
+                \end{equation*}
+
+                于是$f = F + G$，利用(a)(g)可得，
+                \begin{align*}
+                  p.c.\int_{I} f & = p.c.\int_{I} (F + G)                  \\
+                                 & = p.c.\int_{I} F + p.c.\int_{I} G       \\
+                                 & = p.c.\int_{J} f|_J + p.c.\int_{K} f|_K \\
+                \end{align*}
+        \end{itemize}
+\end{itemize}
+
+\end{document}
