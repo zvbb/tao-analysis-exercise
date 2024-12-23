@@ -139,7 +139,7 @@
 \section*{11.3.5}
 
 由引理11.3.11可知，任意$g$是从上方控制$f$的函数，并且$g$是关于$I$的某个划分$P$的分段常量函数，
-于是
+都有
 \begin{align*}
   p.c.\int_{I}g \geq U(f, P)
 \end{align*}
@@ -156,12 +156,9 @@
 
 反证法，假设$ \overline{\int}_{I} f  > \inf\{U(f,P): P \text{是} I \text{的划分}\}$，
 于是存在$I$的划分$P_0$使得
-\begin{equation}
-  \begin{cases}
-    \overline{\int}_{I} f  > U(f,P_0)                   \\
-    U(f, P_0) > \inf\{U(f,P): P \text{是} I \text{的划分}\} \\
-  \end{cases}
-\end{equation}
+\begin{align}
+    \overline{\int}_{I} f  > U(f,P_0) > \inf\{U(f,P): P \text{是} I \text{的划分}\} 
+\end{align}
 我们可以在划分$P_0$的基础上，定义函数$g_0$是关于$P_0$的分段常量函数如下：
 \begin{align*}
   g_0(x) = \sup\limits_{x \in J}f(x)
