@@ -72,5 +72,118 @@
 
 \section*{11.3.3}
 
+由定义11.3.1，$f$在$I$上从上方控制$f$，于是
+\begin{align*}
+  \overline{\int}_{I} f \leq p.c.\int_{I}f
+\end{align*}
+类似的，$f$在$I$上从下方控制$f$，可得
+\begin{align*}
+  p.c.\int_{I}f \leq \underline{\int}_I  f
+\end{align*}
+
+又由引理11.3.3可知
+\begin{align*}
+  \underline{\int}_I  f \leq \overline{\int}_{I} f
+\end{align*}
+
+于是可得，
+\begin{align*}
+  p.c.\int_{I}f = \underline{\int}_I  f = \overline{\int}_{I} f
+\end{align*}
+即：
+\begin{align*}
+  \int_I  f = p.c.\int_{I}f
+\end{align*}
+
+\section*{11.3.4}
+
+由定义11.2.14和定义11.2.9可知
+\begin{align*}
+  p.c.\int_{I}g & = p.c.\int_{[P]}g               \\
+                & = \sum\limits_{J \in P} C_J |J| \\
+\end{align*}
+其中，对任意的$J \in P$，我们令$C_J$表示$g$在$J$上的常数值。
+
+由定义11.3.9可知
+\begin{align*}
+  U(f, P) = \sum\limits_{J \in P; J \neq \emptyset} (\sup\limits_{x \in J}f(x)) |J|
+\end{align*}
+
+对任意$J \in P$，$g|_J$是常数函数，不妨设为$c_j$，此时任意$x \in J$都有$c_j \geq \sup\limits_{x \in J}f(x)$，
+否则与题设$g$是从上方控制$f$的函数矛盾。
+所以任意$J \in P, |J| \geq 0$都有
+\begin{align*}
+  C_J |J| \geq (\sup\limits_{x \in J}f(x)) |J|
+\end{align*}
+
+由命题7.1.11(h)可知
+\begin{align*}
+  \sum\limits_{J \in P} C_J |J| \geq \sum\limits_{J \in P; J \neq \emptyset} (\sup\limits_{x \in J}f(x)) |J|
+\end{align*}
+即：
+\begin{align*}
+  p.c.\int_{I}g \geq U(f, P)
+\end{align*}
+
+类似地，
+\begin{align*}
+  p.c.\int_{I}h \leq L(f, P)
+\end{align*}
+
+\begin{zremark}
+  $I$是空集的话，空虚的成立，无需讨论，定义11.3.9未定义空集的情况。
+
+  划分$P$中可能存在空集的情况，可以去掉空集元素，得到划分$P^\prime$，命题11.2.13保证结论任然成立。
+\end{zremark}
+
+\section*{11.3.5}
+
+由引理11.3.11可知，任意$g$是从上方控制$f$的函数，并且$g$是关于$I$的某个划分$P$的分段常量函数，
+于是
+\begin{align*}
+  p.c.\int_{I}g \geq U(f, P)
+\end{align*}
+于是可得
+\begin{align*}
+  p.c.\int_{I}g \geq \inf\{U(f,P): P \text{是} I \text{的划分}\}
+\end{align*}
+又由定义11.3.2可知
+\begin{align*}
+  p.c.\int_{I}g \geq \overline{\int}_{I} f
+\end{align*}
+
+下面证明$\overline{\int}_{I} f  = \inf\{U(f,P): P \text{是} I \text{的划分}\}$。
+
+反证法，假设$ \overline{\int}_{I} f  > \inf\{U(f,P): P \text{是} I \text{的划分}\}$，
+于是存在$I$的划分$P_0$使得
+\begin{equation}
+  \begin{cases}
+    \overline{\int}_{I} f  > U(f,P_0)                   \\
+    U(f, P_0) > \inf\{U(f,P): P \text{是} I \text{的划分}\} \\
+  \end{cases}
+\end{equation}
+我们可以在划分$P_0$的基础上，定义函数$g_0$是关于$P_0$的分段常量函数如下：
+\begin{align*}
+  g_0(x) = \sup\limits_{x \in J}f(x)
+\end{align*}
+其中，$J \in P_0$，于是
+\begin{align*}
+  p.c.\int_{I}g_0 = p.c.\int_{[P_0]}g_0 = U(f, P_0)
+\end{align*}
+由（1）式可得
+\begin{align*}
+  \overline{\int}_{I} f  > p.c.\int_{I}g_0
+\end{align*}
+因为$g_0$也是满足引理11.3.11前置条件的函数，所以
+\begin{align*}
+  \overline{\int}_{I} f \leq p.c.\int_{I}g_0
+\end{align*}
+存在矛盾，假设不成立。
+
+同理可证$\overline{\int}_{I} f  < \inf\{U(f,P): P \text{是} I \text{的划分}\}$不成立。
+
+综上，$\overline{\int}_{I} f  = \inf\{U(f,P): P \text{是} I \text{的划分}\}$
+
+类似的，可证$\underline{\int}_I  f = \sup\{L(f,P): P \text{是} I \text{的划分}\}$
 
 \end{document}
