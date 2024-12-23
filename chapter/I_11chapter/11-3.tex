@@ -22,5 +22,55 @@
 \author{张志聪}
 \maketitle
 
+\section*{11.3.1}
+
+\begin{itemize}
+  \item[$\circ$]
+
+        $f$从上方控制$g$，于是由定义11.3.1可知，对任意$x \in I$都有$f(x) \geq g(x)$，
+        $g$从上方控制$h$，类似的，对任意$x \in I$都有$g(x) \geq h(x)$，
+        于是对任意$x \in I$都有$f(x) \geq h(x)$，再次利用定义11.3.1，
+        $f$从上方控制$h$
+
+  \item[$\circ$]
+
+        $f$从上方控制$g$，于是由定义11.3.1可知，对任意$x \in I$都有$f(x) \geq g(x)$；
+        $g$从上方控制$f$，于是由定义11.3.1可知，对任意$x \in I$都有$g(x) \geq f(x)$；
+        综上，对任意$x \in I$，都有，
+        \begin{equation*}
+          \begin{cases*}
+            f(x) \geq g(x) \\
+            f(x) \leq g(x) \\
+          \end{cases*}
+        \end{equation*}
+        于是可得$f(x) = g(x)$，由函数相等的定义可知$f=g$。
+
+\end{itemize}
+
+\section*{11.3.2}
+
+\begin{itemize}
+  \item $f + h$是否从上方控制$g + h$？
+
+        是；证明略
+
+  \item $f \cdot h$是否从上方控制$g \cdot h$？
+
+        否；反例$f(x) = 1, g(x) = -1, h(x) = -1$，此时，
+        \begin{align*}
+          f \cdot h & = -1 \\
+          g \cdot h & = 1
+        \end{align*}
+        于是任意$x \in I$都有$(f \cdot h)(x) < (g \cdot h)(x)$，
+        $f \cdot h$从上方控制$g \cdot h$不成立。
+
+  \item $cf$是否从上方控制$cg$？
+
+        否；把上面的反例中的$h(x)=-1$看做$c=-1$。
+
+\end{itemize}
+
+\section*{11.3.3}
+
 
 \end{document}
