@@ -55,8 +55,22 @@ $\underline{f} : I \to \mathbb{R}$在$I$上从下方控制$f$，并且有
 
         从而
         \begin{align*}
-          0 \leq \overline{\int}_I f + g - \underline{\int}_I f - g \leq \int_I \overline{f} + \overline{g} - \int_I \underline{f} - \underline{g}
+          0 \leq \overline{\int}_I f + g - \underline{\int}_I f - g \leq \int_I (\overline{f} + \overline{g}) -  (\underline{f} - \underline{g})
         \end{align*}
+        由于
+        \begin{align*}
+          \overline{f}(x) = \underline{f}(x) + (\overline{f} - \underline{f})(x) \leq \underline{f}(x) + 2\epsilon
+        \end{align*}
+        类似地，有
+        \begin{align*}
+          \overline{g}(x) = \underline{g}(x) + (\overline{g} - \underline{g})(x) \leq \underline{g}(x) + 2\epsilon
+        \end{align*}
+        于是 
+        \begin{align*}
+          (\overline{f} + \overline{g}) -  (\underline{f} - \underline{g}) \leq 4\epsilon
+        \end{align*}
+
+
 
   \item (b)
   \item (c)
