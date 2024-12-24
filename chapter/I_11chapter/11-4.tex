@@ -43,37 +43,273 @@ $\underline{f} : I \to \mathbb{R}$在$I$上从下方控制$f$，并且有
 \begin{align*}
   \int_I \overline{g} \leq \int_I g + \epsilon
 \end{align*}
+特别地，如果$h : I \to \mathbb{R}$表示函数
+\begin{align*}
+  h := (\overline{f} - \underline{f}) + (\overline{g} - \underline{g})
+\end{align*}
+那么
+\begin{align*}
+  \int_I h \leq 4\epsilon
+\end{align*}
 
 \begin{itemize}
   \item (a)
 
-        由以上说明，可得$\underline{f} + \underline{g}$在$I$上从下方控制$f + g$，
-        而$\overline{f} + \overline{g}$在$I$上从上方控制$f + g$，所以有
+        由以上说明，可得$\underline{f} + \underline{g}$在$I$上从下方控制$f + g$的分段常数函数，
+        而$\overline{f} + \overline{g}$在$I$上从上方控制$f + g$的分段常数函数，所以有
         \begin{align*}
-          \int_{I} \underline{f} + \underline{g} \leq \underline{\int}_I f + g \leq \overline{\int}_I f + g \leq \int_I \overline{f} + \overline{g} 
+          \int_{I} (\underline{f} + \underline{g}) \leq \underline{\int}_I (f + g) \leq \overline{\int}_I (f + g) \leq \int_I (\overline{f} + \overline{g})
         \end{align*}
 
         从而
         \begin{align*}
-          0 \leq \overline{\int}_I f + g - \underline{\int}_I f - g \leq \int_I (\overline{f} + \overline{g}) -  (\underline{f} - \underline{g})
+          0 \leq \overline{\int}_I (f + g) - \underline{\int}_I (f + g) \leq \int_I (\overline{f} + \overline{g}) -  (\underline{f} - \underline{g})
         \end{align*}
-        由于
+        于是
         \begin{align*}
-          \overline{f}(x) = \underline{f}(x) + (\overline{f} - \underline{f})(x) \leq \underline{f}(x) + 2\epsilon
-        \end{align*}
-        类似地，有
-        \begin{align*}
-          \overline{g}(x) = \underline{g}(x) + (\overline{g} - \underline{g})(x) \leq \underline{g}(x) + 2\epsilon
-        \end{align*}
-        于是 
-        \begin{align*}
-          (\overline{f} + \overline{g}) -  (\underline{f} - \underline{g}) \leq 4\epsilon
+          0 \leq \overline{\int}_I (f + g) - \underline{\int}_I (f + g) \leq \int_I h(x)
         \end{align*}
 
+        综上所述，对任意的$\epsilon > 0$，都有
+        \begin{align*}
+          0 \leq \overline{\int}_I (f + g) - \underline{\int}_I (f + g) \leq 4\epsilon
+        \end{align*}
+
+        由于$\overline{\int}_I (f + g) - \underline{\int}_I (f + g)$与$\epsilon$无关（这里表达的是$\epsilon$取任何值，等式都要成立），
+        所以
+        \begin{align*}
+          \overline{\int}_I (f + g) = \underline{\int}_I (f + g)
+        \end{align*}
+
+        因此，$f + g$是黎曼可积的。
+
+        因为
+        \begin{align*}
+          \int_{I} (\underline{f} + \underline{g}) \leq \int_I (f + g) \leq \int_I (\overline{f} + \overline{g})
+        \end{align*}
+        从而
+        \begin{align*}
+          \int_{I} \underline{f} + \int_{I}\underline{g} \leq \int_I (f + g) \leq \int_I \overline{f} + \int_I \overline{g}
+        \end{align*}
+        对左右两端分别取上确界和下确界（其实这也可作为$f+g$黎曼可积的证明），可得
+        \begin{align*}
+          \int_{I} f + \int_{I} g \leq \int_I (f + g) \leq \int_I f + \int_I g
+        \end{align*}
+        所以
+        \begin{align*}
+          \int_I (f + g) = \int_I f + \int_I g
+        \end{align*}
 
 
   \item (b)
+
+        $c = 0$，任意$x \in I$都有$cf(x) = 0$，于是$cf$是常数函数，
+        于是$\int_I cf = p.c.\int_I cf = 0$；
+
+        $c > 0,c < 0$的证明类似，这里以$c > 0$为例。
+
+        因为
+        \begin{align*}
+          c \int_I \underline{f} \geq c \int_I f - c\epsilon \\
+          c \int_I \overline{f} \leq c \int_I f + c\epsilon  \\
+        \end{align*}
+
+        特别地，如果$h : I \to \mathbb{R}$表示函数
+        \begin{align*}
+          h := c\overline{f} - c\underline{f}
+        \end{align*}
+        那么
+        \begin{align*}
+          \int_I h \leq 2c\epsilon
+        \end{align*}
+        因为$c\underline{f}$是在$I$上从下方控制$cf$的分段常数函数，$c\overline{f}$是从$I$上从上方控制$cf$的分段常数函数，
+        于是
+        \begin{align*}
+          \int_I c\overline{f} \leq \underline{\int}_I cf \leq \overline{\int}_I cf \leq \int_I c\underline{f}
+        \end{align*}
+        从而
+        \begin{align*}
+          0 \leq \overline{\int}_I cf - \underline{\int}_I cf \leq \int_I (c\overline{f} - c\underline{f})
+        \end{align*}
+        于是
+        \begin{align*}
+          0 \leq \overline{\int}_I cf - \underline{\int}_I cf \leq \int_I h
+        \end{align*}
+        综上所述，对任意的$\epsilon > 0$，都有
+        \begin{align*}
+          0 \leq \overline{\int}_I cf - \underline{\int}_I cf \leq 2c\epsilon
+        \end{align*}
+        由于$\overline{\int}_I cf, \underline{\int}_I cf$与$\epsilon$无关，所以
+        \begin{align*}
+          \overline{\int}_I cf = \underline{\int}_I cf
+        \end{align*}
+        因此，$cf$是黎曼可积的。
+
+
+        \begin{align*}
+          \int_I cf = c\int_I f
+        \end{align*}
+        的证明与(a)中的类似，这里不再赘述。
+
   \item (c)
+
+        利用(a)(b)可得
+        \begin{align*}
+          \int_I (f - g) & = \int_I (f + (- g))      \\
+                         & = \int_I f + \int_I (- g) \\
+                         & = \int_I f - \int_I g
+        \end{align*}
+
+  \item (d)
+
+        定义$\underline{f}: I \to \mathbb{R}$为$\underline{f}(x) = 0$，于是$\underline{f}$在$I$上从下方控制$f$的分段常数函数。
+        从而
+        \begin{align*}
+          \int_I \underline{f} \leq \int_I f
+        \end{align*}
+        因为
+        \begin{align*}
+          \int_I \underline{f} = 0
+        \end{align*}
+        于是
+        \begin{align*}
+          0 \leq \int_I f
+        \end{align*}
+
+  \item (e)
+
+        因为$f(x) \geq g(x)$，所以$f(x) - g(x) \geq 0$，
+        利用(d)可得
+        \begin{align*}
+          \int_I (f - g) \geq 0
+        \end{align*}
+        利用(c)可得
+        \begin{align*}
+          \int_I f - \int_I g \geq 0
+        \end{align*}
+        从而
+        \begin{align*}
+          \int_I f \geq \int_I g
+        \end{align*}
+
+  \item (f)
+
+        因为$f$是常数函数，由引理11.3.7可知
+        \begin{align*}
+          \int_I f & = p.c.\int_I f
+        \end{align*}
+        由定理11.2.16(f)可知
+        \begin{align*}
+          \int_I f & = p.c.\int_I f \\
+                   & = c|I|
+        \end{align*}
+
+  \item (g)
+
+        定义$\underline{F}, \overline{F}$分别是在$J$上从下方控制和从上方控制的分段函数，如下
+        \begin{align*}
+          \underline{F} (x) =
+          \begin{cases*}
+            \underline{f}(x),  x \in I    \\
+            0,                 x \notin I \\
+          \end{cases*}
+          ,\overline{F}(x) =
+          \begin{cases*}
+            \overline{f}(x),  x \in I     \\
+            0,                 x \notin I \\
+          \end{cases*}
+        \end{align*}
+        从而
+        \begin{align*}
+          \int_I \underline{F} \leq \underline{\int}_I F \leq \overline{\int}_I F \leq \int_I \overline{F}
+        \end{align*}
+        利用11.2.16(g)可得
+        \begin{align*}
+          \int_I \underline{f} \leq \underline{\int}_I F \leq \overline{\int}_I F \leq \int_I \overline{f}
+        \end{align*}
+        对左右两端分别取上确界和下确界，可得
+        \begin{align*}
+          \underline{\int}_I f \leq \underline{\int}_I F \leq \overline{\int}_I F \leq \overline{\int}_I f
+        \end{align*}
+        因为$f$是黎曼可积的，所以$\int_I f = \underline{\int}_I f = \overline{\int}_I f$，
+        所以，
+        \begin{align*}
+          \int_I f \leq \underline{\int}_I F \leq \overline{\int}_I F \leq \int_I f
+        \end{align*}
+
+        综上所述，
+        $F$是黎曼可积的，且
+        \begin{align*}
+          \int_I F = \int_I f
+        \end{align*}
+
+  \item (h)
+
+        由定理11.2.16可得
+        \begin{align*}
+          \int_I \overline{f} = \int_J \overline{f}|_J + \int_K \overline{f}|_K    \\
+          \int_I \underline{f} = \int_J \underline{f}|_J + \int_K \underline{f}|_K \\
+        \end{align*}
+
+        两者相减
+        \begin{align*}
+          \int_I \overline{f} - \int_I \underline{f} & = \int_J \overline{f}|_J - \int_J \underline{f}|_J + \int_K \overline{f}|_K - \int_K \underline{f}|_K \\
+                                                     & \leq 4\epsilon
+        \end{align*}
+        因为任意$x \in I$都有$\overline{f}(x) \geq \underline{f}(x)$，所以
+        \begin{equation*}
+          \begin{cases*}
+            \int_J \overline{f}|_J \geq \int_J \underline{f}|_J \\
+            \int_K \overline{f}|_K \geq \int_K \underline{f}|_K
+          \end{cases*}
+        \end{equation*}
+        从而
+        \begin{align*}
+          \int_J \overline{f}|_J - \int_J \underline{f}|_J \leq 4\epsilon \\
+          \int_K \overline{f}|_K - \int_K \underline{f}|_K \leq 4\epsilon
+        \end{align*}
+
+        而我们有
+        \begin{align*}
+          \int_J \underline{f} \leq \underline{\int}_J f|_J \leq \overline{\int}_J f|_J \leq \int_J \overline{f}|_J \\
+          \int_K \underline{f} \leq \underline{\int}_K f|_K \leq \overline{\int}_J f|_K \leq \int_K \overline{f}|_K
+        \end{align*}
+        于是可得
+        \begin{align*}
+          0 \leq \overline{\int}_J f|_J - \underline{\int}_J f|_J \leq \int_J \overline{f}|_J - \int_J \underline{f}|_J \leq 4\epsilon \\
+          0 \leq \overline{\int}_K f|_J - \underline{\int}_K f|_K \leq \int_K \overline{f}|_K - \int_K \underline{f}|_K \leq 4\epsilon \\
+        \end{align*}
+        综上所述，对任意的$\epsilon > 0$，都有
+        \begin{align*}
+          0 \leq \overline{\int}_J f|_J - \underline{\int}_J f|_J \leq 4\epsilon \\
+          0 \leq \overline{\int}_K f|_J - \underline{\int}_K f|_K \leq 4\epsilon \\
+        \end{align*}
+        由于$\overline{\int}_J f|_J, \underline{\int}_J f|_J,\overline{\int}_K f|_K, \underline{\int}_K f|_K$与$\epsilon$无关，所以
+        \begin{align*}
+          \overline{\int}_J f|_J = \underline{\int}_J f|_J \\
+          \overline{\int}_K f|_K = \underline{\int}_K f|_K \\
+        \end{align*}
+
+        于是$f|_J, f|_K$分别在$J$和$K$上黎曼可积。
+
+        定义
+        \begin{equation*}
+          F(x) :=
+          \begin{cases*}
+            f|_J(x) & $x \in J$             \\
+            0      & $x \in I \setminus J$
+          \end{cases*}
+          ,G(x) :=
+          \begin{cases*}
+            f|_K(x) & $x \in K$             \\
+            0       & $x \in I \setminus K$
+          \end{cases*}
+        \end{equation*}
+
+        于是$f = F + G$，利用(a)(g)可得，
+        \begin{align*}
+          \int_I f = \int_J f|_J + \int_K f|_K 
+        \end{align*}
 \end{itemize}
 
 \end{document}
