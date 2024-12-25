@@ -297,7 +297,7 @@ $\underline{f} : I \to \mathbb{R}$在$I$上从下方控制$f$，并且有
           F(x) :=
           \begin{cases*}
             f|_J(x) & $x \in J$             \\
-            0      & $x \in I \setminus J$
+            0       & $x \in I \setminus J$
           \end{cases*}
           ,G(x) :=
           \begin{cases*}
@@ -308,8 +308,102 @@ $\underline{f} : I \to \mathbb{R}$在$I$上从下方控制$f$，并且有
 
         于是$f = F + G$，利用(a)(g)可得，
         \begin{align*}
-          \int_I f = \int_J f|_J + \int_K f|_K 
+          \int_I f = \int_J f|_J + \int_K f|_K
         \end{align*}
 \end{itemize}
+
+\section*{11.4.2}
+
+反证法，假设存在$x_0 \in [a, b]$使得$f(x_0) > 0$。
+
+因为$f: [a, b] \to \mathbb{R}$是一个连续函数，由定义9.4.1可知
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in [a, b]} f(x)  = f(x_0)
+\end{align*}
+从而由定义9.3.6可知，特别地$\epsilon = \frac{1}{2}f(x_0) > 0 $存在一个$\delta > 0$使得
+\begin{align*}
+   & |f(x) - f(x_0)| \leq \frac{1}{2}f(x_0)             \\
+   & \implies                                           \\
+   & \frac{1}{2}f(x_0) \leq f(x) \leq \frac{3}{2}f(x_0) \\
+\end{align*}
+对所有满足$|x - x_0| \leq \delta$的$x \in [a, b]$均成立。
+
+我们定义函数$g: [a, b] \to \mathbb{R}$如下
+\begin{equation*}
+  g(x) =
+  \begin{cases*}
+    \frac{1}{2}f(x_0), x \in [a,b] \cap (x_0 - \delta, x_0 + \delta) \\
+    0, x \notin [a,b] \cap (x_0 - \delta, x_0 + \delta)
+  \end{cases*}
+\end{equation*}
+上面构造的$g$是在$[a, b]$上从下方控制$f$的函数，因为
+\begin{align*}
+  \int_{[a, b]} g & = p.c.\int_{[a, b]} f         \\
+                  & \geq \frac{1}{2}f(x_0) \delta \\
+                  & = \frac{1}{2}f(x_0) \delta    \\
+                  & > 0                           \\
+\end{align*}
+注意，这里没有乘以$2\delta$是因为$x_0$有可能在左右端点上。
+
+因为
+\begin{align*}
+  0 < \int_{[a, b]} g \leq \int_{[a, b]} f
+\end{align*}
+于是
+\begin{align*}
+  0 < \int_{[a, b]} f
+\end{align*}
+与题设矛盾。
+
+\section*{11.4.3}
+对$P$的基数$n$进行归纳。
+
+归纳基始$n = 1$，即$P = \{I\}$，于是
+\begin{align*}
+  \int_I f & = \sum\limits_{J \in P} \int_J f \\
+           & = \int_I f
+\end{align*}
+
+归纳假设$n = k$时，命题成立。
+
+$n = k+1$，取$P$中取出一个区间$K$，保证$I - K$是有界区间。
+
+\begin{zremark}
+  这样取的原因是要保证定义11.1.10的前置条件成立，习题11.1.3保证$(a,b),[a,b)$类型的可以取出符合条件的区间；
+  如果是$(a, b], [a, b]$类型的，直接取包含$b$的区间即可。
+\end{zremark}
+
+因为$\{I - K, K\}$是$I$的一个划分，于是利用定理11.4.1(h)可知
+\begin{align*}
+  \int_I f = \int_{I - K} f|_{I - K} + \int_K f|_K
+\end{align*}
+因为$P^\prime :=P - K$是$I - K$的划分，由归纳假设可知
+\begin{align*}
+  \int_{I - K} f|_{I - K} & = \sum\limits_{J \in P^\prime} \int_J f
+\end{align*}
+从而
+\begin{align*}
+  \int_I f & = \int_{I - K} f|_{I - K} + \int_K f|_K \\
+           & = \sum\limits_{J \in P^\prime} \int_J f + \int_K f|_K \\
+           & = \sum\limits_{J \in P} \int_J f
+\end{align*}
+
+\section*{11.4.4}
+
+对定理11.4.3
+\begin{align*}
+  min(f, g)(x) = -max(-f, -g)(x)
+\end{align*}
+然后利用定理11.4.1(b)可证。
+
+对定义11.4.5
+
+\begin{align*}
+  f_{+}g_{-} = -f_{+}(-g)_{-} \\
+  f_{-}g_{+} = -(-f)_{-}g_{+} \\
+  f_{-}g_{-} = (-f)_{-}(-g)_{-}
+\end{align*}
+然后利用定理11.4.1可证。
+
 
 \end{document}
