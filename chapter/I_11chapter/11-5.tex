@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.5 习题}
+\author{张志聪}
+\maketitle
+
+\section*{11.5.1}
+
+因为$f: I \to \mathbb{R}$既是分段连续的，由定义11.5.4可知，
+存在一个$I$的划分$P$，使得对所有的$J \in P$，$f|_J$都是$J$上的连续函数。
+又因为$f$在$I$上是有界的，由命题11.5.3可知，
+任意$J \in P$，$f|_J$在$J$上是黎曼可积的。
+
+设$P$的基数为$n$，对任意$\epsilon/n > 0$，对每一个$J \in P$，我们能找到一个分段常数函数$h_J: J \to \mathbb{R}$在
+$J$上从上方控制$f$，并且有
+\begin{align*}
+  \int_J h_J \leq \int_J f + \epsilon/n.
+\end{align*}
+定义函数$h: I \to \mathbb{R}$，对$x \in J, J \in P$为$h(x) = h_J(x)$。于是$h$在$I$上从上方控制$f$的分段常数函数。\\
+从而
+\begin{align*}
+  \overline{\int}_I f & \leq \int_I h
+\end{align*}
+由习题11.4.3可知（分段常值积分是特例）
+\begin{align*}
+  \int_I h = \sum\limits_{J \in P} \int_J h_J
+\end{align*}
+于是
+\begin{align*}
+  \overline{\int}_I f & \leq \int_I h                                  \\
+                      & = \sum\limits_{J \in P} \int_J h_J             \\
+                      & \leq \sum\limits_{J \in P} \int_J f + \epsilon
+\end{align*}
+同理可得
+\begin{align*}
+  \underline{\int}_I f \geq \sum\limits_{J \in P} \int_J f - \epsilon.
+\end{align*}
+于是可得
+\begin{align*}
+  0 \leq \overline{\int}_I - \underline{\int}_I \leq 2\epsilon.
+\end{align*}
+但$\epsilon$是任意的，所以$f$是黎曼可积的。
+
+\end{document}
