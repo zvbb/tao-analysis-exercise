@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.6 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  命题11.6.1 的证明存在问题，文中“根据嵌套级数（引理7.2.15）可得”是错误的。
+\end{zremark}
+
+错误的原因在于引理7.2.15说的是无限级数的性质，由划分的定义（定义11.1.10）
+可知$N$是自然数，所以是有限级数。
+
+但文中的结论是正确的，不用引理7.2.15可以直接得到结论。仔细级数的部分和就能得到结论。
+
+
+\end{document}

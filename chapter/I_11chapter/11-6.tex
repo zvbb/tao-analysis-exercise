@@ -22,5 +22,49 @@
 \author{张志聪}
 \maketitle
 
+\section*{11.6.1}
+
+证明框架参考了命题11.5.3的证明。
+
+如果$I$是一个单点集或者空集，那么结论是平凡的。如果$I$是一个闭区间，那么根据命题11.6.1可以得到结论。
+于是我们假设$I$是形如$(a, b], (a, b)$或$[a, b)$的区间，其中$a < b$。
+
+设$M$是$f$的界，所以对所有的$x \in I$均有$-M \leq f(x) \leq M$。现在设$0 < \epsilon < (b - a)/2$是一个很小的数。
+当$f$被限制在区间$[a + \epsilon, b - \epsilon]$上时，它就是单调有界的，从而再次利用11.6.1可知，它是黎曼可积的。
+特别地，我们能够找到一个分段常数函数$h: [a + \epsilon, b - \epsilon]$上从上方控制$f$，并且有
+\begin{align*}
+  \int_{[a + \epsilon, b - \epsilon]} h \leq \int_{[a + \epsilon, b - \epsilon]} f + \epsilon
+\end{align*}
+定义$\widetilde{h} : I \to \mathbb{R}$为
+\begin{equation*}
+  \widetilde{h}(x) =
+  \begin{cases*}
+    h(x), x \in [a + \epsilon, b - \epsilon] \\
+    M, x \in I \setminus [a + \epsilon, b - \epsilon]
+  \end{cases*}
+\end{equation*}
+$\widetilde{h}$显然是$I$上从上方控制$f$的分段常数函数。根据定理11.2.16可知，
+\begin{align*}
+  \int_{I}\widetilde{h}  = \epsilon M + \int_{[a + \epsilon, b - \epsilon]} h + \epsilon M
+                         \leq \int_{[a + \epsilon, b - \epsilon]} f + (2M + 1)\epsilon
+\end{align*}
+
+特别地
+\begin{align*}
+  \overline{\int}_I f \leq \int_{[a + \epsilon, b - \epsilon]} f + (2M + 1)\epsilon
+\end{align*}
+
+类似地，有
+\begin{align*}
+  \underline{\int}_I f \geq \int_{[a + \epsilon, b - \epsilon]} f - (2M + 1)\epsilon
+\end{align*}
+从而
+
+\begin{align*}
+  \overline{\int}_I f - \underline{\int}_I f\leq (4M + 2)\epsilon
+\end{align*}
+综上由$\epsilon$的任意性且$\overline{\int}_I f - \underline{\int}_I f$与$\epsilon$无关可得，$f$是黎曼可积的。
+
+
 
 \end{document}
