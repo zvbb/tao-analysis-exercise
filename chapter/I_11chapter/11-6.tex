@@ -46,7 +46,7 @@
 $\widetilde{h}$显然是$I$上从上方控制$f$的分段常数函数。根据定理11.2.16可知，
 \begin{align*}
   \int_{I}\widetilde{h}  = \epsilon M + \int_{[a + \epsilon, b - \epsilon]} h + \epsilon M
-                         \leq \int_{[a + \epsilon, b - \epsilon]} f + (2M + 1)\epsilon
+  \leq \int_{[a + \epsilon, b - \epsilon]} f + (2M + 1)\epsilon
 \end{align*}
 
 特别地
@@ -65,6 +65,89 @@ $\widetilde{h}$显然是$I$上从上方控制$f$的分段常数函数。根据�
 \end{align*}
 综上由$\epsilon$的任意性且$\overline{\int}_I f - \underline{\int}_I f$与$\epsilon$无关可得，$f$是黎曼可积的。
 
+
+\section*{11.6.2}
+（1）分段单调函数的定义参考定义11.5.4：
+
+设$I$是有一个有界区间，并设$f: I \to \mathbb{R}$。我们称$f$在$I$上是有界分段单调函数，当且仅当存在一个$I$的划分$P$，
+使得对于所有的$J \in P$，$f|_J$都是$J$上的单调有界函数。
+
+（2）由（1）可知存在一个$I$的划分$P$，使得对于所有的$J \in P$，$f|_J$都是$J$上的单调有界函数。
+于是对任意$J \in P$，由推论11.6.3可知$f|_J$在$J$上是黎曼可积的。剩余部分的证明与习题11.5.1类似，这里不做赘述。
+
+\section*{11.6.3}
+
+注意这里无法假设$N$是正整数。
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        因为$x \geq 0, f(x) \geq 0$，可知$\int_{[0, N]} f$是关于实数$N$的单调递增函数，
+        由定理5.5.9（最小上界的存在性）可知只要证明其有上界，则最小上界存在且有限。
+
+        由推论11.6.3可知$\int_{[0, N]} f$在$[0, N]$上是黎曼可积的。
+
+        由推论5.4.12和命题4.4.1可知，对实数$N$存在一个自然数$n$使得$n \leq N < n + 1$，
+        现在把$[0, N]$划分成$n+1$个半开区间
+        \begin{align*}
+          \{[0, 1), [1, 2),...,[n-1, n), [n, N]\}
+        \end{align*}
+
+        由命题11.3.12可知
+        \begin{align*}
+          \overline{\int}_{[0, N]} f & \leq \sum\limits_{j=0}^{n} \left( \sup\limits_{x \in [j, j+1)} f(x)  \right)
+          + \sup\limits_{x \in [n, N]} f(x)                                                                         \\
+                                     & \leq \sum\limits_{j=0}^{n + 1} f(j)
+        \end{align*}
+        以上最后一个等式由$f: [0, +\infty) \to \mathbb{R}$是一个单调递增的函数保证的。
+
+        因为对任意的$x \in [0, +\infty), f(x) \geq 0$，由定理11.4.1(d)可知
+        \begin{align*}
+          \int_{[0, N]} f  \geq 0
+        \end{align*}
+
+
+        综上，对任意$N > 0$都有
+        \begin{align*}
+          0 \leq \underline{\int}_{[0, N]} f \leq \overline{\int}_{[0, N]} f \leq \sum\limits_{j=0}^{n + 1} f(j)
+        \end{align*}
+        即
+        \begin{align*}
+          0 \leq \int_{[0, N]} f \leq \sum\limits_{j=0}^{n + 1} f(j)
+        \end{align*}
+
+        不妨设$\sum\limits_{n = 0}^\infty f(n)$收敛于$L$，于是对任意$N$都有
+        \begin{align*}
+          0 \leq \int_{[0, N]} f \leq  L
+        \end{align*}
+        $\int_{[0, N]} f$是有界的，于是命题成立。
+
+  \item $\Leftarrow$
+
+        反证法，假设$\sum \limits_{n=0}^\infty$是发散的。
+        那么，对任意实数$M$都存在正整数$N$使得
+        \begin{align*}
+          \sum \limits_{n=0}^{N} > M
+        \end{align*}
+        现在把$[0, N]$划分成$N+1$个半开区间
+        \begin{align*}
+          \{[0, 1), [1, 2),...,[n-1, n), [n, N), \{N\}\}
+        \end{align*}
+
+        由命题11.3.12可知
+        \begin{align*}
+          \underline{\int}_{[0, N]} f & \geq \sum\limits_{j=0}^{N} \left( \inf\limits_{x \in [j, j+1)} f(x)  \right)            \\
+                                      & \geq \sum\limits_{j=1}^{N} f(j) = M - f(0)
+        \end{align*}
+        因为$M$是任取的，而$f(0)$是固定值，于是可得$\underline{\int}_{[0, N]} f$是无限的，
+        这与题设矛盾。
+\end{itemize}
+
+\section*{11.6.4}
+
+\section*{11.6.5}
+
+由引理5.6.9(d)可知，$x > 0$时，$\frac{1}{x^q}$是非负且递减的，
 
 
 \end{document}
