@@ -136,7 +136,7 @@ $\widetilde{h}$显然是$I$上从上方控制$f$的分段常数函数。根据�
 
         由命题11.3.12可知
         \begin{align*}
-          \underline{\int}_{[0, N]} f & \geq \sum\limits_{j=0}^{N} \left( \inf\limits_{x \in [j, j+1)} f(x)  \right)            \\
+          \underline{\int}_{[0, N]} f & \geq \sum\limits_{j=0}^{N} \left( \inf\limits_{x \in [j, j+1)} f(x)  \right) \\
                                       & \geq \sum\limits_{j=1}^{N} f(j) = M - f(0)
         \end{align*}
         因为$M$是任取的，而$f(0)$是固定值，于是可得$\underline{\int}_{[0, N]} f$是无限的，
@@ -145,9 +145,76 @@ $\widetilde{h}$显然是$I$上从上方控制$f$的分段常数函数。根据�
 
 \section*{11.6.4}
 
+（1）
+函数$f : [0, +\infty) \to \mathbb{R}$为
+\begin{equation*}
+  f(x) =
+  \begin{cases*}
+    x, x \in \mathbb{N} \\
+    0, x \notin \mathbb{N}
+  \end{cases*}
+\end{equation*}
+此时$\sup\limits_{N > 0}\int_{[0, N]} f = 0$，而$\sum\limits_{n=0}^\infty f(n)$是发散的。
+
+（2）
+反过来定义刚才的函数
+\begin{equation*}
+  f(x) =
+  \begin{cases*}
+    0, x \in \mathbb{N} \\
+    x, x \notin \mathbb{N}
+  \end{cases*}
+\end{equation*}
+此时$\sum\limits_{n=0}^\infty f(n) = 0$，而$\sup\limits_{N > 0}\int_{[0, N]} f = +\infty$。
+
 \section*{11.6.5}
 
-由引理5.6.9(d)可知，$x > 0$时，$\frac{1}{x^q}$是非负且递减的，
+令$f: [1, +\infty) \to \mathbb{R}, f(x) = \frac{1}{x^q}$。
 
+（1）$p > 1$
+
+由引理5.6.9(d)可知，$x > 0$时，$\frac{1}{x^q}$是非负且递减的，
+由命题5.4.12可知，存在正整数$N^\prime$使得$q \leq N^\prime$。
+
+由命题11.6.4（积分判别法）可知，只需证明$\sup\limits_{N > 1}\int_{[1, N]} \frac{1}{x^q}$是有界的即可证明该命题。
+
+类似于习题11.6.3的证明，对任意$N>1$， 由推论5.4.12和命题4.4.1可知，对实数$N$存在一个自然数$n$使得$n \leq N < n + 1$，
+现在把$[1, N]$划分成$n+1$个半开区间
+\begin{align*}
+  \{[1, 2),[2,3),...,[n-1, n), [n, N]\}
+\end{align*}
+
+由命题11.3.12可知
+\begin{align*}
+  \overline{\int}_{[1, N]} f & \leq \sum\limits_{j=1}^{n} \left( \sup\limits_{x \in [j, j+1)} f(x)  \right)
+  + \sup\limits_{x \in [n, N]} f(x)                                                                         \\
+                             & \leq \sum\limits_{j=1}^{n + 1} f(j)                                          \\
+                             & \leq \sum\limits_{j=1}^{n + 1} \frac{1}{j^{N^\prime}}
+\end{align*}
+以上第二个等式由$f: [1, +\infty) \to \mathbb{R}$是一个单调递增的函数保证的。\\
+由推论11.6.3可知$\int_{[1, N]} f$在$[1, N]$上是黎曼可积的。
+于是
+\begin{align*}
+  \underline{\int}_{[1, N]} f = \overline{\int}_{[1, N]} f 
+\end{align*}
+因为$f$是非负的，所以
+\begin{align*}
+  \int_{[1, N]} f  \geq 0
+\end{align*}
+于是
+\begin{align*}
+  0 \leq \int_{[1, N]} f \leq \sum\limits_{j=1}^{n + 1} \frac{1}{j^{N^\prime}} \leq \sum\limits_{j=1}^{\infty} \frac{1}{j^{N^\prime}}
+\end{align*}
+由推论7.3.7可知$\sum\limits_{j=1}^{\infty} \frac{1}{j^{N^\prime}}$是收敛的，
+综上，对任意$N > 1$都有$\int_{[1, N]} f$是有界的，由定理5.5.9（最小上界的存在性）可知
+$\sup\limits_{N > 1}\int_{[1, N]} f$是有限的，利用命题11.6.4（积分判别法）可知
+级数$\sum\limits_{n=1}^\infty f(n)$是收敛的。
+
+（2）$p \leq 1$
+
+由引理5.6.6(e)可知，$f$是关于$p$的增函数。由命题5.4.12（有理数对实数的界定）可知，存在正有理数$q$使得$q \leq p$，
+由推论7.3.7可知$\sum\limits_{j=1}^{\infty} \frac{1}{j^{q}}$是发散的，
+又对任意$n \in \mathbb{N}$都有$\frac{1}{n^p} \geq \frac{1}{n^q}$，
+所以级数$\sum\limits_{n=1}^\infty f(n)$也是发散的。
 
 \end{document}
