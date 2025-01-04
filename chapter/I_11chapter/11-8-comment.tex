@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.8 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  命题11.5.3和命题11.5.6不成立的原因。 
+\end{zremark}
+
+黎曼积分与黎曼-斯蒂尔杰斯积分的区别在于后者存在$\alpha$长度的概念，
+这里命题的不成立都是因为这一点不同导致的。
+
+命题11.5.3和命题11.5.6的前置条件都是$I$为有界区间，如何假设$I := (0, 1),\alpha := \frac{1}{x}$，
+那么$\alpha[(0, 1)]$是无法计算的。如果是闭区间就可以避免这个问题。
+
+
+
+\end{document}
