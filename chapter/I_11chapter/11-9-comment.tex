@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.9 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  定理11.9.1前置条件: $f: [a, b] \to \mathbb{R}$是黎曼可积的函数，是否能说明当$a \leq x \leq b$时
+  $f: [a, x] \to \mathbb{R}$也是黎曼可积的函数，即
+  \begin{align*}
+    \int_{[a, x]} f
+  \end{align*}
+\end{zremark}
+我们可以定义$[a,b]$的一个划分$P := \{[a,x], (x, b]\}$，于是由定理11.4.1(h)可以得到结论。
+
+\begin{zremark}
+  定理11.9.1中
+  \begin{align*}
+    F(y) - F(x) = \int_{[a,y]} f - \int_{[a,x]} f = \int_{[x,y]} f
+  \end{align*}
+  如果严格使用定理11.4.1(h)应该是
+  \begin{align*}
+    F(y) - F(x) = \int_{[a,y]} f - \int_{[a,x]} f = \int_{(x,y]} f
+  \end{align*}
+  那么，是否可以推论出
+  \begin{align*}
+    \int_{[x,y]} f = \int_{(x,y]} f
+  \end{align*}
+\end{zremark}
+这里可以使用定理11.4.1(h)，定义$[x,y]$的一个划分$ P:= \{\{x\}, (x,y]\}$，于是
+\begin{align*}
+  \int_{[x,y]} f & = \int_{\{x\}} f + \int_{(x,y]} f \\
+                 & = 0 + \int_{(x,y]} f \\
+                 & = \int_{(x,y]} f
+\end{align*}
+
+\end{document}
