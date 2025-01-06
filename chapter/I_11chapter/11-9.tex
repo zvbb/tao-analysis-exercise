@@ -22,5 +22,129 @@
 \author{张志聪}
 \maketitle
 
+\section*{11.9.1}
+
+由命题11.6.1可知，单调函数$f$在$[0, 1]$上是黎曼可积的。于是由定理11.9.1可知，
+$F$函数在$[0, 1]$上是连续的。有一点需要注意，虽然$f$在有理数点不连续，但不能以此来推断$F$函数在有理数点处不可微。
+
+\begin{itemize}
+  \item $q \in (0, 1)$
+
+        $q$同时是$[0, 1] \cap (q, +\infty)$和$[0, 1] \cap (-\infty, q)$的附着点，$\frac{F(x) - F(q)}{x - q}$在$q$处可微分（即存在极限）
+        ，当且仅当左右极限存在且相等。我们按照这个框架来证明。（书中P189处有说明）
+
+        由习题9.8.5可知，存在一个某个自然数$n$使得$q = q(n)$。
+
+        当$x > q$时，由习题9.8.5(b)可知
+        \begin{align*}
+          \frac{F(x) - F(q)}{x - q} & = \frac{\int_{[q, x]} f}{x - q}                  \\
+                                    & \geq \frac{\left(f(q) + 2^{-n}\right)(x-q)}{x-q} \\
+                                    & = f(q) + 2^{-n}
+        \end{align*}
+        当$x < q$时，类似地
+        \begin{align*}
+          \frac{F(x) - F(q)}{x - q} \leq f(q)
+        \end{align*}
+        于是
+        \begin{align*}
+          \lim\limits_{x \to q; x \in (q, 1]} & \geq f(q) + 2^{-n} \\
+          \lim\limits_{x \to q; x \in [0, q)} & \leq f(q)
+        \end{align*}
+        综上，$F$在$q$处不可微。
+  \item $q = 0$ or $q = 1$
+        通过左右极限的方式无法证明，当前还未找到解决方法。
+\end{itemize}
+
+\section*{11.9.2}
+
+（1）方法1，利用推论10.2.9
+如果$I$是空集或者单点集，那么结论是平凡的。
+
+设$x_0 \in I$，任意$x \in I, x \neq x_0$。因为$F, G$都是$f$的原函数，
+由定义11.9.3可知，$F, G$都在$I$上可微，于是由推论10.2.9可知，
+存在$y \in [x, x_0]$（这里假设$x > x_0$，$x < x_0$同理）使得
+\begin{align*}
+  (F - G)^\prime(y)         & = \frac{(F - G)(x) - (F - G)(x_0)}{x - x_0} \\
+  F^\prime(y) - G^\prime(y) & = \frac{(F - G)(x) - (F - G)(x_0)}{x - x_0} \\
+  f(y) - f(y)               & = \frac{(F - G)(x) - (F - G)(x_0)}{x - x_0} \\
+  0                         & = \frac{(F - G)(x) - (F - G)(x_0)}{x - x_0} \\
+  0                         & = (F - G)(x) - (F - G)(x_0)                 \\
+  F(x) - G(x)               & = F(x_0) - G(x_0)
+\end{align*}
+令$C = F(x_0) - G(x_0)$，于是任意$x \in I$且$x \neq x_0$都有
+\begin{align*}
+  F(x) = G(x) + C
+\end{align*}
+当$x = x_0$
+\begin{align*}
+   & G(x_0) + C                 \\
+   & = G(x_0) + F(x_0) - G(x_0) \\
+   & = F(x_0)
+\end{align*}
+综上，命题得证。
+
+（2）方法2
+
+任意$x \in I$，我们有
+\begin{align*}
+  (F - G)^\prime(x) & = F^\prime(x) - G^\prime(x) \\
+                    & = f(x) - f(x)               \\
+                    & = 0
+\end{align*}
+令$h : I \to \mathbb{R}, h = (F - G)^\prime(x)$，于是$h$是$I$上的常数函数，常数值为0，所以$h$是黎曼可积的。
+设$x_0 \in I$，任意$x \in I, x \neq x_0$，我们有（这里假设$x > x_0$，$x < x_0$同理）
+\begin{align*}
+  \int_{[x_0, x]} h = (F - G)(x) - (F - G)(x_0) & = 0               \\
+  F(x) - G(x)                                   & = F(x_0) - G(x_0) \\
+\end{align*}
+令$C = F(x_0) - G(x_0)$，于是任意$x \in I$且$x \neq x_0$都有
+\begin{align*}
+  F(x) = G(x) + C
+\end{align*}
+当$x = x_0$
+\begin{align*}
+   & G(x_0) + C                 \\
+   & = G(x_0) + F(x_0) - G(x_0) \\
+   & = F(x_0)
+\end{align*}
+综上，命题得证。
+
+\section*{11.9.3}
+
+\begin{itemize}
+  \item $\Leftarrow$
+
+        $f$是$[a, b]$上的单调递增函数，由命题11.6.1可知，$f$在$[a, b]$上是黎曼可积的。
+
+        于是由定理11.9.1（微积分第一基本定理）可知，$f$在$x_0$处连续，则$F$在$x_0$处可微。
+
+  \item $\Rightarrow$
+
+        反证法，假设$f$在$x_0$处不连续，那么有定义9.3.6和$f$是单调递增函数可知，
+        存在$\epsilon_0 > 0$使得时
+        \begin{align*}
+          f(x) > f(x_0) + \epsilon_0, if \; x > x_0 \\
+          f(x) < f(x_0) - \epsilon_0, if \; x < x_0
+        \end{align*}
+        我们有
+        \begin{equation*}
+          \begin{cases*}
+            F^\prime(x_0^{-}) = \lim\limits_{x \to x_0^{-}} \frac{F(x) - F(x_0)}{x - x_0} \\
+            F^\prime(x_0^{+}) = \lim\limits_{x \to x_0^{+}} \frac{F(x) - F(x_0)}{x - x_0}   \\
+          \end{cases*}
+        \end{equation*}
+        结合两组式子，我们有
+        \begin{align*}
+            F^\prime(x_0^{-}) = \lim\limits_{x \to x_0^{-}} \frac{F(x) - F(x_0)}{x - x_0} \leq f(x_0) - \epsilon \\
+            F^\prime(x_0^{+}) = \lim\limits_{x \to x_0^{+}} \frac{F(x) - F(x_0)}{x - x_0} \geq f(x_0) + \epsilon 
+        \end{align*}
+        于是
+        \begin{align*}
+          F^\prime(x_0^{-}) \neq F^\prime(x_0^{+})
+        \end{align*}
+        与题设$F$在$x_0$处可微矛盾。
+
+        特别地，$x = a \; or \; x = b$还未找到证明方法。
+\end{itemize}
 
 \end{document}
