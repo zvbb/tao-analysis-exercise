@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.10 习题}
+\author{张志聪}
+\maketitle
+
+\section*{11.10.1}
+
+因为$F, G$在闭区间$[a, b]$上可微，则$F, G$都是连续函数，于是推论11.5.2可知，$F, G$都是$[a, b]$上的黎曼可积的函数。
+
+由定理11.4.5可知，$F G^\prime, F^\prime G$都是$[a, b]$上的黎曼可积的函数。
+
+由定理10.1.13(d)可知
+\begin{align*}
+  (FG)^\prime = F^\prime G + F G^\prime
+\end{align*}
+所以
+\begin{align*}
+  \int_{[a, b]} (FG)^\prime & = \int_{[a, b]} F^\prime G + \int_{[a, b]} F G^\prime \\
+                            & = (FG)(b) - (FG)(a)                                   \\
+\end{align*}
+第一个等式使用了定理11.4.1(a)，第二个等式使用了定理11.9.4（微积分第二基本定理）。
+于是经过变换可得
+\begin{align*}
+  \int_{[a, b]} FG^\prime & = F(b)G(b) - F(a)G(a) - \int_{[a, b]} F^\prime G
+\end{align*}
+
+\section*{11.10.2}
+
+\begin{itemize}
+  \item $\phi^{-1}(J)$是连通的。
+
+        反证法，假设$\phi^{-1}(J)$不是连通的，那么存在$x, y \in \phi^{-1}(J),x \neq y$且$x < c < y$满足
+        $c \notin \phi^{-1}(J)$。
+
+        由$\phi$在闭区间$[a, b]$上单调递增的连续函数可知
+        \begin{align*}
+          \phi(x) \leq \phi(c) \leq \phi(y)
+        \end{align*}
+        而由假设可知$c \notin \phi^{-1}(J)$，所以$c$应该小于$J$的左端点$J_l$（大于$J$的右端点，同理），于是
+        \begin{align*}
+          \phi(c) \leq \phi(J_l)
+        \end{align*}
+        满足上述两个不等式只能是
+        \begin{align*}
+          \phi(c) = \phi(x) = \phi(y)
+        \end{align*}
+        因为$\phi(x) \in J$，于是$\phi(c) \in J$进而$c \in \phi^{-1}(J)$，存在矛盾。
+
+  \item $c_J$还是$f \circ \phi$在$\phi^{-1}(J)$上的常数值。
+
+        任意$x \in \phi^{-1}(J)$，由集合$\phi^{-1}(J)$的定义可知，
+        \begin{align*}
+          \phi(x) \in J
+        \end{align*}
+        于是
+        \begin{align*}
+          (f \circ \phi)(x) = f(\phi(x)) = c_J
+        \end{align*}
+
+  \item $\textbf{Q}$是$[a,b]$的一个划分。
+
+        任意$x \in [a, b]$，都有$\phi(x) \in [\phi(a), \phi(b)]$，
+        因为$\textbf{P}$是$[\phi(a), \phi(b)]$的一个划分，所以存在一个$J \in \textbf{P}$使得
+        \begin{align*}
+          \phi(x) \in J
+        \end{align*}
+        于是
+        \begin{align*}
+          x \in \phi^{-1}(J)
+        \end{align*}
+        是否还存在另一个区间$K \in \textbf{P}$使得
+        \begin{align*}
+          x \in \phi^{-1}(K)
+        \end{align*}
+        不会存在，因为如果存在，则$\phi(x) \in K, \phi(x) \in J$这与$\textbf{P}$是划分矛盾。
+
+  \item $\phi[\phi^{-1}(J)] = |J|$
+
+        不妨设$J$的左右端点为$l, r$，现在需要证明
+        \begin{equation*}
+          \begin{cases*}
+            \sup \phi^{-1}(J) = \phi^{-1}(r) \\
+            \inf \phi^{-1}(J) = \phi^{-1}(l)
+          \end{cases*}
+        \end{equation*}
+        反证法，假设存在$x \in \phi^{-1}(J)$且$x > \phi^{-1}(r)$。因为$x \in \phi^{-1}(J)$，所以
+        \begin{align*}
+          \phi(x) \in J
+        \end{align*}
+        又因为$x > \phi^{-1}(r)$，且$\phi$在闭区间$[a, b]$上单调递增的连续函数，所以
+        \begin{align*}
+          \phi(x) > \phi(\phi^{-1}(r)) = r
+        \end{align*}
+        这与$\phi(x) \in J$矛盾，所以不存在这样的$x$。
+        于是
+        \begin{align*}
+          \sup \phi^{-1}(J) = \phi^{-1}(r)
+        \end{align*}
+        类似地，可得
+        \begin{align*}
+          \inf \phi^{-1}(J) = \phi^{-1}(l)
+        \end{align*}
+        于是
+        \begin{align*}
+          \phi[\phi^{-1}(J)] & = \phi(\sup \phi^{-1}(J)) - \phi(\inf \phi^{-1}(J)) \\
+                             & = r - l
+        \end{align*}
+        又因为
+        \begin{align*}
+          |J| = r - l
+        \end{align*}
+        综上，命题得证。
+\end{itemize}
+
+\section*{11.10.3}
+
+设$\epsilon > 0$，那么我们能够找到一个在$[a,b]$上从上方控制$f$的分段常数函数$\overline{f}$
+和一个在$[a,b]$上从下方控制$f$的分段常数函数$\underline{f}$，它们使得
+\begin{align*}
+  \int_{[a,b]} f - \epsilon \leq \int_{[a,b]} \underline{f} \leq \int_{[a,b]} \overline{f} \leq \int_{[a,b]} f + \epsilon
+\end{align*}
+令$\overline{g}(x) = \overline{f}(-x), \underline{g}(x) = \underline{f}(-x)$是$[-b, -a]$上的函数。
+对任意$x \in [-b, -a]$，有
+\begin{align*}
+  \overline{g}(x) = \overline{f}(-x) \geq f(-x) = g(x)
+\end{align*}
+所以$\overline{g}$在$[-b, -a]$上从上方控制$g$。类似地，$\underline{g}$在$[-b, -a]$上从下方控制$g$。
+
+对任意$J \in \textbf{P}$我们定义$G_J := \{x \in [-b, -a] : -x \in J\}$，
+于是$\textbf{P}^\prime := \{G_J : J \in \textbf{P}\}$是$[-b, -a]$的一个划分。
+
+此外，
+任意$G_J \in \textbf{P}^\prime,\overline{g}$在$G_J$上的常数值也是
+$\overline{f}$在$J$上的常数值。类似地，任意$G_J \in \textbf{P}^\prime,\underline{g}$在$G_J$上的常数值也是
+$\underline{f}$在$J$上的常数值。
+
+于是
+\begin{align*}
+  \int_{[-b, -a]} \overline{g} & = p.c.\int_{[-b, -a]} \overline{g}                   \\
+                               & = \sum \limits_{G_J \in \textbf{P}^\prime} c_J |G_J| \\
+                               & = \sum \limits_{J \in \textbf{P}} c_J |J|            \\
+                               & = \int_{[a, b]} \overline{f}
+\end{align*}
+类似地，
+\begin{align*}
+  \int_{[-b, -a]} \underline{g} = \int_{[a, b]} \underline{f}
+\end{align*}
+所以
+\begin{align*}
+  \int_{[a,b]} f - \epsilon
+  \leq \int_{[-b, -a]} \underline{g}
+  \leq \underline{\int}_{[-b, -a]} g \leq \overline{\int}_{[-b, -a]} g
+  \leq \int_{[-b, -a]} \overline{g}
+  \leq \int_{[a,b]} f + \epsilon
+\end{align*}
+由$\epsilon$的任意性可知，据此可得出结论。
+
+\section*{11.10.4}
+（1）命题
+
+设$[a, b]$是一个闭区间，$\phi : [a, b] \to [\phi(b), \phi(a)]$是一个单调递减的可微函数，
+并且使得$\phi ^\prime$是黎曼可积的。设$f: [\phi(b), \phi(a)] \to \mathbb{R}$是$[\phi(b), \phi(a)]$上的
+黎曼可积的函数，那么$(f \circ \phi)\phi^\prime : [a, b] \to \mathbb{R}$是$[a, b]$上是黎曼可积的，并且
+\begin{align*}
+  \int_{[a, b]} (f \circ \phi) \phi^\prime = - \int_{[\phi(b), \phi(a)]} f
+\end{align*}
+
+% （2）证明
+
+% 令$h : [a, b] \to [-\phi(a), -\phi(b)], h(x) := -\phi(x)$，
+% 那么$h$是单调递增的可微函数。
+
+% $f: [\phi(b), \phi(a)] \to \mathbb{R}$是$[\phi(b), \phi(a)]$上的
+% 黎曼可积的函数，由习题11.10.3可知，
+% \begin{align*}
+%   \int_{[-\phi(a), -\phi(b)]} g = \int_{[\phi(b), \phi(a)]} f
+% \end{align*}
+% 其中$g(x) := f(-x)$，可得$g$是$[-\phi(a), -\phi(b)]$上的黎曼可积的函数。
+
+% 利用命题11.10.7可得
+% \begin{align*}
+%   \int_{[a, b]} (f \circ h) h^\prime & = \int_{[-\phi(a), -\phi(b)]} g \\
+%                                      & = \int_{[\phi(b), \phi(a)]} f
+% \end{align*}
+
+\end{document}
