@@ -184,22 +184,32 @@ $\underline{f}$在$J$上的常数值。
   \int_{[a, b]} (f \circ \phi) \phi^\prime = - \int_{[\phi(b), \phi(a)]} f
 \end{align*}
 
-% （2）证明
+（2）证明
 
-% 令$h : [a, b] \to [-\phi(a), -\phi(b)], h(x) := -\phi(x)$，
-% 那么$h$是单调递增的可微函数。
+令$h : [-b, -a] \to [\phi(b), \phi(a)], h(x) := \phi(-x)$，
+那么$h$是单调递增的可微函数；
+因为
+\begin{align*}
+  h ^\prime(x) = -\phi^\prime(-x)
+\end{align*}
+由习题11.10.3可知$\phi^\prime(-x)$是黎曼可积的，利用定理11.4.1(b)可知$-\phi^\prime(-x)$是黎曼可积的，
+即$h^\prime$是黎曼可积的。
 
-% $f: [\phi(b), \phi(a)] \to \mathbb{R}$是$[\phi(b), \phi(a)]$上的
-% 黎曼可积的函数，由习题11.10.3可知，
-% \begin{align*}
-%   \int_{[-\phi(a), -\phi(b)]} g = \int_{[\phi(b), \phi(a)]} f
-% \end{align*}
-% 其中$g(x) := f(-x)$，可得$g$是$[-\phi(a), -\phi(b)]$上的黎曼可积的函数。
+利用命题11.10.7可得
+\begin{align*}
+  \int_{[-b, -a]} (f \circ h) h^\prime                   & = \int_{[\phi(b), \phi(a)]} f \\
+  \int_{[-b, -a]} (f \circ \phi(-x)) -\phi^\prime(-x) dx & = \int_{[\phi(b), \phi(a)]} f \\
+  -\int_{[-b, -a]} (f \circ \phi(-x)) \phi^\prime(-x) dx & = \int_{[\phi(b), \phi(a)]} f
+\end{align*}
+再由习题11.10.3可知
+\begin{align*}
+  -\int_{[-b, -a]} (f \circ \phi(-x)) \phi^\prime(-x) dx & = \int_{[\phi(b), \phi(a)]} f \\
+  -\int_{[a, b]} (f \circ \phi(x)) \phi^\prime(x) dx     & = \int_{[\phi(b), \phi(a)]} f \\
+  -\int_{[a, b]} (f \circ \phi) \phi^\prime              & = \int_{[\phi(b), \phi(a)]} f \\
+\end{align*}
+注意：什么时候会加$dx$书中P239有说明。
+据此可得出结论。
 
-% 利用命题11.10.7可得
-% \begin{align*}
-%   \int_{[a, b]} (f \circ h) h^\prime & = \int_{[-\phi(a), -\phi(b)]} g \\
-%                                      & = \int_{[\phi(b), \phi(a)]} f
-% \end{align*}
+
 
 \end{document}
