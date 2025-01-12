@@ -80,33 +80,18 @@ $\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} d(x_n, x) = 0$
 
 \section*{12.1.5}
 
-略，敲起来太费劲了。
-% （1）恒等式的证明
+（1）恒等式
 
-% 对$n$进行归纳。
+证明框架：对$n$进行归纳，证明略
 
-% $n = 1$时，
-% \begin{align*}
-%    & \left(\sum\limits_{i = 1}^n a_ib_i\right)^2 + \frac{1}{2}\sum\limits_{i=1}^n\sum\limits_{j=1}^n(a_ib_j - a_jb_i)^2 \\
-%    & = (a_1b_1)^2 + \frac{1}{2} (a_1b_1 - a_1b_1)                                                                       \\
-%    & = (a_1b_1)^2                                                                                                       \\
-%    & = a_1^2b_1^2
-% \end{align*}
-% 又
-% \begin{align*}
-%    & \left(\sum\limits_{i = 1}^n a_i^2\right) \left(\sum\limits_{j = 1}^n b_j^2\right) \\
-%    & = a_1^2b_1^2
-% \end{align*}
-% 此时，等式成立。
+（2）推导出柯西-施瓦茨不等式
 
-% 归纳假设$n = k$时，等式成立。
+证明框架：对恒等式开方，且$\frac{1}{2} \sum \limits_{i=1}^n \sum \limits_{j=1}^n (a_ib_j - a_jb_i)^2 \geq 0$可证。
 
-% $n = k+1$时，
-% \begin{align*}
-%    & \left(\sum\limits_{i = 1}^{k+1} a_ib_i\right)^2 + \frac{1}{2}\sum\limits_{i=1}^{k+1}\sum\limits_{j=1}^{k+1}(a_ib_j - a_jb_i)^2 \\
-%    & = \left(\sum\limits_{i = 1}^{k} a_ib_i + a_{k+1}b_{k+1}\right)^2 
-%    + \frac{1}{2}\left(\sum\limits_{i=1}^{k}\sum\limits_{j=1}^{k}(a_ib_j - a_jb_i)^2 + \sum\limits_{i=1}^{k}\sum\limits_{j=1}^{k}(a_ib_j - a_jb_i)^2\right) \\
-% \end{align*}
+（3）证明三角不等式
+
+
+
 
 \section*{12.1.6}
 
