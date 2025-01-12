@@ -1,0 +1,528 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{12.1 习题}
+\author{张志聪}
+\maketitle
+
+\section*{12.1.1}
+
+令$a_n = d(x_n, x) = |x_n - x|$，于是$(a_n)_{n=m}^\infty$是一个实数序列。\\
+$(x_n)_{n = m}^\infty$收敛与$x$ \\
+$\Leftrightarrow$ \\
+对任意$\epsilon > 0$，存在正整数$N$，当$n \geq N$时，$|x_n - x| \leq \epsilon$ \\
+$\Leftrightarrow$ \\
+对任意$\epsilon > 0$，存在正整数$N$，当$n \geq N$时，$a_n \leq \epsilon$ \\
+$\Leftrightarrow$ \\
+$\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} d(x_n, x) = 0$
+
+\section*{12.1.2}
+
+需要证明这里的度量$d(x, y) := |x - y|$满足定义12.1.2。
+
+命题4.3.3(a)，满足了定义12.1.2中的公理(a),(b)（因为任意$x, y \in \mathbb{R}, x - y$都是实数）；
+
+命题4.3.3(f)，满足了定义12.1.2中的公理(c)；
+
+命题4.3.3(g)，满足定义12.1.2中的公理(d)。
+
+\section*{12.1.3}
+
+\begin{itemize}
+      \item (a)
+
+            把离散度量$d_{disc}$做一点修改：当$x = y$时，$d_{disc}(x, y) := 2$。
+
+      \item (b)
+
+            把离散度量$d_{disc}$做一点修改：当$x \neq y$时，$d_{disc}(x, y) := 0$。
+
+      \item (c)
+
+            定义$X := \mathbb{R} - \{0\}$ 并且度量$d$如下：
+            \begin{align*}
+                  d(x, x) := 0                     \\
+                  d(x, y) := |x| \; if \; x \neq y \\
+            \end{align*}
+
+      \item (d)
+
+            定义$X := \{a, b, c\}$ 并且度量$d$如下：
+            \begin{align*}
+                  d(x, x) := 0 \; if \; x \in X               \\
+                  d(a, b) = d(b, a) = 1, d(b,c) = d(c, b) = 1 \\
+                  d(a, c) = d(c, a) = 3                       \\
+            \end{align*}
+
+\end{itemize}
+
+\section*{12.1.4}
+
+任意$x, y \in Y; x, y \in X$，所以$d|_{Y \times Y}(x, y) = d(x, y)$，
+因为$d$满足所有的公理，那么$d|_{Y \times Y}$也满足所有的公理。
+
+\section*{12.1.5}
+
+略，敲起来太费劲了。
+% （1）恒等式的证明
+
+% 对$n$进行归纳。
+
+% $n = 1$时，
+% \begin{align*}
+%    & \left(\sum\limits_{i = 1}^n a_ib_i\right)^2 + \frac{1}{2}\sum\limits_{i=1}^n\sum\limits_{j=1}^n(a_ib_j - a_jb_i)^2 \\
+%    & = (a_1b_1)^2 + \frac{1}{2} (a_1b_1 - a_1b_1)                                                                       \\
+%    & = (a_1b_1)^2                                                                                                       \\
+%    & = a_1^2b_1^2
+% \end{align*}
+% 又
+% \begin{align*}
+%    & \left(\sum\limits_{i = 1}^n a_i^2\right) \left(\sum\limits_{j = 1}^n b_j^2\right) \\
+%    & = a_1^2b_1^2
+% \end{align*}
+% 此时，等式成立。
+
+% 归纳假设$n = k$时，等式成立。
+
+% $n = k+1$时，
+% \begin{align*}
+%    & \left(\sum\limits_{i = 1}^{k+1} a_ib_i\right)^2 + \frac{1}{2}\sum\limits_{i=1}^{k+1}\sum\limits_{j=1}^{k+1}(a_ib_j - a_jb_i)^2 \\
+%    & = \left(\sum\limits_{i = 1}^{k} a_ib_i + a_{k+1}b_{k+1}\right)^2 
+%    + \frac{1}{2}\left(\sum\limits_{i=1}^{k}\sum\limits_{j=1}^{k}(a_ib_j - a_jb_i)^2 + \sum\limits_{i=1}^{k}\sum\limits_{j=1}^{k}(a_ib_j - a_jb_i)^2\right) \\
+% \end{align*}
+
+\section*{12.1.6}
+
+\begin{itemize}
+      \item 公理(a)
+
+            当$x = y$时，对任意第$i$个坐标分量都有$(x_i - y_i)^2 = 0$， 所以
+            \begin{align*}
+                  d_{l^2}(x, y) & = \left(\sum\limits_{i=1}^n (x_i - y_i)^2\right)^{1/2} \\
+                                & = \left(\sum\limits_{i=1}^n 0 \right)^{1/2}            \\
+                                & = 0
+            \end{align*}
+      \item 公理(b)
+
+            当$x \neq y$时，存在第$i$个坐标分量使得$(x_i - y_i)^2 > 0$，所以$d_{l^2}(x, y) > 0$。
+
+      \item 公理(c)
+
+            任意的$x, y \in X$，它们的任意第$i$个坐标分量都有$(x_i - y_i)^2 = (y_i - x_i)^2$，所以$d_{l^2}(x, y) = d_{l^2}(y, x)$。
+
+      \item 公理(d)
+
+            定义$x_i - y_i = a_i, y_i - z_i = b_i$于是
+            \begin{align*}
+                  d_{l^2}(x, z) & = \left(\sum\limits_{i=1}^n (x_i - z_i)^2\right)^{1/2}                                                        \\
+                                & = \left(\sum\limits_{i=1}^n (a_i + b_i)^2\right)^{1/2}                                                        \\
+                                & \leq \left(\sum\limits_{i=1}^n a_i^2\right)^{1/2} + \left(\sum\limits_{i=1}^n b_i^2\right)^{1/2}              \\
+                                & = \left(\sum\limits_{i=1}^n (x_i - y_i)^2\right)^{1/2} + \left(\sum\limits_{i=1}^n (y_i - z_i)^2\right)^{1/2} \\
+                                & = d_{l^2}(x, y) + d_{l^2}(y, z)
+            \end{align*}
+            综上可得
+            \begin{align*}
+                  d_{l^2}(x, z) \leq d_{l^2}(x, y) + d_{l^2}(y, z)
+            \end{align*}
+
+\end{itemize}
+
+\section*{12.1.7}
+
+\begin{itemize}
+      \item 公理(a)
+
+            当$x = y$时，对任意第$i$个坐标分量都有$|x_i - y_i| = 0$，所以
+            \begin{align*}
+                  \sum \limits_{i = 1}^n |x_i - y_i|^2 = 0
+            \end{align*}
+
+      \item 公理(b)
+
+            当$x \neq y$时，存在第$i$个坐标分量使得$|x_i - y_i| > 0$，
+            其他坐标分量$j$都有$|x_j - y_j| \geq 0$，
+            所以$d_{l^1}(x, y) > 0$。
+
+      \item 公理(c)
+
+            对任意第$i$个坐标分量都有$|x_i - y_i| = |y_i - x_i|$，所以
+            \begin{align*}
+                  d_{l^1}(x, y) = d_{l^1}(y, x)
+            \end{align*}
+
+      \item 公理(d)
+
+            对任意第$i$个坐标分量，由命题4.3.3(g)可知，
+            \begin{align*}
+                  |x_i - z_i| \leq |x_i - y_i| + |y_i - z_i|
+            \end{align*}
+            所以，
+            \begin{align*}
+                  d_{l^1}(x, z) \leq d_{l^1}(x, y) + d_{l^1}(y, z)
+            \end{align*}
+
+\end{itemize}
+
+\section*{12.1.8}
+（1） 第一个不等式
+\begin{align*}
+      d_{l^2}(x, y) & = \left(\sum \limits_{i = 1}^n (x_i - y_i)^2\right)^{1/2} \\
+      d_{l^1}(x, y) & = |x_1 - y_1| + ... + |x_n - y_n|
+\end{align*}
+两边同时取平方
+\begin{align*}
+      (d_{l^2}(x, y))^2 & = \sum \limits_{i = 1}^n (x_i - y_i)^2                                                      \\
+      (d_{l^1}(x, y))^2 & = \left(|x_1 - y_1| + ... + |x_n - y_n|\right) \left(|x_1 - y_1| + ... + |x_n - y_n|\right) \\
+                        & = \sum \limits_{i = 1}^n (x_i - y_i)^2
+      + \sum \limits_{i=1}^n \sum \limits_{1 \leq j \leq n, i \neq j} |x_i - y_i||x_j - y_j|
+\end{align*}
+由上式可得
+\begin{align*}
+       & (d_{l^2}(x, y))^2 \leq (d_{l^1}(x, y))^2 \\
+       & \implies                                 \\
+       & d_{l^2}(x, y) \leq d_{l^1}(x, y)
+\end{align*}
+
+（2）第二个不等式
+
+\begin{align*}
+      d_{l^1}(x, y) = \sum \limits_{i = 1}^n |x_i - y_i|
+\end{align*}
+利用柯西-施瓦茨不等式可得
+\begin{align*}
+      d_{l^1}(x, y) = \sum \limits_{i = 1}^n |x_i - y_i| & = \left|\sum \limits_{i = 1}^n |x_i - y_i|\right|           \\
+                                                         & \leq \left(\sum\limits_{i = 1}^n (x_i - y_i)^2\right)^{1/2}
+      \left(\sum \limits_{i = 1}^n 1\right)^{1/2}                                                                      \\
+                                                         & = \sqrt{n}d_{l^2}(x, y)
+\end{align*}
+
+\section*{12.1.9}
+
+\begin{itemize}
+      \item 公理(a)
+
+            当$x = y$时，对任意第$i$个坐标分量都有$|x_i - y_i| = 0$，所以
+            \begin{align*}
+                  \sup\{|x_i - y_i|: 1 \leq i \leq n\} = 0
+            \end{align*}
+
+      \item 公理(b)
+
+            当$x \neq y$时，存在第$i$个坐标分量使得$|x_i - y_i| > 0$，所以
+            \begin{align*}
+                  \sup\{|x_i - y_i|: 1 \leq i \leq n\} > 0
+            \end{align*}
+
+      \item 公理(c)
+
+            对任意第$i$个坐标分量都有$|x_i - y_i| = |y_i - x_i|$，所以
+            \begin{align*}
+                  d_{l^\infty}(x, y) = d_{l^\infty}(y, x)
+            \end{align*}
+
+      \item 公理(d)
+
+            对任意第$i$个坐标分量，由命题4.3.3(g)可知，
+            \begin{align*}
+                  |x_i - z_i| \leq |x_i - y_i| + |y_i - z_i|
+            \end{align*}
+            所以，
+            \begin{align*}
+                  d_{l^\infty}(x, z) \leq d_{l^\infty}(x, y) + d_{l^\infty}(y, z)
+            \end{align*}
+\end{itemize}
+
+\section*{12.1.10}
+
+设$\sup\{|x_i - y_i|: 1 \leq i \leq n\} = r$。
+
+（1）第一个不等式
+\begin{align*}
+      \frac{1}{\sqrt{n}}d_{l^2}(x, y) & = \frac{1}{\sqrt{n}} \left(\sum \limits_{i = 1}^n (x_i - y_i)^2\right)^{1/2} \\
+                                      & \leq \frac{1}{\sqrt{n}} \left(\sum \limits_{i = 1}^n r^2\right)^{1/2}        \\
+                                      & = r                                                                          \\
+                                      & = d_{l^\infty}(x, y)
+\end{align*}
+
+（2）第二个不等式
+
+存在一个$i$使得$|x_i - y_i| = r$。反证法，对任意$i$都有
+\begin{align*}
+      |x_i - y_i| < r
+\end{align*}
+有定义可知，度量都是有限维的，即$n$不会是$+\infty$，
+取$m = max|x_i - y_i|, 1 \leq i \leq n$（引理5.1.14），此时$m < r$且$m$是上界，
+这与$r$是最小上界矛盾（定义5.5.5）。
+
+所以
+\begin{align*}
+      d_{l^2}(x, y) = \left(\sum \limits_{i = 1}^n (x_i - y_i)^2\right)^{1/2} \geq (r^2)^{1/2} = r = d_{l^\infty}(x, y)
+\end{align*}
+
+
+
+\section*{12.1.11}
+略
+
+\section*{12.1.12}
+
+为了利用式(12.1)、(12.2)，我们的证明步骤如下（需要保证是环状的）
+\begin{align*}
+      (d) \implies (c) \implies (b) \implies (a) \\
+      (a) \implies (d)
+\end{align*}
+
+\begin{itemize}
+      \item $(b) \implies (a)$
+
+            (b)成立，即$\lim\limits_{k \to \infty}d_{l^1}(x^{(k)}, x) = 0$，
+            即对任意$\epsilon > 0$，存在一个$N \geq m$使得$d_{l^1}(x^{(k)}, x) \leq \epsilon$对所有的$k \geq N$均成立。
+
+            由式12.1可知
+            \begin{align*}
+                  d_{l^2}(x^{(k)}, x) \leq d_{l^1}(x^{(k)}, x) \leq \epsilon
+            \end{align*}
+            对所有的$k \geq N$均成立。于是$(a)$成立。
+
+      \item $(c) \implies (b)$
+
+            任意$\epsilon > 0$于是$\epsilon^\prime = \frac{1}{\sqrt{n}}\epsilon > 0$（注意这里的$n$是固定值），因为(c)成立，
+            所以存在一个$N \geq m$使得$d_{l^\infty}(x^{(k)}, x) \leq \epsilon^\prime$对所有的$k \geq N$均成立。
+
+            由式12.2可知
+            \begin{align*}
+                   & \frac{1}{\sqrt{n}}d_{l^2}(x^{(k)}, x) \leq d_{l^\infty}(x^{(k)}, x) \leq \epsilon^\prime = \frac{1}{\sqrt{n}}\epsilon \\
+                   & \implies                                                                                                              \\
+                   & d_{l^2}(x^{(k)}, x) \leq \epsilon
+            \end{align*}
+
+      \item $(d) \implies (c)$
+
+            (d)成立，那么对任意$1 \leq i \leq n, \epsilon > 0$存在一个$N \geq m$使得
+            $|x_i^{(k)} - x_i| \leq \epsilon$对所有的$k \geq N$均成立。
+
+            由$l^{\infty}$度量的定义可知
+            $d_{l^\infty}(x^{(k)}, x) = \sup\{|x_i - y_i|: 1 \leq i \leq n\} \leq \epsilon$对所有的$k \geq N$均成立。
+            于是(c)成立。
+
+      \item $(a) \implies (d)$
+
+            (a)成立，那么对任意$\epsilon > 0 > 0$存在一个$N \geq m$使得
+            $d_{l^2}(x^{(k)}, x) \leq \epsilon$对所有的$k \geq N$均成立。
+            即（注意：以下的$x_i^{(k)}$要看做实数，不能看做“点”）
+            \begin{align*}
+                  \left( \sum \limits_{i = 1}^n (x_i^{(k)} - x_i)^2 \right)^{1/2} \leq \epsilon \\
+                  \sum \limits_{i = 1}^n (x_i^{(k)} - x_i)^2 \leq \epsilon^2                    \\
+            \end{align*}
+            那么，对每一个$1 \leq i \leq n$都有
+            \begin{align*}
+                  (x_i^{(k)} - x_i)^2 & \leq \epsilon^2 \\
+                  \implies                              \\
+                  |x_i^{(k)} - x_i|   & \leq \epsilon
+            \end{align*}
+            对所有的$k \geq N$均成立。
+
+            所以(d)成立。
+
+\end{itemize}
+
+\section*{12.1.13}
+
+反证法，假设$d_{disc}$收敛于$x$，但$N$不存在。那么，任意$N \geq m$都至少存在一个$n \geq N$使得
+\begin{align*}
+      x^{(n)} \neq x
+\end{align*}
+由离散度量$d_{disc}$的定义可知，此时$d_{disc}(x, x^{(n)}) = 1$。由于$N$的任意性可知，
+定义12.1.14（度量空间中序列的收敛）中的定义无法满足，与假设$d_{disc}$收敛于$x$矛盾。
+
+\section*{12.1.14}
+
+为了推出矛盾，我们假设$(x^{(n)})_{n = m}^\infty$依度量$d$同时收敛于$x, x^\prime$，
+设$\epsilon = d(x, x^\prime)/3$。注意，因为$x \neq x^\prime$，所以$\epsilon$是正的。
+由$(x^{(n)})_{n = m}^\infty$依度量$d$收敛于$x$可知，存在一个$N \geq m$使得$d(x^{(n)}, x) \leq \epsilon$
+对所有的$n \geq N$均成立。类似地，存在一个$M \geq m$使得$d(x^{(n)}, x^\prime) \leq \epsilon$对所有的$n \geq M$均成立。
+特别地，如果令$n := max(N, M)$，那么有$d(x^{(n)}, x) \leq \epsilon$和$d(x^{(n)}, x^\prime) \leq \epsilon$，
+于是根据三角不等式（定义12.1.2公理(d)）可得，
+$d(x, x^\prime) \leq 2\epsilon = 2d(x, x^\prime)/3$。所以$d(x, x^\prime) \leq 2d(x, x^\prime)/3$,这和$d(x, x^\prime) > 0$矛盾。
+所以度量空间中的序列不能同时收敛于两个不同的点。
+
+\section*{12.1.15}
+
+（1）$d_{l^1}$是$X$上的度量。
+\begin{itemize}
+      \item 公理(a)
+
+            如果序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$是相等的，那么对任意$n \in \mathbb{N}$都有
+            $a_n = b_n$，所有
+            \begin{align*}
+                  d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sum \limits_{n = 0}^\infty |a_n - b_n| = 0
+            \end{align*}
+
+      \item 公理(b)
+
+            序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$不相等，对任意的$n \in \mathbb{N}$都有
+            $|a_n - b_n| \geq 0$，且两个序列不相等，所以至少存在一个$n \in \mathbb{N}$使得
+            $|a_n - b_n| > 0$，所以
+            \begin{align*}
+                  d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sum \limits_{n = 0}^\infty |a_n - b_n| > 0
+            \end{align*}
+
+      \item 公理(c)
+
+            序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$，对任意的$n \in \mathbb{N}$都有
+            $|a_n - b_n| = |b_n - a_n|$，所以
+            \begin{align*}
+                  d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = d_{l^1}((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty)
+            \end{align*}
+
+      \item 公理(d)
+
+            序列$(a_n)_{n=0}^\infty,(b_n)_{n=0}^\infty$与$(c_n)_{n=0}^\infty$，对任意的$n \in \mathbb{N}$都有
+            \begin{align*}
+                  |a_n - c_n| \leq |a_n - b_n| + |b_n - c_n|
+            \end{align*}
+            于是
+            \begin{align*}
+                  d_{l^1}((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty) & = \sum \limits_{n = 0}^\infty |a_n - c_n|                                                                   \\
+                                                                      & \leq \sum \limits_{n = 0}^\infty |a_n - b_n| + |b_n - c_n|                                                  \\
+                                                                      & = \sum \limits_{n = 0}^\infty |a_n - b_n| + \sum \limits_{n = 0}^\infty |b_n - c_n|                         \\
+                                                                      & = d_{l^1}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) + d_{l^1}((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty)
+            \end{align*}
+
+\end{itemize}
+
+（2）$d_{l^\infty}$是$X$上的度量。
+
+\begin{itemize}
+      \item 公理(a)
+
+            如果序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$是相等的，那么对任意$n \in \mathbb{N}$都有
+            $a_n = b_n$，于是$|a_n - b_n| = 0$，所有
+            \begin{align*}
+                  d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sup \limits_{n \in \mathbb{N}} |a_n - b_n| = 0
+            \end{align*}
+
+      \item 公理(b)
+
+            序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$不相等，对任意的$n \in \mathbb{N}$都有
+            $|a_n - b_n| \geq 0$，且两个序列不相等，所以至少存在一个$n \in \mathbb{N}$使得
+            $|a_n - b_n| > 0$，所以
+            \begin{align*}
+                  d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = \sup \limits_{n \in \mathbb{N}} |a_n - b_n| > 0
+            \end{align*}
+
+      \item 公理(c)
+
+            序列$(a_n)_{n=0}^\infty$与$(b_n)_{n=0}^\infty$，对任意的$n \in \mathbb{N}$都有
+            $|a_n - b_n| = |b_n - a_n|$，所以
+            \begin{align*}
+                  d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) = d_{l^\infty}((b_n)_{n = 0}^\infty, (a_n)_{n = 0}^\infty)
+            \end{align*}
+
+      \item 公理(d)
+
+            序列$(a_n)_{n=0}^\infty,(b_n)_{n=0}^\infty$与$(c_n)_{n=0}^\infty$，对任意的$n \in \mathbb{N}$都有
+            \begin{align*}
+                  |a_n - c_n| \leq |a_n - b_n| + |b_n - c_n|
+            \end{align*}
+            于是（有用到引理6.4.13（比较原理））
+            \begin{align*}
+                  d_{l^\infty}((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty) & = \sup \limits_{n \in \mathbb{N}} |a_n - c_n|                  \\
+                                                                           & \leq \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + |b_n - c_n|
+            \end{align*}
+            接下来，我们需要证明
+            \begin{align*}
+                  \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + |b_n - c_n| = \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + \sup \limits_{n \in \mathbb{N}} |b_n - c_n|
+            \end{align*}
+            不妨设$M := \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + |b_n - c_n|, p := \sup \limits_{n \in \mathbb{N}} |a_n - b_n|, q := \sup \limits_{n \in \mathbb{N}} |b_n - c_n|$\\
+            反证法，假设$M \neq p + q$，那么$M > p + q$或者$M < p + q$，我们以$M > p + q$为例，
+            于是存在$m, M > m > p + q$，由最小上界的性质可知（命题6.3.6），存在$n \in \mathbb{N}$使得
+            \begin{align*}
+                  |a_n - b_n| + |b_n - c_n| > m > p + q
+            \end{align*}
+            于是$|a_n - b_n| > p$或$|b_n - c_n| > q$，这与$p,q$是最小上确界矛盾。
+
+            所以
+            \begin{align*}
+                  d_{l^\infty}((a_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty) & \leq \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + |b_n - c_n|                                                        \\
+                                                                           & = \sup \limits_{n \in \mathbb{N}} |a_n - b_n| + \sup \limits_{n \in \mathbb{N}} |b_n - c_n|                           \\
+                                                                           & = d_{l^\infty}((a_n)_{n = 0}^\infty, (b_n)_{n = 0}^\infty) + d_{l^\infty}((b_n)_{n = 0}^\infty, (c_n)_{n = 0}^\infty)
+            \end{align*}
+\end{itemize}
+
+（3）存在一个由$X$中元素构成的序列$x^{(1)}, x^{(2)}, \cdots$（即序列的序列），它依度量$d_{l^\infty}$收敛但不依度量$d_{l^1}$收敛。
+
+这里可以手动构造一个
+\begin{align*}
+      (a_n)_{n=0}^\infty, a_n = 1/k \\
+      x^{(k)} = (a_n)_{n=0}^\infty
+\end{align*}
+于是$x^{(k)}$收敛于$1/k$，序列$x^{(1)}, x^{(2)}, \cdots$依度量$d_{l^\infty}$收敛于$(a_n)_{n=0}^\infty, a_n = 0$，
+但不依度量$d_{l^1}$收敛，这里简单说明下原因，因为两个点$x^{(p)}, x^{(q)}$，每个坐标分量$i$都有
+\begin{align*}
+      |x^{(p)}_i - x^{(q)}_i| = |1/p - 1/q| = \frac{1}{pq}
+\end{align*}
+而每个点的坐标分量个数是$\infty$，所以$d_{l^1}(x^{(p)}, x^{(q)}) = \infty$
+
+（4）任何一个依度量$d_{l^1}$收敛的序列都依度量$d_{l^\infty}$收敛。
+
+不妨设序列依度量$d_{l^1}$收敛于$(a_n)_{n=0}^\infty$，那么对于任意$\epsilon > 0$存在一个$N$，使得
+\begin{align*}
+      \sum \limits_{i = 0}^\infty |a_i - x_i| \leq \epsilon
+\end{align*}
+对$n \geq N$均成立。
+
+于是可得
+\begin{align*}
+      \sup \limits_{i \in \mathbb{N}} |a_i - x_i| \leq \epsilon
+\end{align*}
+所以，序列依度量$d_{l^\infty}$收敛于$(a_n)_{n=0}^\infty$。
+
+\section*{12.1.16}
+
+由$(x_n)_{n=1}^\infty$收敛于点$x \in X$，对于任意$\epsilon > 0, \frac{1}{2} \epsilon > 0$，存在一个$N \geq 1$使得
+\begin{align*}
+      d(x_n, x) \leq \frac{1}{2} \epsilon
+\end{align*}
+对所有的$n \geq N$均成立。
+
+类似地，存在$M \geq 1$使得
+\begin{align*}
+      d(y_n, y) \leq \frac{1}{2} \epsilon
+\end{align*}
+对所有的$n \geq M$均成立。
+
+取$m = max(N, M)$使得
+\begin{align*}
+      d(x_n, y_n)           & \leq d(x_n, x) + d(x, y_n)                \\
+                            & \leq d(x_n, x) + d(x, y) + d(y, y_n)      \\
+                            & \implies                                  \\
+      d(x_n, y_n) - d(x, y) & \leq  d(x_n, x) + d(y, y_n) \leq \epsilon
+\end{align*}
+对所有的$n \geq m$均成立。
+
+由$\epsilon$的任意性和$d(x, y)$是常量可知
+\begin{align*}
+      \lim\limits_{n \to \infty} d(x_n, y_n) = d(x, y)
+\end{align*}
+
+
+
+\end{document}
