@@ -245,12 +245,14 @@
             使用(a)可知，对任意$x \in E_1 \cap E_2 \cap ... \cap E_n$，
             对任意$E_i (1 \leq i \leq n)$存在一个$r_i > 0$使得$B(x, r_i) \subseteq E_i$。
 
-            由于$n$是有限的，所以可取$r = \min\{r_1, r_2, ..., r_n\}$，此时$B(x, r) \subseteq E_i$，
+            由于$n$是有限的，所以可取$r = \min\{r_1, r_2, ..., r_n\}$，此时$B(x, r) \subseteq E_i(1 \leq i \leq n)$，
             于是再次利用(a)可得，$E_1 \cap E_2 \cap ... \cap E_n$是开的。
 
             (f.2)
 
-            $F_1,...,F_2$是闭的，由(e)可知，$X \setminus F_1,...,X \setminus F_n$是开的，
+            $F_1,...,F_2$是闭的，由(e)可知，$X \setminus F_1,...,X \setminus F_n$是开的。
+
+            命题3.1.28(h)（德$\bullet$摩尔定律$X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)$）可知，
             $F_1 \cup F_2 \cup ... \cup F_n = X \setminus \left( (X \setminus F_1) \cap (X \setminus F_2)\cap ... \cap (X \setminus F_n) \right)$,
             再次利用(e)可知，$F_1 \cup F_2 \cup ... \cup F_n$是闭的。
 
@@ -264,10 +266,12 @@
 
             (g.2)
 
-            % 因为$\bigcap_{\alpha \in I} F_{\alpha} = X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$，
-            % 由(e)可知，$X \setminus F_{\alpha}$是开的，所以利用(g.1)可得$\bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是开的，
-            % 再次利用(e)可知$X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是闭的。
-            % todo
+            命题3.1.28(h)（德$\bullet$摩尔定律$X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)$）可知
+            因为$\bigcap_{\alpha \in I} F_{\alpha} = X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$，
+            因为$F_{\alpha}$是闭的，由(e)可知，$X \setminus F_{\alpha}$是开的，
+            所以利用(g.1)可得$\bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是开的，
+            再次利用(e)可知$X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是闭的，
+            即$\bigcap_{\alpha \in I} F_{\alpha}$是闭的。
 
 
       \item (h)
@@ -313,7 +317,7 @@
             \begin{align*}
                   d(x_0, x) - d(x_0, y) \leq d(x, y) & < r^\prime = d(x_0, x) - r \\
                   d(x_0, x) - d(x_0, y)              & < d(x_0, x) - r            \\
-                  r                                  & < d(x_0, y)                
+                  r                                  & < d(x_0, y)
             \end{align*}
             这与$y \in B$矛盾。
 
