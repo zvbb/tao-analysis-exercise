@@ -1,0 +1,329 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{12.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{12.2.1}
+
+任意$x_0 \in X$，要么$x_0 \in E$要么$x_0 \notin E$。
+
+\begin{itemize}
+      \item $x_0 \in E$
+
+            任意$0 < r < 1$，由$d_{disc}$度量的定义可知，
+            $B(x_0, r) = \{x_0\}$，所以$B(x_0, r) \subseteq E$，
+            所以$x_0$是$E$的内点。
+
+      \item $x_0 \notin E$
+
+            任意$0 < r < 1$，由$d_{disc}$度量的定义可知，
+            $B(x_0, r) = \{x_0\}$，所以$B(x_0, r) \cap E = \varnothing$，
+            所以$x_0$是$E$的外点。
+\end{itemize}
+
+\section*{12.2.2}
+
+证明路径：$(a) \implies (b) \implies (c) \implies (a)$
+
+\begin{itemize}
+      \item $(a) \implies (b)$
+
+            由闭包的定义（定义12.2.9）可知，如果(a)成立，那么对任意的半径$r > 0$，球$B(x_0, r)$与$E$的交集总是非空的。
+            所以$x_0$不可能是$E$的外点。
+
+            球$B(x_0, r)$与$E$的交集总是非空的，于是有两种情况。    \\
+            情况1：$B(x_0, r) \subseteq E$，此时$x_0$是$E$的内点。 \\
+            情况2：存在$x \in B(x_0, r), x \notin E$，此时$x_0$是$E$的边界点。
+
+            综上，(b)成立。
+
+
+      \item $(b) \implies (c)$
+
+            (b)成立。
+
+            \begin{itemize}
+                  \item $x_0$是$E$的内点
+
+                        那么可以把序列$(x_n)_{n=1}^\infty$设置为常量序列$(x_0)_{n=1}^\infty$。
+
+                  \item $x_0$是$E$的边界点
+
+                        那么任意$r > 0$，
+                        都有$B(x_0, r) \cap E \neq \varnothing$（因为如果$B(x_0, r) \cap E = \varnothing$，那么$x_0$是$E$的外点）。
+
+                        仿照引理8.4.5的证明，构造序列。
+
+                        对于任意的正整数$n$，设$X_n$表示集合
+                        \begin{align*}
+                              X_n := \{x \in E: x \in B(x_0, \frac{1}{n})\}
+                        \end{align*}
+                        由之前的分析可得，对每一个$n$都有$X_n$是非空的。利用选择公理（或者可数选择公理），能够找到一个
+                        序列$(x_n)_{n = 1}^\infty$使得$x_n \in X_n$对所有的$n \geq 1$均成立。
+                        特别地，对所有的$n$均有$x_n \in E \cap B(x_0, \frac{1}{n})$，于是
+                        \begin{align*}
+                              0 \leq d(x_0, x_n) \leq \frac{1}{n}
+                        \end{align*}
+                        根据夹逼定理（推论6.4.14）有$\lim\limits_{n \to \infty} d(x_0, x_n) = 0$，
+                        所以序列$(x_n)_{n = 1}^\infty$依度量$d$收敛于点$x_0$。
+            \end{itemize}
+
+      \item $(c) \implies (a)$
+
+            (c)成立，由收敛定义（定义12.1.14）可知，对任意$\epsilon > 0$，存在一个$N \geq 1$使得
+            \begin{align*}
+                  d(x_n, x_0) < \epsilon
+            \end{align*}
+            对所有$n \geq N$均成立（注意：这里的把定义中的$\leq$改成了$<$，并不影响正确性）。
+
+            做一下变形，把$\epsilon$看做半径，球$B(x_0, \epsilon)$与$E$的交集是非空的，
+            这是因为对$n \geq N$的$x_n$我们有$d(x_n, x_0) < \epsilon$，所以$x_n \in B(x_0, \epsilon)$
+            且$x_n \in E$。
+
+            由$\epsilon$的任意性可知，$x_0$是$E$的附着点。
+\end{itemize}
+
+\section*{12.2.3}
+
+\begin{zremark}
+      先证明以下命题：
+
+      \textbf{设$(X, d)$是一个度量空间，$E$是$X$的子集，并设$x_0$是$X$中的一个点。那么$x_0$要么是$E$的内点，
+            要么是$E$的外点，要么是$E$的边界点（存在三歧性）。}
+
+
+      证明：
+      以下的情况是互斥的：
+      \begin{itemize}
+            \item $x_0 \in E$
+
+                  首先$x_0$不可能是$E$的外点，如果$x_0$是$E$的外点，那么存在$r > 0$使得$B(x_0, r) \cap E = \varnothing$，
+                  因为$d(x_0, x_0) = 0$所以$x_0 \in B(x_0, r)$，于是$x_0 \notin E$，存在矛盾。
+
+                  以下的情况是互斥的：
+                  \begin{itemize}
+                        \item $x_0$是$E$的边界点
+
+                              由定义12.2.5可知，$x_0$不可能同时是$E$的内点。
+
+                        \item $x_0$不是$E$的边界点
+
+                              之前已经说明$x_0$不是$E$的外点，假设$x_0$也不是$E$的内点，那么
+                              $x_0$就是$E$的边界点，存在矛盾，所以$x_0$是$E$的内点。
+
+                  \end{itemize}
+            \item $x_0 \notin E$
+
+                  首先$x_0$不可能是$E$的内点，如果$x_0$是$E$的内点，那么存在$r > 0$使得$B(x_0, r) \subseteq E$，
+                  因为$x_0 \in B(x_0, r)$，所以$x_0 \in E$，这与$x_0 \notin E$矛盾。
+
+                  以下的情况是互斥的：
+                  \begin{itemize}
+                        \item $x_0$是$E$的外点
+
+                        \item $x_0$不是$E$的外点
+
+                              由定义12.2.5可知，$x_0$既不是$E$的内点也不是$E$的外点，所以$x_0$是$E$的边界点。
+                  \end{itemize}
+      \end{itemize}
+
+      综上，$x_0 \in E$，$x_0$要么是$E$的内点，要么是$E$的边界点；
+      $x_0 \notin E$，$x_0$要么是$E$的外点，要么是$E$的边界点。命题得证。
+
+
+\end{zremark}
+
+
+\begin{itemize}
+      \item (a)
+            \begin{itemize}
+                  \item $\Rightarrow$
+
+                        由注12.2.6可知$int(E) \subseteq E$。
+
+                        任意$x_0 \in E$，因为$E$是开的，那么$E$不包含自身的任意边界点，
+                        所以$x_0 \notin \partial E $；由$d(x_0, x_0)=0$可知$x_0 \notin ext(E)$。
+                        于是由说明1可知$x_0 \in int(E)$，所以$E \subseteq int(E)$。
+
+                        所以$E = int(E)$
+                  \item $\Leftarrow$
+
+                        $E = int(E)$，那么任意$x_0 \in E$，都有$x_0 \in int(E)$，即$E$中不包含边界点，
+                        由定义12.2.12可知，$E$是开的。
+            \end{itemize}
+
+      \item (b)
+            \begin{itemize}
+                  \item $\Rightarrow$
+
+                        反证法，假设存在$x_0$是附着点且$x_0 \notin E$。
+                        $x_0$是$E$的附着点，那么由定义12.2.9可知，对任意的半径$r > 0$，
+                        球$B(x_0, r) \cap E \neq \varnothing$，所以可得$x_0$不可能是$E$的外点。
+                        又由说明1可得$x_0$要么是$E$的边界点，要么是$E$的内点。如果
+                        $x_0$是$E$的边界点，由于$E$是闭的，所以$x_0 \in E$，与假设矛盾;如果$x_0$是$E$的内点，
+                        于是$x_0 \in E$，与假设矛盾。
+
+                        综上，假设不成立。
+
+                  \item $\Leftarrow$
+
+                        反证法，假设$E$不是闭的，即存在边界点$x_0$且$x_0 \notin E$。
+                        由推论12.2.11可知$x_0$是$E$的附着点，由题设可知$x_0 \in E$，与假设矛盾。
+            \end{itemize}
+
+      \item (c)
+            \begin{itemize}
+                  \item 球$B(x_0, r)$是开集
+
+                        对任意的$x \in B(x_0, r)$，都有$d(x_0, x) < r$，令$r^\prime = r - d(x_0, x)$，
+                        于是$B(x, r^\prime) \subseteq B(x_0, r)$，因为任意$y \in B(x, r^\prime)$，都有
+                        \begin{align*}
+                              d(x_0, y) \leq d(x_0, x) + d(x, y) < d(x_0, x) + r^\prime = r
+                        \end{align*}
+                        由(a)可知，球$B(x_0, r)$是开集。
+
+                  \item 闭球是闭集
+
+                        $B := \{x \in X : d(x, x_0) \leq r \}$，让$(x_n)_{n = m}^\infty$是$B$中任意一个收敛序列，
+                        假设$\lim\limits_{n \to \infty} x_n = b \notin E$，于是$d(x_0, b) > r$，
+                        令$\epsilon = d(x_0, b) - r > 0$，于是存在$N \geq m$使得
+                        \begin{align*}
+                              d(x_n, b) & < \epsilon              \\
+                              d(x_n, b) & < d(x_0, b) - r         \\
+                              r         & < d(x_0, b) + d(x_n, b) \\
+                              r         & < d(x_0, x_n)
+                        \end{align*}
+                        对所有$n \geq N$均成立，这与$x_n \in B$矛盾。
+
+                        于是$b \in B$，由(b)可知，$B$是闭集。
+
+            \end{itemize}
+
+
+      \item (d)
+
+            令$E := \{x_0\}$，$E$中的任意一个收敛序列$(x_n)_{n = m}^\infty$都是与$(x_0)_{n=m}^\infty$相等，
+            所以$\lim\limits_{n \to \infty} x_n = x_0 \in E$。由(b)可知，$E$是闭集。
+
+      \item (e)
+            由于$int(E) = ext(X \setminus E), ext(E) = int(X \setminus E)$，于是可得$\partial E = \partial (X \setminus E)$。
+            \begin{itemize}
+                  \item $\Rightarrow$
+
+                        $E$是开的，则$\partial E \cap E = \varnothing$，于是可得$\partial E \subseteq (X \setminus E)$，
+                        即$\partial E = \partial (X \setminus E) \subseteq (X \setminus E)$，所以$X \setminus E$是闭的。
+
+                  \item $\Leftarrow$
+
+                        $X \setminus E$是闭的，则$\partial (X \setminus E) \subseteq (X \setminus E)$，由$\partial E = \partial (X \setminus E)$
+                        可得$\partial E \cap E = \varnothing$，所以$E$是开的。
+            \end{itemize}
+
+      \item (f)
+
+            (f.1)
+
+            使用(a)可知，对任意$x \in E_1 \cap E_2 \cap ... \cap E_n$，
+            对任意$E_i (1 \leq i \leq n)$存在一个$r_i > 0$使得$B(x, r_i) \subseteq E_i$。
+
+            由于$n$是有限的，所以可取$r = \min\{r_1, r_2, ..., r_n\}$，此时$B(x, r) \subseteq E_i$，
+            于是再次利用(a)可得，$E_1 \cap E_2 \cap ... \cap E_n$是开的。
+
+            (f.2)
+
+            $F_1,...,F_2$是闭的，由(e)可知，$X \setminus F_1,...,X \setminus F_n$是开的，
+            $F_1 \cup F_2 \cup ... \cup F_n = X \setminus \left( (X \setminus F_1) \cap (X \setminus F_2)\cap ... \cap (X \setminus F_n) \right)$,
+            再次利用(e)可知，$F_1 \cup F_2 \cup ... \cup F_n$是闭的。
+
+      \item (g)
+
+            (g.1)
+
+            任意$x \in \bigcup_{\alpha \in I} E_{\alpha}$，那么，存在某个$\alpha \in I$使得$x \in E_{\alpha}$，
+            又因为$E_{\alpha}$是开的，所以存在$r > 0$使得$B(x, r) \subseteq E_{\alpha} \in \bigcup_{\alpha \in I} E_{\alpha}$，
+            所以$\bigcup_{\alpha \in I} E_{\alpha}$是开的。
+
+            (g.2)
+
+            % 因为$\bigcap_{\alpha \in I} F_{\alpha} = X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$，
+            % 由(e)可知，$X \setminus F_{\alpha}$是开的，所以利用(g.1)可得$\bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是开的，
+            % 再次利用(e)可知$X \setminus \bigcup_{\alpha \in I} (X \setminus F_{\alpha})$是闭的。
+            % todo
+
+
+      \item (h)
+
+            (h.1)
+
+            反证法，假设$int(E)$不是包含在$E$中的最大开集，即存在$V \subseteq E, V \not \subseteq int(E)$。
+
+            由假设可知，存在$x \in V, x \notin int(E)$，由于$V \subseteq E$，所以$x \in E$，于是$x \in int(E)$或$x \in \partial E$，
+            因为$x \notin int(E)$，所以$x \in \partial E$。
+
+            由于$V$是开集，所以存在$r > 0$，使得$B(x, r) \subseteq V \subseteq E$，
+            于是$x$是$E$的内点，即$x \in int(E)$，存在矛盾。
+
+            (h.2)
+
+            反证法，假设$\overline{E}$不是包含$E$的最小闭集，即存在$K \supset E, K \not \supset \overline{E}$。
+
+            由假设可知，存在$x \in \overline{E}, x \notin K$。
+            因为$x$是$E$的附着点，于是由命题12.2.10(c)可知在$E$中（也在$K$中）构造一个收敛于$x$的序列$(x_n)_{n = m}^\infty$，
+            但$x \notin K$，这与(b)矛盾。
+\end{itemize}
+
+\section*{12.2.4}
+
+\begin{itemize}
+      \item (a)
+
+            反证法，假设存在$x \in \overline{B}, x \notin C$。
+
+            $x \notin C$，可知$x \in X \setminus C$，而$X \setminus C = \{x \in X: d(x, x_0) > r\}$，
+            那么$d(x, x_0) > r$。
+
+            因为$x \in \overline{B}$，所以对任意半径$r^\prime > 0$都有$B(x, r^\prime) \cap B \neq \varnothing$，
+            于是令$r^\prime = d(x_0, x) - r > 0, y \in B(x, r^\prime) \cap B$。
+
+            按照定义12.1.2我们有
+            \begin{align*}
+                  d(x_0, x)             & \leq d(x_0, y) + d(x, y) \\
+                  d(x_0, x) - d(x_0, y) & \leq d(x, y)
+            \end{align*}
+            因为$y \in B(x, r^\prime)$于是$d(x, y) < r^\prime$，所以
+            \begin{align*}
+                  d(x_0, x) - d(x_0, y) \leq d(x, y) & < r^\prime = d(x_0, x) - r \\
+                  d(x_0, x) - d(x_0, y)              & < d(x_0, x) - r            \\
+                  r                                  & < d(x_0, y)                
+            \end{align*}
+            这与$y \in B$矛盾。
+
+
+      \item (b)
+
+            在离散度量$d_{disc}$中，$B := B(x_0, 1)$，是单点集，由命题12.2.15(d)可知，$B$是闭集，
+            由命题12.2.15(b)可知，$B = \overline{B}$。
+
+            而$C := \{x \in X: d_{disc}(x_0, x) \leq 1\}$就是$X$本身，此时$B \subset C$。
+\end{itemize}
+
+\end{document}
