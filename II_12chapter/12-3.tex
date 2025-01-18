@@ -25,10 +25,55 @@
 \section*{12.3.1}
 
 \begin{itemize}
-      \item $\Rightarrow$
+  \item $\Rightarrow$
+
+        $E$是关于$Y$相对闭的，那么$F = Y \setminus E$是关于$Y$相对开的，
+        由命题12.3.4(a)可知，存在$X$中的开集$V \subseteq X$使得$F = V \cap Y$是关于$Y$相对开的。
+
+        令$K = X \setminus V$，于是可得$K$是关于$X$的闭集。现在我们来证明
+        $E = K \cap Y$。
+
+        任意$x \in E$，于是
+        \begin{align*}
+           & x \in E             \\
+           & \implies            \\
+           & x \in Y, x \notin F \\
+           & \implies            \\
+           & x \notin V          \\
+           & \implies            \\
+           & x \in K
+        \end{align*}
+
+        任意$y \in K \cap Y$，于是
+        \begin{align*}
+           & y \in K \cap Y                                                             \\
+           & \implies                                                                   \\
+           & y \in K, y \in Y                                                           \\
+           & \implies                                                                   \\
+           & y \notin V                                                                 \\
+           & \implies                                                                   \\
+           & y \notin F                                                                 \\
+           & y \in E       \;\;   \text{因为$y \notin E, F = Y \setminus E, y \in F$存在矛盾} \\
+        \end{align*}
+
+  \item $\Leftarrow$
+
+        假设存在某个闭集$K$使得$E = K \cap Y$，那么$V = X \setminus K$是关于$X$相对开的，于是$V \cap Y$是关于$Y$相对开的，
+        于是
+        \begin{align*}
+          Y \setminus (V \cap Y) = (Y \setminus V) \cup (Y \setminus Y) = Y \setminus V 
+        \end{align*}
+        是关于$Y$相对闭的。
+
+        接下来我们证明$E = Y \setminus V$。
+
+        任意$x \in E$，我们有$x \in K, x \in Y$，所以$x \notin V = X \setminus K$，
+        于是$x \in Y \setminus V$，所以$E \subseteq (Y \setminus V)$。
+
+        任意$x \in Y \setminus V$，我们有$x \in Y, x \notin V$，于是$x \in X, x \notin V$，
+        所以$x \in K$，因为$V = X \setminus K$，于是$x \in Y \cap K = E$，所以$(Y \setminus V) \subseteq E$。
 
 
-      \item $\Leftarrow$
 \end{itemize}
 
 \end{document}
