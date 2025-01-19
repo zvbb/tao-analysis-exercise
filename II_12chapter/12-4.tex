@@ -1,0 +1,238 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{12.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{12.4.1}
+
+$(x^{(n)})_{n = m}^\infty$是$(X,d)$中收敛于极限$x_0$的序列，
+由收敛的定义（定义12.1.14）可知，对任意$\epsilon > 0$，存在一个$N \geq m$使得
+\begin{align*}
+  d(x^{(n)},x_0) \leq \epsilon
+\end{align*}
+对所有的$n \geq N$均成立。
+
+如果$(x^{n_j})_{j=1}^\infty$是$(x^{(n)})_{n = m}^\infty$的子序列，
+令$N^\prime = N - m$，由定义12.4.1可知
+\begin{align*}
+  n_{N^\prime} \geq N
+\end{align*}
+于是
+\begin{align*}
+  d(x^{(n_j)}, x_0) \leq \epsilon
+\end{align*}
+对所有的$j \geq N^\prime$均成立，所以子序列收敛于$x_0$。
+
+\section*{12.4.2}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        先构造出子序列，注意要满足子序列定义，然后证明该子序列收敛于$L$。
+
+        （1）以递归的方式定义：
+
+        $j=1$时，定义$x^{n_1}=x^{(m)}$。
+
+        归纳假设，$n_j$时，项$x^{(n_j)}$是存在的。
+
+        $j+1$时，
+        由$(x^{(n)})_{n = m}^\infty$收敛于$L$，所以取$\epsilon = 1/(j+1) > 0$，
+        存在$n \geq n_j$使得$d(x^{(n)}, L) \leq \epsilon$，满足该条件的$x^{(n)}$是一个非空集合，任取一个作为$x^{(n_{j+1})}$。
+
+        （2）序列的收敛性
+
+        对任意$\epsilon > 0$，存在$1/j \leq \epsilon$（存在的原因是$1/j$收敛于$0$）。
+        通过序列$(x^{(n_j)})_{j=1}^\infty$的构造方式可知，
+        取$N = j$，$n \geq N$使得$d(x^{(n_n)}, L) \leq \epsilon$，序列收敛得证。
+
+  \item $\Leftarrow$
+
+        任意$N \geq m$和$\epsilon > 0$，由子序列$(x^{(n_j)})_{j=1}^\infty$收敛于$L$，
+        那么存在$N^\prime \geq 1, j \geq max(N^\prime, N) \geq N$使得
+        \begin{align*}
+          d(x^{(n_j)}, L) \leq \epsilon
+        \end{align*}
+
+        由子序列定义（定义12.4.1）可知，$n_j \geq j \geq N$，于是由之前的说明可知，
+        存在一个$n = n_j \geq N$，使得
+        \begin{align*}
+          d(x^{(n)}, L) \leq \epsilon
+        \end{align*}
+        命题得证。
+
+\end{itemize}
+
+\section*{12.4.3}
+
+任意$\epsilon > 0, \frac{1}{2}\epsilon > 0$，$(x^{(n)})_{n = m}^\infty$收敛于$x_0$，
+那么存在$N \geq m$使得
+\begin{align*}
+  d(x^{(n)}, x_0) < \frac{1}{2}\epsilon
+\end{align*}
+对所有的$n \geq N$均成立。
+
+所以，对$j,k \geq N$有
+\begin{align*}
+  d(x^{(j)}, x_0) < \frac{1}{2}\epsilon \\
+  d(x^{(k)}, x_0) < \frac{1}{2}\epsilon
+\end{align*}
+由三角不等式可知，
+\begin{align*}
+  d(x^{(j)}, x^{(k)}) < \epsilon
+\end{align*}
+对所有的$j,k \geq N$均成立。
+
+综上可知，$(x^{(n)})_{n = m}^\infty$是柯西序列。
+
+\section*{12.4.4}
+
+对任意的$\epsilon > 0$，由于原序列$(x^{(n)})_{n = m}^\infty$是柯西序列，
+所以存在一个$N^\prime \geq m$使得
+\begin{align*}
+  d(x^{(j)}, x^{(k)}) < \frac{1}{2}\epsilon
+\end{align*}
+对所有的$j,k \geq N^\prime$均成立。
+
+由命题12.4.5可知， $x_0$也是原序列$(x^{(n)})_{n = m}^\infty$的一个极限点，
+令$N = N^\prime$，都存在一个$n^\prime \geq N$使得
+\begin{align*}
+  d(x^{(n^\prime)}, x_0) < \frac{1}{2}\epsilon
+\end{align*}
+
+对任意$n \geq N$我们有，
+\begin{align*}
+  d(x^{(n)}, x_0) & \leq d(x^{(n)}, x^{(n^\prime)}) + d(x^{(n^\prime)}, x_0) \\
+                  & < \frac{1}{2}\epsilon + \frac{1}{2}\epsilon              \\
+                  & = \epsilon
+\end{align*}
+（注意，这里的$n, n^\prime$满足$n, n^\prime \geq N^\prime$要求）
+于是，原序列$(x^{(n)})_{n = m}^\infty$收敛于$x_0$。
+
+\section*{12.4.5}
+（1）
+
+令$E := \{x^{(n)}: n \geq m\}$。
+
+任意半径$r > 0$，$B(L, r) := \{x \in X: d(L, x) < r\}$，
+
+因为$L$是序列$(x^{(n)})_{n = m}^\infty$的一个极限点，
+那么对任意的$N \geq m$，存在一个$n \geq N$使得
+\begin{align*}
+  d(L, x^{(n)}) < r
+\end{align*}
+所以，$x^{(n)} \in B(L, r)$，于是
+$x^{(n)} \in B(L, r) \cap E$，所以$B(L, r) \cap E \neq \varnothing$。
+
+综上，由$r$的任意性可得，$L$是集合$\{x^{(n)}: n \geq m\}$的附着点。
+
+（2）逆命题成立么？
+
+不成立，比如$x^{(m)}$就是集合$\{x^{(n)}: n \geq m\}$的附着点，
+但是$x^{(m)}$却不一定是集合$\{x^{(n)}: n \geq m\}$的极限点。
+
+\section*{12.4.6}
+
+假设柯西序列$(x^{(n)})_{n = m}^\infty$收敛于$L,L^\prime$且$L \neq L^\prime$。
+
+序列$(x^{(n)})_{n = m}^\infty$收敛于$L$，那么对$\epsilon = \frac{1}{3}d(L-L^\prime) > 0$，
+存在$N \geq m$使得
+\begin{align*}
+  d(x^{(n)}, L) < \epsilon
+\end{align*}
+对所有的$n \geq N$均成立。
+
+类似地，存在$N^\prime \geq m$使得
+\begin{align*}
+  d(x^{(n)}, L^\prime) < \epsilon
+\end{align*}
+对所有的$n \geq N^\prime$均成立。
+
+取$M = max(N, N^\prime)$，于是对所有的$n \geq M$都有
+\begin{equation*}
+  \begin{cases*}
+    d(x^{(n)}, L) < \epsilon \\
+    d(x^{(n)}, L^\prime) < \epsilon
+  \end{cases*}
+\end{equation*}
+但上式不可能同时成立，如果成立会导致以下矛盾：
+\begin{align*}
+  d(L, L^\prime) \leq d(x^{(n)}, L) + d(x^{(n)}, L^\prime) < 2\epsilon = \frac{2}{3}d(L, L^\prime)
+\end{align*}
+
+\section*{12.4.7}
+
+\begin{itemize}
+  \item (a)
+
+        \begin{align*}
+           & (Y, d|_{Y \times Y}) \text{是完备的}        \\
+           & \implies                                \\
+           & \text{柯西序列} \Leftrightarrow \text{收敛序列}
+        \end{align*}
+
+        反证法，假设$Y$不是闭集，那么，由命题12.2.15(d)可知，
+        存在一个$Y$中的收敛序列的极限值不属于$Y$，
+        由引理12.4.7可知收敛序列是柯西序列，
+        即存在一个$Y$中的柯西序列不在$(Y, d|_{Y \times Y})$中收敛，
+        这与定义12.4.10矛盾。
+
+  \item (b)
+
+        设$(x^{(n)})_{n=m}^\infty$是$Y$中任意柯西序列，由于$Y$是$X$的子集，而$(X,d)$又是完备度量空间，
+        所以序列收敛，不妨设收敛于$x_0, x_0 \in X$。
+        又因为$Y$是$X$的一个闭子集，由命题12.2.15(d)可得$x_0 \in Y$。
+
+        综上，由序列$(x^{(n)})_{n=m}^\infty$的任意性可得，$Y$中的柯西序列在$(Y, d|_{Y \times Y})$中都是收敛的。
+
+        所以，子空间$(Y, d|_{Y \times Y})$也是完备的。
+\end{itemize}
+
+\section*{12.4.8}
+
+\begin{itemize}
+  \item (a)
+
+        \begin{itemize}
+          \item 自反性
+
+                $d(x,x) = 0$保证了自反性的正确性，证明略
+
+          \item 对称性
+
+                $d(x,y) = d(y,x)$保证了对称性的正确性，证明略
+
+          \item 传递性
+
+                $d(x,z) \leq d(x,y) + d(y,z)$保证了传递性的正确性，证明略
+        \end{itemize}
+  \item (b)
+
+
+  \item (c)
+  \item (d)
+  \item (e)
+  \item (f)
+\end{itemize}
+
+
+\end{document}
