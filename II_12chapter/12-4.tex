@@ -427,19 +427,19 @@ $x^{(n)} \in B(L, r) \cap E$，所以$B(L, r) \cap E \neq \varnothing$。
 
         由于$(x_n)_{n=1}^\infty$是柯西序列，所以存在$N \geq K$使得
         \begin{align*}
-          d(x_n, x_K) < \frac{\epsilon}{2}
+          d(x_n, x_N) < \frac{\epsilon}{2}
         \end{align*}
         对所有的$n \geq N$均成立。
 
         因为$\lim\limits_{n \to \infty} d(y_n, x_k) < \frac{\epsilon}{2}$所以存在$N^\prime \geq N$使得
         \begin{align*}
-          d(y_n, x_K) < \frac{\epsilon}{2}
+          d(y_n, x_{N^\prime}) < \frac{\epsilon}{2}
         \end{align*}
         对所有$n \geq N^\prime$均成立。
 
         于是我们有
         \begin{align*}
-          d(x_n, y_n) \leq d(x_n, x_K) + d(x_K, y_n) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+          d(x_n, y_n) \leq d(x_n, x_{N^\prime}) + d(x_{N^\prime}, y_n) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
         \end{align*}
         对所有的$n \geq N^\prime$均成立。
 
@@ -451,11 +451,6 @@ $x^{(n)} \in B(L, r) \cap E$，所以$B(L, r) \cap E \neq \varnothing$。
         \begin{align*}
           \lim\limits_{n \to \infty} x_n = L = LIM_{n \to \infty} y_n = LIM_{n \to \infty} x_n
         \end{align*}
-
-
-
-
-
 \end{itemize}
 
 
