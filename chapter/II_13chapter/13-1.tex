@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{13.1 习题}
+\author{张志聪}
+\maketitle
+
+\section*{13.1.1}
+
+\begin{itemize}
+  \item $(a) \implies (c)$
+
+        因为$f(x_0) \in V$且$V$是开集，那么存在$r > 0$使得$B(f(x_0), r) \subseteq V$。
+        因为$f$在$x_0$处是连续的，那么存在$\delta > 0$，使得只要$d_X(x_0, x) < \delta$，就有
+        $d_Y(f(x), f(x_0)) < r$，
+        于是令$U = B(x_0, \delta)$即可满足要求，使得$f(U) \subseteq B(f(x_0), r) \subseteq V$。
+
+  \item $(c) \implies (b)$
+
+        对于任意$\epsilon > 0$，令$V := B(f(x_0), \epsilon)$，那么$V \subset Y$。由(c)可知，
+        存在一个包含$x_0$的开集$U \subset X$，使得$f(U) \subseteq V$。
+
+        因为$U$是开集，所以存在$B(x_0, r) \subseteq U$，因为序列$(x^{(n)})_{n = 1}^\infty$是$X$中依度量
+        $d_X$收敛于$x_0$的序列，于是存在$N \geq 1$使得
+        \begin{align*}
+          d_X(x_0, x^{(n)}) < r
+        \end{align*}
+        对所有的$n \geq N$均成立。那么，对所有的$n \geq N$都有
+        \begin{align*}
+          x^{(n)} \in B(x_0, r) \subseteq U
+        \end{align*}
+        所以$f(x^{(n)}) \in V$，即
+        \begin{align*}
+          d_Y(f(x^{(n)}), f(x_0)) < \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，序列$(f(x^{(n)}))_{n = 1}^\infty$是$Y$中依度量$d_Y$收敛于$f(x_0)$的序列。
+
+  \item $(b) \implies (a)$
+
+        
+\end{itemize}
+
+
+\end{document}
