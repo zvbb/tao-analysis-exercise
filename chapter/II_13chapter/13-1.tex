@@ -175,7 +175,57 @@
 \end{itemize}
 
 \section*{13.1.5}
+任意$x_0 \in E, \epsilon > 0$，只要$d|_{E \times E}(x, x_0) < \epsilon$， 就有
+\begin{align*}
+  d_X(\iota _{E \to X}(x), \iota _{E \to X}(x_0)) = d_X(x, x_0) = d|_{E \times E}(x, x_0) < \epsilon
+\end{align*}
+注意，利用了$E$是$X$的子集且$x, x_0 \in E$。
+
+由$x_0$的任意性可知，$\iota _{E \to X}$是连续的。
+
+\section*{13.1.6}
+
+（1）$f|_E$也在$x_0$处连续。
+
+设$(x_{(n)})_{n = 1}^\infty$是$E$中依度量$d_X$收敛于$x_0$的序列，
+因为$E$是$X$的子集，又$f$在$x_0$处是连续的，
+由定理13.1.4(b)可知序列$(f(x_{(n)}))_{n = 1}^\infty$在$x_0$依度量$d_Y$收敛于$f(x_0)$，
+$f|E(x) = f(x)$所以$f|_E$也在$x_0$处连续。
+
+（2）逆命题。
+
+不成立；定义
+\begin{equation*}
+  f(x) = \begin{cases}
+    1, x \geq 0 \\
+    -1, x < 0
+  \end{cases}
+\end{equation*}
+$E := [0, 1]$，于是$x = 0$时$f|_E$是连续的，$f$不是连续的。
+
+（3）$f$是连续的，那么$f|_E$就是连续的。
+
+证明与（1）同理，证明略。
 
 
+\section*{13.1.7}
 
+（1）对任意的$x_0 \in X$，$f$在$x_0$处是连续的，当且仅当$g$在$x_0$处是连续的。
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        由$f$在$x_0$处连续可知，对任意$\epsilon > 0$，
+        存在$\delta > 0$使得只要$d_X(x, x_0) < \delta$，就有$d_Y(f(x), f(x_0)) < \epsilon$。
+        又因为对所有的$x \in X$都有$g(x) = f(x)$，所以$d_Y(g(x), g(x_0)) < \epsilon$，
+        所以$g$在$x_0$处是连续的。
+
+  \item $\Leftarrow$
+
+        证明类似，略
+\end{itemize}
+
+（2）$f$是连续的，当且仅当$g$是连续的。
+
+证明略。
 \end{document}
