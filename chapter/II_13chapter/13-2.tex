@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{13.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{13.2.1}
+
+方法一：使用连续的定义证明
+
+\begin{itemize}
+  \item (a)
+
+        \begin{itemize}
+          \item $\Rightarrow$
+
+                对任意$\epsilon > 0, \frac{1}{\sqrt{2}}\epsilon$，
+                因为$f$在$x_0$处连续，存在$\delta_{f} > 0$使得只要$d_X(x, x_0) < \delta_{f}$，就有
+                \begin{align*}
+                  d_{l^2}(f(x), f(x_0)) = |f(x) - f(x_0)| < \frac{1}{\sqrt{2}}\epsilon
+                \end{align*}
+
+                类似地，存在$\delta_{g} > 0$使得只要$d_X(x, x_0) < \delta_{g}$，就有
+                \begin{align*}
+                  d_{l^2}(g(x), g(x_0)) = |g(x) - g(x_0)| < \frac{1}{\sqrt{2}}\epsilon
+                \end{align*}
+
+                综上，$\delta < min(\delta_{f}, \delta_{g})$，使得只要$d_X(x, x_0) < \delta$，就有
+                \begin{align*}
+                  d_{l^2}(f \oplus g(x), f \oplus g(x_0)) & = d_{l^2}((f(x), g(x)), (f(x_0), g(x_0)))      \\
+                                                          & = \sqrt{|f(x) - f(x_0)|^2 + |g(x) - g(x_0)|^2} \\
+                                                          & < \epsilon
+                \end{align*}
+                所以$f \oplus g$在$x_0$处是连续的。
+
+          \item $\Leftarrow$
+
+                任意$\epsilon > 0$，由于$f \oplus g$在$x_0$处是连续的，所以存在$\delta > 0$使得只要$d_X(x, x_0) < \delta$，就有
+                \begin{align*}
+                  d_{l^2}(f \oplus g(x), f \oplus g(x_0)) & = d_{l^2}((f(x), g(x)), (f(x_0), g(x_0)))      \\
+                                                          & = \sqrt{|f(x) - f(x_0)|^2 + |g(x) - g(x_0)|^2} \\
+                                                          & < \epsilon
+                \end{align*}
+                由此可得
+                \begin{align*}
+                  |f(x) - f(x_0)| < \epsilon \\
+                  |g(x) - g(x_0)| < \epsilon
+                \end{align*}
+                即
+                \begin{align*}
+                  d_{l^2}(f(x), f(x_0)) < \epsilon
+                \end{align*}
+                \begin{align*}
+                  d_{l^2}(g(x), g(x_0)) < \epsilon
+                \end{align*}
+                于是可得$f,g$在$x_0$处是连续的。
+
+        \end{itemize}
+
+  \item (b)
+
+        可以由(a)直接推出。
+\end{itemize}
+
+方法二：使用书中的提示
+
+\begin{itemize}
+  \item (a)
+
+        \begin{itemize}
+          \item $\Rightarrow$
+
+                任意$(x^{(n)})_{n = 1}^\infty$是$X$中依度量$d_X$收敛于$x_0$的序列，
+                因为$f,g$在$x_0$处连续，由命题13.1.4(b)可知，
+                序列$(f(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$f(x_0)$（书中有说在没有特殊说明的时，提到度量空间$R^n(n \geq 1)$指的就是欧几里得度量）。
+                序列$(g(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$g(x_0)$。
+
+                由命题12.1.18(d)可知，$(f(x^{(n)}), g(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$(f(x_0),g(x_0))$，
+                由13.1.4(b)可知$f \oplus g$在$x_0$处是连续的。
+
+          \item $\Leftarrow$
+
+                任意$(x^{(n)})_{n = 1}^\infty$是$X$中依度量$d_X$收敛于$x_0$的序列，
+                因为$f \oplus g$在$x_0$处是连续的，
+                由命题13.1.4(b)可知，序列$(f \oplus g(x^{(n)}))_{n = 1}^\infty = (f(x^{(n)}), g(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$(f(x_0),g(x_0))$，
+                由命题12.1.18(d)可知序列$(f(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$f(x_0)$，
+                序列$(g(x^{(n)}))_{n = 1}^\infty$依度量$d_{l^2}$收敛于$g(x_0)$，
+                所以由13.1.4(b)可知$f,g$在$x_0$处连续。
+
+
+        \end{itemize}
+
+  \item (b)
+
+        可以由(a)直接推出。
+\end{itemize}
+
+\section*{13.2.2}
+
+\end{document}
