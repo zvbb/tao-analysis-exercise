@@ -115,4 +115,157 @@
 
 \section*{13.2.2}
 
+任意$(x_0, y_0) \in \mathbb{R}^2$，
+设$(x^{(n)})_{n = 1}^\infty$是$\mathbb{R}^2$中依度量$d_{l^2}$收敛于$(x_0, y_0)$的序列，
+对任意$n \in \mathbb{N}$，$x^{(n)} = (a_n, b_n)$，由命题12.1.18可知，
+序列$(a_n)_{n = 1}^\infty$收敛于$x_0$，
+序列$(b_n)_{n = 1}^\infty$收敛于$y_0$。
+由定理6.1.19（极限定律）可知
+\begin{align*}
+  \lim\limits_{n \to \infty} (a_n + b_n) & = \lim\limits_{n \to \infty} a_n + \lim\limits_{n \to \infty} b_n \\
+                                         & = x_0 + y_0
+\end{align*}
+由定理13.1.4(连续性保持收敛性)(b)可知，函数$f(x, y) = x + y$在点$(x_0, y_0)$处是连续的。
+由$(x_0, y_0)$的任意性可知$f(x, y) = x + y$是连续的。
+
+同理可证其他函数。
+
+\section*{13.2.3}
+定义$g: X \to \mathbb{R}$，任意$x \in X$都有$g(x) = 0$，于是$g: X \to \mathbb{R}$是连续函数。
+又由于$|f|(x) = max(f(x), -f(x)) = max(f(x), g(x) - f(x))$，
+因为$f: X \to \mathbb{R}, g: X \to \mathbb{R}$是一个连续函数，
+由推论13.2.3可知$g - f: X \to \mathbb{R}$是连续函数，
+再次利用推论13.2.3可知$|f|: X \to \mathbb{R}$也是连续函数。
+
+\section*{13.2.4}
+
+（1）
+
+任意$(x_0, y_0) \in \mathbb{R}^2$，
+设$(x^{(n)})_{n = 1}^\infty$是$\mathbb{R}^2$中依度量$d_{l^2}$收敛于$(x_0, y_0)$的序列，
+对任意$n \in \mathbb{N}$，$x^{(n)} = (a_n, b_n)$。
+
+由命题12.1.18可知，
+序列$(a_n)_{n = 1}^\infty$收敛于$x_0$，
+序列$(b_n)_{n = 1}^\infty$收敛于$y_0$。
+于是
+\begin{align*}
+  \lim\limits_{n \to \infty}  (\pi_1(x^{(n)})) = \lim\limits_{n \to \infty} a_n = x_0 = \pi_1(x_0, y_0)
+\end{align*}
+所以$\pi_1$是连续的；
+
+同理可证$\pi_2$是连续的。
+
+
+（2）
+
+$g_1(x, y) = f(\pi_1(x, y)) = f \circ \pi_1(x, y)$，由推论13.1.7可知$g_1$是连续的；
+
+同理可证$g_2$是连续的。
+
+\section*{13.2.5}
+（1）
+
+任意$0 \leq i \leq n$和$0 \leq j \leq m$，
+\begin{align*}
+  c^{ij}x^iy^j = c^{ij}\pi_1^i(x, y) \pi_2^j(x, y)
+\end{align*}
+由推论13.2.3(b)可知是连续函数。
+再次利用推论13.2.3(b)可知，有限个连续函数相加的结果是连续函数。
+
+（2）
+
+证明参考推论13.2.3的证明。
+
+因为$f,g$都是连续的，那么$f \oplus g$是连续的。由（1）可知函数$P$是连续的。
+我们把这两个函数复合在一起，那么根据推论13.1.7可知，$P(f,g)(x): X \to \mathbb{R}$是连续的。
+
+\section*{13.2.6}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        证明方法与习题13.2.1的证明方法（方法二）相同，不再赘述。
+
+  \item $\Leftarrow$
+
+        成立；证明方法与习题13.2.1的证明方法（方法二）相同，不再赘述。
+\end{itemize}
+
+\section*{13.2.7}
+
+这道题，没有用书中的提示证明。使用的证明方法与习题13.2.5一致。
+
+任意$(i_1, i_2, \dots, i_k) \in I$，$c(i_1, i_2, \dots, i_k)$是常数，
+$x_1^{i_1}, x_2^{i_2}, \dots, x_k^{i_k}$由习题13.2.4和推论13.2.3(b)可知分别都是连续的，
+再次利用推论13.2.3(b)可知$c(i_1, i_2, \dots, i_k)x_1^{i_1}x_2^{i_2}\dots x_k^{i_k}$是连续函数。
+
+因为$I$是有限子集，由推论13.2.3(b)可知有限个连续函数相加的结果是连续函数，即$P(x_1, \dots, x_k)$
+是连续函数。
+
+\section*{13.2.8}
+
+（1）$(X \times Y, d_{X \times Y})$是度量空间。
+
+证明度量是否满足四个公理
+\begin{itemize}
+  \item (a)
+
+        对任意的$(x, y) \in X \times Y$，
+        \begin{align*}
+          d_{X \times Y}((x, y), (x, y)) = d_X(x, x) + d_Y(y, y) = 0
+        \end{align*}
+        注意，因为$(X, d_X), (Y, d_Y)$都是度量空间，所以$d_X(x, x) = 0, d_Y(y, y) = 0$。
+
+  \item (b) 正性
+
+        对任意两个不同的$(x, y), (x^\prime, y^\prime) \in X \times Y$，
+        \begin{align*}
+          d_{X \times Y}((x, y), (x^\prime, y^\prime)) = d_X(x, x^\prime) + d_Y(y, y^\prime) > 0
+        \end{align*}
+        注意，因为$(X, d_X), (Y, d_Y)$都是度量空间，所以$d_X(x, x^\prime) > 0, d_Y(y, y^\prime) > 0$。
+
+  \item (c) 对称性
+
+        对任意两个$(x, y), (x^\prime, y^\prime) \in X \times Y$，
+        \begin{align*}
+          d_{X \times Y}((x, y), (x^\prime, y^\prime)) & = d_X(x, x^\prime) + d_Y(y, y^\prime)          \\
+                                                       & = d_X(x^\prime, x) + d_Y(y^\prime, y)          \\
+                                                       & = d_{X \times Y}((x^\prime, y^\prime), (x, y))
+        \end{align*}
+
+  \item (d) 三角不等式
+
+        对任意三个$(x, y), (x^\prime, y^\prime), (x^{\prime \prime}, y^{\prime \prime}) \in X \times Y$，
+        \begin{align*}
+           & d_{X \times Y}((x, y), (x^{\prime \prime}, y^{\prime \prime}))                                                                        \\
+           & = d_X(x, x^{\prime \prime}) + d_Y(y,y{\prime \prime})                                                                                 \\
+           & \leq d_X(x, x^{\prime}) + d_X(x^{\prime}, x^{\prime \prime}) + d_Y(y, y^{\prime}) + d_Y(y^{\prime}, y^{\prime \prime})                \\
+           & = d_{X \times Y}((x, y), (x^{\prime}, y^{\prime})) + d_{X \times Y}((x^{\prime}, y^{\prime}), (x^{\prime \prime}, y^{\prime \prime}))
+        \end{align*}
+\end{itemize}
+
+综上，$(X \times Y, d_{X \times Y})$是度量空间。
+
+（2）与命题12.1.18类似的结论。
+
+如果$(x^{(k)})_{k = 1}^\infty$是度量空间$(X \times Y, d_{X \times Y})$中的序列，其中
+$x^{(k)} = (x_1^{(k)}, x_2^{(k)}), x_1^{(k)} \in X, x_2^{(k)} \in Y$，$x = (x_1, x_2)$是$X \times Y$中的点，
+那么下面两个命题是等价的。
+
+（a）$(x^{(k)})_{k = 1}^\infty$收敛于$x$。
+
+（b）序列$(x_1^{(k)})_{k = 1}^\infty$在$X$中收敛于$x_1$，序列$(x_1^{(k)})_{k = 1}^\infty$收敛于$x_2$。
+
+证明：
+
+\begin{itemize}
+  \item (a) $\Rightarrow$ (b)
+
+
+
+  \item (b) $\Rightarrow$ (a)
+\end{itemize}
+
+
 \end{document}
