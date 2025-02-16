@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{13.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{13.3.1}
+
+设$(f(x^{(n)}))_{n = 1}^\infty$是$f(K)$中的任意序列，
+序列$(x^{(n)})_{n = 1}^\infty$是$K$中序列，且$f(x^{n})$是$(f(x^{(n)}))_{n = 1}^\infty$中的项。
+因为$K$是紧致的，那么存在一个收敛的子序列$(x^{(n_j)})_{j = 1}^\infty$，
+不妨设子序列收敛于$x_0 \in K$。
+
+又因为$f$是连续的，所以$f$在$x_0$处连续，由定理13.1.4(b)可知，
+序列$(f(x^{(n_j)}))_{j = 1}^\infty$依度量$d_Y$收敛于$f(x_0) \in f(K)$，
+又因为$(f(x^{(n_j)}))_{j = 1}^\infty$是$(f(x^{(n)}))_{n = 1}^\infty$的子序列，
+由定义12.5.1（紧致性）可知，$f(K)$是紧致的。
+
+\section*{13.3.2}
+
+（1）$f$是有界的。
+
+由定理13.3.1可知，$f(X)$是紧致的，由推论12.5.6可知，$f$是有界的。
+
+
+（2）$f$在某个点$x_{max} \in X$处取到最大值，并且在某个点$x_{min} \in X$处取到最小值。
+
+我们只证明$f$在某个点$x_{max} \in X$处取到最大值，最小值的证明类似。
+
+因为$f$是有界，那么，$\mathbb{R}$中存在一个包含$f(X)$的球$B(y_0, r), y_0 \in \mathbb{R}, r > 0$。
+现在设$E$表示集合
+\begin{align*}
+  E := \{f(x), x \in X\}
+\end{align*}
+（即： E := f(X)）。根据上述内容可知，这个集合是$B(y_0, r)$的子集，
+而且$E$还是非空集合。根据最小上界原理可知（$E$是$\mathbb{R}$的子集），
+它有一个实数上确界$sup(E)$。
+
+记$m := sup(E)$，根据上确界的定义可知，对所有的$y \in E$均有$y \leq m$。而根据$E$的定义可知，
+这意味着$f(x) \leq m$对所有的$x \in X$均成立。因此，为了证明$f$在某个点达到最大值，我们只需要
+找到一个$x_{max} \in X$使得$f(x_{max}) = m$即可。
+
+设$n \geq 1$是任意一个整数，那么$m - \frac{1}{n} < m = sup(E)$。因为$sup(E)$是$E$的最小上界，
+那么$m - \frac{1}{n}$不可能是$E$的上界，从而存在一个$y \in E$使得$m - \frac{1}{n} < y$。
+又由$E$的定义可知，这蕴含着存在一个$x \in X$使得$m - \frac{1}{n} < f(x)$。
+
+现在我们按照下面的方法选取一个序列$(x_n)_{n = 1}^\infty :$对于每一个$n$，选取$x_n$为$x \in X$中
+使得$m - \frac{1}{n} < f(x_n)$的元素。（这里需要用到选择公理）这是$X$中的一个序列，因为$X$是紧致的，
+我们可以找到一个收敛于某极限$x_{max} \in X$的子序列$(x_{nj})_{j = 1}^\infty$，其中$n_1 < n_2 < ...$。
+因为$(x_{nj})_{j = 1}^\infty$收敛于$x_{max}$并且$f$在$x_{max}$处连续,于是由定理13.1.4(b)可知
+\begin{align*}
+  \lim\limits_{j \to \infty}f(x_{n_j}) = f(x_{max})
+\end{align*}
+另外，根据该序列的构造过程可知，
+\begin{align*}
+  f(x_{n_j}) > m - \frac{1}{n_j} \geq m - \frac{1}{j}
+\end{align*}
+从而对上式两端同时取极限可得，
+\begin{align*}
+  f(x_{max}) = \lim\limits_{j \to \infty}f(x_{n_j}) \geq \lim\limits_{j \to \infty} m - \frac{1}{j} = m
+\end{align*}
+另外，$f(x) \leq m$对所有的$x \in X$均成立，从而$f(x_{max}) \leq m$。
+联合这两个不等式就得到$f(x_{max}) = m$，结论得证。
+
+\section*{13.3.3}
+
+
+\end{document}
