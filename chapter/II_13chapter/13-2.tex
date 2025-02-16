@@ -262,10 +262,211 @@ $x^{(k)} = (x_1^{(k)}, x_2^{(k)}), x_1^{(k)} \in X, x_2^{(k)} \in Y$，$x = (x_1
 \begin{itemize}
   \item (a) $\Rightarrow$ (b)
 
+        如果（a）成立，那么对任意$\epsilon > 0$，存在$N \geq 1$使得
+        \begin{align*}
+          d_{X \times Y}(x^{(k)}, x) < \epsilon
+        \end{align*}
+        对任意$k \geq N$均成立。
 
+        我们有
+        \begin{align*}
+          d_{X \times Y}(x^{(k)}, x) = d_X(x_1^{(k)}, x_1) + d_Y(x_2^{(k)}, x_2)
+        \end{align*}
+        于是可得
+        \begin{equation*}
+          \begin{cases}
+            d_X(x_1^{(k)}, x_1) < \epsilon \\
+            d_Y(x_2^{(k)}, x_2) < \epsilon
+          \end{cases}
+        \end{equation*}
+        对任意 k ≥ N 均成立，所以（b）成立。
 
   \item (b) $\Rightarrow$ (a)
+
+        如果（b）成立，序列$(x_1^{(k)})_{k = 1}^\infty$在$X$中收敛于$x_1$，
+        那么，对任意$\epsilon > 0$存在$N_X \geq 1$使得
+        \begin{align*}
+          d_X(x_1^{(k)}, x_1) < \frac{1}{2} \epsilon
+        \end{align*}
+        对任意$k \geq N_X$均成立。
+
+        类似地，存在$N_Y \geq 1$使得
+        \begin{align*}
+          d_Y(x_2^{(k)}, x_2) < \frac{1}{2} \epsilon
+        \end{align*}
+        对任意$k \geq N_Y$均成立。
+
+        综上，存在$N = max(N_X, N_Y)$使得
+        \begin{align*}
+          d_{X \times Y}(x^{(k)}, x) = d_X(x_1^{(k)}, x_1) + d_Y(x_2^{(k)}, x_2) < \epsilon
+        \end{align*}
+        对任意$k \geq N$均成立，所以（a）成立。
+
 \end{itemize}
+
+（3）与引理13.2.1类似的结论。
+
+$(Z, d_Z)$也是度量空间，
+设$f: Z \to X$和$g: Z \to Y$是两个函数，$f \oplus g: Z \to X \times Y$是它们的直和。
+
+（a）设$z_0 \in X$，那么$f$和$g$都在$z_0$处连续，当且仅当$f \oplus g$在$z_0$处是连续的。
+
+（b）$f$和$g$都是连续的，当且仅当$f \oplus g$是连续的。
+
+证明：
+
+\begin{itemize}
+  \item （a）
+
+        \begin{itemize}
+          \item $\Rightarrow$
+
+                $f, g$都在$z_0$处连续，那么由定理13.1.4(b)可知，对任意$(z^{n})_{n = 1}^\infty$是$Z$中依度量$d_Z$收敛于$z_0$，
+                那么序列$(f(z^{(n)}))_{n = 1}^\infty$和$(g(z^{(n)}))_{n = 1}^\infty$分别依度量$d_X, d_Y$收敛于$f(z_0), g(z_0)$。
+
+                于是存在$N$使得
+                \begin{equation*}
+                  \begin{cases}
+                    d_X(f(z^{(n)}), f(z_0)) < \frac{1}{2} \epsilon \\
+                    d_Y(g(z^{(n)}), g(z_0)) < \frac{1}{2} \epsilon \\
+                  \end{cases}
+                \end{equation*}
+                对所有的$n \geq N$均成立。
+
+                于是我们有
+                \begin{align*}
+                  d_{X \times Y}((f(z^{(n)}), g(z^{(n)})), (f(z_0), g(z_0))) = d_X(f(z^{(n)}), f(z_0)) + d_Y(g(z^{(n)}), g(z_0)) < \epsilon
+                \end{align*}
+                对所有的$n \geq N$均成立。
+
+                综上可得，序列$(f \oplus g(z^{(n)}))_{n = 1}^\infty$依度量$d_{X \times Y}$收敛于$f \oplus g(z_0)$，
+                所以$f \oplus g$在$z_0$处是连续的。
+
+          \item $\Leftarrow$
+
+                逆命题证明过程类似，略。
+
+        \end{itemize}
+
+  \item （b）
+
+        可以通过（a）推出（b）。
+\end{itemize}
+
+\section*{13.2.9}
+
+\begin{zremark}
+  这道题应该有错误，
+  $\lim\limits_{x \to x_0}\lim\limits_{y \to y_0}\sup f(x, y)$
+  应该改成
+  $\lim \limits_{x \to x_0}\lim \sup \limits_{y \to y_0}f(x, y)$。
+  因为前一个公式没见过，
+  而且也是为了能够利用题目中的$\lim \sup \limits_{x \to x_0}f(x) := \inf \limits_{r > 0} \sup \limits_{|x - x_0| < r} f(x)$，
+  （注意，这里表示的是，随着$r$趋近于零时，函数$f(x)$在$x_0$附近的最大值的极限）
+  不然我证明不出来。
+\end{zremark}
+
+（1）
+
+因为$f$在$(x_0, y_0)$处是连续的，那么，对任意$\epsilon > 0$，对存在$\delta > 0$，使得只要
+$d_{l^2}((x, y), (x_0, y_0)) = \sqrt{|x - x_0|^2 + |y - y_0|^2} < \delta$，
+就有$d_{l^2}(f(x, y), f(x_0, y_0)) = |f(x, y) - f(x_0, y_0)| < \epsilon$。
+
+固定$x$且$x \in B(x_0, \frac{1}{2}\delta)$，
+那么$F(y) := f(x, y)$是从$\mathbb{R}$到$\mathbb{R}$的函数。
+综上可得，当$|y - y_0| < \frac{1}{2}\delta$时，
+\begin{align*}
+  F(y) < f(x_0, y_0) + \epsilon
+\end{align*}
+于是可得
+\begin{align*}
+  \lim \sup \limits_{y \to y_0}F(y) := \inf \limits_{r > 0} \sup \limits_{|y - y_0| < r} F(y) \leq f(x_0, y_0) + \epsilon
+\end{align*}
+即
+\begin{align*}
+  |\lim \sup \limits_{y \to y_0}F(y) - f(x_0, y_0)| < \epsilon
+\end{align*}
+由定义9.3.6可知，$\lim \limits_{x \to x_0}\lim \sup \limits_{y \to y_0}f(x, y) = f(x_0, y_0)$。
+
+其他情况同理。
+
+% todo
+% （2）特别地
+
+% 只需证明
+% \begin{align*}
+%   \lim \limits_{x \to x_0}\lim \inf \limits_{y \to y_0}f(x, y)
+%   \leq \lim\limits_{x \to x_0} \lim\limits_{y \to y_0}f(x, y)
+%   \leq \lim \limits_{x \to x_0}\lim \sup \limits_{y \to y_0}f(x, y)
+% \end{align*}
+% 让$\lim\limits_{x \to x_0} \lim\limits_{y \to y_0}f(x, y) = L$，那么，对任意$\epsilon > 0$，
+% 存在$\delta > 0$使得只要$|x - x_0| < \delta$，就有
+% \begin{align*}
+%   |\lim\limits_{y \to y_0}f(x, y) - L| < \epsilon \\
+%   L - \epsilon < \lim\limits_{y \to y_0}f(x, y) < L + \epsilon
+% \end{align*}
+% 即存在$\delta_y > 0$使得只要$|y - y_0| < \delta_f$，就有
+% \begin{align*}
+%   f(x, y)
+% \end{align*}
+
+\section*{13.2.10}
+
+函数$y \mapsto f(x, y)$其中$x$是固定值，对任意$\epsilon > 0, y_0 \in \mathbb{R}$，
+因为$f$是一个连续函数，
+存在$\delta > 0$使得只要$\sqrt{|x - x|^2 + |y - y_0|^2} = |y - y_0| < \delta$，就有
+\begin{align*}
+  f(x, y) - f(x, y_0) < \epsilon
+\end{align*}
+综上可得，对任意$\epsilon > 0$，都存在$\delta > 0$,使得只要$|y - y_0| < \delta$（与$x$无关），就有
+\begin{align*}
+  f(x, y) - f(x, y_0) < \epsilon
+\end{align*}
+所以函数$y \mapsto f(x, y)$在$y_0$处是连续的，由此可以推出其在$\mathbb{R}$上连续。
+
+同理可证$x \mapsto f(x, y)$也是在$\mathbb{R}$上连续的。
+
+\section*{13.2.11}
+
+（1）固定的$x \in \mathbb{R}$，函数$y \mapsto f(x, y)$在$\mathbb{R}$是连续的。
+固定的$y \in \mathbb{R}$，函数$x \mapsto f(x, y)$在$\mathbb{R}$是连续的。
+
+\begin{itemize}
+  \item $x = 0$
+
+        如果$y = 0$此时$f(x, y) = 0$；
+
+        任意$y \neq 0$都有
+        \begin{align*}
+          f(x, y) = \frac{xy}{x^2 + y^2} = \frac{0}{y^2} = 0
+        \end{align*}
+        由此可得当$x = 0$时，$f(x, y)$是常数函数，所以，函数$y \mapsto f(x, y)$在$\mathbb{R}$是连续的。
+
+
+  \item $x \neq 0$
+
+        任意$y$都有
+        \begin{align*}
+          f(x, y) = \frac{xy}{x^2 + y^2}
+        \end{align*}
+        由于$x^2 + y^2 > 0$，且分子分母都是连续函数，利用推论13.2.3(b)可知，
+        函数$y \mapsto f(x, y)$在$\mathbb{R}$是连续的。
+
+\end{itemize}
+
+同理可证，固定的$y \in \mathbb{R}$，函数$x \mapsto f(x, y)$在$\mathbb{R}$是连续的。
+
+（2）函数$f: \mathbb{R}^2 \to \mathbb{R}$在$\mathbb{R}^2$上不连续。
+
+举一个反例。对任意$\delta > 0, x = y \neq 0$使得
+\begin{align*}
+  d_{l^2}((x, y), (0, 0)) < \delta
+\end{align*}
+此时
+\begin{align*}
+  f(x, y) = \frac{xy}{x^2 + y^2} = \frac{x^2}{2x^2} = \frac{1}{2} \neq f(0, 0) = 0
+\end{align*}
+可见，满足连续定义的$\delta > 0$不存在，所以$f$在$(0, 0)$处不连续，那么，$f$在$\mathbb{R}^2$上不连续。
 
 
 \end{document}
