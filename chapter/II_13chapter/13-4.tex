@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{13.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{13.4.1}
+
+从$E$中任选一个元素组成集合$E_1$，$E_2 := E \setminus E_1$。
+
+当使用离散度量$d_disc$时，所有集合都既是开的又是闭的，
+又$E = E_1 \cup E_2$，所以$E$是不连通的。
+
+\section*{13.4.2}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        因为$(X,d)$是连通的空间，且$f$是连续的，那么由定理13.4.6可知，
+        $f(X)$是连通的，又由习题13.4.1可知$f(X)$中只能含有一个元素，
+        所以$f$是常数函数。
+
+  \item $\Leftarrow$
+
+        $f$是常数函数，按照连续的定义可知，$f$是连续的。
+\end{itemize}
+
+\section*{13.4.3}
+
+\begin{itemize}
+  \item (b) $\implies$ (c)
+
+        讨论$X$是非空集合，在广义实数$\mathbb{R}^{*}$中，$\sup(X), \inf(X)$是存在的，
+        让$M := \sup(X), m := \inf(X)$。
+
+        任意$z \in (m, M)$，存在$x, y \in X$使得$x < z < y$，因为(b)成立，
+        所以$[x, y] \in X$，所以$z \in X$，由$z$的任意性可知$(m, M) \subseteq X$，
+        而$X$中的任意元素（除了$m, M$）都属于$(m, M)$，
+        于是$X$可以表示成区间（$[m, M], [m, M), (m, M], (m, M)$中的任意一种），
+        $m, M$是否属于$X$，
+        只会影响区间的表示（闭的或开的）。
+
+
+  \item (c) $\implies$ (b)
+
+        $X$是区间，那么，按照定义9.1.1可知， 任意$x, y \in X$且$x < y$，$[x, y]$包含在$X$中是显然的。
+\end{itemize}
+
+\section*{13.4.4}
+
+反证法，假设$f(E)$不是连通的，那么存在两个不相交的非空开集$V$和$W$使得$f(E) = V \cup W$。
+
+由习题13.1.6，习题13.1.7和定理13.1.5(c)可知，集合$f^{-1}(V)$和$f^{-1}(W)$都是非空开集，并且不相交。
+（如果存在$x \in f^{-1}(V) \cap f^{-1}(W)$，那么$f(x) \in V \cap W$，这与$V$和$W$不相交矛盾。）
+$E = f^{-1}(V) \cup f^{-1}(W)$是易证的。（对任意$x \in E$，$f(x)$要么属于$V$要么属于$W$，
+于是可得$x \in f^{-1}(V)$或$x \in f^{-1}(W)$。）
+
+综上，$E$是不连通的，这与题设矛盾。
+
+\section*{13.4.5}
+
+由定理13.4.6可知$f(E)$是连通的。
+
+任意$f(a), f(b) \in f(E)$，
+设$f(a) < f(b)$（$f(a) \geq f(b)$证明类似）。由定理13.4.5(b)可知，
+$[f(a), f(b)] \subseteq f(E)$，因为$f(a) \leq y \leq f(b)$，
+于是可得$y \in [f(a), f(b)] \subseteq f(E)$，所以存在$c \in E$使得$f(c) = y$。
+
+\section*{13.4.6}
+
+
+
+
+
+\end{document}
