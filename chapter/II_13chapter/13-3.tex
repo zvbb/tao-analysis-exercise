@@ -82,5 +82,108 @@
 
 \section*{13.3.3}
 
+（1）
+
+设$f : X \to Y$是从度量空间$(X, d_X)$到另一个度量空间$(Y, d_Y)$的映射，$f$是一致连续的，现在我们证明
+$f$也是连续的。
+
+对任意$x_0 \in X$，对任意$\epsilon > 0$，因为$f$是一致连续的，那么，存在$\delta > 0$使得只要
+$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta$，就有$d_Y(f(x), f(x^\prime)) < \epsilon$。
+不妨设$x^\prime = x_0$，
+那么只要满足$d_X(x, x_0) < \delta$，就有$d_Y(f(x), f(x_0)) < \epsilon$。
+
+综上，由定义13.1.1可得$f$是连续的。
+
+（2）举例，连续函数不一定是一致连续的。
+
+$f: \mathbb{R} \to \mathbb{R}, f(x) = \frac{1}{x}$。
+
+对任意$\delta > 0$，存在$n \in \mathbb{N}$，使得$\frac{1}{n} < \delta$，
+此时我们有
+\begin{align*}
+  |\frac{1}{n} - \frac{1}{n+1}| < \delta \\
+  |f(\frac{1}{n}) - f(\frac{1}{n + 1})| = |n - (n + 1)| = 1
+\end{align*}
+由此可知，$f$不是一致连续函数。
+
+\section*{13.3.4}
+
+对于任意的$\epsilon > 0$，因为$g: Y \to Z$是一致连续函数，
+那么，存在$\delta_Y > 0$使得只要$y, y^\prime \in Y$满足$d_Y(y, y^\prime) < \delta_Y$，
+就有$d_Z(g(y), g(y^\prime)) < \epsilon$。
+
+同理可得，存在$\delta_X > 0$使得只要$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta_X$，
+就有$d_Y(f(x), f(x^\prime)) < \delta_Y$。
+
+综上可得，对任意$\epsilon > 0$，存在$\delta = \delta_X$
+使得只要$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta$，
+就有$d_Z(g(f(x)), g(f(x^\prime))) < \epsilon$。
+
+所以，$g \circ f: X \to Z$也是一致连续的。
+
+\section*{13.3.5}
+
+对任意$\epsilon > 0$，因为$f: X \to R$是一致连续函数，
+那么，存在$\delta_f > 0$使得只要$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta_f$，
+就有$|f(x) - f(x^\prime)| < \frac{1}{2}\epsilon$（$\mathbb{R}$的默认度量是$d^{l^2}$）。
+
+类似的，存在$\delta_g > 0$使得只要$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta_g$，
+就有$|g(x) - g(x^\prime)| < \frac{1}{2}\epsilon$。
+
+综上，对于任意的$\epsilon > 0$，存在$\delta = min(\delta_f, \delta_g)$，
+使得只要$x, x^\prime \in X$满足$d_X(x, x^\prime) < \delta$，
+就有
+\begin{align*}
+  d_{l^2}(f \oplus g(x), f \oplus g(x^\prime)) & = d_{l^2}((f(x), g(x)), (f(x^\prime), g(x^\prime))) \\
+                                               & = \sqrt{|f(x) - f(x^\prime)|^2 + |g(x) - g(x^\prime)|^2} < \sqrt{\frac{1}{4}\epsilon^2 + \frac{1}{4}\epsilon^2} < \epsilon
+\end{align*}
+
+所以，$f \oplus g: X \to R^2$也是一致连续的。
+
+\section*{13.3.6}
+
+（1）证明：加法、减法是一致连续函数。
+
+对任意$\epsilon > 0$，存在$\delta = \frac{1}{2}\epsilon$，
+使得只要$d_{l^2}((x, y), (x^\prime, y^\prime)) = \sqrt{|x - x^\prime|^2 + |y - y^\prime|^2} < \delta$，
+就有
+\begin{align*}
+  |x - x^\prime| < \frac{1}{2}\epsilon, |y - y^\prime| < \frac{1}{2}\epsilon
+\end{align*}
+于是
+\begin{align*}
+  |(x + y) - (x^\prime + y^\prime)| & =  |(x - x^\prime) + (y - y^\prime)| < \epsilon \\
+  |(x - y) - (x^\prime - y^\prime)| & = |(x - x^\prime) - (y - y^\prime)| < \epsilon
+\end{align*}
+这意味着，$(x, y) \mapsto x + y$和$(x, y) \mapsto x - y$是一致连续函数。
+
+
+（2）证明：乘法不是一致连续函数。
+任意$n \in \mathbb{N}$，点$(n, n), (n + \frac{1}{n}, n)$间的距离
+\begin{align*}
+  d_{l^2}((n, n), (n + \frac{1}{n}, n)) = \frac{1}{n}
+\end{align*}
+可以任意小，
+此时
+\begin{align*}
+  |n \times n - (n + \frac{1}{n}) \times n| = 1
+\end{align*}
+可知，$(x, y) \mapsto xy$不是一致连续函数。
+
+（3）$f + g: X \to \mathbb{R}$和$f - g: X \to \mathbb{R}$也是一致连续函数。
+
+由习题13.3.5可知，$f \oplus g := (f(x), g(x))$的直和$f \oplus g: X \to R^2$是一致连续函数，
+另外由（1）可知，函数$(x, y) \mapsto x + y$和$(x, y) \mapsto x - y$是一致连续函数，
+那么，由习题13.3.4可知，把这两个函数复合在一起，
+此时$f + g = ((x, y) \mapsto x + y)(f \oplus g)$
+和$f - g = ((x, y) \mapsto x - y)(f \oplus g)$是一致连续的。
+
+（4）举例$fg: X \to \mathbb{R}$不一定是一致连续的。
+
+%todo
+
+（5）
+
+$max(f,g), min(f,g), cf$是一致连续的，$f/g$不是一致连续的，比如习题13.3.3中的举例。
 
 \end{document}
