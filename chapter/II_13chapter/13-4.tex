@@ -86,8 +86,103 @@ $[f(a), f(b)] \subseteq f(E)$，因为$f(a) \leq y \leq f(b)$，
 
 \section*{13.4.6}
 
+反证法，假设$\bigcup\limits_{\alpha \in I} E_{\alpha}$是不连通的，
+那么，$\bigcup\limits_{\alpha \in I} E_{\alpha}$中
+存在两个不相交的开集$V$和$W$使得$\bigcup\limits_{\alpha \in I} E_{\alpha} = V \cup W$，
+任意$\alpha \in I$，取$V_{\alpha} = V \cap E_{\alpha}, W_{\alpha} = W \cap E_{\alpha}$，
+由命题12.3.4(a)可知，$V_{\alpha}$和$W_{\alpha}$都是相对于$E_{\alpha}$的开集，
+因为$E_{\alpha}$是连通的，所以$V_\alpha$和$W_{\alpha}$必须有一个是空集，否则$E_{\alpha}$是不连通的，
+于是任意$\alpha \in I$，要么$E_{\alpha} \subseteq V$要么$E_{\alpha} \subseteq W$。
+因为$V, W$是非空的，那么存在$\alpha, \alpha ^\prime \in I$使得
+$E_{\alpha} \subseteq V, E_{\alpha ^\prime} \subseteq W$，
+因为$V, W$是不相交的，所以$E_{\alpha} \cap E_{\alpha ^\prime} = \varnothing$，
+于是$\bigcap\limits_{\alpha \in I} E_{\alpha} = \varnothing$，与题设矛盾。
 
+\section*{13.4.7}
 
+\begin{zremark}
+  这里不能直接用定理13.4.6证明，因为$\gamma ([0, 1]) \subseteq E$，
+  而不是$\gamma ([0, 1]) = E$。
+\end{zremark}
+\begin{zremark}
+  逆命题我没有证，主要是没读懂逆命题应该证明什么
+\end{zremark}
 
+反证法，假设$E$是不连通的。那么，$E$中存在两个不相交的开集$V$和$W$使得$E = V \cup W$。
+取$x \in V, y \in W$，设$Y := \gamma ([0, 1]), Y \subseteq E$，
+可得$Y \cap V \not = \varnothing, Y \cap W \not = \varnothing$，
+又由命题12.3.4(a)可知$V \cap Y$和$W \cap Y$都是相对于$Y$的开集，
+因为$V \cap W = \varnothing$，
+所以$(V \cap Y) \cap (W \cap Y) = \varnothing$，
+又因为$(V \cap Y) \cup (W \cap Y) = Y$可得，$Y$是不连通的，
+但通过定理13.4.6可得，$Y$是连通的，存在矛盾。
+
+\section*{13.4.8}
+
+（1）
+
+反证法，假设$\overline{E}$不连通，
+那么，$\overline{E}$中存在两个不相交的开集$V, W$使得$\overline{E} = V \cup W$。
+定义$V^\prime := V \cap E, W^\prime := W \cap E$，于是我们有
+$V^\prime \cap W^\prime = \varnothing$（因为$V, W$不相交），
+并且$V^\prime \cup W^\prime = E$（因为$E \subseteq \overline{E}$）。
+
+接下来，我们需要证明$V^\prime, W^\prime$不是空集。任意$x \in V$，
+如果$x \in E$，那么$x \in V^\prime = V \cap E$。
+如果$x \in \partial E$，因为$V$是开集，那么存在$r > 0$使得$B(x, r) \subseteq V$，
+此时一定存在$y \in B(x, r) \cap E$，否则$x$将是外点，与$x$是边界点矛盾，
+于是$y \in V^\prime = V \cap E$。综上，所以$V^\prime$不是空集。
+类似的，$W^\prime$也不是空集。
+
+综上可得$E = V^\prime \cup W^\prime$，且$V^\prime, W^\prime$是$E$中的非空开集，
+所以$E$是不连通的，与题设矛盾。
+
+（2）逆命题是否成立？
+
+不成立。比如$\overline{E} := [-1, 1]$，$E := (-1, 0) \cup (0, 1)$。
+
+\section*{13.4.9}
+
+（1）证明：这是一种等价关系。
+
+\begin{itemize}
+  \item 自反性($x \sim x$)
+
+        任意$x \in X$，集合$\{x\}$是连通的且$x \in \{x\}$，于是可得$x \sim x$。
+
+  \item 对称性($x \sim y \implies y \sim x$)
+
+        因为$x \sim y$，所以存在一个同时包含$x, y$的连通子集$E \subseteq X$，
+        这也表明$y \sim x$。
+
+  \item 传递性($x \sim y, y \sim z \implies x \sim z$)
+
+        $x \sim y$，所以存在一个同时包含$x, y$的连通子集$E \subseteq X$。
+        $y \sim z$，所以存在一个同时包含$y, z$的连通子集$F \subseteq X$。
+
+        因为$x \in E, x \in F$，所以$E \cap F \not = \varnothing$，
+        并且$E, F$都是连通集，
+        由习题13.4.6可知$E \cup F$是连通的，且$E \cup F$中包含$x, z$，
+        所以$x \sim z$。
+\end{itemize}
+
+（2）这种关系的等价类全是连通的闭集。
+
+% todo
+
+\section*{13.4.10}
+
+定理：
+
+$(X,d)$是一个紧致连通度量空间，并设$f: X \to \mathbb{R}$是一个连续函数，
+设$M := \sup\limits_{x \in X} f(x)$是$f$的最大值，$m := \inf\limits_{x \in X} f(x)$是$f$的最小值，
+并且设$y$是介于$m$和$M$之间的一个实数（即：$m < y < M$），
+那么存在一个$c \in X$使得$f(c) = y$。更进一步，$f(X) = [m, M]$。
+
+证明：
+
+由命题13.3.2可知，存在$x_{max} \in X$使得$f(x_{max}) = M$，
+存在$x_{min} \in X$使得$f(x_{min}) = m$。由推论13.4.7（介值定理）可知，
+存在$c \in X$使得$f(c) = y$。
 
 \end{document}
