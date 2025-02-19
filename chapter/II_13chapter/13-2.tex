@@ -365,6 +365,19 @@ $(Z, d_Z)$也是度量空间，
   （注意，这里表示的是，随着$r$趋近于零时，函数$f(x)$在$x_0$附近的最大值的极限）
   不然我证明不出来。
 \end{zremark}
+\begin{zremark}
+  书中$\lim\limits_{x \to x_0}\lim\limits_{y \to y_0}f(x, y)$没有具体说明，这里做一个补充：
+  表达式$\lim\limits_{x \to x_0}\lim\limits_{y \to y_0}f(x, y)$代表的是
+  对双变量函数$f(x,y)$进行逐次极限的操作。具体来说，这个表达式表示的是：
+  \begin{itemize}
+    \item 首先，对于固定的
+          $x$值，求当$y$趋近于 $y_0$时的极限，
+          即$\lim\limits_{y \to y_0}f(x,y)$。
+          这个过程得到的结果是一个关于$x$的函数$g(x) := \lim\limits_{y \to y_0}f(x,y)$
+
+    \item 然后，研究$g(x)$，看看$\lim\limits_{x \to x_0} g(x)$ 是否收敛。
+  \end{itemize}
+\end{zremark}
 
 （1）
 
@@ -390,25 +403,40 @@ $d_{l^2}((x, y), (x_0, y_0)) = \sqrt{|x - x_0|^2 + |y - y_0|^2} < \delta$，
 
 其他情况同理。
 
-% todo
-% （2）特别地
+（2）特别地（没有找到好的表达方式，就当是一个参考吧）
 
-% 只需证明
-% \begin{align*}
-%   \lim \limits_{x \to x_0}\lim \inf \limits_{y \to y_0}f(x, y)
-%   \leq \lim\limits_{x \to x_0} \lim\limits_{y \to y_0}f(x, y)
-%   \leq \lim \limits_{x \to x_0}\lim \sup \limits_{y \to y_0}f(x, y)
-% \end{align*}
-% 让$\lim\limits_{x \to x_0} \lim\limits_{y \to y_0}f(x, y) = L$，那么，对任意$\epsilon > 0$，
-% 存在$\delta > 0$使得只要$|x - x_0| < \delta$，就有
-% \begin{align*}
-%   |\lim\limits_{y \to y_0}f(x, y) - L| < \epsilon \\
-%   L - \epsilon < \lim\limits_{y \to y_0}f(x, y) < L + \epsilon
-% \end{align*}
-% 即存在$\delta_y > 0$使得只要$|y - y_0| < \delta_f$，就有
-% \begin{align*}
-%   f(x, y)
-% \end{align*}
+固定$x = x^\prime$，接下来比较
+\begin{equation*}
+  \begin{cases*}
+    \lim \sup \limits_{y \to y_0} f(x^\prime, y) \\
+    \lim\limits_{y \to y_0} f(x^\prime, y)
+  \end{cases*}
+\end{equation*}
+任意$r > 0$，$y^\prime \in B(y_0, r)$，
+\begin{align*}
+  \sup \limits_{|y - y_0|<r} f(x^\prime, y) \geq f(x^\prime, y^\prime)
+\end{align*}
+于是由引理6.4.13（比较原理）可得，
+\begin{align*}
+  \lim \sup \limits_{y \to y_0} f(x^\prime, y) \geq \lim\limits_{y \to y_0} f(x^\prime, y)
+\end{align*}
+所以
+\begin{align*}
+ \lim\limits_{x \to x_0} \lim\limits_{y \to y_0} f(x, y) \leq \lim \limits_{x \to x_0}\lim \sup \limits_{y \to y_0}f(x, y) = f(x_0, y_0)
+\end{align*}
+
+同理可得
+\begin{align*}
+ \lim\limits_{x \to x_0} \lim\limits_{y \to y_0} f(x, y) \leq \lim \limits_{x \to x_0}\lim \inf \limits_{y \to y_0}f(x, y) = f(x_0, y_0)
+\end{align*}
+综上$\lim\limits_{x \to x_0} \lim\limits_{y \to y_0} f(x, y) = f(x_0, y_0)$。
+
+类似地，$\lim\limits_{y \to y_0} \lim\limits_{x \to x_0} f(x, y) = f(x_0, y_0)$。
+
+所以，
+\begin{align*}
+  \lim\limits_{x \to x_0} \lim\limits_{y \to y_0} f(x, y) = \lim\limits_{y \to y_0} \lim\limits_{x \to x_0} f(x, y) = f(x_0, y_0)
+\end{align*}
 
 \section*{13.2.10}
 
