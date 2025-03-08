@@ -22,7 +22,143 @@
 \author{张志聪}
 \maketitle
 
-\section*{}
+\section*{14.1.1}
+修改下证明顺序。
+
+（1）如果极限$\lim\limits_{x \to x_0; x \in E} f(x)$存在，那么它一定等于$f(x_0)$。
+
+反证法，假设$\lim\limits_{x \to x_0; x \in E} f(x) = L, L \neq f(x_0)$。
+因为极限$\lim\limits_{x \to x_0; x \in E} f(x) = L$可知，
+设$0 < \epsilon < d_Y(f(x_0), L)$，存在$\delta > 0$，使得只要$x \in E$满足$d_X(x, x_0) < \delta$，
+就有$d_Y(f(x), L) < \epsilon$。
+因为$x_0 \in E, d_X(x_0, x_0) = 0 < \delta$，
+即$x = x_0$时$d_Y(f(x), L) > \epsilon$，存在矛盾。
+
+
+
+（2）证明：极限$\lim\limits_{x \to x_0; x \in E} f(x)$存在，
+当且仅当极限$\lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} f(x)$存在且等于$f(x_0)$。
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        极限$\lim\limits_{x \to x_0; x \in E} f(x)$存在，按照定义14.1.1可知，
+        极限$\lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} f(x)$存在。接下来，
+        需要证明$\lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} f(x) = f(x_0)$。
+
+        反证法，假设$\lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} f(x) = L, f(x_0) \neq L$。
+
+        由（1）可知，$\lim\limits_{x \to x_0; x \in E} f(x) = f(x_0)$。
+
+        那么，设$\epsilon = \frac{1}{2} d_Y(f(x_0), L)$，存在$\delta^\prime > 0$，
+        使得只要$x \in E$满足$d_X(x, x_0) < \delta^\prime$， 就有$d_Y(f(x), f(x_0)) < \epsilon$。
+
+        存在$\delta^{\prime\prime} > 0$，
+        使得只要$x \in E$满足$0 < d_X(x, x_0) < \delta^{\prime\prime}$， 就有$d_Y(f(x), L) < \epsilon$
+
+        综上，取$\delta = min(\delta^\prime, \delta^{\prime\prime})$，
+        使得只要$x \in E$满足$0 < d_X(x, x_0) < \delta$，就有
+        \begin{equation*}
+          \begin{cases*}
+            d_Y(f(x), f(x_0)) < \epsilon \\
+            d_Y(f(x), L) < \epsilon
+          \end{cases*}
+        \end{equation*}
+        于是可得
+        \begin{align*}
+          d_Y(f(x_0), L) \leq d_Y(f(x), f(x_0)) + d_Y(f(x), L) < d_Y(f(x_0), L)
+        \end{align*}
+        存在矛盾。
+
+  \item $\Leftarrow$
+
+        按照定义14.1.1可以直接证明，具体过程略。
+\end{itemize}
+
+\section*{14.1.2}
+
+\begin{itemize}
+  \item $(a) \Leftrightarrow (b)$
+
+        与定理13.1.4证明相似，不做赘述。
+
+
+  \item $(a) \implies (c)$
+
+        因为$V$是开集且$L \in V$，所以存在$r > 0$使得$B_{(Y, d_Y)}(L, r) \subseteq V$。
+        因为(a)成立，所以存在$\delta > 0$使得只要$x \in E$满足$d_X(x, x_0) < \delta$，
+        就有$d_Y(f(x), L) < r$。
+
+        令$U := B_{(X, d_X)}(x_0, \delta), U \subset X$。
+        对任意$x \in U \cap E$，都有$x \in E$且$d_X(x, x_0) < \delta$，
+        于是$d_Y(f(x), L) < r$，即$f(x) \in B_{(Y, d_Y)}(L, r) \subseteq V$。
+        所以，$f(U \cap E) \subseteq V$。
+
+  \item $(c) \implies (a)$
+
+        设$(x^{(n)})_{n = 1}^\infty$是$E$中依度量$d_X$收敛于$x_0$的序列。
+        任意$\epsilon > 0$，
+        令$V := B_{(Y, d_Y)}(L, \epsilon)$，由(c)可知，存在一个包含$x_0$的开集$U \subset X$，
+        使得$f(U \cap E) \subseteq V$。
+
+        因为$U$是开集，所以存在$\delta > 0$使得$B_{(X, d_X)}(x_0, \delta) \subseteq U$。
+        序列$(x^{(n)})_{n = 1}^\infty$是$E$中依度量$d_X$收敛于$x_0$的序列，
+        所以存在$N \geq 1$使得
+        \begin{align*}
+          d_X(x_0, x^{(n)}) < \delta
+        \end{align*}
+        对所有的$n \geq N$均成立。
+
+        于是对$n \geq N$，有$x^{(n)} \in B_{(X, d_X)}(x_0, \delta) \subseteq U, x^{(n)} \in E$，
+        此时，
+        \begin{align*}
+          f(x^{(n)}) \in V
+        \end{align*}
+        即，对任意$n \geq N$都有
+        \begin{align*}
+          d_Y(f(x^{(n)}), L) < \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，$(f(x^{(n)}))_{n = 1}^\infty$收敛于$L$。
+
+  \item $(a) \implies (d)$
+
+        (a)成立，那么，对任意$\epsilon > 0$，都存在$\delta > 0$使得只要
+        $x \in E$满足$d_X(x, x_0) < \delta$，就有$d_Y(f(x), L) < \epsilon$。
+        因为$x \in E \setminus \{x_0\}$时$g(x) = f(x)$，所以，以上性质函数$g$也成立。
+
+        现在只需再额外考虑$x = x_0$是否满足定义要求即可。
+        $d_X(x_0, x_0) = 0 < \delta$，此时
+        \begin{align*}
+          d_Y(g(x), L) = d_Y(g(x_0), L) = d_Y(L, L) = 0 < \epsilon
+        \end{align*}
+        于是可得
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E \cup \{x_0\}} g(x) = L = g(x_0)
+        \end{align*}
+        所以，$g$在$x_0$处是连续的。
+
+        特别地，$x \in E$，由习题14.1.1可知$f(x_0) = L$。
+
+  \item $(d) \implies (a)$
+
+        如果$x_0 \notin E$，则$E \setminus \{x_0\} = E$，由$g$在$x_0$处连续，我们有
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} g(x) = \lim\limits_{x \to x_0; x \in E} g(x) = \lim\limits_{x \to x_0; x \in E} f(x) = g(x_0) = L
+        \end{align*}
+
+        如果$x_0 \in E$，由$g$在$x_0$处连续，我们有
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} g(x) = \lim\limits_{x \to x_0; x \in E \setminus \{x_0\}} f(x) = g(x_0) = f(x_0)
+        \end{align*}
+        利用习题14.1.1可知，
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E} f(x) = f(x_0)
+        \end{align*}
+
+
+
+
+\end{itemize}
 
 
 \end{document}
