@@ -1,0 +1,231 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.2.1}
+
+（a）
+\begin{itemize}
+  \item $\Rightarrow$
+
+        任意$x_0 \in \mathbb{R}$，
+        因为$(a_n)_{n = 0}^\infty$是收敛于$0$的实数列，那么，
+        $(x_0 - a_n)_{n = 0}^\infty$是收敛于$x_0$的实数列。
+
+        因为$f$是连续的，那么$f$在$x_0$处也是连续的，
+        由定理13.1.4(b)可知，序列$(f(x_0 - a_n))_{n = 0}^\infty$收敛于$f(x_0)$，即
+        \begin{align*}
+          \lim_{n \to \infty}f(x_0 - a_n) = f(x_0)
+        \end{align*}
+
+        由$x_0$的任意性可知，$f_{a_n}$逐点收敛于$f$。
+
+  \item $\Leftarrow$
+
+        反证法，假设$f$不是连续的，那么，存在$f$在$x_0$处不连续。
+        由定理13.1.4(b)可知，存在$(x_n)_{n = 0}^\infty$收敛于$x_0$的序列，
+        使得$(f(x_n))_{n = 0}^\infty$不收敛于$f(x_0)$。
+
+        构造$(a_n)_{n = 0}^\infty$实数列，其中$a_n = x_0 - x_n$，
+        由极限定律可知$\lim\limits_{n \to \infty}a_n = 0$。
+        我们有
+        \begin{align*}
+          f_{a_n}(x_0) = f(x_0 - a_n) = f(x_0 - (x_0 - x_n)) = f(x_n)
+        \end{align*}
+        综上，由$f_{a_n}$逐点收敛于$f$可知，
+        \begin{align*}
+          \lim_{n \to \infty}f(x_0 - a_n) = \lim_{n \to \infty}f(x_n) = f(x_0)
+        \end{align*}
+        这与$(f(x_n))_{n = 0}^\infty$不收敛于$f(x_0)$矛盾。
+\end{itemize}
+
+（b）
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        任意$x \in \mathbb{R}, \epsilon > 0$。
+        $f$是一致连续的，由定义13.3.4（一致连续性）可知，
+        存在$\delta > 0$使得只要$x, x^\prime \in \mathbb{R}$满足$d(x, x^\prime) = |x - x^\prime| < \delta$，
+        就有$d(f(x), f(x^\prime)) = |f(x) - f(x^\prime)|< \epsilon$。
+
+        序列$(a_n)_{n = 0}^\infty$收敛于$0$，所以，存在$N$使得只要$n \geq N$就有
+        \begin{align*}
+          |a_n| < \delta
+        \end{align*}
+        又我们有
+        \begin{align*}
+          f_{a_n}(x) = f(x - a_n)
+        \end{align*}
+        综上可得，任意$x \in \mathbb{R}, n \geq N$，此时$d(x, x - a_n) < \delta$，我们有
+        \begin{align*}
+          d(f(x), f(x - a_n)) < \epsilon
+        \end{align*}
+        所以$f_{a_n}$一致收敛于$f$。
+
+  \item $\Leftarrow$
+
+        反证法，假设$f$不是一致连续的，那么，存在$\epsilon_0 > 0$，
+        对任意$n \in \mathbb{N}$，存在$x_n, x_n^\prime \in \mathbb{R}, d(x_n, x_n^\prime) < \frac{1}{n}$，
+        有$d(f(x_n), f(x_n^\prime)) \geq \epsilon_0$。
+
+        利用选择公理，构造$(a_n)_{n = 1}^\infty$收敛于$0$的实数列,其中 $a_n = x_n - x_n^\prime$。
+        我们有
+        \begin{align*}
+          f_{a_n}(x_n) = f(x_n - (x_n - x_n^\prime)) = f(x_n^\prime)
+        \end{align*}
+        因为序列$f_{a_n}$一致收敛于$f$，所以存在$N > 0$使得对所有的$n \geq N$都有
+        \begin{align*}
+          d(f_{a_n}(x_n), f(x_n)) = d(f(x_n^\prime), f(x_n)) < \epsilon_0
+        \end{align*}
+        存在矛盾。
+
+\end{itemize}
+
+\section*{14.2.2}
+
+\begin{itemize}
+  \item (a)
+
+        任意$x_0 \in X$，因为$f^{(n)}$一致收敛于$f$，
+        所以对任意的$\epsilon > 0$，存在$N > 0$使得
+        对所有的$n \geq N$都有
+        \begin{align*}
+          d_Y(f^{(n)}(x_0), f(x_0)) < \epsilon
+        \end{align*}
+        于是可得
+        \begin{align*}
+          \lim_{n \to \infty} f^{(n)}(x_0) = f(x_0)
+        \end{align*}
+        由$x_0$的任意性可知，$f^{(n)}$逐点收敛于$f$。
+
+  \item (b)
+
+        \begin{itemize}
+          \item 证明逐点收敛于零函数$0$。
+
+                任意$x_0 \in (-1, 1)$， 由引理6.5.2可知，
+                \begin{align*}
+                  \lim \limits_{n \to \infty} f^{(n)}(x_0) = \lim \limits_{n \to \infty} x_0^n = 0
+                \end{align*}
+
+          \item 不一致收敛于任意函数$f: (-1, 1) \to \mathbb{R}$。
+
+                反证法，假设$f^{(n)}$一致收敛于$f: (-1, 1) \to \mathbb{R}$，
+                由(a)和逐点极限$f$的唯一性可得，$f$是零函数。
+
+                因为$(\frac{1}{2})^{\frac{1}{N}} \in (-1, 1)$，我们有
+                \begin{align*}
+                  \left|f^{{(N)}}((\frac{1}{2})^{\frac{1}{N}}) - 0\right| = \frac{1}{2} > \epsilon
+                \end{align*}
+                所以，不存在满足要求的$N$。
+        \end{itemize}
+  \item (c)
+
+        \begin{itemize}
+          \item 逐点收敛于$g$。
+
+                利用引理7.3.3，证明略
+
+          \item 不一致收敛于$g$。
+
+                任意$x \in X$，我们有
+                \begin{align*}
+                  \sum\limits_{n = 1}^N  f(x) = \frac{x(1 - x^N)}{1 - x}
+                \end{align*}
+                $c = \frac{1}{2}^{\frac{1}{N + 1}}$
+                于是
+                \begin{align*}
+                  |\sum\limits_{n = 1}^N  f(x) - g(x)| & = |\frac{c(1 - c^N)}{1 - c} - \frac{c}{1 - c}|    \\
+                                                       & = \frac{c^{N + 1}}{1 - c} > c^{N+1} = \frac{1}{2}
+                \end{align*}
+                所以，不存在满足要求的$N$。
+
+          \item 换成闭区间$[-1, 1]$
+
+                $x = 1$时，$\sum\limits_{n = 1}^\infty  f^{(n)}(x) = \sum\limits_{n = 1}^\infty  1$不是收敛的，
+                所以$\lim\limits_{N \to \infty}\sum\limits_{n = 1}^N  f^{(n)}(x)$
+                不会是逐点收敛的，进一步，也不会是一致收敛的。
+
+        \end{itemize}
+
+
+\end{itemize}
+
+\section*{14.4.3}
+
+任意$x_0 \in X$，因为$h: \mathbb{R} \to \mathbb{R}$是一个连续函数，所以对任意$\epsilon > 0$，
+存在$\delta > 0$，使得只要$y \in \mathbb{R}, |f(x_0), y| < \delta$就有
+\begin{align*}
+    |g(f(x_0)) - g(y)| < \epsilon
+\end{align*}
+因为$f^{(n)}$在$X$上逐点收敛于函数$f: X \to \mathbb{R}$，所以，存在一个$N > 0$使得对所有的$n > N$都有
+\begin{align*}
+  |f^{(n)}(x_0) - f(x_0)| < \delta
+\end{align*}
+综上可得，对任意的$x_0 \in X$，存在一个$N > 0$使得对所有的$n > N$都有
+\begin{align*}
+  |g(f(x_0)) - g(f^{(n)}(x_0))| < \epsilon
+\end{align*}
+即
+\begin{align*}
+  \lim \limits_{n \to \infty} g(f^{(n)}(x_0)) = g(f(x_0))
+\end{align*}
+由$x_0$的任意性可知，函数$h \circ f^{(n)}$在$X$上逐点收敛于$h \circ f$。
+
+\section*{14.2.4}
+
+因为$f: X \to Y$是一个有界函数，所以在$Y$中存在一个球$B(Y,d_Y)(y_0, R)$使得对所有的$x \in X$都有$f(x) \in B(Y,d_Y)(y_0, R)$。
+因为$f_n$一致收敛于函数$f$，所以对$\epsilon = 1 > 0$，存在$N > 0$，使得只要$x \in X, n \geq N$都有
+\begin{align*}
+  d_Y(f_n(x), f(x)) < \epsilon
+\end{align*}
+于是可得
+\begin{align*}
+  d_Y(f_n(x), y_0) < R + \epsilon
+\end{align*}
+对于$n < N$，因为$f_n$是度量空间$(Y, d_Y)$有界函数序列，
+所以在$Y$中存在球$B(Y, d_Y)(y_1, R_1), B(Y, d_Y)(y_2, R_2), \dots, B(Y, d_Y)(y_{N - 1}, R_{N - 1})$，对所有的$x \in X$都有
+\begin{align*}
+  f_n(x) \in B(Y, d_Y)(y_i, R_i), i = 1, 2, \dots, N - 1
+\end{align*}
+令
+\begin{align*}
+  r = \max\limits_{i = 1, 2, \dots, N - 1} d_Y(y_i, y_0) + \max\limits_{i = 1, 2, \dots, N - 1} R_i + R + \epsilon \geq R + \epsilon
+\end{align*}
+所以对任意的$x \in X$，$n < N$有
+\begin{align*}
+  d_Y(f_n(x), y_0) \leq d_Y(f_n(x), y_n) + d_Y(y_n, y_0) < R_n + d_Y(y_n, y_0) < r
+\end{align*}
+综上，对所有的$x \in X$和所有的正整数$n$都有
+\begin{align*}
+  d_Y(f_n(x), y_0) \leq r
+\end{align*}
+即
+\begin{align*}
+  f_n(x) \in B(Y, d_Y)(y_0, r)
+\end{align*}
+至此，命题得证。
+
+
+\end{document}
