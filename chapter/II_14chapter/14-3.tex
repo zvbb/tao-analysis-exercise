@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.3.1}
+
+反证法，假设$f$不在$x_0$处连续。
+那么，存在$\epsilon_0 > 0$，任意$x \in X$都有$d_Y(f(x), f(x_0)) \geq \epsilon_0$。
+
+因为序列一致收敛于$f$，所以存在$N > 0$使得只要$n \geq N, x \in X$就有$d_Y(f^{(n)}(x), f(x)) < \frac{1}{4} \epsilon_0$。
+
+有每一个$n$，函数$f^{(n)}$都在$x_0$处连续，那么对$n \geq N$, 都存在$\delta > 0$使得只要$d_X(x, x_0) < \delta$，
+就有$d_Y(f^{(n)}(x), f^{(n)}(x_0)) < \frac{1}{4} \epsilon_0$。
+
+综上，$n \geq N$和$x \in X$且$d_X(x, x_0) < \delta$，就有
+\begin{align*}
+  d_Y(f(x), f(x_0)) & \leq d_Y(f(x), f^{(n)}(x)) + d_Y(f^{(n)}(x), f(x_0))                                                   \\
+                    & \leq d_Y(f(x), f^{(n)}(x)) + d_Y(f^{(n)}(x), f^{(n)}(x_0)) + d_Y(f^{(n)}(x_0), f(x_0))                 \\
+                    & \leq \frac{1}{4} \epsilon_0 + \frac{1}{4} \epsilon_0 + \frac{1}{4} \epsilon_0 = \frac{3}{4} \epsilon_0 \\
+                    & < \epsilon_0
+\end{align*}
+（注意以上没有考虑$n < N$，因为我们只是想说明$\epsilon_0$是$d_Y(f(x), f(x_0))$的上界，是否有更小的上界或更大的上界，这里我们不用关心。）
+
+存在矛盾。
+
+\section*{14.3.2}
+
+（1）先证明$\lim\limits_{x \to x_0; x \in E} f(x)$的存在性。
+
+利用$Y$的完备性进行证明。
+设$(x_m)_{m = 1}^\infty$是$E$上收敛于$x_0$的序列，
+我们要证明$(f(x_m))_{m = 1}^\infty$是$Y$上的柯西序列即可完成证明。
+
+对任意$\epsilon > 0$，由对每一个$n$，极限$\lim\limits_{x \to x_0; x \in E} f^{(n)}(x)$都存在，
+不妨设收敛于$L_n$。
+那么，存在$\delta > 0$，使得只要$d_X(x, x_0) < \delta$，就有$d_Y(f^{(n)}(x), L_n) < \frac{1}{4} \epsilon$。
+
+因为$(x_m)_{m = 1}^\infty$是$E$上收敛于$x_0$的序列，所以存在$M > 1$，使得对所有的$p, q \geq M$都有
+$d_X(x_p, x_q) < \delta$。
+
+于是，对所有的$p, q \geq M$我们有
+\begin{align*}
+  d_Y(f^{(n)}(x_p), f^{(n)}(x_q)) \leq  d_Y(f^{(n)}(x_p), L_n) + d_Y(f^{(n)}(x_q), L_n) < \frac{1}{8} \epsilon + \frac{1}{8} \epsilon = \frac{1}{4} \epsilon
+\end{align*}
+
+因为$(f^{(n)})_{n = 1}^\infty$一致收敛于$f$，所以存在$N > 0$使得对所有的$n \geq N$和$x \in E$都有
+$d_Y(f^{(n)}(x), f(x)) < \frac{1}{4}\epsilon$，那么对每一个$n$都有
+
+综上，对所有的$p, q \geq M,n \geq N$，此时$d_X(x_p, x_q) < \delta$，于是我们有
+\begin{align*}
+  d_Y(f(x_p), f(x_q)) & \leq d_Y(f(x_p), f^{(n)}(x_p)) + d_Y(f^{(n)}(x_p), f(x_q))                                    \\
+                      & \leq d_Y(f(x_p), f^{(n)}(x_p)) + d_Y(f^{(n)}(x_p), f^{(n)}(x_q)) + d_Y(f^{(n)}(x_q), f(x_p))  \\
+                      & \leq \frac{1}{4} \epsilon + \frac{1}{4} \epsilon + \frac{1}{4} \epsilon = \frac{3}{4}\epsilon \\
+                      & < \epsilon
+\end{align*}
+（注意以上没有考虑$n < N$，因为我们只是想说明$\epsilon$是$d_Y(f(x_p), f(x_q))$的上界，是否有更小的上界或更大的上界，这里我们不用关心。）
+
+于是可得，$(f(x_m))_{m = 1}^\infty$是$Y$上的柯西序列。
+
+（2）证明$(\lim\limits_{x \to x_0; x \in E} f^{(n)}(x))_{n = 1}^\infty$的极限等于$\lim\limits_{x \to x_0; x \in E} f(x)$。
+
+不妨设$\lim\limits_{x \to x_0; x \in E} f(x) = L$，$\lim\limits_{x \to x_0; x \in E} f^{(n)}(x) = L_n$，
+于是，我们需要证明：$\lim\limits_{n \to \infty} L_n = L$。
+
+对任意$\epsilon > 0$，
+因为$\lim\limits_{x \to x_0; x \in E} f(x) = L$，那么，存在$\delta > 0$，使得只要$x \in E$且$d_X(x, x_0) < \delta$，
+就有$d_Y(f(x), L) < \frac{1}{3} \epsilon$。
+
+因为$(f^{(n)})_{n = 1}^\infty$一致收敛于$f$，所以存在$N > 0$使得对所有的$n \geq N$和$x \in E$都有
+$d_Y(f^{(n)}(x), f(x)) < \frac{1}{3} \epsilon$。
+
+又因为对每一个$n$，$\lim\limits_{x \to x_0; x \in E} f^{(n)}(x) = L_n$，所以存在$\delta_n > 0$使得只要$x \in E$且$d_X(x, x_0) < \delta_n$，
+就有$d_Y(f^{(n)}(x), L_n) < \frac{1}{3} \epsilon$。
+
+综上，存在$N > 0$使得对每一个$n \geq N$和$d_X(x, x_0) < min(\delta, \delta_n)$，我们有
+\begin{align*}
+  d_Y(L_n, L) & \leq d_Y(L_n, f(x)) + d_Y(f(x), L)                                \\
+              & \leq d_Y(f^{(n)}(x), L_n) + d_Y(f^{(n)}(x), f(x)) +  d_Y(f(x), L) \\
+              & < \epsilon
+\end{align*}
+
+由$\epsilon$的任意性可知，$\lim\limits_{n \to \infty} L_n = L$。
+
+注意：以上证明除了要求$n \geq N$，还要求$d_X(x, x_0) < min(\delta, \delta_n)$，可能会感到疑惑，
+使得$\lim\limits_{n \to \infty} L_n$的收敛性不仅和$n$有关，还和$x$的值有关，其实这里的$x$是可以任取的，
+其不会影响$\epsilon$是$d_Y(L_n, L)$的上界。
+
+\section*{14.3.3}
+
+因为在例1.2.8中，函数$f = x^n$是逐点收敛的，而不是一致收敛的。
+
+\section*{14.3.4}
+
+由推论$14.3.2$可知，$f$在$X$上连续。对任意$\epsilon > 0, y \in X$，存在$\delta > 0$，
+使得只要$d_X(x, y) < \delta$，就有
+\begin{align*}
+  d_Y(f(x), f(y)) < \frac{1}{2} \epsilon
+\end{align*}
+
+因为$f^{(n)}$一致收敛于$f$，那么，存在$N > 0$，使得只要$n \geq N$和$y \in X$，就有
+\begin{align*}
+  d_Y(f^{(n)}(y), f(y)) < \frac{1}{2} \epsilon
+\end{align*}
+
+因为$x^{(n)}$是$X$中收敛于$x$的点列。所以存在$N^\prime > 0$使得只要$n \geq N^\prime$就有
+\begin{align*}
+  d_X(x^{(n)}, x) < \delta
+\end{align*}
+
+综上，$n > max(N, N^\prime)$，就有
+\begin{align*}
+  d_Y(f^{n}(x^{(n)}), f(x)) & \leq d_Y(f^{(n)}(y), f(y)) + d_Y(f(x), f(y))             \\
+                            & < \frac{1}{2} \epsilon + \frac{1}{2} \epsilon = \epsilon
+\end{align*}
+于是可得
+\begin{align*}
+  \lim\limits_{n \to \infty} f^{(n)}(x^{(n)}) = f(x)
+\end{align*}
+
+\section*{14.3.5}
+
+例14.2.4 中的例子就能说明此事。
+
+$(\frac{1}{2})^{\frac{1}{n}}$收敛于$1$。我们有
+\begin{align*}
+  \lim\limits_{n \to \infty} f^{(n)}(x^{(n)}) = \lim\limits_{n \to \infty} \frac{1}{2} \neq f(1) = 1
+\end{align*}
+
+\section*{14.3.6}
+
+序列$f^{(n)}$一致收敛于$f$。那么，对$\epsilon = 1 > 0$，存在$N > 0$使得对所有的$n \geq N$和$x \in X$都有
+\begin{align*}
+  d_Y(f^{(n)}(x), f(x)) < \epsilon
+\end{align*}
+
+因为对每一个$n$，函数$f^{(n)}$在$X$上都是有界的，所以对每一个$n$，$x \in X$，都有
+\begin{align*}
+  f^{(n)}(x) \in B(Y,d_Y) (y_n, R_n)
+\end{align*}
+即
+\begin{align*}
+  d_Y(f^{(n)}(x), y_n) < R_n
+\end{align*}
+其中$y_n \in Y, R_n \in \mathbb{R}$。
+
+综上，对$n > N$使得对所有的$n \geq N$和$x \in X$都有
+\begin{align*}
+  d_Y(f(x), y_n) \leq d_Y(f^{(n)}(x), f(x)) + d_Y(f^{(n)}(x), y_n) 
+\end{align*}
+
+特别地$n = N$
+\begin{align*}
+  d_Y(f(x), y_N) \leq d_Y(f^{(N)}(x), f(x)) + d_Y(f^{(N)}(x), y_N) < R_N + \epsilon
+\end{align*}
+
+定义$r = R_N + \epsilon$，对所有的$x \in X$都有$f(x) \in B(Y, d_Y) (y_N, r)$，命题得证。
+
+\section*{14.3.7}
+
+习题14.2.2(c)就能说明此时。在$(-1, 1)$上，$f(x) = x^n$是有界的，$g(x) = x/(1-x)$在$(-1, 1)$上却是无界的，
+因为$\lim\limits_{x \to -1} x/(1-x) = \infty$。
+
+\section*{14.3.8}
+
+
+
+
+\end{document}
