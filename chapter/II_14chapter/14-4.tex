@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.4.1}
+
+按度量空间的定义（定义12.1.2），我们需证明$d_{B(X \to Y)}$满足下面四个公理：
+
+\begin{itemize}
+  \item (a) 对任意的$f \in B(X \to Y)$，我们有$d_{B(X \to Y)}(f, f) = 0$。
+
+        由定义14.4.2可知，$d_{B(X \to Y)}(f, f) = sup\{d_Y(f(x), f(x)): x \in X\}$，
+        因为任意$x \in X, d_Y(f(x), f(x)) = 0$，
+        所以$sup\{d_Y(f(x), f(x)): x \in X\} = sup\{0\} = 0$，即$d_{B(X \to Y)}(f, f) = 0$
+
+  \item (b) （正性）对任意两个不同的$f, g \in B(X \to Y)$，我们有$d_{B(X \to Y)}(f, g) > 0$。
+
+        因为$f \neq g$，那么，存在$x_0 \in X$使得$f(x_0) \neq g(x_0)$，
+        于是$d_Y(f(x_0), g(x_0)) > 0$，
+        所以$sup\{d_Y(f(x), g(x)): x \in X\} > 0$，
+        即$d_{B(X \to Y)}(f, g) > 0$
+
+  \item (c)（对称性）对任意的$f, g \in B(X \to Y)$，我们有$d_{B(X \to Y)}(f, g) = d_{B(X \to Y)}(g, f)$
+
+        由定义14.4.2可知，
+        \begin{align*}
+          d_{B(X \to Y)}(f, g) = sup\{d_Y(f(x), g(x)): x \in X\} \\
+          d_{B(X \to Y)}(g, f) = sup\{d_Y(g(x), f(x)): x \in X\}
+        \end{align*}
+
+        令
+        \begin{align*}
+          A := \{d_Y(f(x), g(x)): x \in X\} \\
+          B := \{d_Y(g(x), f(x)): x \in X\}
+        \end{align*}
+        容易证明$A = B$，所以$sup A = sup B$，
+        即$d_{B(X \to Y)}(f, g) = d_{B(X \to Y)}(g, f)$
+
+  \item (d) （三角不等式）对任意的$f, g, h \in B(X \to Y)$，
+        我们有$d_{B(X \to Y)}(f, h) \leq d_{B(X \to Y)}(f, g) + d_{B(X \to Y)}(g, h)$。
+
+        由定义14.4.2可知，我们需证明：
+        \begin{align*}
+          sup\{d_Y(f(x), h(x)): x \in X\} \leq sup\{d_Y(f(x), g(x)): x \in X\} + sup\{d_Y(g(x), h(x)): x \in X\}
+        \end{align*}
+
+        令
+        \begin{align*}
+          A := \{d_Y(f(x), h(x)): x \in X\} \\
+          B := \{d_Y(f(x), g(x)): x \in X\} \\
+          C := \{d_Y(g(x), h(x)): x \in X\}
+        \end{align*}
+
+        任意$a_0 \in A$，存在$x \in X$使得
+        \begin{align*}
+          a_0 = d_Y(f(x), h(x))
+        \end{align*}
+        我们有
+        \begin{align*}
+          d_Y(f(x), h(x)) \leq d_Y(f(x), g(x)) + d_Y(g(x), h(x))
+        \end{align*}
+        又因为
+        \begin{align*}
+          d_Y(f(x), g(x)) \in B \\
+          d_Y(g(x), h(x)) \in C
+        \end{align*}
+        综上可得，$sup A \leq sup B + sup C$，命题得证。
+
+        \begin{zremark}
+          $sup A \leq sup B + sup C$这个结论可用反证法证明，
+          假设$sup A > sup B + sup C$，那么存在$a \in A$使得$sup A > a > sup B + sup C$，
+          因为$a \in A$，所有存在$x \in X$使得
+          \begin{align*}
+            a = d_Y(f(x^\prime), h(x^\prime))
+          \end{align*}
+          由上面的讨论可知，存在$b \in B, c \in C$使得
+          \begin{align*}
+            a \leq b + c
+          \end{align*}
+          这会导致以下矛盾
+          \begin{align*}
+            b + c > sup B + sup C
+          \end{align*}
+        \end{zremark}
+\end{itemize}
+
+\section*{14.4.2}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        对任意的$\epsilon > 0$，
+        因为$(f^{(n)})_{n = 1}^\infty$是依度量$d_{B(X \to Y)}$收敛于$f$，
+        所以存在$N \geq 1$，使得只要$n \geq N$，就有
+        \begin{align*}
+          d_{B(X \to Y)}(f^{(n)}, f) < \epsilon
+        \end{align*}
+        即
+        \begin{align*}
+          sup\{d_Y(f^{(n)}(x), f(x)) : x \in X\} < \epsilon
+        \end{align*}
+        综上可得，对任意$\epsilon > 0$，存在$N \geq 1$，使得只要$n \geq N$和$x \in X$，就有
+        \begin{align*}
+          d_Y(f^{(n)}(x), f(x)) < \epsilon
+        \end{align*}
+        所以，$(f^{(n)})_{n = 1}^\infty$一致收敛于$f$。
+
+  \item $\Leftarrow$
+
+        对任意$\epsilon > 0$，
+        因为$(f^{(n)})_{n = 1}^\infty$一致收敛于$f$，
+        所以存在$N \geq 1$，使得只要$n \geq N$和$x \in X$，就有
+        \begin{align*}
+          d_Y(f^{(n)}(x), f(x)) < \epsilon
+        \end{align*}
+        对每一个$n$，令
+        \begin{align*}
+          A_n := \{d_Y(f^{(n)}(x), f(x)): x \in X\}
+        \end{align*}
+        由于$A_n$是实数集合，且存在上界$\epsilon$，所以其上确界小于$\epsilon$，
+        即$sup A_n < \epsilon$。
+
+        综上可得，对任意$\epsilon > 0$，存在$N \geq 1$，使得只要$n \geq N$，就有
+        \begin{align*}
+          d_{B(X \to Y)}(f^{(n)}, f) < \epsilon
+        \end{align*}
+        所以，$(f^{(n)})_{n = 1}^\infty$是依度量$d_{B(X \to Y)}$收敛于$f$。
+
+\end{itemize}
+
+\end{document}
