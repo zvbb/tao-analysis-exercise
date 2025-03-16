@@ -165,7 +165,7 @@ $(\frac{1}{2})^{\frac{1}{n}}$收敛于$1$。我们有
 
 综上，对$n > N$使得对所有的$n \geq N$和$x \in X$都有
 \begin{align*}
-  d_Y(f(x), y_n) \leq d_Y(f^{(n)}(x), f(x)) + d_Y(f^{(n)}(x), y_n) 
+  d_Y(f(x), y_n) \leq d_Y(f^{(n)}(x), f(x)) + d_Y(f^{(n)}(x), y_n)
 \end{align*}
 
 特别地$n = N$
@@ -182,7 +182,31 @@ $(\frac{1}{2})^{\frac{1}{n}}$收敛于$1$。我们有
 
 \section*{14.3.8}
 
+因为$(f_n)_{n = 1}^\infty, (g_n)_{n = 1}^\infty$都是一致有界的，由命题14.3.6可知，
+函数$f, g$都是有界的，所以存在$M^\prime>0$使得对所有的$x \in X$都有$f(x) < M^\prime, g(x) < M^\prime$。
 
+对任意$\epsilon > 0$，
+因为$(f_n)_{n = 1}^\infty$一致收敛于$f$，那么，对$\frac{\epsilon}{2M^\prime} > 0$存在$N_1 > 0$使得只要
+$n > N_1, x \in X$，就有
+\begin{align*}
+  |f_n(x) - f(x)| < \frac{\epsilon}{2M^\prime}
+\end{align*}
 
+类似地，对$\frac{\epsilon}{2M} > 0$存在$N_2 > 0$使得只要
+$n > N_2, x \in X$，就有
+\begin{align*}
+  |g_n(x) - g(x)| < \frac{\epsilon}{2M}
+\end{align*}
+
+令$N = max(N_1, N_2)$，使得只要
+$n > N, x \in X$，就有
+\begin{align*}
+  |f_ng_n(x) - fg(x)| & = |f_n(x)g_n(x) - f(x)g(x)|                                             \\
+                      & = |f_n(x)g_n(x) - f_n(x)g(x) +  f_n(x)g(x)  - f(x)g(x)|                 \\
+                      & \leq |f_n(x)g_n(x) - f_n(x)g(x)| + |f_n(x)g(x) - f(x)g(x)|              \\
+                      & = |f_n(x)(g_n(x) - g(x))| + |g(x)(f_n(x) - f(x))|                       \\
+                      & < M \frac{\epsilon}{2M} + M^\prime \frac{\epsilon}{2M^\prime} = \epsilon
+\end{align*}
+命题得证。
 
 \end{document}
