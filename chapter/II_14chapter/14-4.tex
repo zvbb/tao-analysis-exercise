@@ -148,4 +148,49 @@
 
 \end{itemize}
 
+\section*{14.4.3}
+
+设$(f^{(n)})_{n = 1}^\infty$是$C(X \to Y)$中的柯西函数序列，
+对任意$\epsilon > 0$，存在$N > 0$，使得只要$p, q \geq N$，就有
+\begin{align*}
+  d_{B(X \to Y)}(f^{(p)}, f^{(q)}) = \sup\{d_Y(f^{(p)}(x), f^{(q)}(x)): x \in X\} < \epsilon
+\end{align*}
+
+对任意$x \in X$，构造序列$(f^{(n)}(x))_{n = 1}^\infty$，因为对$p,q \geq N$我们有
+\begin{align*}
+  d_Y(f^{(p)}(x), f^{(q)}(x)) \leq d_{B(X \to Y)}(f^{(p)}, f^{(q)}) < \epsilon
+\end{align*}
+
+由此可知，$(f^{(n)}(x))_{n = 1}^\infty$是柯西序列，由题设$(Y,d_Y)$是一个完备的度量空间可得，
+$(f^{(n)}(x))_{n = 1}^\infty$收敛，不妨设为$y_x$。
+
+定义函数$f : X \to Y, f(x) = y_x = \lim\limits_{n \to \infty}f^{(n)}(x), x \in X$。
+接下来我们证明$(f^{(n)})_{n = 1}^\infty$收敛于$f$。
+
+任意$x \in X$，因为$f(x) = \lim\limits_{n \to \infty}f^{(n)}(x)$，那么，存在$N^\prime > 0$，
+使得只要$k \geq N^\prime$，就有
+\begin{align*}
+  d_Y(f^{(k)}(x), f(x)) < \epsilon
+\end{align*}
+综上，$n > N, k > max(N, N^\prime)$我们有
+\begin{align*}
+  d_Y(f^{(n)}(x) ,f(x)) \leq d_Y(f^{(n)}(x), f^{(k)}(x)) + d_Y(f^{(k)}(x), f(x)) < 2\epsilon
+\end{align*}
+（注意：以上说明了，不管$x$取什么值，都会可以找到一个上界。）
+
+由$x$的任意性可得，对任意$n > N, x \in X$都有
+\begin{align*}
+  d_{B(X \to Y)|C(X \to Y) \times C(X \to Y)}(f^{(n)}, f) < 2\epsilon 
+\end{align*}
+
+于是可得$(f^{(n)})_{n = 1}^\infty$一致收敛于$f$，由命题14.4.4可知，
+$(f^{(n)})_{n = 1}^\infty$收敛于$f$。
+
+又因为$C(X \to Y)$是闭的，所以$f \in C(X \to Y)$。
+
+\section*{14.4.4}
+
+关于拓扑的习题，都忽略。
+
+
 \end{document}
