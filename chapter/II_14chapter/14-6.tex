@@ -31,7 +31,7 @@
    & \lim\limits_{N \to \infty} \int_{[a, b]} \sum\limits_{n=1}^{N} f^{(n)}   \\
    & = \int_{[a, b]} \lim\limits_{N \to \infty} \sum\limits_{n=1}^{N} f^{(n)} \\
    & = \int_{[a, b]} f                                                        \\
-   & = \int_{[a, b]} \sum\limits_{n=1}^{\infty} f^{(n)}                       \\
+   & = \int_{[a, b]} \sum\limits_{n=1}^{\infty} f^{(n)}                       
 \end{align*}
 （注意：最后一个等式，仔细观察定义14.5.2即可得到。）
 
@@ -46,11 +46,14 @@
    & \int_{[a, b]} (\sum\limits_{n=1}^{k} f^{(n)} - \epsilon) \leq \int_{[a, b]} f \leq \int_{[a, b]} (\sum\limits_{n=1}^{k} f^{(n)} + \epsilon)           \\
    & \sum\limits_{n=1}^{k} \int_{[a, b]} f^{(n)} - \epsilon(b - a) \leq \int_{[a, b]} f \leq \sum\limits_{n=1}^{k} \int_{[a, b]} f^{(n)} + \epsilon(b - a) \\
 \end{align*}
+
 上面的论述证明了对任意的$\epsilon > 0$，存在一个$N \geq 1$使得对所有的$k \geq N$都有
 \begin{align*}
   \left|\sum\limits_{n=1}^{k} \int_{[a, b]} f^{(n)} - \int_{[a, b]} f \right| \leq 2\epsilon(b - c)
 \end{align*}
+
 由于$\epsilon$是任意的，因此$\sum\limits_{n=1}^{N} \int_{[a, b]} f^{(n)}$收敛于$\int_{[a, b]} f$。
+
 综上可得，
 \begin{align*}
   \sum\limits_{n=1}^{\infty} \int_{[a, b]} f^{(n)} = \int_{[a, b]} f = \int_{[a, b]} \sum\limits_{n=1}^{\infty} f^{(n)}
