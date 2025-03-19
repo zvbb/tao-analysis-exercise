@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.5 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.5.1}
+
+\begin{itemize}
+  \item (a) 有界函数的有限和是有界的。
+
+        成立；
+
+        对有限和的个数$n$进行归纳。
+
+        $n = 0$时，空虚的为真；
+
+        $n = 1$时，$\sum\limits_{n=1}^1 f^{(n)} = f^{(1)}$，因为$f^{(1)}$是有界的，
+        于是命题为真；
+
+        归纳假设$n = k$时，$\sum\limits_{n=1}^k f^{(n)}$是有界的；
+
+        $n = k + 1$时，
+        \begin{align*}
+          \sum\limits_{n=1}^{k + 1} f^{(n)} = \sum\limits_{n=1}^k f^{(n)} + f^{(k + 1)}
+        \end{align*}
+        由归纳假设可知$\sum\limits_{n=1}^k f^{(n)}$是有界的，又因为$f^{(k + 1)}$是有界的，
+        于是存在$M, M^\prime > 0$，使得只要$x \in X$，都有
+        \begin{align*}
+          |\sum\limits_{n=1}^k f^{(n)} (x)| < M \\
+          |f(x)| < M^\prime
+        \end{align*}
+        于是可得
+        \begin{align*}
+          |\sum\limits_{n=1}^{k + 1} f^{(n)}| \leq M + M^\prime
+        \end{align*}
+        综上可得，$\sum\limits_{n=1}^{k + 1} f^{(n)}$有界；
+
+        归纳完成，命题成立。
+
+  \item (b) 连续函数的有限和是连续的。
+
+        成立；证明与(a)类似，略。
+
+  \item (c) 一致连续函数的有限和是一致连续的。
+
+        成立；证明与(a)类似，略。
+\end{itemize}
+
+\section*{14.5.2}
+按照书中提示证明。
+
+由题设可知，任意$n$都有$f^{(n)} \in C(X \to \mathbb{R})$，
+由因为$\sum \limits_{n=1}^{\infty} ||f^{(n)}||_\infty$收敛，
+于是可知$\sum \limits_{n=1}^{\infty} ||f^{(n)}||_\infty$是柯西序列，
+对任意$\epsilon > 0$，存在$N \geq 1$，使得只要$p, q  \geq N, p \leq q$都有
+\begin{align*}
+   & \sum \limits_{n=1}^{q} ||f^{(n)}||_\infty - \sum \limits_{n=1}^{p} ||f^{(n)}||_\infty \\
+   & = ||f^{(p)}||_\infty + ||f^{(p+1)}||_\infty + \cdots + ||f^{(q)}||_\infty             \\
+   & < \epsilon
+\end{align*}
+又我们有
+\begin{align*}
+   & d_{B(X \to \mathbb{R})}(\sum \limits_{n=1}^{p} f^{(n)}, \sum \limits_{n=1}^{q} f^{(n)}) \\
+   & = \sup \{|\sum \limits_{n=p+1}^{q} f^{(n)}(x)|: x \in X\}                               \\
+   & \leq ||f^{(p)}||_\infty + ||f^{(p+1)}||_\infty + \cdots + ||f^{(q)}||_\infty            \\
+   & < \epsilon
+\end{align*}
+于是可得，
+部分和构成的序列$(\sum \limits_{n=1}^{N} f^{(n)})_{N = 1}^\infty$是$C(X \to \mathbb{R})$中的柯西序列，
+利用定理14.4.5可知，$(\sum \limits_{n=1}^{N} f^{(n)})_{N = 1}^\infty$收敛于$C(X \to \mathbb{R})$中的一个函数$f$，
+由命题14.4.4可知，$(\sum \limits_{n=1}^{N} f^{(n)})_{N = 1}^\infty$一致收敛于$f$，
+所以，无限级数$\sum \limits_{n=1}^{\infty} f^{(n)}$一致收敛于$f$。
+
+\end{document}
