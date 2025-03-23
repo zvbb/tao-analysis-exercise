@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.7 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.7.1}
+（1）$f_n$一致收敛于$f$。
+
+\begin{align*}
+   & f_n(x) - f(x)                                                                     \\
+   & = f_n(x) - L + \int_{[a, x_0]} g - \int_{[a, x]} g                                \\
+   & = f_n(x) - L - f_n(x_0) + f_n(x_0) + \int_{[a, x_0]} g - \int_{[a, x]} g          \\
+   & = f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n + \int_{[a, x_0]} g - \int_{[a, x]} g \\
+   & = f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n - g                                   
+\end{align*}
+
+由$\lim\limits_{n \to \infty} f_n(x_0) = L$可得，
+对任意$\epsilon > 0$，存在$N_1 > 0$，使得只要$n \geq N_1$，就有
+\begin{align*}
+  |f_n(x_0) - L| < \frac{1}{2}\epsilon
+\end{align*}
+
+又由$f_n^\prime$一致收敛与$g$，那么，存在$N_2 > 0$，使得只要$n \geq N_2$，就有
+\begin{align*}
+  f^\prime_n - g < \frac{1}{2}\frac{\epsilon}{|b - a|}
+\end{align*}
+
+综上可得，对任意的$\epsilon > 0$，存在$N > max(N_1, N_2)$，使得只要$n \geq N$，就有
+\begin{align*}
+  |f_n(x) - f(x)| = |f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n - g| < \frac{1}{2}\epsilon + \frac{1}{2}\epsilon = \epsilon
+\end{align*}
+命题得证。
+
+（2）$f$是可微的，它的导函数是$g$。
+
+$L - \int_{[a, x_0]} g$是常数，所以，导数是$0$；$g$是连续的，由推论11.5.2可知，
+\begin{align*}
+  \int_{[a, x]} g
+\end{align*}
+是黎曼可积的。
+
+又由定理11.9.1可知，$(\int_{[a, x]} g)^\prime = g(x)$。
+
+综上，命题得证。
+
+（3）例1.2.10与定理14.7.1不矛盾的原因。
+
+把$\epsilon$看做$\frac{1}{n}$，例1.2.10的操作没有按照定理14.7.1的操作，所以，定理14.7.1与例1.2.10不矛盾。
+
+\section*{14.7.2}
+
+
+\end{document}
