@@ -30,7 +30,7 @@
    & = f_n(x) - L + \int_{[a, x_0]} g - \int_{[a, x]} g                                \\
    & = f_n(x) - L - f_n(x_0) + f_n(x_0) + \int_{[a, x_0]} g - \int_{[a, x]} g          \\
    & = f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n + \int_{[a, x_0]} g - \int_{[a, x]} g \\
-   & = f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n - g                                   
+   & = f_n(x_0) - L + \int_{[x_0, x]} f^\prime_n - g
 \end{align*}
 
 由$\lim\limits_{n \to \infty} f_n(x_0) = L$可得，
@@ -68,5 +68,57 @@ $L - \int_{[a, x_0]} g$是常数，所以，导数是$0$；$g$是连续的，由
 
 \section*{14.7.2}
 
+如果
+\begin{align*}
+  d_{\infty}(f_n^\prime, f_m^\prime) \leq \epsilon 
+\end{align*}
+
+即
+\begin{align*}
+  \sup\{|f_n^\prime(x) - f_m^\prime(x)|: x \in [a, b]\} \leq \epsilon
+\end{align*}
+
+所以对任意$x \in [a, b]$都有$|f_n^\prime(x) - f_m^\prime(x)| \leq \epsilon$。
+
+定义$h := (f_n + f_m)(x)$的函数$h : [a, b] \to \mathbb{R}$，因为$f_n, f_m$连续可微，
+由定理10.1.13(c)可知，$h$连续可微。
+
+利用推论10.2.9可知，对任意$x \in [a, b]$，在区间$[x, x_0]$，存在$z \in [x, x_0]$，使得
+\begin{align*}
+  h^\prime(z) = \frac{h(x) - h(x_0)}{x - x_0}
+\end{align*}
+
+即
+\begin{align*}
+  h^\prime(z) = f_n^\prime(z) - f_m^\prime(z) = \frac{(f_n(x) - f_m(x)) - (f_n(x_0) - f_m(x_0))}{x - x_0}
+\end{align*}
+
+综上可得，
+\begin{align*}
+  \left| (f_n(x) - f_m(x)) - (f_n(x_0) - f_m(x_0))\right|  \leq \epsilon|x - x_0|
+\end{align*}
+
+todo 没思路
+
+\section*{14.7.3}
+
+利用定理14.5.7（威尔斯特拉斯M判别法）可知
+\begin{align*}
+  \sum \limits_{n = 1}^\infty f_n^\prime
+\end{align*}
+是一致收敛的，不妨设一致收敛于连续函数$g$。
+
+定义$F_N := \sum\limits_{n = 1}^N f_n$函数$F_N: [a, b] \to \mathbb{R}$，
+因为$f_n$是可微函数，由10.1.13(c)可知，$F_N$是可微函数，且
+导函数为
+\begin{align*}
+  F_N^\prime := \sum\limits_{n = 1}^N f_n^\prime
+\end{align*}
+由于$f_n^\prime$是连续的，那么导函数$F_N^\prime$也是连续的。
+
+由之前的讨论可得$\lim\limits_{N \to \infty} F_N^\prime = g$，又因为
+存在某个$x_0 \in [a, b]$，使得级数$\sum\limits_{n = 1}^\infty f_n(x_0)$收敛，
+即$\lim\limits_{N \to \infty} F_N(x_0)$存在，于是利用定理14.7.1可知，
+函数数列$F_N$一致收敛于可微函数$f$，并且$f$的导函数等于$g$。
 
 \end{document}
