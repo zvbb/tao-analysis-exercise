@@ -1,0 +1,343 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{14.8 习题}
+\author{张志聪}
+\maketitle
+
+\section*{14.8.1}
+
+令$u := max(a, c), v := min(b, d)$。
+
+所以$u \geq a$，有以下情况：
+
+$u > a, u = c$，任意$x \in [a, u), x \notin [c, d], f(x) = 0$，所以$\int_{[a, u)} f = 0$。
+
+$u = a$，则$\int_{[a, u)} f = 0$。
+
+        又$v \leq b$，有以下情况：
+
+      $v < b, v = d$，任意$x \in (v, b], x \notin [c, d], f(x) = 0$，所以$\int_{(v, b]} f = 0$。
+
+$v = b$，则$\int_{(v, b]} f = 0$。
+
+综上，
+\begin{align*}
+  \int_{[a, b]} f = \int_{[a, u)} f + \int_{[u, v]} f + \int_{(v, b]} f = \int_{[u, v]} f
+\end{align*}
+
+同理可得
+\begin{align*}
+  \int_{[c, d]} f = \int_{[c, u)} f + \int_{[u, v]} f + \int_{(v, d]} f = \int_{[u, v]} f
+\end{align*}
+
+所以$\int_{[a, b]} f = \int_{[c, d]} f$
+
+\section*{14.8.2}
+
+\begin{itemize}
+  \item (a)
+
+        $n = 0$时，$(1 - y)^0 = 1, 1 - 0 y = 1$，命题成立。
+
+        $n \geq 1$时，
+        令$f : = (1-y)^{n}$，对$y$进行求导，
+        \begin{align*}
+          f^\prime = n (1 - y)^{n - 1} (-1)
+        \end{align*}
+        又$f(0) = 1$，对任意$y \in [0, 1]$，由推论10.2.9（中值定理）可得，
+        存在$x \in (0, 1)$，使得
+        \begin{align*}
+          f^\prime(x)             & = \frac{f(y) - f(0)}{y - 0} \\
+          n (1 - x)^{n - 1} (-1)  & = \frac{(1-y)^{n} - 1}{y}   \\
+          1 - n (1 - x)^{n - 1} y & = (1-y)^{n}
+        \end{align*}
+        因为$x \in (0, 1)$,所以$(1 - x)^{n - 1} \leq 1$，所以
+        \begin{align*}
+          1 - n (1 - x)^{n - 1} y & \geq 1 - n y
+        \end{align*}
+        综上可得
+        \begin{align*}
+          (1-y)^{n} = 1 - n (1 - x)^{n - 1} y & \geq 1 - n y
+        \end{align*}
+
+  \item (b)
+
+        $n = 0$时，$\frac{1}{\sqrt{0}}$是没有意义的，不做讨论。
+
+        $n \geq 1$时，$\frac{1}{\sqrt{n}} \leq 1$，于是，我们有
+        \begin{align*}
+          \int_{-1}^{1} (1 - x^2)^n dx & = \int_{-1}^{-\frac{1}{\sqrt{n}}} (1 - x^2)^n dx + \int_{-\frac{1}{\sqrt{n}}}^{\frac{1}{\sqrt{n}}} (1 - x^2)^n dx + \int_{\frac{1}{\sqrt{n}}}^{1} (1 - x^2)^n dx
+        \end{align*}
+        当$x \in [-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]$，即$|x| \leq \frac{1}{\sqrt{n}}$时，
+        由(a)可知$(1 - x^2)^n \geq 1 - nx^2 \geq 0$；
+
+        当$x \in [-1, -\frac{1}{\sqrt{n}}]$或$x \in [\frac{1}{\sqrt{n}}, 1]$即$|x| \geq \frac{1}{\sqrt{n}}$时，
+        $1 - x^2 \geq 0$。
+
+        于是可得
+        \begin{align*}
+          \int_{-1}^{1} (1 - x^2)^n dx  \geq \int_{-\frac{1}{\sqrt{n}}}^{\frac{1}{\sqrt{n}}} (1 - x^2)^n dx
+           & \geq \int_{-\frac{1}{\sqrt{n}}}^{\frac{1}{\sqrt{n}}} 1 - nx^2 dx                                   \\
+           & = (x - \frac{nx^3}{3})|_{x = \frac{1}{\sqrt{n}}} - (x - \frac{nx^3}{3})|_{x = -\frac{1}{\sqrt{n}}} \\
+           & = \frac{2}{3\sqrt{n}} + \frac{2}{3\sqrt{n}}                                                        \\
+           & = \frac{4}{3\sqrt{n}}                                                                              \\
+           & \geq \frac{1}{\sqrt{n}}
+        \end{align*}
+
+  \item (c)
+
+        令函数$f$，当$x \in [-1, 1]$时，$f(x) := c(1-x^2)^N$，当$x \notin [-1, 1]$时，$f(x) = 0$；
+        于是定义14.8.6(a)已经满足。
+
+        现在我们要满足14.8.6(b)，因为
+        \begin{align*}
+          \int_{-\infty}^{+\infty} f = \int_{-1}^{1} c(1-x^2)^N = c \int_{-1}^{1} (1-x^2)^N
+        \end{align*}
+
+        所以令$c := \frac{1}{\int_{-1}^{1} (1-x^2)^N}$，那么，14.8.6(b)也已满足。
+
+        现在我们要满足14.8.6(c)，因为
+        \begin{align*}
+          |f(x)| = |c(1-x^2)^N|
+        \end{align*}
+
+        由(b)可知，$0 \leq c \leq \sqrt{N}$。
+
+        于是
+        \begin{align*}
+          |f(x)| = |c(1-x^2)^N| \leq \sqrt{N} (1-x^2)^N \leq \sqrt{N} (1-\delta^2)^N
+        \end{align*}
+
+        我们需要使得以下成立：
+        \begin{align*}
+          \sqrt{N} (1-\delta^2)^N \leq \epsilon
+        \end{align*}
+
+        问题最终是变成：确定满足以上不等式的$N$是否存在。
+
+        令$y := 1 - \delta^2$，根据14.8.6(c)的前置条件可知，$0 < y < 1$。
+        接下来，我们只需证明$\lim \limits_{N \to \infty} \sqrt{N} y^N = 0$，即可完成证明。
+
+        使用推论7.5.3（比值判别法）
+        \begin{align*}
+          \lim \sup \limits_{N \to \infty} \frac{\sqrt{N+1} y^{N + 1}}{\sqrt{N} y^N}
+          = \lim \sup \limits_{N \to \infty} y \sqrt{1 + \frac{1}{N}}
+        \end{align*}
+        因为$\lim\limits_{N \to \infty} \sqrt{1 + \frac{1}{N}} = 1$，且$0 < y < 1$，可得
+        \begin{align*}
+          \lim \sup \limits_{N \to \infty} \frac{\sqrt{N+1} y^{N + 1}}{\sqrt{N} y^N}
+          = \lim \sup \limits_{N \to \infty} y \sqrt{1 + \frac{1}{N}}
+          < 1
+        \end{align*}
+        于是可得，级数$\sum \limits_{N = 1}^{\infty} \sqrt{N} y^N$是绝对收敛的，因此其通项$\sqrt{N} y^N$收敛。
+
+\end{itemize}
+
+\section*{14.8.3}
+
+按照书中提示的思路进行证明。
+
+因为$f: \mathbb{R} \to \mathbb{R}$是连续的紧支撑函数，那么，存在一个区间$[a, b]$，对所有的$x \notin [a,b]$都有
+$f(x) = 0, f(a) = f(b) = 0$。因为$[a,b]$是$\mathbb{R}$的子集，且是闭区间，由定理9.1.24（直线上的海涅-博雷尔定理）(b)可知，
+$[a, b]$是紧致的（符合定义12.5.1（紧致性））。
+
+利用命题13.3.2可知$f|_{[a,b]}$是有界的。又$x \notin [a, b], f(x) = 0$可知，$f$是有界的。
+
+利用定理13.3.5可知$f|_{[a,b]}$是一致连续的，
+又$x \notin [a, b], f(x) = 0, f(a)=f(b)=0$可知，
+$f$是一致连续的。
+
+\section*{14.8.4}
+
+\begin{itemize}
+  \item (a)
+
+        \begin{itemize}
+          \item $f \ast g$有支撑区间。
+
+                $f,g$都是连续的紧支撑函数，不妨设$f$支撑在$[a,b]$上，$g$支撑在$[c,d]$上，于是函数$g(x - y)$支撑在$[x - d, x - c]$
+                （把$y$看做自变量，$x$是常量，$c \leq x - y \leq d$，所以$x - d \leq y \leq x - c$）。
+
+                如果$[a,b] \cap [x - d, x - c] = \varnothing$，
+                此时，$b < x - d$或$a > x - c$，即$x > b + d$或$x < a + c$，
+                则无论$y$如何取值，总有$f(y)g(x-y) = 0$，因为$y \notin [a,b] \cap [x - d, x - c] = \varnothing$ 。
+                于是可得，$[a + c, b + d]$是$f \ast g$的支撑区间。
+
+          \item $f \ast g$是连续函数。
+
+                由习题$14.8.3$可知，存在$M > 0$使得任意$x \in \mathbb{R}$都有$|f(x)| \leq M$；
+                对任意$\epsilon > 0$，存在$\delta > 0$，只要$x, x^\prime \in \mathbb{R}, |x - x^\prime| < \delta$，
+                就有
+                \begin{align*}
+                  |g(x) - g(x^\prime)| < \epsilon
+                \end{align*}
+
+                对任意$x_0 \in \mathbb{R}$，只要$|x - x_0| < \delta$，
+                我们有
+                \begin{align*}
+                  f \ast g(x) - f \ast g(x_0)
+                   & = \int_{-\infty}^{\infty} f(y)g(x - y) dy - \int_{-\infty}^{\infty} f(y)g(x_0 - y) dy                         \\
+                   & = \int_{[a, b] \cap [x - d, x - c]} f(y)g(x - y) dy - \int_{[a, b] \cap [x_0 - d, x_0 - c]} f(y)g(x_0 - y) dy \\
+                   & = \int_{[a, b]} f(y)g(x - y) dy - \int_{[a, b]} f(y)g(x_0 - y) dy                                             \\
+                   & = \int_{[a, b]} f(y)(g(x - y) - g(x_0 - y)) dy                                                                \\
+                   & \leq M \int_{[a, b]} (g(x - y) - g(x_0 - y)) dy                                                               \\
+                   & \leq M |b-a|\epsilon
+                \end{align*}
+                所以$f \ast g$在$x_0$处连续，由$x_0$的任意性值，$f \ast g$连续。
+        \end{itemize}
+  \item (b)
+
+        利用命题11.10.6（变量替换公式II），解决自变量不同的问题，但用的是它的推论，即$\phi$是单减的，注意证明过程中符号的变化。
+
+        定义$\phi (y) := x - y$函数$\phi : [c, d] \cap [x - b, x - a] \to [a, b] \cap [x - d, x - c]$，
+        以区间的方式表示$\phi: [max(c, x - b), min(d, x - a)] \to [min(b, x - c), max(a, x - d)]$。
+
+        \begin{align*}
+          f \ast g(x) & = \int_{[a, b] \cap [x - d, x - c]} f(y)g(x - y) dy                       \\
+                      & = \int_{[max(a, x - d), min(b, x - c)]} f(y)g(x - y)                      \\
+                      & = - \int_{[max(c, x - b), min(d, x - a)]} f(\phi(y))g(x - \phi(y)) d_\phi \\
+                      & = - \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y) d_{x - y}          \\
+                      & = - \int_{[max(c, x - b), min(d, x - a)]} -f(x - y)g(y)                   \\
+                      & = \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y)                      \\
+                      & = \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y) dy                   \\
+                      & = g \ast f(x)
+        \end{align*}
+        （注意第二个等式，使用了推论11.10.3）
+  \item (c)
+        \begin{align*}
+          f \ast (g + h)(x) & = \int_{-\infty}^{\infty} f(y)(g + h)((x - y)) dy                               \\
+                            & = \int_{-\infty}^{\infty} f(y)(g(x - y) + h(x - y)) dy                          \\
+                            & = \int_{-\infty}^{\infty} f(y)g(x - y) + f(y)h(x - y) dy                        \\
+                            & = \int_{-\infty}^{\infty} f(y)g(x - y) + \int_{-\infty}^{\infty}f(y)h(x - y) dy \\
+                            & = f \ast g(x) + f \ast h(x)
+        \end{align*}
+        \begin{align*}
+          f * (cg)(x) & = \int_{-\infty}^{\infty} f(y)(cg)(x - y)  dy \\
+                      & = \int_{-\infty}^{\infty} f(y)cg(x - y)  dy   \\
+                      & = c\int_{-\infty}^{\infty} f(y)g(x - y)  dy   \\
+                      & = c(f \ast g(x))
+        \end{align*}
+\end{itemize}
+
+\section*{14.8.5}
+
+$y \notin [0, 1], f(y) = 0$，这部分的积分无需考虑，只需考虑$y \in [0, 1]$这部分。
+$y \in [0, 1], x \in [1, 2]$时，$x - y \in [0, 1]$，此时$g(x - y) - c$。
+
+于是对任意$x_0 \in [1, 2]$，我们有
+\begin{align*}
+  f \ast g(x_0) & = \int_{-\infty}^{\infty} f(y)g(x_0 - y) dy \\
+                & = \int_{[0, 1]} f(y) c dy
+\end{align*}
+
+上式的结果与$x_0$的取值无关，命题得证。
+
+\section*{14.8.6}
+
+\begin{itemize}
+  \item (a)
+        因为$g$支撑在$[-1, 1]$上，所以
+        \begin{align*}
+          \int_{-\infty}^{\infty} g = \int_{-1}^{1} g = 1
+        \end{align*}
+        又因为$-1 \leq x \leq 1$都有$g(x) \geq 0$，
+        所以，
+        \begin{equation*}
+          \begin{cases*}
+            \int_{[-1, \delta)} g \geq 0 \\
+            \int_{(\delta, 1]} g \geq 0
+          \end{cases*}
+        \end{equation*}
+        我们有
+        \begin{align*}
+          \int_{-1}^{1} g = \int_{[-1, \delta)} g + \int_{[-\delta, \delta]} g + \int_{(\delta, 1]} g = 1
+        \end{align*}
+        于是可得
+        \begin{align*}
+          \int_{[-\delta, \delta]} g \leq 1
+        \end{align*}
+
+        又由$\delta \leq |x| \leq 1$均有$|g(x)| \leq \epsilon$，我们有
+        \begin{align*}
+           & 1 = \int_{[-1, \delta)} g + \int_{[-\delta, \delta]} g + \int_{(\delta, 1]} g \leq \int_{[-\delta, \delta]} g + 2(1 - \delta)\epsilon \\
+           & \implies                                                                                                                              \\
+           & 1 - 2(1 - \delta) \epsilon \leq \int_{[-\delta, \delta]} g
+        \end{align*}
+        因为$0 < \delta < 1$，可得
+        \begin{align*}
+          1 - 2\epsilon < 1 - 2(1 - \delta) \epsilon \leq \int_{[-\delta, \delta]} g
+        \end{align*}
+
+  \item (b)
+
+        按照书中提示的思路进行证明。
+
+        \begin{itemize}
+          \item 第一个积分接近于$f(x)$。
+
+                因为$y \in [-\delta, \delta]$，所以$|x - y - x| = |y| \leq \delta$，
+                有题设可知$|f(x - y) - f(x)| \leq \epsilon$即$f(x) - \epsilon \leq f(x-y) \leq f(x) + \epsilon$。
+
+                结合(a)可知
+                \begin{align*}
+                   & \int_{[-\delta, \delta]} (f(x) - \epsilon) g(y) dy \leq \int_{[-\delta, \delta]} f(x - y) g(y) dy \leq \int_{[-\delta, \delta]} (f(x) + \epsilon) g(y) dy   \\
+                   & \implies                                                                                                                                                    \\
+                   & (f(x) - \epsilon) \int_{[-\delta, \delta]}  g(y) dy \leq \int_{[-\delta, \delta]} f(x - y) g(y) dy \leq (f(x) + \epsilon) \int_{[-\delta, \delta]}  g(y) dy \\
+                   & \implies                                                                                                                                                    \\
+                   & (f(x) - \epsilon)(1 - 2\epsilon) \leq \int_{[-\delta, \delta]} f(x - y) g(y) dy \leq (f(x) + \epsilon)
+                \end{align*}
+                于是结合$|f(x)| \leq M$，
+                \begin{align*}
+                  -2f(x)\epsilon - \epsilon + 2\epsilon^2 \leq \int_{[-\delta, \delta]} f(x - y) g(y) dy - f(x) \leq \epsilon \\
+                  -2M\epsilon - \epsilon + 2\epsilon^2 \leq \int_{[-\delta, \delta]} f(x - y) g(y) dy - f(x) \leq \epsilon
+                \end{align*}
+          \item 第二个和第三个积分的取值范围
+
+                由定义14.8.6（恒等逼近）的性质(c)和$|f(x)| \leq M$可得，
+                \begin{align*}
+                   & \int_{[\delta, 1]} f(x - y)g(y)dy                                                    \\
+                   & \implies                                                                             \\
+                   & -M(1-\delta)\epsilon \leq \int_{[\delta, 1]} f(x - y)g(y)dy \leq M(1-\delta)\epsilon
+                \end{align*}
+                同理可得，
+                \begin{align*}
+                   & -M(1-\delta)\epsilon \leq \int_{[-1, -\delta]} f(x - y)g(y)dy \leq M(1-\delta)\epsilon
+                \end{align*}
+        \end{itemize}
+
+        综上可得，
+        \begin{align*}
+           & -2M\epsilon - \epsilon + 2\epsilon^2 -2M(1-\delta)\epsilon \leq |f \ast g(x) - f(x)| \leq 2M(1-\delta)\epsilon + \epsilon \\
+           & \implies                                                                                                                  \\
+           & -4M\epsilon - \epsilon \leq |f \ast g(x) - f(x)| < 4M\epsilon + \epsilon                                                  \\
+           & \implies                                                                                                                  \\
+           & |f \ast g(x) - f(x)| \leq (1 + 4M)\epsilon
+        \end{align*}
+        （注意，以上用到了$1 - \delta < 1, - \epsilon + 2\epsilon^2 > -\epsilon$）
+
+\end{itemize}
+
+\section*{14.8.7}
+
+
+
+
+\end{document}
