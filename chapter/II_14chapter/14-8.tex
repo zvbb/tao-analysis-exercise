@@ -337,6 +337,35 @@ $y \in [0, 1], x \in [1, 2]$时，$x - y \in [0, 1]$，此时$g(x - y) - c$。
 
 \section*{14.8.7}
 
+因为$f$是支撑在$[0,1]$上的连续函数，于是由习题14.8.3可知，$f$是有界的，并且是一致连续的。
+于是可得存在$M > 0$，$f$以$M$为界。任意$\epsilon^\prime > 0$，
+因为$f$是一致连续的，那么，存在$\delta^\prime > 0$，
+使得只要$x, y \in \mathbb{R}, |x - y| < \delta^\prime$，
+就有$|f(x) - f(y)| < \epsilon^\prime$。
+取$min(1, \delta^\prime) > \delta > 0$，那么，
+$x, y \in \mathbb{R}, |x - y| < \delta$，
+就有$|f(x) - f(y)| < \epsilon^\prime$。
+
+由引理14.8.8可知，存在一个$[-1, 1]$上的多项式$g$，并且它是一个$(\epsilon^\prime, \delta)$恒等逼近。
+
+综上，由引理14.8.14可知，对所有的$x \in [0, 1]$都有，
+\begin{align*}
+  |f \ast g(x) - f(x)| \leq (1 + 4M)\epsilon^\prime
+\end{align*}
+
+又由引理14.8.13可知，$f \ast g$是$[0, 1]$上的多项式，
+$P(x) := f \ast g(x)$就是我们需要的多项式。
+
+以上讨论对任意$\epsilon^\prime$都成立，于是对任意的$\epsilon > 0$，
+设$\epsilon^\prime = \frac{1}{1+4M}\epsilon$，那么，对所有的$x \in [0, 1]$都有，
+\begin{align*}
+  |P(x) - f(x)| \leq (1 + 4M)\epsilon^\prime = \epsilon
+\end{align*}
+
+命题得证。
+
+\section*{14.8.8}
+
 
 
 
