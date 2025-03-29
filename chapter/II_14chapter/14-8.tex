@@ -366,7 +366,70 @@ $P(x) := f \ast g(x)$就是我们需要的多项式。
 
 \section*{14.8.8}
 
+任意多项式$P$，我们可以找到一个整数$n \geq 0$和实数$c_0, c_1, \dots, c_n$使得
+\begin{align*}
+  P(x) = \sum\limits_{j = 0}^n c_j x^j, \;\; x \in [0, 1]
+\end{align*}
 
+于是我们有，
+\begin{align*}
+  \int_{[0, 1]} f(x) P(x) dx
+   & = \int_{[0, 1]} f(x) \sum\limits_{j = 0}^n c_j x^j    \\
+   & = \sum\limits_{j = 0}^n c_j \int_{[0, 1]} f(x) x^j dx \\
+   & = 0
+\end{align*}
+
+由推论14.8.16可知，对任意$\epsilon > 0$，存在$P_0: \mathbb{R} \to \mathbb{R}$，它是$[0, 1]$上的多项式，
+并使得$|P_0(x) - f(x)| \leq \epsilon$。于是可得$P_0(x) = f(x) + c\epsilon$，其中$-1 \leq c \leq 1$。
+于是
+\begin{align*}
+  \int_{[0, 1]} f(x) P_0(x) dx = 0
+   & = \int_{[0, 1]} f(x) (f(x) + c\epsilon)dx                        \\
+   & = \int_{[0, 1]} f(x) f(x) dx + \int_{[0, 1]} + c\epsilon f(x) dx
+\end{align*}
+
+因为
+\begin{align*}
+  \int_{[0, 1]} c \epsilon f(x) dx = c \epsilon \int_{[0, 1]} f(x) x^0 dx = 0
+\end{align*}
+于是可得
+\begin{align*}
+  \int_{[0, 1]} f(x) f(x) dx = 0
+\end{align*}
+
+反证法，假设$f \not \equiv 0$，即存在$x_0 \in [0, 1]$使得$f(x_0) \neq 0$。
+
+因为$f(x)$是一个连续函数，那么$f(x)f(x)$也是连续函数，且是非负的。于是对$\epsilon = \frac{1}{2}f(x_0)f(x_0) > 0$，
+存在$\delta > 0$使得$x \in [0, 1], |x - x_0| < \delta$，
+就有$|f(x)f(x) - f(x_0)f(x_0) < \epsilon$，
+于是可得
+\begin{align*}
+  f(x)f(x) \geq f(x_0)f(x_0) - \epsilon = \frac{1}{2}f(x_0)f(x_0)
+\end{align*}
+
+我们有
+\begin{align*}
+  \int_{[0, 1]} f(x) f(x) dx
+   & \geq \int_{[x_0 - \delta, x_0 + \delta]} f(x)f(x) dx \\
+   & \geq 2\delta \frac{1}{2} f(x_0)f(x_0)                \\
+   & = \delta f(x_0)f(x_0)                                \\
+   & > 0
+\end{align*}
+存在矛盾。
+
+\section*{14.8.9}
+
+如果$x_0 = 0$，对任意$\epsilon > 0$，由$f$在$[0, 1]$上连续可知，存在$\delta > 0$，使得只要
+$x \in [0, 1], 0 \leq x - x_0 < \delta$，就有$|f(x) - f(0)| < \epsilon$。又由$x \notin [0, 1], F(x) = 0$可知，
+当$ -\delta < x - x_0 < 0$，就有$|F(x) - F(0)| = 0 < \epsilon$。
+所以，只要$|x - x_0| < \delta$，就有$|F(x) - F(0)| < \epsilon$，
+于是$F$在$0$处是连续的。
+
+同理可得，$F$在$1$处是连续的。
+
+$x_0 \in \mathbb{R} \setminus (0, 1)$时， $F$在$x_0$上的连续性是易证的，这里不做说明。
+
+综上，$F$是连续的。
 
 
 \end{document}
