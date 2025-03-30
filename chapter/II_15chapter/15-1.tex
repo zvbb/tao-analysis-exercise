@@ -23,6 +23,170 @@
 \maketitle
 
 \section*{15.1.1}
+\begin{align*}
+  \lim\sup\limits_{n \to \infty} |c_n(x -a)^n|^\frac{1}{n}
+   & = \lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x -a|
+\end{align*}
 
+\begin{itemize}
+  \item (a)
+
+        由定义15.1.3（收敛半径）可知，
+
+        （1）$R = + \infty$，那么，$|x - a| > R$这个前置条件无法成立。
+
+        （2）$R = 0$，那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = +\infty$，且
+        $|x - a| > 0$，所以，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x -a| > 1$，
+        由定理7.5.1(b)可知，级数发散。
+
+        （3）$R > 0$（$R$是实数）。那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = \frac{1}{R}$，
+        于是，$|x - a| > R$，
+        那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x - a| = \frac{1}{R} |x - a| > 1$，
+        （注意：$|x - a|$此时可以看做常数，
+        $\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x - a| = \frac{1}{R} |x - a|$可以通过反证法证明）
+        由定理7.5.1(b)可知，级数发散。
+  \item (b)
+
+        由定义15.1.3（收敛半径）可知，
+
+        （1）$R = + \infty$，那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = 0$且$|x - a| < R$总能成立，
+        于是$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x -a| = 0$，
+        由定理7.5.1(a)可知，级数绝对收敛。
+
+        （2）$R = 0$，那么，$|x - a| < R$这个前置条件无法成立。
+
+        （3）$R > 0$（$R$是实数）。那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = \frac{1}{R}$，
+        于是，$|x - a| < R$，
+        那么，$\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}|x - a| = \frac{1}{R} |x - a| < 1$，
+        由定理7.5.1(b)可知，级数绝对收敛。
+  \item (c)
+
+        （1）一致收敛于$f$。
+
+        由定义14.5.2（无限级数）可知，
+        我们需要证明$N \to \infty$时，
+        部分和$\sum\limits_{n = 0}^N f^{(n)}$，
+        其中$f^{(n)} := c_n(x - a)^n$，沿着$[a -r, a + r]$一致收敛于$f$。
+
+        于是，利用14.5.7（威尔斯特拉斯M判别法），我们需要证明
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty ||f^{(n)}||_\infty
+        \end{align*}
+        是收敛的。
+
+        因为$|c_n(x - a)^n|$在$[a, a+r]$上是单增的，
+        所以$x_0 = a + r$时，$f^{(n)} = c_n(x_0 - a)^n$取最大值，
+        即$||f^{(n)}||_\infty = |c_n(x_0 − a)n|$。
+
+        同理，$x_0 = a - r$时，$f^{(n)} = c_n(x_0 - a)^n$取最大值。
+
+        由(b)可得，对任意$x_0 \in [a - r, a + r], \sum\limits_{n = 0}^\infty c_n(x_0 - a)^n$是绝对收敛的，
+        即$\sum\limits_{n = 0}^\infty |c_n(x_0 - a)^n|$是收敛的。
+
+        特别地，$x_0 = a + r$或$x_0 = a - r$，级数也是收敛的，即$\sum\limits_{n = 0}^\infty ||f^{(n)}||_\infty$
+        收敛。
+
+        于是可知，
+        级数$\sum\limits_{n = 0}^\infty f^{(n)}$一致收敛于某个函数，
+        即级数$\sum\limits_{n = 0}^\infty c_n(x - a)^n$一致收敛于某个函数。
+        （注意：这里的函数用$\sum\limits_{n = 0}^\infty c_n(x - a)^n$本身表示，它代表一致收敛的函数$f$）。
+
+
+        （2）$f$是连续的。
+
+        对于每一个$N$，函数$\sum\limits_{n = 0}^N f^{(n)}$都是连续的
+        （这里其实有借助定义14.5.2），由推论14.3.2可知，$f$是连续的。
+
+  \item (d)
+
+        令$f_n = c_n(x - a)^n$，于是$f_n$是连续且可微的，
+        且导函数$f_n^\prime = nc_n(x - a)^{n - 1}$也是连续的。
+
+        我们有（$r < R$）
+        \begin{align*}
+          \sum\limits_{n = 1}^\infty ||f_n^\prime||_\infty
+           & = \sum\limits_{n = 1}^\infty nc_nr^{n - 1} \\
+        \end{align*}
+
+        结合例15.1.15可知：
+        \begin{align*}
+          \lim\sup\limits_{n \to \infty} (nc_nr^n)^\frac{1}{n}
+           & = \lim\sup\limits_{n \to \infty} n^\frac{1}{n} \lim\sup\limits_{n \to \infty} (c_nr^n)^\frac{1}{n} \\
+           & < 1
+        \end{align*}
+        于是可得$\sum\limits_{n = 1}^\infty nc_nr^n$收敛。
+
+        因为
+        \begin{align*}
+          \sum\limits_{n = 1}^\infty nc_nr^{n - 1} = r^{-1} \sum\limits_{n = 1}^\infty nc_nr^{n}
+        \end{align*}
+        可得，$\sum\limits_{n = 1}^\infty nc_nr^{n - 1}$收敛。
+
+        综上，由威尔斯特拉斯M判别法可知，$\sum \limits_{n = 1}^\infty f_n^\prime$一致收敛于某个函数$g$。
+
+        又$x_0 = a$时，
+        \begin{align*}
+          \sum \limits_{n = 1}^\infty c_n(x_0 - a)^n = 0
+        \end{align*}
+
+        $F_N = \sum \limits_{n = 1}^N c_n(x - a)^n$是一个可微函数，
+        并且其倒数$F_N^\prime = \sum \limits_{n = 1}^N nc_n(x - a)^{n - 1} = \sum \limits_{n = 1}^N f_N^\prime$是连续的。
+        又由之前的讨论可知，导函数序列$F_N^\prime$一致收敛于某个函数$g$，
+        并且存在一点$x_0 = a$使得极限$\lim\limits_{n \to \infty} F_N(x_0) = \sum \limits_{n = 1}^\infty c_n(x_0 - a)^n = 0$，
+        由定理14.7.1可知，函数序列$F_N$一致收敛于一个可微函数，由该函数的唯一性可知，$F_N$一致收敛于$f$，并且$f$的导函数等于$g$。
+        所以$g = f^\prime$。
+
+  \item (e)
+
+        由推论14.6.2可知，
+        \begin{align*}
+          \int_{[y, z]} f
+           & = \sum\limits_{n = 0}^\infty \int_{[y, z]} x_n(x - a)^n                                          \\
+           & = \sum\limits_{n = 0}^\infty \frac{c_n(x - a)^{n + 1}}{n + 1}|_y^z                               \\
+           & = \sum\limits_{n = 0}^\infty \frac{c_n(z - a)^{n + 1}}{n + 1} - \frac{c_n(y - a)^{n + 1}}{n + 1} \\
+           & = \sum\limits_{n = 0}^\infty c_n\frac{(z - a)^{n + 1} - (y - a)^{n + 1}}{n + 1}                  \\
+        \end{align*}
+\end{itemize}
+
+\section*{15.1.2}
+
+\begin{itemize}
+  \item (a)
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty x^n
+        \end{align*}
+
+  \item (b)
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty \frac{x^n}{n}
+        \end{align*}
+
+        使用推论7.3.7、命题7.2.12（交错级数判别法）可以验证是否正确。
+
+  \item (c)
+
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty \frac{(-1)^n}{n} x^n
+        \end{align*}
+
+        使用推论7.3.7、命题7.2.12（交错级数判别法）可以验证是否正确。
+
+  \item (d)
+
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty \frac{x^n}{n^2}
+        \end{align*}
+
+        使用推论7.3.7、命题7.2.12（交错级数判别法）可以验证是否正确。
+
+  \item (d)
+
+        \begin{align*}
+          \sum\limits_{n = 0}^\infty x^n
+        \end{align*}
+
+        例14.5.8中有说明。
+
+\end{itemize}
 
 \end{document}
