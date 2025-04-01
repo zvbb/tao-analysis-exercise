@@ -1,0 +1,221 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{15.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{15.2.1}
+
+\begin{itemize}
+  \item $0 \leq k \leq n$时。
+
+        对$k$采用归纳法。
+
+        归纳基始$k = 0$，$c\frac{n!}{(n - 0)!}(x - a)^{n - 0} = c(x - a)^n = f(x)$，
+        这与$f^{(0)}(x) = f(x)$一致。
+
+        归纳假设$k = j$是命题成立。
+
+        $k = j + 1$时，
+        \begin{align*}
+          f^{(j + 1)}(x)
+           & = (f^{(j)}(x))^\prime                                    \\
+           & = (c\frac{n!}{(n - j)!}(x - a)^{n - j})^\prime           \\
+           & = c\frac{n!}{(n - j)!}(n - j)(x - a)^{n - j - 1}         \\
+           & = c\frac{n!}{(n - (j + 1))!}(n - j)(x - a)^{n - (j + 1)} \\
+        \end{align*}
+
+  \item $k > n$时。
+
+        由之前的讨论可知，
+        \begin{align*}
+          f^{(n)}(x)
+           & = c\frac{n!}{(n - n)!}(x - a)^{n - n} \\
+           & = cn!
+        \end{align*}
+
+        于是可得$k > n$时，$f^{(k)}(x) = 0$。
+
+\end{itemize}
+
+\section*{15.2.2}
+对任意$a \in \mathbb{R} \setminus \{1\}$，
+定义级数如下
+\begin{align*}
+  \sum\limits_{n = 0}^\infty (\frac{1}{1-a})^{n + 1} (x - a)^n
+\end{align*}
+
+接下来我们证明该级数一致收敛于某个函数，并逐点收敛于$f$，由一致收敛与逐点收敛的函数相同，证明该级数一致收敛于$f$。
+
+先计算收敛半径：
+\begin{align*}
+  \lim\limits_{n \to \infty} |c_n|^\frac{1}{n}
+   & = \lim\limits_{n \to \infty} \left(|(\frac{1}{1-a})^{n + 1}|\right)^\frac{1}{n} \\
+   & = \lim\limits_{n \to \infty} |\frac{1}{1-a}| (|\frac{1}{1-a}|)^{\frac{1}{n}}    \\
+   & = |\frac{1}{1-a}|\lim\limits_{n \to \infty} (|\frac{1}{1-a}|)^{\frac{1}{n}}     \\
+   & = |\frac{1}{1-a}| \times 1                                                      \\
+   & = |\frac{1}{1-a}|
+\end{align*}
+$\lim\limits_{n \to \infty} (|\frac{1}{1-a}|)^{\frac{1}{n}} = 1$利用了引理6.5.2。
+
+于是由命题6.4.12(f)可得，
+\begin{align*}
+  \lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = |\frac{1}{1-a}|
+\end{align*}
+所以
+\begin{align*}
+  R = |1 - a|
+\end{align*}
+于是令$r = \frac{1}{2}|1 - a|$，只需$|x - a| < r$，
+即$x \in (a - r, a + r)$时，由定理15.1.6(c)可知，
+级数$\sum\limits_{n = 0}^\infty (\frac{1}{1-a})^{n + 1} (x - a)^n$在$[a - r, a + r]$上一致收敛
+于某个函数$g$，因为$(a - r, a + r) \subseteq [a - r, a + r]$，
+所以级数$\sum\limits_{n = 0}^\infty (\frac{1}{1-a})^{n + 1} (x - a)^n$
+在$(a - r, a + r)$上也一致收敛于$g$。
+
+对任意$x \in (a - r, a + r)$，于是可得
+\begin{align*}
+  |\frac{x - a}{1-a}| < 1
+\end{align*}
+于是利用引理7.3.3可得
+\begin{align*}
+  \sum\limits_{n = 0}^\infty (\frac{1}{1-a})^{n + 1} (x - a)^n
+   & = \frac{1}{1-a} \sum\limits_{n = 0}^\infty (\frac{x - a}{1-a})^{n} \\
+   & = \frac{1}{1-a} \frac{1}{1 - \frac{x - a}{1-a}}                    \\
+   & = \frac{1}{1 - x}
+\end{align*}
+
+于是可得级数逐点收敛于$f$。
+
+综上，级数$\sum\limits_{n = 0}^\infty (\frac{1}{1-a})^{n + 1} (x - a)^n$在$(a - 1, a + 1)$上也一致收敛
+于$f$（注14.2.8中有阐述）。
+
+由$a$的任意性可知，命题成立。
+
+\section*{15.2.3}
+注意：命题中的$r \leq R$（$R$为级数$\sum\limits_{n = 1}^\infty nc_n (x - a)^{n - 1}$的收敛半径）
+
+对$k$进行归纳。
+
+（1）归纳基始$k = 1$，由定理15.1.6(d)可知，
+级数$\sum\limits_{n = 1}^\infty nc_n (x - a)^{n - 1}$
+在区间$(a - r, a + r)$上一致收敛$f^\prime$，
+即
+\begin{align*}
+  f^\prime(x) & = \sum\limits_{n = 1}^\infty nc_n (x - a)^{n - 1}         \\
+              & = \sum\limits_{n = 0}^\infty c_{n + 1}(n + 1) (x - a)^{n}
+\end{align*}
+命题成立。
+
+（2）归纳假设$k = j$时，命题成立，函数$f$在$(a - r, a + r)$上都是$j$次可微的，
+并且$j$次导函数由下式给出：
+\begin{align*}
+  f^{(j)}(x) = \sum\limits_{n = 0}^\infty c_{n + j}(n+1)(n+2)...(n + j)(x - a)^n
+   & = \sum\limits_{n = 0}^\infty c_{n+j}\frac{(n+j)!}{n!}(x - a)^n
+\end{align*}
+
+（3）$k = j+1$时。
+\begin{align*}
+  \lim\sup\limits_{n \to \infty} |c_{n+j}\frac{(n+j)!}{n!}|^{\frac{1}{n}}
+   & = \lim\sup\limits_{n \to \infty} |c_{n+j}|^{\frac{1}{n}}|\frac{(n+j)!}{n!}|^{\frac{1}{n}}                                 \\
+   & = \lim\sup\limits_{n \to \infty} |c_{n+j}|^{\frac{1}{n}} \lim\sup\limits_{n \to \infty} |\frac{(n+j)!}{n!}|^{\frac{1}{n}} \\
+   & = \lim\sup\limits_{n \to \infty} |c_{n+j}|^{\frac{1}{n}} \times 1                                                         \\
+   & = \lim\sup\limits_{n \to \infty} |c_{n+j}|^{\frac{1}{n}} = R
+\end{align*}
+
+再次利用定理15.1.6(d)可知，
+函数$f^{(j)}$在$(a - R, a + R)$上可微，
+级数$\sum\limits_{n = 1}^\infty nc_{n+j}\frac{(n+j)!}{n!}(x - a)^{n - 1}$在
+区间$(a - r, a + r)$上一致收敛于$(f^{(j)})^\prime = f^{(j+1)}$。
+
+又因为
+\begin{align*}
+   & \sum\limits_{n = 1}^\infty nc_{n+j}\frac{(n+j)!}{n!}(x - a)^{n - 1}   \\
+   & = \sum\limits_{n = 0}^\infty nc_{n+1+j}\frac{(n+1+j)!}{n!}(x - a)^{n}
+\end{align*}
+
+综上可得
+\begin{align*}
+  f^{(j+1)} = \sum\limits_{n = 0}^\infty nc_{n+1+j}\frac{(n+1+j)!}{n!}(x - a)^{n}
+\end{align*}
+
+命题成立，归纳完成。
+
+\section*{15.2.4}
+
+由命题15.2.6可知，
+\begin{align*}
+  f^{(k)}(x) = \sum\limits_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!}(x - a)^{n}
+\end{align*}
+当$x = a$时，如果$n > 0$，则$(x - a)^n = 0^n = 0$，
+于是级数
+$\sum\limits_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!}(x - a)^{n}$
+只剩第一项，即
+\begin{align*}
+  f^{(k)}(a)
+   & = \sum\limits_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!}0^{n} \\
+   & = c_{0 + k}\frac{(0 + k)!}{0!}0^{0}                             \\
+   & = c_{k}\frac{k!}{1} \times 1                                    \\
+   & = c_{k}k!
+\end{align*}
+
+于是可得，级数$\sum\limits_{n = 0}^\infty c_n(x - a)^n$的系数为
+\begin{align*}
+  c_{n} = \frac{f^{(n)}(a)}{n!}
+\end{align*}
+
+综上可得
+\begin{align*}
+  f(x) = \sum\limits_{n = 0}^\infty \frac{f^{(n)}(a)}{n!}(x - a)^n
+\end{align*}
+
+\section*{15.2.5}
+（1）证明恒等式。
+
+\begin{align*}
+  (x - a)^n & = ((x - b) + (b - a))^n                                                \\
+            & = \sum\limits_{m = 0}^n \frac{n!}{m!(n - m)!} (b - a)^{n - m}(x - b)^m
+\end{align*}
+注意：第二个等式使用了二项式公式，即习题7.1.4。
+
+（2）解释这个恒等式为什么与泰勒公式以及习题15.2.1是一致的。（即彼此之间不存在矛盾）
+
+令$f(x) = (x - a)^n$，并设$f$是在$b$处实解析的函数（习题15.2.6保证了这个假设是成立的），
+由泰勒公式可知，
+\begin{align*}
+  f(x) = \sum\limits_{m = 0}^\infty \frac{f^{(m)}(b)}{m!}(x - b)^m
+\end{align*}
+
+由习题15.2.1可知，
+\begin{align*}
+  f^{(m)}(b) = \frac{n!}{(n - m)!}(b - a)^{n - m}
+\end{align*}
+
+综上可得，
+\begin{align*}
+  f(x) & = \sum\limits_{m = 0}^\infty \frac{f^{(m)}(b)}{m!}(x - b)^m            \\
+       & = \sum\limits_{m = 0}^n \frac{n!}{m!(n - m)!} (b - a)^{n - m}(x - b)^m
+\end{align*}
+
+\section*{15.2.6}
+
+
+\end{document}
