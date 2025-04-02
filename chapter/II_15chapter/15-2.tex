@@ -217,5 +217,79 @@ $\sum\limits_{n = 0}^\infty c_{n + k} \frac{(n + k)!}{n!}(x - a)^{n}$
 
 \section*{15.2.6}
 
+设$g$是一元多项式，所以我们可以找到一个正整数$m \geq 0$和实数$a_0, a_1, \dots, a_k$使得
+\begin{align*}
+  g(x) & = a_0 + a_1x + a_2x^2 + \dots + a_kx^k
+\end{align*}
+
+对任意$b \in \mathbb{R}$，结合习题15.2.5，我们有
+\begin{align*}
+  x^n = \sum\limits_{m = 0}^n \frac{n!}{m!(n - m)!} b^{n - m}(x - b)^m
+\end{align*}
+
+$j \leq k$时，令系数为
+\begin{align*}
+  c_j = \sum\limits_{n = 0}^k \frac{n!}{m!(n - m)!} b^{n - m}, \;\; m = j \text{且} m \leq n
+\end{align*}
+
+于是可以把$g(x)$表示为
+\begin{align*}
+  g(x) & = a_0 + a_1x + a_2x^2 + \dots + a_mx^m    \\
+       & = \sum\limits_{n = 0}^\infty c_n(x - b)^n
+\end{align*}
+其中，$n > k$时，$c_n = 0$。于是可得$g$在$b$处是实解析的。
+
+由$b$的任意性可知，$g$在$\mathbb{R}$上是实解析的，命题成立。
+
+\section*{15.2.7}
+
+（1）证明恒等式$\frac{r}{r - x} = \sum\limits_{n = 0}^\infty x^nr^{-n}, \;\; r \in (-r, r)$。
+
+因为
+\begin{align*}
+  x^nr^{-n} = (xr^{-1})^n = (\frac{x}{r})^n
+\end{align*}
+
+又
+\begin{align*}
+  |\frac{x}{r}| < 1
+\end{align*}
+
+于是利用引理7.3.3可知，任意$x \in (-r, r)$
+\begin{align*}
+  \sum\limits_{n = 0}^\infty x^nr^{-n} = \frac{1}{1 - \frac{x}{r}} = \frac{r}{r - x}
+\end{align*}
+
+（2）证明恒等式
+
+令$f(x) = \frac{r}{r - x}, x \in (-r, r)$，于是由(1)可得
+\begin{align*}
+  f(x) = \sum\limits_{n = 0}^\infty x^nr^{-n}, \;\; r \in (-r, r)
+\end{align*}
+其中幂级数第$n$个系数为$c_n = r^{-n}$。
+
+对$m \geq 0$，我们有（可以通过归纳法证明），
+\begin{align*}
+  f^{(m)}(x) = \frac{m!r}{(r - x)^{m + 1}}
+\end{align*}
+
+又
+\begin{align*}
+  (\sum\limits_{n = 0}^\infty x^nr^{-n})^{(m)}
+   & = \sum\limits_{n = 0}^\infty \frac{(n + m)!}{n!}x^nr^{-(n + m)} \\
+   & = \sum\limits_{n = m}^\infty \frac{n!}{(n - m)!}x^{n - m}r^{-n}
+\end{align*}
+
+利用命题15.2.6可知，
+\begin{align*}
+  f^{(m)}(x)                  & = \sum\limits_{n = m}^\infty \frac{n!}{(n - m)!}x^{n - m}r^{-n} \\
+                              & \implies                                                        \\
+  \frac{m!r}{(r - x)^{m + 1}} & = \sum\limits_{n = m}^\infty \frac{n!}{(n - m)!}x^{n - m}r^{-n}
+\end{align*}
+
+即：
+\begin{align*}
+  \frac{r}{(r - x)^{m + 1}} = \sum\limits_{n = m}^\infty \frac{n!}{m!(n - m)!}x^{n - m}r^{-n}
+\end{align*}
 
 \end{document}
