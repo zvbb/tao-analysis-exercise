@@ -445,19 +445,30 @@ $j \leq k$时，令系数为
         收敛。
 
         （2）一致收敛于$f(x)$。
-
-        todo 未找到方法解答
-
         \begin{align*}
           \sum \limits_{m = 0}^\infty d_m (x - b)^m
-           & = \sum \limits_{m = 0}^\infty  c_n(x - b)^m \sum \limits_{n = m}^\infty \frac{n!}{m!(n - m)!}(b - a)^{n - m}
+           & = \sum \limits_{m = 0}^\infty \sum \limits_{n = m}^\infty \frac{n!}{m!(n - m)!}(b - a)^{n - m}c_n(x - b)^m \\
+           & = \sum \limits_{n = 0}^\infty \sum \limits_{m = 0}^n \frac{n!}{m!(n - m)!}(b - a)^{n - m}(x - b)^m         \\
+           & = \sum \limits_{n = 0}^\infty c_n (x - b)^n
         \end{align*}
+        （注意：其中第二个等式，求和上下限的变换十分关键，建议绘制一张坐标图，$m, n$分别作为$x$轴和$y$轴）。
+
+        由上可得，
+        在$x \in (b - s, b + s)$上，
+        无限级数$\sum \limits_{m = 0}^\infty d_m (x - b)^m$
+        与无限级数$\sum \limits_{n = 0}^\infty c_n (x - b)^n$等价。
+
+        由题设可知，在$(a - r, a + r)$上$\sum \limits_{n = 0}^\infty c_n (x - b)^n$一致收敛于$f(x)$，
+        且$(b - s, b + s)$是$(a - r, a + r)$的子区间，
+        所以，$\sum \limits_{m = 0}^\infty d_m (x - b)^m$也一致收敛于$f(x)$。
+
+
 
   \item (f)
 
         对任意$b \in (a -r, a + r)$，存在$s > 0$使得$(b - s, b + s)$是$(a -r, a + r)$的子集，
         由(e)可知，对于所有的$x \in (b - s, b + s)$，
-        存在幂级数$\sum\limits_{m = 0}^\infty d_m (x - b)^m$收敛于$f$。
+        存在幂级数$\sum\limits_{m = 0}^\infty d_m (x - b)^m$收敛于$f$，命题得证。
 
 \end{itemize}
 
