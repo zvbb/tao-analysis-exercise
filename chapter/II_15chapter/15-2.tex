@@ -292,4 +292,172 @@ $j \leq k$时，令系数为
   \frac{r}{(r - x)^{m + 1}} = \sum\limits_{n = m}^\infty \frac{n!}{m!(n - m)!}x^{n - m}r^{-n}
 \end{align*}
 
+（3）证明绝对收敛。
+
+使用推论7.5.3（比值判别法）
+\begin{align*}
+   & \lim\sup\limits_{n \to \infty} \frac{\frac{(n + 1)!}{m!(n + 1 - m)!}x^{n+1-m}r^{-(n+1)}}{\frac{n!}{m!(n - m)!}x^{n - m}r^{-n}} \\
+   & = \lim\sup\limits_{n \to \infty} \frac{(n + 1)}{(n + 1 - m)} xr^{-1}                                                           \\
+   & =  \lim\sup\limits_{n \to \infty} (1 + \frac{m}{(n + 1 - m)}) \frac{x}{r}
+\end{align*}
+由于$\lim\limits_{n \to \infty} 1 + \frac{m}{(n + 1 - m)} = 1$且$\frac{x}{r} < 1$可知，
+\begin{align*}
+  \lim\sup\limits_{n \to \infty} (1 + \frac{m}{(n + 1 - m)}) \frac{x}{r} < 1
+\end{align*}
+
+综上可得
+\begin{align*}
+  \sum\limits_{n = m}^{\infty} \frac{n!}{m!(n - m)!}x^{n - m}r^{-n}
+\end{align*}
+绝对收敛。
+
+
+\section*{15.2.8}
+
+\begin{itemize}
+  \item (a)
+
+        因为
+        \begin{align*}
+          |a - b|     \leq r - s \\
+          |a - b| + s  \leq r
+        \end{align*}
+
+        反证法，假设$|a - b| \geq r$，于是
+        \begin{align*}
+          |a - b| + s \geq r + s
+        \end{align*}
+        因为$s > 0$，所以$|a - b| + s  \leq r$与$|a - b| + s \geq r + s$矛盾，
+        假设不成立。
+
+  \item (b)
+
+        收敛半径为：
+        \begin{align*}
+          R = \frac{1}{\lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n}}
+        \end{align*}
+
+        于是可得
+        \begin{align*}
+          \lim\sup\limits_{n \to \infty} |c_n|^\frac{1}{n} = \frac{1}{R}
+        \end{align*}
+
+        因为$r - \epsilon < R$，所以
+        \begin{align*}
+          \frac{1}{r - \epsilon} > \frac{1}{R}
+        \end{align*}
+
+        于是由上极限的定义可知，存在$N$使得
+        \begin{align*}
+          C_N^+ \geq \frac{1}{r - \epsilon}
+        \end{align*}
+        其中$C_N^+ = \sup(|c_n|^\frac{1}{n})_{n = N}^\infty$。
+
+        由上确界的定义可知，对所有的$n \geq N$，都有
+        \begin{align*}
+          |c_n|^\frac{1}{n} \leq \frac{1}{r - \epsilon} \\
+          \implies                                      \\
+          |c_n| \leq (r - \epsilon)^{-n}
+        \end{align*}
+
+        因为$n < N$是有限的，且由推论5.4.13（阿基米德性质）可知，
+        对每一个$n$都存在，正整数$M_n$使得
+        \begin{align*}
+          |c_n| < M_n (r - \epsilon)^{-n}
+        \end{align*}
+
+        取$C := max(M_0, M_2, \cdots, M_N)$（其中$M_N = 1$），我们有
+        \begin{align*}
+          |c_n| \leq C(r - \epsilon)^{-n}
+        \end{align*}
+
+  \item (c)
+
+        由(a)可知$|a - b| < r$，所以存在$0 < \epsilon < 1$使得$|a - b| < r - \epsilon$，
+        又由(b)可知，存在$C > 0$使得对所有的正整数$n \geq 0$都有
+        \begin{align*}
+          |c_n| \leq C(r - \epsilon)^{-n}
+        \end{align*}
+
+        于是可得对任意的$n \geq m$都有
+        \begin{align*}
+          \left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}c_n \right|
+           & \leq C \left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}(r - \epsilon)^{-n} \right| \\
+        \end{align*}
+
+        \begin{align*}
+          \sum_{n = m}^\infty \left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}c_n \right|
+           & \leq C \sum_{n = m}^\infty\left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}(r - \epsilon)^{-n} \right| \\
+        \end{align*}
+
+        因为$|b - a| \in (-r + \epsilon, r - \epsilon)$，由习题15.2.7可知，
+        $C \sum_{n = m}^\infty\left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}(r - \epsilon)^{-n} \right|$收敛，
+        利用推论7.3.2（比较判别法）可知，
+        $\sum_{n = m}^\infty \left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}c_n \right|$绝对收敛，
+        所以$\sum_{n = m}^\infty \frac{n!}{m!(n - m)!}(b - a)^{n - m}c_n$收敛，于是
+        $d_m$是某个实数，所以是有意义的。
+
+  \item (d)
+
+        由(c)中的讨论可知，
+        \begin{align*}
+          |d_m| & \leq C \sum_{n = m}^\infty\left| \frac{n!}{m!(n - m)!}(b - a)^{n - m}(r - \epsilon)^{-n} \right| \\
+                & = C \frac{r - \epsilon}{(r - \epsilon - |b - a|)^{m + 1}}                                        \\
+                & \leq C \frac{r - \epsilon}{(r - \epsilon)^{m + 1}}                                               \\
+                & = C \frac{1}{(r - \epsilon)^{m}}
+        \end{align*}
+
+        题设$(b - s, b + s)$是$(a - r, a + r)$的子集可知，
+        \begin{align*}
+          r \geq s
+        \end{align*}
+
+        综上可得
+        \begin{align*}
+          |d_m| \leq C \frac{1}{(r - \epsilon)^{m}} \leq C \frac{1}{(s - \epsilon)^{m}}
+        \end{align*}
+
+  \item (e)
+
+        （1）绝对收敛。
+
+        因为$x \in (b - s, b + s)$，所以
+        \begin{align*}
+          -s < x - b < s
+        \end{align*}
+
+        利用(d)，对任意$m \geq 0$都有
+        \begin{align*}
+          |d_m||x - b|^m \leq C(s - \epsilon)^{-m} |x - b|^m \\
+          |d_m||x - b|^m \leq C \left|\frac{x - b}{s - \epsilon}\right|^m
+        \end{align*}
+
+        由(d)可知，上式对任意的$\epsilon$都成立，
+        令$|x - b| < |s - \epsilon|, \left|\frac{x - b}{s - \epsilon}\right| < 1$，
+        于是可得
+        \begin{align*}
+          \sum \limits_{m = 0}^\infty C \left|\frac{x - b}{s - \epsilon}\right|^m
+        \end{align*}
+        收敛。由比较判别法可知，
+        \begin{align*}
+          \sum \limits_{m = 0}^\infty |d_m||x - b|^m
+        \end{align*}
+        收敛。
+
+        （2）一致收敛于$f(x)$。
+
+        todo 未找到方法解答
+
+        \begin{align*}
+          \sum \limits_{m = 0}^\infty d_m (x - b)^m
+           & = \sum \limits_{m = 0}^\infty  c_n(x - b)^m \sum \limits_{n = m}^\infty \frac{n!}{m!(n - m)!}(b - a)^{n - m}
+        \end{align*}
+
+  \item (f)
+
+        对任意$b \in (a -r, a + r)$，由(e)可知，存在幂级数$\sum\limits_{m = 0}^\infty d_m (x - b)^m$收敛于$f$。
+
+\end{itemize}
+
+
 \end{document}
