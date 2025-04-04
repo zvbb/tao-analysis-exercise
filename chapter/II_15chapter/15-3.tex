@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{15.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{15.3.1}
+
+因为部分和有以下关系：
+\begin{align*}
+  \sum\limits_{n = 0}^N (a_{n + 1} - a_n)b_n + \sum\limits_{n = 0}^N a_{n + 1}(b_{n + 1} - b_n)
+   & = - a_0b_0 + a_Nb_N
+\end{align*}
+
+由题设可知，等式右侧
+\begin{align*}
+  \lim\limits_{N \to \infty} - a_0b_0 + a_Nb_N = - a_0b_0 + AB
+\end{align*}
+
+因为级数$\sum\limits_{n = 0}^\infty (a_{n + 1} - a_n)b_n$收敛可知，
+部分和
+\begin{align*}
+  \lim\limits_{N \to \infty} \sum\limits_{n = 0}^N (a_{n + 1} - a_n)b_n
+\end{align*}
+收敛。
+
+我们有
+\begin{align*}
+  \sum\limits_{n = 0}^N a_{n + 1}(b_{n + 1} - b_n) = - a_0b_0 + a_Nb_N - \sum\limits_{n = 0}^N (a_{n + 1} - a_n)b_n
+\end{align*}
+
+于是利用定理6.1.19可知，级数$\sum\limits_{n = 0}^\infty a_{n + 1}(b_{n + 1} - b_n)$收敛，
+且
+\begin{align*}
+  \lim\limits_{N \to \infty} \sum\limits_{n = 0}^N a_{n + 1}(b_{n + 1} - b_n)
+   & = \lim\limits_{N \to \infty} (- a_0b_0 + a_Nb_N) - \lim\limits_{N \to \infty} \sum\limits_{n = 0}^N (a_{n + 1} - a_n)b_n \\
+   & = AB - a_0b_0 - \lim\limits_{N \to \infty} \sum\limits_{n = 0}^N (a_{n + 1} - a_n)b_n
+\end{align*}
+
+\end{document}
