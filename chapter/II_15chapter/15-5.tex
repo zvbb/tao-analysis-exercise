@@ -1,0 +1,150 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{15.5 习题}
+\author{张志聪}
+\maketitle
+
+\section*{15.5.1}
+
+\begin{itemize}
+  \item (a)
+
+        （1）绝对收敛。
+
+        任意$x \in \mathbb{R}$，都有
+        \begin{align*}
+          \lim\sup\limits_{n \to \infty} \frac{|\frac{x^{n + 1}}{(n + 1)!}|}{|\frac{x^{n}}{(n)!}|}
+           & = \lim\sup\limits_{n \to \infty} |\frac{x}{n + 1}| \\
+           & = 0 < 1
+        \end{align*}
+
+        由推论7.5.3（比值判别法）可知，$\sum\limits_{n = 0}^\infty \frac{x^n}{n!}$绝对收敛。
+
+        （2）
+
+        由命题7.2.9(绝对收敛判别法)可知，绝对收敛的级数，也是条件收敛的。
+
+        （3）收敛半径是$\infty$
+
+        \begin{align*}
+          \lim\sup\limits_{n \to \infty} |\frac{1}{n!}| \leq \lim\sup\limits_{n \to \infty} |\frac{1}{n}| = 0
+        \end{align*}
+
+        于是可得，收敛半径$R = \infty$。
+
+        （4）$\exp$是$(-\infty, \infty)$上的实解析函数。
+
+        由习题15.2.8(f)可知直接得到。
+
+  \item (b)
+
+        由定理15.1.6(d)可知，$\exp$在$\mathbb{R}$上可微。
+        又因为
+        \begin{align*}
+          (\exp(x))^\prime & = \sum\limits_{n = 1}^\infty n \frac{x^{n - 1}}{n!}   \\
+                           & = \sum\limits_{n = 1}^\infty \frac{x^{n - 1}}{(n-1)!} \\
+        \end{align*}
+        设$n^\prime = n - 1$，于是
+        \begin{align*}
+           & \sum\limits_{n = 1}^\infty \frac{x^{n - 1}}{(n-1)!}                \\
+           & = \sum\limits_{n^\prime = 0}^\infty \frac{x^{n^\prime}}{n^\prime!} \\
+           & = \exp(x)
+        \end{align*}
+  \item (c)
+
+        由定理15.1.6(c)可知，$\exp$在$\mathbb{R}$上连续。
+        又由(b)可知，$\exp(x)$是$\exp(x)$的原函数。
+
+        于是利用定理11.9.4（微积分第二基本定理）可得
+        \begin{align*}
+          \int_{[a, b]} \exp(x) dx = \exp(b) - \exp(a)
+        \end{align*}
+
+
+  \item (d)
+        \begin{align*}
+          \exp(x + y) = \sum\limits_{n = 0}^\infty \frac{(x + y)^n}{n!}
+        \end{align*}
+        利用二项式公式（习题7.1.4）可知直接得到
+        \begin{align*}
+          \exp(x + y)
+           & =\sum\limits_{n = 0}^\infty \frac{(x + y)^n}{n!}                                                  \\
+           & = \sum\limits_{n = 0}^\infty \frac{1}{n!}\sum \limits_{j = 0}^n \frac{n!}{j!(n - j)!}x^jy^{n - j}
+        \end{align*}
+        约分掉$n!$可得
+        \begin{align*}
+          \exp(x + y)
+           & = \sum\limits_{n = 0}^\infty \sum \limits_{j = 0}^n \frac{x^jy^{n - j}}{j!(n - j)!}
+        \end{align*}
+
+        由于$\exp$函数在$\mathbb{R}$上绝对收敛的，所以可以使用定理8.2.2（富比尼定理）
+        \begin{align*}
+          \exp(x + y)
+           & = \sum\limits_{j = 0}^\infty \sum \limits_{n = j}^\infty \frac{x^jy^{n - j}}{j!(n - j)!}
+        \end{align*}
+        令$m = n - j$，于是可得，
+        \begin{align*}
+          \exp(x + y)
+           & = \sum\limits_{j = 0}^\infty \sum \limits_{m = 0}^\infty \frac{x^jy^m}{j!m!}
+        \end{align*}
+
+        分离成两个级数：
+        \begin{align*}
+          \exp(x + y)
+           & = \sum\limits_{j = 0}^\infty \frac{x^j}{j!} \sum \limits_{m = 0}^\infty \frac{y^m}{m!} \\
+           & = \exp(x) \exp(y)
+        \end{align*}
+  \item (e)
+
+        （1）$\exp(0) = 1$
+
+        \begin{align*}
+          \exp(0) = \sum\limits_{n = 0}^\infty \frac{0^n}{n!} = 1
+        \end{align*}
+
+        （2）$\exp(-x) = \frac{1}{\exp(x)}$。
+
+        因为
+        \begin{align*}
+           & \exp(0) = 1 = \exp(x - x) = \exp(x)\exp(-x) \\
+           & \implies                                    \\
+           & \exp(-x) = \frac{1}{\exp(x)}
+        \end{align*}
+
+        （3）$\exp(x) > 0$。
+
+        由于（2）易得，任意$x$，都有$\exp(x) \neq 0$。
+
+        于是我们有，
+        \begin{align*}
+          \exp(x) & = \exp(\frac{1}{2}x + \frac{1}{2}x )   \\
+                  & = \exp(\frac{1}{2}x)\exp(\frac{1}{2}x) \\
+                  & = \exp(\frac{1}{2}x)^2                 \\
+                  & > 0
+        \end{align*}
+
+  \item (f)
+
+        由(b)(e)和命题10.3.3可以得到该结论。
+
+\end{itemize}
+
+\end{document}
