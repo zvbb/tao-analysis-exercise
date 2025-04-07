@@ -147,4 +147,158 @@
 
 \end{itemize}
 
+\section*{15.5.2}
+
+（1）先按照书中提示，先证明对于所有的$k=1,2,3,...,$都有$(n + k)! > 2^kn!$。
+
+对$k$进行归纳。
+
+$k = 1$时，$(n + k)! = (n + 1)! = (n + 1)n!$，
+因为$n \geq 3$，所以$n + 1 > 2^k = 2^1 = 2$，
+所以$(n + k)! > 2^kn!$成立。
+
+归纳假设$k = j$时，$(n + j)! > 2^jn!$成立。
+
+$k = j + 1$时，
+\begin{align*}
+  (n + j + 1)! & = (n + j)!(n + j + 1) \\
+\end{align*}
+由归纳假设和$n + j + 1 > 2$可得，
+\begin{align*}
+  (n + j)!(n + j + 1) & > 2^jn! \times 2 = 2^{j + 1}n!
+\end{align*}
+即
+\begin{align*}
+  (n + j + 1)! & > 2^{j + 1}n!
+\end{align*}
+
+归纳完成。
+
+（2）证明$\frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + ... < \frac{1}{n!}$。
+
+由（1）可知，
+\begin{align*}
+  \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + ...
+   & < \sum\limits_{k = 1}^\infty \frac{1}{2^kn!} = \frac{1}{n!}\sum\limits_{k = 1}^\infty (\frac{1}{2})^k
+\end{align*}
+
+由引理7.3.3可知，
+\begin{align*}
+  \sum\limits_{k = 0}^\infty \frac{1}{2^kn!} = \frac{1}{1-\frac{1}{2}} = 2
+\end{align*}
+于是可得
+\begin{align*}
+  \sum\limits_{k = 1}^\infty (\frac{1}{2})^k
+   & = 2 - \sum\limits_{k = 0}^0 (\frac{1}{2})^k \\
+   & = 2 - 1                                     \\
+   & = 1
+\end{align*}
+
+综上可得
+\begin{align*}
+  \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + ...
+   & < \frac{1}{n!}
+\end{align*}
+
+（3）任意的$n \geq 3$，$n!e$都不是整数。
+
+\begin{align*}
+  n!\sum\limits_{m = 0}^\infty \frac{1}{m!}
+   & = n!\sum\limits_{m = 0}^n \frac{1}{m!} + n!\sum\limits_{m = n + 1}^\infty \frac{1}{m!}
+\end{align*}
+
+因为$m \leq n$，都有$\frac{n!}{m!}$是正整数。
+所以
+\begin{align*}
+  n!\sum\limits_{m = 0}^n \frac{1}{m!}
+\end{align*}
+是正整数。
+
+又由（2）可知，
+\begin{align*}
+  0 < n!\sum\limits_{m = n + 1}^\infty \frac{1}{m!} < 1
+\end{align*}
+
+综上，命题成立。
+
+（4）推导出$e$是无理数。
+
+反证法，假设$e$不是无理数，又因为$e > 0$，所以存在正整数$a, b$，使得$e = \frac{a}{b}$。
+
+于是，我们有，
+\begin{align*}
+   & \frac{a}{b} = e  \\
+   & \implies         \\
+   & a = b e          \\
+   & \implies         \\
+   & a(b - 1)! = b! e
+\end{align*}
+因为$a(b - 1)!$是正整数，所以$b! e$也是正整数，这与（3）矛盾。
+
+注意：这里有个细节，就是$b \geq 3$不一定成立的困惑，这个无需考虑，只需做扩分操作即可。
+
+\section*{15.5.3}
+
+\begin{itemize}
+  \item (a) $x$是自然数。
+        对$x$进行归纳。
+
+        （1）$x = 0$时，由定理15.5.2(e)可知，$\exp(0) = 1$，又$e^0 = 1$，所以命题成立。
+
+        （2）归纳假设，$x = k$时，$\exp(k) = e^k$成立。
+
+        （3）$x = k + 1$时，结合归纳假设和定理15.5.2(d)，得
+        \begin{align*}
+          \exp(k + 1) = \exp(k)\exp(1) = e^k e = e^{k + 1}
+        \end{align*}
+
+        归纳完成。
+
+  \item (b) $x$是整数。
+
+        由(a)可知，我们只需讨论$x$是负整数的情况。
+
+        设$-x < 0$，于是$x > 0$，
+        \begin{align*}
+          \exp(-x) & = \frac{1}{\exp(x)} \\
+                   & = \frac{1}{e^x}     \\
+                   & = e^{-x}
+        \end{align*}
+        综上，命题成立。
+
+  \item (c) $x$是有理数。
+
+        $x$可以表示成$\frac{a}{b}$，其中$a, b$都是整数，且$b > 0$。
+        \begin{align*}
+           & \exp(x)^b = \exp(\frac{a}{b}b) = \exp(a) = e^a \\
+           & \implies                                       \\
+           & \exp(x) = e^{\frac{a}{b}} = e^x
+        \end{align*}
+
+        综上，命题成立。
+
+  \item (d) $x$是实数。
+
+        对任意实数$x$，存在序列$(a_n)_{n = 0}^\infty$，使得$x = \lim\limits_{n \to \infty} a_n$。
+
+        由定义6.7.2可知，$e^x = \lim\limits_{n \to \infty} e^{a_n}$。
+
+        又因为$e^{a_n} = \exp(a_n)$，对所有的$n$均成立，又因为$\exp$是连续的，利用命题9.4.7可知，
+        \begin{align*}
+          \lim\limits_{n \to \infty} \exp(a_n) = \exp(x)
+        \end{align*}
+
+        综上可得，
+        \begin{align*}
+          e^x & = \lim\limits_{n \to \infty} e^{a_n}   \\
+              & = \lim\limits_{n \to \infty} \exp(a_n) \\
+              & = \exp(x)
+        \end{align*}
+\end{itemize}
+
+\section*{15.5.4}
+
+
+
+
 \end{document}
