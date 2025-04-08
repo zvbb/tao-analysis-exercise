@@ -23,16 +23,12 @@
 \maketitle
 
 \begin{zremark}
-  \textbf{综合1,2，个人判断，陶哲轩书中的洛必达法则的表述存在问题。}
+  \textbf{个人判断，陶哲轩书中的洛必达法则的表述存在问题。}
 \end{zremark}
 
-\section*{1 \textbf{书中洛必达法则I和II有区别，感觉两者表达的不一致？}}
 主要有以下问题：
 \begin{itemize}
-  \item I中直接就是$\frac{f^\prime(x_0)}{g^\prime(x_0)}$，但II中却要
-        $\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$存在。
-  \item II中
-        $\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$难道不是一定存在么？
+  \item II中$\lim\limits_{x \to a; x \in (a, b]} \frac{f^\prime(x)}{g^\prime(x)}$是一定存在的。
 
         题设中$f,g$在$[a, b]$上是可微的，且任意$x \in [a,b], g^\prime(x) \neq 0$，
         即$f^\prime(a),g^\prime(a)$存在，且$g^\prime(a) \neq 0$，
@@ -51,18 +47,74 @@
            & = \frac{f^\prime(a)}{g^\prime(a)}
         \end{align*}
         此时为啥还要判断存在性呢？？？
-
 \end{itemize}
 
 
-\section*{2 \textbf{和我本科期间学的洛必达定理表达不一样？}}
+\textcolor{red}{后来，在第1版的《陶哲轩实分析》勘误网页中发现，已经说明了其中问题。}
+
+网页：https://terrytao.wordpress.com/books/analysis-i/
+
+原文如下：
+\begin{zremark}
+  In Proposition 10.5.2,
+  the hypothesis that f,g be differentiable on [a,b] may be weakened
+  to being continuous on [a,b] and differentiable on (a,b],
+  with g' only assumed to be non-zero on (a,b] rather than [a,b].
+
+  翻译：
+  在命题10.5.2中，
+  关于f和g在$[a,b]$上可微的假设可以弱化为：在$[a,b]$上连续且在$(a,b]$上可微，
+  且$g^\prime$仅需在$(a,b]$上非零（而非原条件要求的$[a,b]$上）。
+\end{zremark}
+
+
+\section*{2 \textbf{和我本科期间学的洛必达定理表达不一样。}}
 
 \begin{itemize}
   \item 本科期间是$\lim\limits_{x \to a} f(x) = 0$，而不是$f(a) = 0$，后者的条件更强了。
-  \item 维基百科与百度百科表达的方式与本科期间一致。
 \end{itemize}
 
 
+\section*{2.1 定理1}
 
+\begin{zremark}
+  设
+  \begin{itemize}
+    \item （1） 当$x \to a$时，函数$f(x)$及$F(x)$都趋于零。
+    \item （2）在点$a$的某个去心领域内，$f^\prime(x)$及$F^\prime(x)$都存在且$F^\prime(x) \not = 0$。
+    \item （3）$\lim\limits_{x \to a} \frac{f^\prime(x)}{F^\prime(x)}$存在（或为无穷大），
+          则
+          \begin{align*}
+            \lim\limits_{x \to a} \frac{f(x)}{F(x)} = \lim\limits_{x \to a} \frac{f^\prime(x)}{F^\prime(x)}
+          \end{align*}
+  \end{itemize}
+\end{zremark}
+
+同济版本的证明，个人觉得是不对的。可以直接利用命题10.5.2进行证明。
+只需做如下转换即可：
+
+设函数$h$如下：$x = a$时$h(a) = 0$,$x \not = a$时，$h(x) = f(x)$。
+
+同理设函数$H$如下，$x = a$时$H(a) = 0$,$x \not = a$时，$H(x) = h(x)$。
+
+由前置条件（2），我们存在一个点$a$的去心领域$(a - \epsilon, a + \epsilon)$。
+设$(a, \delta] \subseteq (a - \epsilon, a + \epsilon)$。
+
+于是
+\begin{align*}
+  \lim\limits_{x \to a; x \in (a, \delta]} \frac{f^\prime(x)}{F^\prime(x)}
+   & = \lim\limits_{x \to a; x \in (a, \delta]} \frac{h^\prime(x)}{H^\prime(x)}
+\end{align*}
+
+利用命题10.5.2，得
+\begin{align*}
+  \lim\limits_{x \to a; x \in (a, \delta]} \frac{h^\prime(x)}{H^\prime(x)}
+   & = \lim\limits_{x \to a; x \in (a, \delta]} \frac{h(x)}{H(x)} \\
+   & = \lim\limits_{x \to a; x \in (a, \delta]} \frac{f(x)}{F(x)}
+\end{align*}
+
+左极限证明类似。
+
+综上，命题成立。
 
 \end{document}
