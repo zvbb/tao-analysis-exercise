@@ -343,7 +343,7 @@ $k = j + 1$时，
                    & = 0
                 \end{align*}
 
-                （注意：第一个等式使用了一个小命题，在习题的最下方，做了补充。第二个等式使用了习题15.5.8）。
+                （注意：第一个等式使用了一个小命题，在10-5-comment.tex的"3定理"中有说明。第二个等式使用了习题15.5.8）。
 
                 （2）归纳假设$k \leq n$时，命题成立。
 
@@ -541,7 +541,30 @@ $k = j + 1$时，
 
 \section*{15.5.8}
 
-先把书中的洛必达定理推广到$\infty$形式。
+直接使用洛必达定理的推广，书中没有讲到这个推广。我在10-5-comment.tex中写了这个推广。
+
+因为$x \to +\infty$，$e^x$及$x^m$都趋于无穷大，
+所以，利用洛必达定理可得，
+\begin{align*}
+  \lim\limits_{x \to +\infty} \frac{e^x}{x^m} 
+  = 
+  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}} 
+\end{align*}
+
+多次使用洛必达定理，可以得到
+\begin{align*}
+  \lim\limits_{x \to +\infty} \frac{e^x}{x^m} 
+  = 
+  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}} 
+  = 
+  ...
+  =
+  \lim\limits_{x \to +\infty} \frac{e^x}{m!}
+  = +\infty
+\end{align*}
+
+\section*{15.5.9}
+
 
 
 
