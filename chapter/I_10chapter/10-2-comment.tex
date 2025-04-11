@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{10.2 注释}
+\author{张志聪}
+\maketitle
+
+\section*{1}
+
+本科高等数学有一个重要的定理：“柯西中值定理”，这里做一个补充。
+
+\begin{zremark}
+  如果函数$f(x)$及$F(x)$满足
+  \begin{itemize}
+    \item （1）在闭区间$[a, b]$上连续；
+    \item （2）在开区间$(a, b)$内可导；
+    \item （3）对任一$x \in (a, b)$，$F^\prime(x) \not = 0$，
+  \end{itemize}
+  那么在$(a, b)$内至少有一个$\xi$，使等式
+  \begin{align}
+    \frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f^\prime(\xi)}{F^\prime(\xi)}
+  \end{align}
+  成立。
+\end{zremark}
+
+证明：
+
+注意这里无法直接使用推论10.2.9（中值定理）。
+
+接下来的证明方法与同济版本一致。
+
+设函数
+\begin{align*}
+  \phi(x) & = F(x)\frac{f(b) - f(a)}{F(b) - F(a)} - f(x)                    \\
+          & = \frac{F(x)f(b) - F(x)f(a) - f(x)F(b) + f(x)F(a)}{F(b) - F(a)}
+\end{align*}
+
+因为
+\begin{align*}
+  \phi(a) = \frac{F(a)f(b) - F(a)f(a) - f(a)F(b) + f(a)F(a)}{F(b) - F(a)} = \frac{F(a)f(b)- f(a)F(b)}{F(b) - F(a)} \\
+  \phi(b) = \frac{F(b)f(b) - F(b)f(a) - f(b)F(b) + f(b)F(a)}{F(b) - F(a)} = \frac{- F(b)f(a) + f(b)F(a)}{F(b) - F(a)}
+\end{align*}
+
+于是我们有
+\begin{align*}
+  \phi(a) = \phi(b)
+\end{align*}
+
+利用定理10.2.8（罗尔定理）可得，存在$\xi \in (a, b)$使得$\phi^\prime(\xi) = 0$，
+即：
+\begin{align*}
+   & F^\prime(\xi)\frac{f(b) - f(a)}{F(b) - F(a)} - f^\prime(\xi) = 0      \\
+   & \implies                                                              \\
+   & \frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f^\prime(\xi)}{F^\prime(\xi)}
+\end{align*}
+
+\end{document}

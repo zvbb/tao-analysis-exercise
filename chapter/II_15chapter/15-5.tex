@@ -298,11 +298,250 @@ $k = j + 1$时，
 
 \section*{15.5.4}
 
-证明$f$在$0$处是可微的，
+\begin{itemize}
+  \item （a）$f$是无限可微的。
+
+        \begin{itemize}
+          \item $x < 0$
+
+                $f^{(k)}(x) = 0^{(k)} = 0$。
+          \item $x > 0$
+
+                导数通项式：
+                $f^{(k)}(x) = \frac{P_k(x)\exp(\frac{-1}{x})}{x^{2k}}$
+                ，其中$P_k(x)$是一个关于$x$的多项式。
+
+                可以通过归纳法证明，证明略。
+
+          \item $x = 0$
+
+                对$k$进行归纳。
+
+                （1）$k = 1$时，
+                左极限为$0$，我们主要讨论右极限。
+                右极限：
+                \begin{align*}
+                  \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{f(x) - f(0)}{x - 0}
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{f(x)}{x}                        \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\exp(\frac{-1}{x})}{x}          \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{1}{\exp(\frac{1}{x})}}{x} \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{1}{\exp(\frac{1}{x})x}          \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{1}{x}}{\exp(\frac{1}{x})} \\
+                \end{align*}
+
+                定义函数$\phi: \mathbb{R} - \{0\} \to \mathbb{R}$为$\phi(x) = \frac{1}{x}$。
+
+                于是我们有
+                \begin{align*}
+                  \lim\limits_{x \to 0; x \in (0, + \infty)} \phi(x) = +\infty
+                \end{align*}
+
+                于是可得，
+                \begin{align*}
+                   & \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{1}{x}}{\exp(\frac{1}{x})}        \\
+                   & =  \lim\limits_{\phi(x) \to +\infty; x \in (0, + \infty)} \frac{\phi(x)}{\exp(\phi(x))} \\
+                   & = 0
+                \end{align*}
+
+                （注意：第一个等式使用了一个小命题，在习题的最下方，做了补充。第二个等式使用了习题15.5.8）。
+
+                （2）归纳假设$k \leq n$时，命题成立。
+
+                （3）$k = n + 1$时，
+
+                \begin{align*}
+                   & \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{f^{(n)}(x) - f^{(n)}(0)}{x - 0}                 \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{f^{(n)}(x) - 0}{x - 0}                        \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{f^{(n)}(x)}{x}                                \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{P_n(x)\exp(\frac{-1}{x})}{x^{2n}}}{x}   \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{P_n(x)\exp(\frac{-1}{x})}{x^{2n+1}}           \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} P_n(x) \frac{\frac{1}{x}^{2n+1}}{\exp(\frac{1}{x})}
+                \end{align*}
+
+                因为$P_n(x)$是连续的，所以$\lim\limits_{x \to 0; x \in (0, + \infty)} P_n(x) = P_n(0)$，
+                再次利用习题15.5.8可知，$\lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{1}{x}^{2n+1}}{\exp(\frac{1}{x})} = 0$。
+
+                综上，
+                \begin{align*}
+                   & \lim\limits_{x \to 0; x \in (0, + \infty)} P_n(x) \frac{\frac{1}{x}^{2n+1}}{\exp(\frac{1}{x})}                                              \\
+                   & = \lim\limits_{x \to 0; x \in (0, + \infty)} P_n(x) \lim\limits_{x \to 0; x \in (0, + \infty)} \frac{\frac{1}{x}^{2n+1}}{\exp(\frac{1}{x})} \\
+                   & = P_n(0) \times 0                                                                                                                           \\
+                   & = 0
+                \end{align*}
+                即$f^{(n + 1)}(x) = 0$。
+
+                归纳完成。
+
+
+          \item （b）$f$在$0$处不是实解析的。
+
+
+                反证法，假设$f$在$0$处是实解析的。即存在收敛半径大于或等于$r> 0$的幂级数
+                $\sum\limits_{n = 0}^\infty c_n(x - 0)^n = \sum\limits_{n = 0}^\infty c_nx^n$在
+                $(-r, r)$上收敛于$f$。
+
+                利用泰勒公式（推论15.2.10），我们有泰勒公式
+                \begin{align*}
+                  f(x) = \sum\limits_{n = 0}^\infty \frac{f^{(n)}(0)}{n!}(x - 0)^n, x \in (-r, r)
+                \end{align*}
+
+                因为任意$n \geq 0$，$f^{(n)}(0) = 0$，所以
+                \begin{align*}
+                  f(x) = \sum\limits_{n = 0}^\infty 0 = 0, x \in (-r, r)
+                \end{align*}
+
+                而任意$x \in (-r, r)$，利用定理15.5.2(e)可得
+                \begin{align*}
+                  f(x) = \exp(-1/x) > 0
+                \end{align*}
+
+                存在矛盾。
+
+
+        \end{itemize}
+\end{itemize}
+
+\section*{15.5.5}
+
+\begin{itemize}
+  \item (a)
+
+        对任意$x \in (0, + \infty)$，存在$y \in \mathbb{R}$使得$\exp(y) = x$，
+        利用定理10.4.2可知，
+        \begin{align*}
+          \ln^\prime(x) & = \frac{1}{\exp^\prime(y)} \\
+                        & = \frac{1}{x}
+        \end{align*}
+
+        因为$\ln(x)$是$\frac{1}{x}$的原函数，于是利用微积分基本定理可得，
+        \begin{align*}
+          \int_{[a, b]}\frac{1}{x} dx = \ln(b) - \ln(a)
+        \end{align*}
+
+  \item (b)
+
+        因为$\exp(\ln (x)) = x, \exp(\ln (y)) = y$，于是
+        \begin{align*}
+          \ln(xy) & = \ln(\exp(\ln (x))\exp(\ln (y))) \\
+                  & = \ln(\exp(\ln (x) + \ln (y)))    \\
+                  & = \ln(x) + \ln(y)
+        \end{align*}
+
+  \item (c)
+
+        （1）因为$\exp(0) = 1$，于是
+        \begin{align*}
+          \ln(1) = \ln(\exp(0)) = 0
+        \end{align*}
+
+        （2）设$\exp(y) = x$，于是
+        \begin{align*}
+          -\ln(x) = \ln(\exp(y)) = -y
+        \end{align*}
+
+        又因为
+        \begin{align*}
+          -y = \ln(\exp(-y)) & = \ln(\frac{1}{\exp(y)}) \\
+                             & = \ln(\frac{1}{x})
+        \end{align*}
+
+  \item (d)
+
+        设$\exp(z) = x$，于是
+        \begin{align*}
+          y\ln(x) = yz
+        \end{align*}
+
+        又因为
+        \begin{align*}
+          \ln(x^y) & = \ln(\exp(z)^y) \\
+                   & = \ln(\exp(yz))  \\
+                   & = yz
+        \end{align*}
+
+  \item (e)
+
+        （1）
+
+        利用引理7.3.3可得，$\sum\limits_{n = 0}^\infty x^{n}$在$(-1, 1)$上逐点收敛于
+        $\frac{1}{1 - x}$。
+
+        由定理15.1.6(c)可知，$\sum\limits_{n = 0}^\infty x^{n}$一致收敛于某个函数$f$。
+        由习题14.2.2(a)，和逐点收敛函数的唯一性可知，
+        $\sum\limits_{n = 0}^\infty x^{n}$一致收敛于$\frac{1}{1 - x}$。
+
+        于是由定理15.1.6(e)可知，
+        \begin{align*}
+          \int_{[0, x]} \frac{1}{1 - y} dy
+           & = \sum\limits_{n = 0}^\infty \frac{x^{n + 1} - (0 - 0)^{n + 1}}{n + 1} \\
+           & = \sum\limits_{n = 1}^\infty \frac{x^{n}}{n}
+        \end{align*}
+
+        又因为
+        \begin{align*}
+          \int_{[0, x]} \frac{1}{1 - y} dy
+           & = -\ln(1 - y) |_0^x \\
+           & = -\ln(1 - x)
+        \end{align*}
+
+        综上可得，
+        \begin{align*}
+          \ln(1 - x) = - \sum\limits_{n = 1}^\infty \frac{x^{n}}{n}
+        \end{align*}
+
+        （2）
+
+        令$y = 1 - x, x \in (-1, 1)$，于是$y \in (0, 2)$。
+
+        于是利用（1），我们有
+        \begin{align*}
+          \ln(y)
+           & = \ln(1 - x)                                                   \\
+           & = - \sum\limits_{n = 1}^\infty \frac{x^{n}}{n}                 \\
+           & = - \sum\limits_{n = 1}^\infty \frac{(1 - y)^{n}}{n}           \\
+           & = - \sum\limits_{n = 1}^\infty \frac{(-1)^n(y - 1)^{n}}{n}     \\
+           & = \sum\limits_{n = 1}^\infty \frac{(-1)^{n + 1}(y - 1)^{n}}{n}
+        \end{align*}
+\end{itemize}
+
+\section*{15.5.6}
+
+任意实数$x_0 \in (0, + \infty)$都存在自然数$N$使得$N - 1 < x_0 < N + 1$
+（可以利用命题4.4.1和命题5.4.12，完成证明）。
+
+接下来证明，$\ln$在$x_0$处是解析的，并且存在幂级数展开式。
+
+证明思路：与习题15.5.5(e)（2）类似，都是通过变换，满足已有定理的定义域。
+
+令$y = \frac{x}{x_0}, x \in (0, 2x_0)$，于是$y \in (0, 2)$。
+
+利用定理15.5.6(e)可得
 \begin{align*}
-  \lim\limits_{x \to 0} \frac{f(x) - f(0)}{x} = \lim\limits_{x \to 0} \frac{\exp(\frac{-1}{x}) - 0}{x}
+  \ln(y) & = \ln(\frac{x}{x_0})                                                       \\
+         & = \sum \limits_{n = 1}^\infty \frac{(-1)^{n + 1}}{n} (\frac{x}{x_0} - 1)^n \\
+         & = \sum \limits_{n = 1}^\infty \frac{(-1)^{n + 1}}{nx_0^n} (x - x_0)^n
 \end{align*}
 
+又因为，
+\begin{align*}
+  \ln(\frac{x}{x_0}) = \ln(xx_0^{-1}) = \ln(x) - \ln(x_0)
+\end{align*}
+
+综上可得，
+\begin{align*}
+  \ln(x) & = \ln(x_0) + \sum \limits_{n = 1}^\infty \frac{(-1)^{n + 1}}{nx_0^n} (x - x_0)^n            \\
+         & = \ln(x_0)(x - x_0)^0 + \sum \limits_{n = 1}^\infty \frac{(-1)^{n + 1}}{nx_0^n} (x - x_0)^n
+\end{align*}
+
+命题成立。
+
+\section*{15.5.7}
+
+
+
+\section*{15.5.8}
+
+先把书中的洛必达定理推广到$\infty$形式。
 
 
 
