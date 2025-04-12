@@ -536,27 +536,39 @@ $k = j + 1$时，
 命题成立。
 
 \section*{15.5.7}
+\begin{align*}
+  (f(x)e^{-x})^\prime
+   & = f^\prime(x) e^{-x} + f(x)e^{-x} (-1) \\
+   & = e^{-x} (f^\prime(x) - f(x) )         \\
+   & = 0
+\end{align*}
 
+由此可得$f(x)e^{-x}$是常数，设为$C$。又因为$f(x)$，$e^{-x}$都是正实数，所以$C > 0$。
 
+于是
+\begin{align*}
+  f(x)e^{-x} & = C    \\
+  f(x)       & = Ce^x
+\end{align*}
 
 \section*{15.5.8}
 
-直接使用洛必达定理的推广，书中没有讲到这个推广。我在10-5-comment.tex中写了这个推广。
+直接使用洛必达定理的推广，本书中没有讲到这个推广。我在10-5-comment.tex中的“2.4”中添加了这个推广。
 
 因为$x \to +\infty$，$e^x$及$x^m$都趋于无穷大，
 所以，利用洛必达定理可得，
 \begin{align*}
-  \lim\limits_{x \to +\infty} \frac{e^x}{x^m} 
-  = 
-  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}} 
+  \lim\limits_{x \to +\infty} \frac{e^x}{x^m}
+  =
+  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}}
 \end{align*}
 
 多次使用洛必达定理，可以得到
 \begin{align*}
-  \lim\limits_{x \to +\infty} \frac{e^x}{x^m} 
-  = 
-  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}} 
-  = 
+  \lim\limits_{x \to +\infty} \frac{e^x}{x^m}
+  =
+  \lim\limits_{x \to +\infty} \frac{e^x}{mx^{m - 1}}
+  =
   ...
   =
   \lim\limits_{x \to +\infty} \frac{e^x}{m!}
@@ -566,6 +578,53 @@ $k = j + 1$时，
 \section*{15.5.9}
 
 
+$P(x)$是多项式，所以我们可以找到一个正整数$k \geq 0$和实数$a_0, a_1, \dots, a_k$使得
+\begin{align*}
+  P(x) & = a_0 + a_1x + a_2x^2 + \dots + a_kx^k
+\end{align*}
 
+对$k$进行归纳。
+
+（1）$k = 0$时，$P(x)$是常数或$P(x) = a_0$，
+于是$|P(x)| = |a_0|$是一个常数，
+由$x \to +\infty$，$e^{cx}$趋于无穷大可得，命题成立。
+
+（2）归纳假设，$k = n$时，命题成立。
+
+（3）$k = n + 1$时，$P(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n + a_{n + 1}x^{n + 1}$。
+
+\section*{15.5.10}
+
+（1）利用$\exp, \ln$的连续性证明。
+
+可以仿照推论13.2.3的证明。
+
+我们有，
+\begin{align*}
+  \exp(y\ln(x)) = e^{y\ln(x)} = (e^{\ln(x)})^y = x^y
+\end{align*}
+
+先证明$y\ln(x)$是连续的。
+
+对任意$(x_0, y_0) \in (0, + \infty) \times \mathbb{R}$，
+设$(x^{(n)})_{n = 1}^\infty$是$(0, + \infty) \times \mathbb{R}$中收敛于
+$(x_0, y_0)$的点，其中$x^{(n)} = (x_n, y_n)$，利用命题12.1.18(d)可知，
+$(x_n)_{n = 1}^\infty$收敛于$x_0$，$(y_n)_{n = 1}^\infty$收敛于$y_0$。
+
+于是利用定理6.1.19（极限定律）我们有
+\begin{align*}
+  \lim\limits_{n \to \infty} y_n \ln(x_n)
+   & = \lim\limits_{n \to \infty} y_n \lim\limits_{n \to \infty} \ln(x_n) \\
+   & = y_0 \ln(x_0)
+\end{align*}
+
+所以，$y\ln(x)$是连续的。
+
+由于$\exp$函数是连续的，利用推论13.1.7可知，
+$\exp(y\ln(x))$是连续的。
+
+（2）挑战一下
+
+todo 还没思路。
 
 \end{document}
