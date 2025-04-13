@@ -150,9 +150,75 @@
 
   \item (c) 恒等性：$z_11_\mathbb{C} = 1_\mathbb{C}z_1 = z_1$。
 
+        由(a)可知
+        \begin{align*}
+          z_11_\mathbb{C} = 1_\mathbb{C}z_1
+        \end{align*}
+
+        又有
+        \begin{align*}
+          z_11_\mathbb{C} & = (a, b)(1, 0)                                    \\
+                          & = (a\times 1 - b \times 0, a\times 0 + b\times 1) \\
+                          & = (a, b)                                          \\
+                          & = z_1
+        \end{align*}
+
   \item (d) 分配性：$z_1(z_2 + z_3) = z_1z_2 + z_1z_3$和$(z_2 + z_3)z_1 = z_2z_1 + z_3z_1$。
 
+        因为
+        \begin{align*}
+          z_1(z_2 + z_3) & = (a, b)((c, d) + (e, f))                    \\
+                         & = (a, b)(c + e, d + f)                       \\
+                         & = (a(c + e) - b(d + f), a(d + f) + b(c + e)) \\
+                         & = (ac + ae - bd - bf, ad + af + bc + be)
+        \end{align*}
+        \begin{align*}
+          z_1z_2 + z_1z_2 & = (a, b)(c, d) + (a, b)(e, f)             \\
+                          & = (ac - bd, ad + bc) + (ae - bf, af + be) \\
+                          & = (ac - bd + ae - bf, ad + bc + af + be)
+        \end{align*}
+
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          z_1(z_2 + z_3) = z_1z_2 + z_1z_3
+        \end{align*}
+
+        同理可得，
+        \begin{align*}
+          (z_2 + z_3)z_1 = z_2z_1 + z_3z_1
+        \end{align*}
+
 \end{itemize}
+
+\section*{15.6.3}
+
+这个引理是想说明：形式符号$z = (a, b)$与$z = a + bi$是等价的。
+
+因为
+\begin{align*}
+  a + bi & = (a, 0) + (b, 0)(0, 1) \\
+         & = (a, 0) + (0, b)       \\
+         & = (a, b)
+\end{align*}
+从而，$a + bi$与$(a, b)$就是一回事。
+
+\section*{15.6.4}
+
+设$z = a + bi, w = c + di$。
+
+\begin{itemize}
+  \item $\overline{z + w} = \overline{z} + \overline{w}$。
+
+        因为
+        \begin{align*}
+          z + w = a + bi + c + di & = a + c + (b + d)i
+        \end{align*}
+        于是
+        \begin{align*}
+          \overline{z + w} = a + c - (b + d)i
+        \end{align*}
+\end{itemize}
+
 
 
 \end{document}
