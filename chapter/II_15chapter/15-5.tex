@@ -583,15 +583,35 @@ $P(x)$是多项式，所以我们可以找到一个正整数$k \geq 0$和实数$
   P(x) & = a_0 + a_1x + a_2x^2 + \dots + a_kx^k
 \end{align*}
 
-对$k$进行归纳。
+对每一个$i > 0$，由习题15.5.8可知，
+\begin{align*}
+  \lim\limits_{x \to +\infty} \frac{e^{cx}}{(cx)^i} = +\infty
+\end{align*}
 
-（1）$k = 0$时，$P(x)$是常数或$P(x) = a_0$，
-于是$|P(x)| = |a_0|$是一个常数，
-由$x \to +\infty$，$e^{cx}$趋于无穷大可得，命题成立。
+于是，存在$N_i > 0$，使得只要$x > N_i$，就有
+\begin{align*}
+   & \frac{e^{cx}}{(cx)^i} > (k + 1)\frac{1}{c^i}|a_i| \\
+   & \implies                                          \\
+   & e^{cx} > (k + 1) |a_i| x^i
+\end{align*}
 
-（2）归纳假设，$k = n$时，命题成立。
+又因为$\lim\limits_{x \to +\infty} e^{cx} = +\infty$，所以存在$N^\prime$，使得
+$x > N^\prime$，就有
+\begin{align*}
+  e^{cx} > (k + 1)|a_0|
+\end{align*}
 
-（3）$k = n + 1$时，$P(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n + a_{n + 1}x^{n + 1}$。
+综上，取$N = max(N^\prime, N_1, \dots, N_k)$，
+使得$x > N$，就有
+\begin{align*}
+  (k + 1)e^{cx} & > (k+1) |a_0| + |a_1|x + |a_2|x^2 + \dots + |a_k|x^k \\
+                & \geq (k + 1) |P(x)|                                  \\
+\end{align*}
+
+于是
+\begin{align*}
+  e^{cx} > |P(x)|
+\end{align*}
 
 \section*{15.5.10}
 
