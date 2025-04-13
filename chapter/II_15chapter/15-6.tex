@@ -24,5 +24,135 @@
 
 \section*{15.6.1}
 
+设$z_1 = (a, b), z_2 = (c, d), z_3 = (e, f)$。
+
+\begin{itemize}
+  \item (a) 可交换性：$z_1 + z_2 = z_2 + z_1$。
+
+        按照定义15.6.3（复数的加法运算）可知，
+        \begin{align*}
+          z_1 + z_2 & = (a + c, b + d) \\
+          z_2 + z_1 & = (c + a, d + b) \\
+        \end{align*}
+        因为
+        \begin{align*}
+          a + c & = c + a \\
+          b + d & = d + b
+        \end{align*}
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          z_1 + z_2 = z_2 + z_1
+        \end{align*}
+
+  \item (b) 结合性：$(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)$。
+
+        我们有
+        \begin{align*}
+          (z_1 + z_2) + z_2 & = (a + c, b + d) + (e, f) \\
+                            & = (a + c + e, b + d + f)
+        \end{align*}
+
+        又因为
+
+        \begin{align*}
+          z_1 + (z_2 + z_3) & = (a, b) + (c + e, d + f) \\
+                            & = (a + c + e, b + d + f)
+        \end{align*}
+
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          (z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)
+        \end{align*}
+
+  \item (c) 恒等性：$z_1 + 0_\mathbb{C} = 0_\mathbb{C} + z_1$。
+
+        我们有，
+        \begin{align*}
+          z_1 + 0_\mathbb{C} & = (a, b) + (0, 0) \\
+                             & = (a, b)
+        \end{align*}
+
+        又因为
+        \begin{align*}
+          0_\mathbb{C} + z_1 & = (0, 0) + (a, b) \\
+                             & = (a, b)
+        \end{align*}
+
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          z_1 + 0_\mathbb{C} = 0_\mathbb{C} + z_1
+        \end{align*}
+
+  \item (d) 逆元性：$z_1 + (-z_1) = (-z_1) + z_1 = 0_\mathbb{C}$。
+
+        由(a)可交换性可知
+        \begin{align*}
+          z_1 + (-z_1) = (-z_1) + z_1
+        \end{align*}
+
+        我们有，
+        \begin{align*}
+          z_1 + (-z_1) & = (a, b) + (-a, -b) \\
+                       & = (0, 0)            \\
+                       & = 0_\mathbb{C}
+        \end{align*}
+
+\end{itemize}
+
+\section*{15.6.2}
+
+设$z_1 = (a, b), z_2 = (c, d), z_3 = (e, f)$。
+
+\begin{itemize}
+  \item (a) 可交换性：$z_1z_2 = z_2z_1$。
+
+        由定义15.6.5可知，
+        \begin{align*}
+          z_1z_2 & = (a, b)(c, d)       \\
+                 & = (ac - bd, ad + bc)
+        \end{align*}
+        \begin{align*}
+          z_2z_1 & = (c, d)(a, b)       \\
+                 & = (ca - db, cb + da)
+        \end{align*}
+
+        因为
+        \begin{align*}
+          ac - bd & = ca - db \\
+          ad + bc & = cb + da
+        \end{align*}
+
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          z_1z_2 = z_2z_1
+        \end{align*}
+
+  \item (b) 结合性：$(z_1z_2)z_3 = z_1(z_2z_3)$。
+
+        因为
+        \begin{align*}
+          (z_1z_2)z_3 & = ((a, b)(c, d))(e, f)                             \\
+                      & = (ac - bd, ad + bc)(e, f)                         \\
+                      & = ((ac-bd)e - (ad + bc)f, (ac - bd)f + (ad + bc)e) \\
+                      & = (ace - bde - adf - bcf, acf - bdf + ade + bce)
+        \end{align*}
+        \begin{align*}
+          z_1(z_2z_3) & = (a, b)((c, d)(e, f))                               \\
+                      & = (a, b)(ce - df, cf + de)                           \\
+                      & = (a(ce - df) - b(cf + de), a(cf + de) + b(ce - df)) \\
+                      & = (ace - adf - bcf - bde, acf + ade + bce - bdf)
+        \end{align*}
+
+        于是，由定义15.6.2中关于相等的定义可知，
+        \begin{align*}
+          (z_1z_2)z_3 = z_1(z_2z_3)
+        \end{align*}
+
+  \item (c) 恒等性：$z_11_\mathbb{C} = 1_\mathbb{C}z_1 = z_1$。
+
+  \item (d) 分配性：$z_1(z_2 + z_3) = z_1z_2 + z_1z_3$和$(z_2 + z_3)z_1 = z_2z_1 + z_3z_1$。
+
+\end{itemize}
+
 
 \end{document}
