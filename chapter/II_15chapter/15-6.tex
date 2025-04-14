@@ -618,11 +618,45 @@ $z = \mathfrak{R}(z) + \mathfrak{I}(z) i$。
 
 \section*{15.6.13}
 
+
 \begin{itemize}
   \item （1）证明：$E$是紧致的，当且仅当$E$既是闭的又是有界的。
+        \begin{itemize}
+          \item $\Rightarrow$
 
+                利用推论 12.5.6 可证。
+
+          \item $\Leftarrow$
+                设$(z_n)_{n = 1}^\infty$是$E$中的任意序列。
+
+                按照习题15.6.11中定义的$f^{-1}$，我们有$E^\prime = f^{-1}(E), E^\prime \subseteq \mathbb{R}$。
+
+                因为$\mathbb{C}$的通常度量$d$是与欧几里得度量是一致的，
+                所以，$E$是闭的又是有界的，那么，$E^\prime$也是闭的又是有界的。
+
+                所以，$(f^{-1}(z_n))_{n = 1}^\infty$存在收敛的$R^2$上的子序列$(a_n)_{n = 1}^\infty$，
+                其对应的复数序列为$(f(a_n))_{n = 1}^\infty$。
+
+                由命题12.1.18(d)可知，我们有以下极限存在，
+                \begin{align*}
+                  \lim\limits_{n \to \infty} \mathfrak{R} (f(a_n)) \\
+                  \lim\limits_{n \to \infty} \mathfrak{I} (f(a_n))
+                \end{align*}
+
+                所以，由引理15.6.13可知，$\lim\limits_{n \to \infty} f(a_n)$极限存在。
+
+                综上，由$(z_n)_{n = 1}^\infty$的任意性可得， $E$是紧致的。
+        \end{itemize}
+
+  \item （2）$\mathbb{C}$不是紧致的。
+
+        $\mathbb{C}$的子集$\mathbb{R}$都不是紧致的，$\mathbb{C}$不可能是紧致的。
+
+        或者直接举一个反例$(a_n)_{n = 1}^\infty$，其中$a_n = n$，这个序列就没有收敛的子序列。
 
 \end{itemize}
+
+\section*{15.6.14}
 
 
 \end{document}
