@@ -658,5 +658,179 @@ $z = \mathfrak{R}(z) + \mathfrak{I}(z) i$。
 
 \section*{15.6.14}
 
+只证明其中的某几个。
+
+\begin{itemize}
+  \item $(z_n + w_n)_{n = 1}^\infty$收敛，并且$\lim\limits_{n \to \infty} z_n + w_n = \lim\limits_{n \to \infty} z_n + \lim\limits_{n \to \infty} w_n$。
+
+        因为$(z_n)_{n = 1}^\infty$是收敛的复数序列，由引理15.6.13可知，以下极限存在
+        \begin{align*}
+          \lim\limits_{n \to \infty} \mathfrak{R}(z_n) \\
+          \lim\limits_{n \to \infty} \mathfrak{I}(z_n)
+        \end{align*}
+
+        同理可得，以下极限存在
+        \begin{align*}
+          \lim\limits_{n \to \infty} \mathfrak{R}(w_n) \\
+          \lim\limits_{n \to \infty} \mathfrak{I}(w_n)
+        \end{align*}
+
+        又因为，对任意$n$都有，
+        \begin{align*}
+          \mathfrak{R}(z_n + w_n) = \mathfrak{R}(z_n) + \mathfrak{R}(w_n)
+        \end{align*}
+
+        于是由极限定理（引理6.1.19）可知，
+        \begin{align*}
+          \lim\limits_{n \to \infty} \mathfrak{R}(z_n + w_n) = \lim\limits_{n \to \infty} \mathfrak{R}(z_n) + \lim\limits_{n \to \infty} \mathfrak{R}(w_n)
+        \end{align*}
+
+        同理可得，
+        \begin{align*}
+          \lim\limits_{n \to \infty} \mathfrak{I}(z_n + w_n) = \lim\limits_{n \to \infty} \mathfrak{I}(z_n) + \lim\limits_{n \to \infty} \mathfrak{I}(w_n)
+        \end{align*}
+
+        再次利用15.6.13可知，$(z_n + w_n)_{n = 1}^\infty$收敛，并且
+        \begin{align*}
+          \lim\limits_{n \to \infty} z_n + w_n = z
+        \end{align*}
+        其中，$\mathfrak{R}(z) = \lim\limits_{n \to \infty} \mathfrak{R}(z_n) + \lim\limits_{n \to \infty} \mathfrak{R}(w_n),
+          \mathfrak{I}(z) = \lim\limits_{n \to \infty} \mathfrak{I}(z_n) + \lim\limits_{n \to \infty} \mathfrak{I}(w_n)$，
+        所以，
+        \begin{align*}
+          \lim\limits_{n \to \infty} z_n + w_n = \lim\limits_{n \to \infty} z_n + \lim\limits_{n \to \infty} w_n
+        \end{align*}
+
+
+  \item $(\overline{z_n})_{n = 1}^\infty$收敛，并且$\lim\limits_{n \to \infty} \overline{z_n} = \overline{\lim\limits_{n \to \infty} z_n}$。
+
+        不妨设$(z_n)_{n = 1}^\infty$收敛于$z$，即$\overline{\lim\limits_{n \to \infty} z_n} = z$，
+        于是
+        \begin{align*}
+          \lim\limits_{n \to \infty} \mathfrak{R}(z_n) = \mathfrak{R}(z) \\
+          \lim\limits_{n \to \infty} \mathfrak{I}(z_n) = \mathfrak{I}(z)
+        \end{align*}
+
+        对每一个$n$，都有
+        \begin{align*}
+          \overline{z_n} = \mathfrak{R}(z_n) - \mathfrak{I}(z_n) i
+        \end{align*}
+
+        于是由极限定理（引理6.1.19）可知，
+        \begin{align*}
+          \lim\limits_{n \to \infty} -\mathfrak{I}(z_n) = -\mathfrak{I}(z)
+        \end{align*}
+
+        综上，利用引理15.6.13可知，
+        \begin{align*}
+          \lim\limits_{n \to \infty} \overline{z_n} = \overline{\lim\limits_{n \to \infty} z_n}
+        \end{align*}
+\end{itemize}
+
+\section*{15.6.15}
+
+按照书中的提示进行证明。
+
+（1）首先，$1 \neq 0$。假设$1$是负数。
+
+由负运算公理可知$-1$是正的，那么，由可乘性可得$-1 \times -1 = 1$是正数，
+与假设矛盾。
+
+综上可得，$1$是正数，从而$-1$是负数。
+
+（2）不一致的证明（由公理集合推演得到一个矛盾的结果）。
+
+
+
+$z = i$，$z \neq 0$，由三歧性可知，$i$要么是负数，要么是正数。
+
+如果$i$是正数，那么，由可乘性公理得$i^2 = -1$是正数，这与（1）矛盾。
+
+如果$i$是负数，那么，由负运算可得$-i$是正数，由可乘性公理得$(-i)^2 = -1$是正数，这与（1）矛盾。
+
+综上，公理间存在矛盾。
+
+\section*{15.6.16}
+
+\begin{itemize}
+  \item （1）叙述并证明关于复数的比值判别法。
+
+        \begin{itemize}
+          \item 比值判别法：设$\sum\limits_{n = m}^\infty z_n$是一个所有项都不为零的复数级数
+                （不为零的假设是为了保证下文中的比值$|z_{n + 1}|/|z_n|$是有意义的）。
+
+                \begin{itemize}
+                  \item 如果$\lim\sup\limits_{n \to \infty} \frac{|z_{n + 1}|}{|z_n|} < 1$，那么
+                        级数$\sum\limits_{n = m}^\infty z_n$是绝对收敛的（从而是条件收敛的。）
+                  \item 如果$\lim\sup\limits_{n \to \infty} \frac{|z_{n + 1}|}{|z_n|} > 1$，那么
+                        级数$\sum\limits_{n = m}^\infty z_n$不是条件收敛的（从而不可能是绝对收敛的）。
+                  \item 在其他情况下，我们无法给出任何结论。
+                \end{itemize}
+
+          \item 证明
+
+                （1）如果$\lim\sup\limits_{n \to \infty} \frac{|z_{n + 1}|}{|z_n|} < 1$。
+
+                因为$|z_n|$是实数，
+                于是利用推论7.5.3（比值判别法）可知，级数$\sum\limits_{n = m}^\infty z_n$是绝对收敛的。
+
+                接下来，证明绝对收敛的复数序列必定条件收敛。
+
+                设$(a_n)_{n = 1}^\infty$是绝对收敛的复数序列，其中$a_n = x_n + y_n i$。
+                由于$|a_n| = \sqrt{x_n^2 + y_n^2}$，于是
+                \begin{align*}
+                  |x_n| \leq |a_n| \\
+                  |y_n| \leq |a_n|
+                \end{align*}
+
+                于是可得，$(x_n)_{n = 1}^\infty$和$(y_n)_{n = 1}^\infty$这两个实数序列都是绝对收敛的，
+                所以，$\lim\limits_{n \to \infty} x_n$和$\lim\limits_{n \to \infty} y_n$都存在，
+                由引理15.6.13可知，以下极限存在，
+                \begin{align*}
+                  \lim\limits_{n \to \infty} a_n
+                \end{align*}
+
+                综上可得，绝对收敛的复数序列必定条件收敛。
+
+                所以，级数$\sum\limits_{n = m}^\infty z_n$是绝对收敛的，从而是条件收敛的。
+
+
+                （2）如果$\lim\sup\limits_{n \to \infty} \frac{|z_{n + 1}|}{|z_n|} > 1$。
+
+                所以，存在$c > 1$和对应的$N \geq m$，使得$n \geq N$，就有
+                \begin{align*}
+                  |z_{n + 1}| > |z_N|c^{n + 1 - N}
+                \end{align*}
+
+                所以，$n \to +\infty$时，$|z_n| \to +\infty$，
+                所以$(z_n)_{n = m}^\infty$是发散的，
+                利用7.2.6（零判别法）（更准确的说法是复数版本）
+                级数$\sum\limits_{n = m}^\infty z_n$是发散的。
+
+                （3）直接利用习题7.5.3即可，把实数级数看做复数级数的特例。
+        \end{itemize}
+
+  \item （2）利用比值定理证明对任意的$z$，$\exp(z)$都是收敛的。
+
+        因为，对任意复数$z$，都有
+        \begin{align*}
+          \lim\sup\limits_{n \to \infty}\frac{\frac{|z^{n+1}|}{(n+1)!}}{\frac{|z^{n}|}{n!}}
+           & = \lim\sup\limits_{n \to \infty}\frac{|z^{n+1}|}{|z^{n}|} \frac{1}{n+1} \\
+           & = \lim\sup\limits_{n \to \infty}\frac{|z^{n}||z|}{|z^{n}|}\frac{1}{n+1} \\
+           & = \lim\sup\limits_{n \to \infty}\frac{|z|}{n + 1}                       \\
+           & = 0 < 1
+        \end{align*}
+
+        于是利用复数级数的比值判别法可知，$\exp(z)$绝对收敛，从而是条件收敛的。
+
+  \item （3）$\exp(z + w) = \exp(z) \exp(w)$。
+
+  
+\end{itemize}
+
+
+
+
+
 
 \end{document}
