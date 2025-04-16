@@ -825,12 +825,39 @@ $z = i$，$z \neq 0$，由三歧性可知，$i$要么是负数，要么是正数
 
   \item （3）$\exp(z + w) = \exp(z) \exp(w)$。
 
-  
+        \begin{align*}
+          \exp(z + w) = \sum\limits_{n = 0}^\infty \frac{(z + w)^n}{n!}
+        \end{align*}
+        利用二项式公式（习题7.1.4）可知直接得到
+        \begin{align*}
+          \exp(z + w)
+           & =\sum\limits_{n = 0}^\infty \frac{(z + w)^n}{n!}                                                  \\
+           & = \sum\limits_{n = 0}^\infty \frac{1}{n!}\sum \limits_{j = 0}^n \frac{n!}{j!(n - j)!}z^jw^{n - j}
+        \end{align*}
+        约分掉$n!$可得
+        \begin{align*}
+          \exp(z + w)
+           & = \sum\limits_{n = 0}^\infty \sum \limits_{j = 0}^n \frac{z^jw^{n - j}}{j!(n - j)!}
+        \end{align*}
+
+        由于$\exp$函数在$\mathbb{C}$上绝对收敛的，所以可以使用定理8.2.2（富比尼定理）
+        （准确的说是复数版本）
+        \begin{align*}
+          \exp(z + w)
+           & = \sum\limits_{j = 0}^\infty \sum \limits_{n = j}^\infty \frac{z^jw^{n - j}}{j!(n - j)!}
+        \end{align*}
+        令$m = n - j$，于是可得，
+        \begin{align*}
+          \exp(z + w)
+           & = \sum\limits_{j = 0}^\infty \sum \limits_{m = 0}^\infty \frac{z^jw^m}{j!m!}
+        \end{align*}
+
+        分离成两个级数：
+        \begin{align*}
+          \exp(z + w)
+           & = \sum\limits_{j = 0}^\infty \frac{z^j}{j!} \sum \limits_{m = 0}^\infty \frac{w^m}{m!} \\
+           & = \exp(z) \exp(w)
+        \end{align*}
 \end{itemize}
-
-
-
-
-
 
 \end{document}
