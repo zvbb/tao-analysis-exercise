@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{15.7 注释}
+\author{张志聪}
+\maketitle
+
+\section*{1}
+
+\begin{zremark}
+  对所有的$x > 0$,都有$cot^\prime(x) \leq -1$，那么由微积分基本定理可知，对所有的$x > 0$和$s > 0$，都有$cot(x + s) \leq cot(x) - s$。
+  以上命题是如何证明。
+\end{zremark}
+
+利用定理11.9.4（微积分第二基本定理）
+\begin{align*}
+  \int_{x, x+s} cot^\prime(t) dt \leq \int_{[x, x+s]} -1 dt \\
+  \implies                                                  \\
+  cot(x + s) - cot(x) \leq x + s - x                        \\
+  \implies                                                  \\
+  cot(x + s) \leq cot(x) - s
+\end{align*}
+
+\end{document}

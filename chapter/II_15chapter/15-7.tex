@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{15.7 习题}
+\author{张志聪}
+\maketitle
+
+\section*{15.7.1}
+
+\begin{itemize}
+  \item (a)
+
+        利用引理15.6.6和习题15.6.16中的$\exp(z + w) = \exp(z)\exp(w)$。
+        \begin{align*}
+          \sin(x)^2 + \cos(x)^2
+           & = \left(\frac{e^{ix} - e^{-ix}}{2i}\right)^2 + \left(\frac{e^{ix} + e^{-ix}}{2}\right)^2       \\
+           & = \frac{e^{2ix} + e^{-2ix} - 2 e^{ix - ix}}{-4} + \frac{e^{2ix} + e^{-2ix} + 2 e^{ix - ix}}{4} \\
+           & = \frac{e^{2ix} + e^{-2ix}}{-4} + \frac{-2}{-4} + \frac{e^{2ix} + e^{-2ix}}{4} + \frac{2}{4}   \\
+           & = 1
+        \end{align*}
+  \item (b)
+
+        \begin{align*}
+          sin^\prime(x) & = \left(\sum\limits_{n = 0}^\infty \frac{(-1)^nx^{2n + 1}}{(2n + 1)!} \right)^\prime \\
+                        & = \sum\limits_{n = 0}^\infty \frac{(-1)^n(2n + 1)x^{2n}}{(2n + 1)!}                  \\
+                        & = \sum\limits_{n = 0}^\infty \frac{(-1)^nx^{2n}}{(2n)!}                              \\
+                        & = cos(x)
+        \end{align*}
+
+        \begin{align*}
+          cos^\prime(x) & = \left(\sum\limits_{n = 0}^\infty \frac{(-1)^nx^{2n}}{(2n)!}\right)^\prime \\
+                        & = \sum\limits_{n = 1}^\infty \frac{2n(-1)^nx^{2n-1}}{(2n)!}                 \\
+                        & = \sum\limits_{n = 1}^\infty \frac{(-1)^nx^{2n-1}}{(2n-1)!}                 \\
+        \end{align*}
+        令$m = n - 1$，即$n = m + 1$，利用命题7.4.3（级数的重排序），
+        \begin{align*}
+           & \sum\limits_{n = 1}^\infty \frac{(-1)^nx^{2n-1}}{(2n-1)!}                     \\
+           & = \sum\limits_{m = 0}^\infty \frac{(-1)^{m + 1}x^{2(m + 1)-1}}{(2(m + 1)-1)!} \\
+           & = \sum\limits_{m = 0}^\infty \frac{(-1)^{m + 1}x^{2m + 1}}{(2m + 1)!}         \\
+           & = - \sum\limits_{m = 0}^\infty \frac{(-1)^{m}x^{2m + 1}}{(2m + 1)!}           \\
+           & = -sin(x)
+        \end{align*}
+
+  \item (c)
+
+        \begin{align*}
+          sin(-x) & = \frac{e^{-ix} - e^{ix}}{2i}   \\
+                  & = - \frac{e^{ix} - e^{-ix}}{2i} \\
+                  & = -sin(x)
+        \end{align*}
+
+        \begin{align*}
+          cos(-x) & = \frac{e^{i(-x)} + e^{-i(-x)}}{2} \\
+                  & = \frac{e^{-ix} + e^{ix}}{2}       \\
+                  & = cos(x)
+        \end{align*}
+
+  \item (d)
+
+        \begin{align*}
+          cos(x)cos(y) - sin(x)sin(y) & = \frac{e^{ix} + e^{-ix}}{2} \frac{e^{iy} + e^{-iy}}{2}                    \\
+                                      & - \frac{e^{ix} - e^{-ix}}{2i} \frac{e^{iy} - e^{-iy}}{2i}                  \\
+                                      & = \frac{e^{ix}e^{iy} + e^{ix}e^{-iy} + e^{-ix}e^{iy} + e^{-ix}e^{-iy}}{4}  \\
+                                      & - \frac{e^{ix}e^{iy} - e^{ix}e^{-iy} - e^{-ix}e^{iy} + e^{-ix}e^{-iy}}{-4} \\
+                                      & = \frac{2e^{ix}e^{iy} + 2e^{-ix}e^{-iy}}{4}                                \\
+                                      & = \frac{e^{ix}e^{iy} + e^{-ix}e^{-iy}}{2}                                  \\
+                                      & = \frac{e^{i(x + y)} + e^{-i(x + y)}}{2}                                   \\
+                                      & = cos(x + y)
+        \end{align*}
+
+        \begin{align*}
+          sin(x)cos(y) + cos(x)sin(y) & = \frac{e^{ix} - e^{-ix}}{2i} \frac{e^{iy} + e^{-iy}}{2}                    \\
+                                      & + \frac{e^{ix} + e^{-ix}}{2}\frac{e^{iy} - e^{-iy}}{2i}                     \\
+                                      & = \frac{e^{ix}e^{iy} + e^{ix}e^{-iy} - e^{-ix}e^{iy} - e^{-ix}e^{-iy} }{4i} \\
+                                      & + \frac{e^{ix}e^{iy} - e^{ix}e^{-iy} + e^{-ix}e^{iy} - e^{-ix}e^{-iy}}{4i}  \\
+                                      & = \frac{2e^{ix}e^{iy} - 2e^{-ix}e^{-iy}}{4i}                                \\
+                                      & = \frac{e^{i(x + y)} - e^{-i(x + y)}}{2i}                                   \\
+                                      & = sin(x + y)
+        \end{align*}
+
+
+  \item (e)
+
+        \begin{align*}
+          cos(0) & = \frac{e^{i \times 0} + e^{-i \times 0}}{2i} \\
+                 & = \frac{1 + 1}{2}                             \\
+                 & = 1
+        \end{align*}
+
+        由(a)可知，$sin(0) = 1 - cos(0)^2 = 1 - 1 = 0$
+
+
+  \item (f)
+
+        \begin{align*}
+          cos(x) + isin(x) & = \frac{e^{ix} + e^{-ix}}{2} + i\frac{e^{ix} - e^{-ix}}{2i}     \\
+                           & = \frac{e^{ix} + e^{-ix}}{2} + i^2\frac{e^{ix} - e^{-ix}}{2i^2} \\
+                           & = \frac{e^{ix} + e^{-ix}}{2} + \frac{e^{ix} - e^{-ix}}{2}       \\
+                           & = \frac{2e^{ix}}{2}                                             \\
+                           & = e^{ix}
+        \end{align*}
+
+        同理可得，
+        \begin{align*}
+          cos(x) - isin(x) & = \frac{e^{ix} + e^{-ix}}{2} - i\frac{e^{ix} - e^{-ix}}{2i}     \\
+                           & = \frac{e^{ix} + e^{-ix}}{2} - i^2\frac{e^{ix} - e^{-ix}}{2i^2} \\
+                           & = \frac{e^{ix} + e^{-ix}}{2} - \frac{e^{ix} - e^{-ix}}{2}       \\
+                           & = \frac{2e^{-ix}}{2}                                            \\
+                           & = e^{-ix}
+        \end{align*}
+
+\end{itemize}
+
+\end{document}
