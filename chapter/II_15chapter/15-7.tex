@@ -128,4 +128,120 @@
 
 \end{itemize}
 
+\section*{15.7.2}
+
+（1）
+
+反证法，假设$c$不存在，即，对任意$c > 0$，存在$0 < |y - x_0| < c$，使得$f(y) = 0$。
+
+因为$f$在$x_0$处是可微的，那么，
+\begin{align*}
+  \lim_{x \to x_0;x \in \mathbb{R} - {x_0}} \frac{f(x) - f(x_0)}{x - x_0} = f^\prime(x_0)
+\end{align*}
+
+于是，对$\epsilon = \frac{1}{2} f(x_0)$，存在$\delta > 0$，使得只要$|x - x_0| < \delta$，就有
+\begin{align*}
+  \left|\frac{f(x) - f(x_0)}{x - x_0} - f^\prime(x_0)\right| < \frac{1}{2} f^\prime(x_0) \\
+\end{align*}
+
+由假设可知，取$c = \delta$，那么，存在$0 < |y - x_0| < c$，使得$f(y) = 0$。
+综上，我们有
+\begin{align*}
+  \left|\frac{f(y) - f(x_0)}{y - x_0} - f^\prime(x_0)\right| < \frac{1}{2} f^\prime(x_0) \\
+  \left|\frac{0 - 0}{y - x_0} - f^\prime(x_0)\right| < \frac{1}{2} f^\prime(x_0)         \\
+  f^\prime(x_0) < \frac{1}{2} f^\prime(x_0)                                              \\
+\end{align*}
+存在矛盾。
+
+（2）
+
+因为$sin(x) = 0, sin^\prime(0) = cos(0) = 1$，所以，由（1）可知，
+存在$c > 0$使得只要$0 < |0 - x| = |x| < c$，$sin(x) \neq 0$。
+
+即$-c < x < 0$或$0 < x < c$，都有$sin(x) \neq 0$。
+
+\section*{15.7.3}
+
+\begin{itemize}
+  \item (a)
+
+        \begin{align*}
+          cos(x + \pi) & = cos(x)cos(\pi) - sin(x)sin(\pi) \\
+                       & = cos(x)(-1) - sin(x)0            \\
+                       & = -cos(x)
+        \end{align*}
+
+        \begin{align*}
+          sin(x + \pi) & = sin(x)cos(\pi) + cos(x)sin(\pi) \\
+                       & = sin(x)(-1) + cos(x)0            \\
+                       & = -sin(x)
+        \end{align*}
+
+        特别地，
+        \begin{align*}
+          cos(x + 2\pi) & = cos((x + \pi) + \pi) \\
+                        & = -cos(x + \pi)        \\
+                        & = cos(x)
+        \end{align*}
+
+        \begin{align*}
+          sin(x + 2\pi) & = sin((x + \pi) + \pi) \\
+                        & = -sin(x + \pi)        \\
+                        & = sin(x)
+        \end{align*}
+
+  \item (b)
+
+        \begin{itemize}
+          \item $\Rightarrow$
+
+                由书中的讨论可知，$sin(0) = 0, sin(\pi) = 0$且$x \in (0, \pi), sin(x) \neq 0$。
+
+                对任意$x$都可以表示成$x = n\pi + x_0$，其中$x_0 \in [0, \pi)$，$n$是整数。
+
+                由(a)可知，
+                \begin{align*}
+                  sin(x) = (-1)^nsin(x_0)
+                \end{align*}
+
+                综上，只有$x_0 = 0$时，$sin(x) = 0$。此时，$x/\pi = n$是一个整数。
+
+
+          \item $\Leftarrow$
+
+                因为$x = n\pi$，其中$n$是整数，所以，
+                \begin{align*}
+                  sin(x) & = sin(n\pi)     \\
+                         & = sin(0 + n\pi) \\
+                         & = (-1)^{n} 0    \\
+                         & = 0
+                \end{align*}
+        \end{itemize}
+  \item (c)
+
+        因为
+        \begin{align*}
+          sin(\pi) & = sin(\frac{1}{2}\pi + \frac{1}{2}\pi)                                            \\
+                   & = sin(\frac{1}{2}\pi)cos(\frac{1}{2}\pi) + cos(\frac{1}{2}\pi)sin(\frac{1}{2}\pi) \\
+                   & = 2sin(\frac{1}{2}\pi)sin(\frac{1}{2}\pi)                                         \\
+                   & = 0
+        \end{align*}
+
+        因为$sin(\frac{1}{2}\pi) > 0$，所以，$cos(\frac{1}{2}\pi) = 0$。
+        又由$sin(\frac{1}{2}\pi)^2 + cos(\frac{1}{2}\pi)^2 = 1$可得，$sin(\frac{1}{2}\pi) = 1$。
+
+        又我们有，
+        \begin{align*}
+          sin(x + \frac{1}{2}\pi) & = sin(x)cos(\frac{1}{2}\pi) + cos(x)sin(\frac{1}{2}\pi) \\
+                                  & = cos(x)
+        \end{align*}
+
+        综上，由(b)可知，(c)成立。
+
+\end{itemize}
+
+\section*{15.7.4}
+
+
+
 \end{document}

@@ -28,6 +28,7 @@
   对所有的$x > 0$,都有$cot^\prime(x) \leq -1$，那么由微积分基本定理可知，对所有的$x > 0$和$s > 0$，都有$cot(x + s) \leq cot(x) - s$。
   以上命题是如何证明。
 \end{zremark}
+\textbf{证明：}
 
 利用定理11.9.4（微积分第二基本定理）
 \begin{align*}
@@ -37,5 +38,27 @@
   \implies                                                  \\
   cot(x + s) \leq cot(x) - s
 \end{align*}
+
+\section*{2}
+
+\begin{zremark}
+  设$E$是集合$E := \{x \in (0, +\infty) : sin(x) = 0\}$，因为$sin$在$[c, +\infty)$上是连续的，
+  所以$E$在$[c, +\infty)$上是闭的。
+\end{zremark}
+\textbf{证明：}
+
+函数$sin : [c, +\infty) \to sin([c, +\infty))$。
+因为$\{0\}$是$sin([c, +\infty))$中的闭集，那么集合
+$sin^{-1}(0) := \{x \in [c, +\infty) : sin(x) = 0\}$（这里$E = sin^{-1}(0)$）
+就是$[c, +\infty)$中的闭集。
+
+\section*{3}
+
+\begin{zremark}
+  $E$包含了它的全体附着点，从而就包含了$inf(E)$。
+\end{zremark}
+\textbf{证明：}
+
+因为$inf(E)$就是$E$的附着点。
 
 \end{document}
