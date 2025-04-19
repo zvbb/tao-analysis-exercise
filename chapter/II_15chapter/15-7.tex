@@ -242,6 +242,259 @@
 
 \section*{15.7.4}
 
+（1）对$y$值进行讨论。
+\begin{itemize}
+  \item $y = 1$。
+
+        于是$x = 0$，取$\theta = 0$，于是
+        \begin{align*}
+          x = 0 = sin(\theta) = sin(0) \\
+          y = 1 = cos(\theta) = cos(0)
+        \end{align*}
+
+  \item $y = -1$。
+
+        于是$x = 0$，取$\theta = \pi$，于是
+        \begin{align*}
+          x = 0 = sin(\theta) = sin(\pi) = -sin(0) \\
+          y = -1 = cos(\theta) = cos(\pi) = -cos(0)
+        \end{align*}
+
+  \item $y \in (-1, 1)$。
+
+        因为$cos^(z) = -sin(z)$，又
+        所以在$z \in (0, \pi)$，$sin(z) > 0$，
+        所以$cos(z)$在$(0, \pi)$中严格单调递减，
+        由介质定理可得，在$(cos(0), cos(\pi)) = (-1, 1)$中，存在$\theta_0 \in (0, \pi)$，使得
+        \begin{align*}
+          cos(\theta_0) = y
+        \end{align*}
+
+        又因为
+        \begin{align*}
+          sin(\theta_0)^2 = 1 - cos(\theta_0)^2 = 1 - y^2 = x^2
+        \end{align*}
+
+        于是，$sin(\theta_0) = x$或$sin(\theta_0) = -x$。
+
+        \begin{itemize}
+          \item 如果$sin(\theta_0) = x$，直接取$\theta = \theta_0$即可。
+          \item 如果$sin(\theta_0) = -x$。
+
+                取$\theta = - \theta_0$，于是
+                \begin{align*}
+                  cos(\theta) = cos(-\theta_0) = cos(\theta_0) = y \\
+                  sin(\theta) = sin(-\theta_0) = -sin(\theta_0) = -(-x) = x
+                \end{align*}
+
+                又因为$-\theta_0 \in (-\pi, 0) \subseteq (-\pi, \pi]$，满足题设。
+        \end{itemize}
+\end{itemize}
+
+（2）唯一性证明。
+
+反证法，假设存在$\theta^\prime \in (-\pi, \pi], \theta \neq \theta^\prime$，使得
+\begin{align*}
+  x = sin(\theta^\prime) = sin(\theta) \\
+  y = cos(\theta^\prime) = cos(\theta)
+\end{align*}
+
+$y = 1$或$ y = -1$时，唯一性可以直接由定理15.7.5(b)推导出。我们主要考虑$y \in (-1, 1)$时。
+
+因为$cos(x)$在$(0, \pi)$中严格单调递减，
+所以在$(0, \pi)$中最多存在一个$\theta$使得$cos(\theta) = y$。
+
+同理，$(-\pi, 0)$中最多存在一个$\theta^\prime$使得$cos(\theta^\prime) = y$。
+
+又因为$cos(-x) = cos(x)$，于是可得$\theta = -\theta^\prime$。
+
+而$sin(-x) = -sin(x)$，于是$sin(\theta^\prime) = -sin(\theta)$，
+这与$sin(\theta) = sin(\theta^\prime)$矛盾。
+
+\section*{15.7.5}
+
+\begin{itemize}
+  \item (a) $r = s$。
+
+        由定理15.7.2(f)可知，
+        \begin{align*}
+          re^{i\theta} = r cos(\theta) + r\sin(\theta)i \\
+          se^{i\alpha} = s cos(\alpha) + s\sin(\alpha)i
+        \end{align*}
+
+        因为$re^{i\theta} = se^{i\alpha}$，于是$|re^{i\theta}| = |se^{i\alpha}|$。
+        又因为
+        \begin{align*}
+          |re^{i\theta}| = \sqrt{(r cos(\theta))^2 + (r\sin(\theta))^2} = r \\
+          |se^{i\alpha}| = \sqrt{(r cos(\alpha))^2 + (r\sin(\alpha))^2} = s
+        \end{align*}
+
+        综上，$r = s$。
+
+  \item (b)存在一个整数$k$使得$\theta = \alpha + 2\pi k$。
+
+        结合(a)可知，$\theta, \alpha$要满足以下条件：
+        \begin{equation*}
+          \begin{cases*}
+            cos(\theta) = cos(\alpha) \\
+            sin(\theta) = sin(\alpha)
+          \end{cases*}
+        \end{equation*}
+
+        如果$\theta = \alpha$，此时$k = 0$，命题成立。
+
+        如果$\theta \neq \alpha$。
+        因为$sin(x), cos(x)$都是周期函数，且周期为$2\pi$，
+        所以，我们可以在$(-\pi, \pi]$上考虑该问题。
+
+        令$x^2 = sin^2(\theta), y^2 = cos^2(\theta)$，
+        于是$x^2 + y^2 = 1$。
+        于是利用习题15.7.4可知，
+        恰存在一个实数$\vartheta \in (-\pi, \pi]$使得
+        $x = sin(\vartheta), y = cos(\vartheta)$。
+
+        由$\vartheta$的唯一性可知，$\theta, \alpha$要满足:
+        \begin{align*}
+          \theta = \vartheta + 2\pi k_1 \\
+          \alpha = \vartheta + 2\pi k_2
+        \end{align*}
+        （其中，$k_1, k_2 \in \mathbb{Z}$）
+
+        如果不满足该条件，会导致$\vartheta$不唯一。
+        因为存在$k^\prime \in \mathbb{Z}$使得
+        \begin{align*}
+          \alpha + 2\pi k^\prime \in (-\pi, \pi] \\
+          \alpha + 2\pi k^\prime \neq \vartheta
+        \end{align*}
+        （这里以$\alpha$为例）
+
+        于是
+        $x = sin(\alpha + 2\pi k^\prime), y = cos(\alpha + 2\pi k^\prime)$，
+        与$\vartheta$的唯一性矛盾。
+
+        综上，命题成立。
+\end{itemize}
+
+\section*{15.7.6}
+
+\begin{align*}
+  re^{i\theta} & = r(cos(\theta) + sin(\theta)i) \\
+               & = rcos(\theta) + rsin(\theta)i
+\end{align*}
+
+因为要满足$z = re^{i\theta}$，于是要保证，
+\begin{align*}
+  |z| & = |re^{i\theta}|                             \\
+      & = \sqrt{r^2cos^2(\theta) + r^2sin^2(\theta)} \\
+      & = \sqrt{r^2}                                 \\
+      & = |r|
+\end{align*}
+
+因为，$r > 0$，所以，取$r = |z|$。
+（注意，这里的$r$是唯一。因为如果$r \neq |z|$，会导致$z = re^{i\theta}$无法成立。）
+
+另外，我们需要求出以下两个方程的解。
+\begin{equation*}
+  \begin{cases*}
+    rcos(\theta) = \mathfrak{R}(z) \\
+    rsin(\theta) = \mathfrak{I}(z)
+  \end{cases*}
+\end{equation*}
+
+两等式分别平方，然后，相加：
+\begin{align*}
+  r^2cos^2(\theta) + r^2sin^2(\theta) = (\mathfrak{R}(z))^2 + (\mathfrak{I}(z))^2 = |z|^2 \\
+  r^2(cos^2(\theta) + sin^2(\theta)) = |z|^2                                              \\
+  |z|^2(cos^2(\theta) + sin^2(\theta)) = |z|^2                                            \\
+  cos^2(\theta) + sin^2(\theta) = 1
+\end{align*}
+
+由习题15.7.4可知，$\theta$存在且唯一。
+
+\section*{15.7.7}
+
+\begin{align*}
+  \mathfrak{R}((cos(\theta) + isin(\theta))^n) & = \mathfrak{R}((e^{i\theta})^n) \\
+                                               & = \mathfrak{R}(e^{in\theta})    \\
+                                               & = cos(n\theta)
+\end{align*}
+
+同理可得，
+\begin{align*}
+  \mathfrak{I}((cos(\theta) + isin(\theta))^n) & = \mathfrak{I}((e^{i\theta})^n) \\
+                                               & = \mathfrak{I}(e^{in\theta})    \\
+                                               & = sin(n\theta)
+\end{align*}
+
+\section*{15.7.8}
+
+\begin{itemize}
+  \item $\tan(x)$可微且单调递增，$\frac{d}{dx} tan(x) = 1 + tan(x)^2$。
+
+        由于$sin(x), cos(x)$在$R$上可微，且$x \in (-\pi/2, \pi/2)$上，$con(x) \neq 0$，
+        由定理10.1.13(h)，$tan(x)$可微，且
+        \begin{align*}
+          (tan(x))^\prime & = (\frac{sin(x)}{con(x)})^\prime                  \\
+                          & = \frac{cos(x)cos(x) - sin(x)(-sin(x))}{con(x)^2} \\
+                          & = \frac{1}{cos(x)^2}
+        \end{align*}
+
+        因为$x \in (-\pi/2, \pi/2), cos(x)^2 > 0$，于是$(tan(x))^\prime > 0$，
+        所以，$tan(x)$在$(-\pi/2, \pi/2)$上是严格单调递增的。
+
+        我们有，
+        \begin{align*}
+          1 + tan(x)^2 & = 1 + \frac{sin(x)^2}{cos(x)^2}        \\
+                       & = \frac{cos(x)^2 + sin(x)^2}{cos(x)^2} \\
+                       & = \frac{1}{cos(x)^2}                   \\
+                       & = (tan(x))^\prime
+        \end{align*}
+
+        所以，$\frac{d}{dx} tan(x) = 1 + tan(x)^2$。
+
+  \item $\lim\limits_{x \to \pi/2} tan(x) = +\infty, \lim\limits_{x \to -\pi/2} tan(x) = -\infty$。
+
+        由定理15.7.5(c)可知，$cos(\pi/2) = 0$，于是$sin(x) = 1 - cos(x)^2 = 1$。
+        因为，$cos(x), sin(x)$都是连续的，所以，
+        \begin{align*}
+          \lim\limits_{x \to \pi/2} cos(x) = 0 \\
+          \lim\limits_{x \to \pi/2} sin(x) = 1
+        \end{align*}
+
+        于是，
+        \begin{align*}
+          \lim\limits_{x \to \pi/2} tan(x) = +\infty
+        \end{align*}
+
+        注意：这里不能直接使用极限定理（定理6.1.19）得到，而是利用函数在一点处收敛的定义（定义9.3.6），具体证明略。
+
+        类似地，
+        \begin{align*}
+          \lim\limits_{x \to -\pi/2} tan(x) = -\infty
+        \end{align*}
+
+  \item $tan(x)$实际上是$(-\pi/2, \pi/2) \to \mathbb{R}$的双射。
+
+        由之前的讨论可知，$\tan(x)$在$(-\pi/2, \pi/2)$上是严格单调递增的，
+        于是，$tan(x)$是$(-\pi/2, \pi/2) \to \mathbb{R}$的双射。
+
+  \item $tan^{-1}$可微的，并且有$\frac{d}{dx} tan^{-1}(x) = \frac{1}{1 + x^2}$。
+
+        由定理10.4.2（反函数定理）可知，$tan^{-1}$可微，并且对$y = tan(x)$有
+        \begin{align*}
+          (tan^{-1})^\prime(y) & = \frac{1}{tan^\prime(x)} \\
+                               & = \frac{1}{1 + tan(x)^2}  \\
+                               & = \frac{1}{1 + y^2}
+        \end{align*}
+
+        所以，$\frac{d}{dx} tan^{-1}(x) = \frac{1}{1 + x^2}$。
+\end{itemize}
+
+\section*{15.7.9}
+
+
 
 
 \end{document}
+
+
