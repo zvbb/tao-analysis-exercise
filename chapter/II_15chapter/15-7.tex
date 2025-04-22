@@ -492,8 +492,234 @@ $y = 1$或$ y = -1$时，唯一性可以直接由定理15.7.5(b)推导出。我�
 
 \section*{15.7.9}
 
+（1）
 
+因为，$x \in (-1, 1)$，所以，$|-x^2| < 1$。
 
+所以，
+\begin{align*}
+  \frac{1}{1 - (- x^2)} & = \sum \limits_{n = 0}^{\infty} (- x^2)^n     \\
+                        & = \sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}
+\end{align*}
+
+$\sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}$
+这个级数与标准幂级数形式$\sum \limits_{n = 0}^{\infty} c_n(x - a)^n$不一致，
+但它任然是一个合法的幂级数，但需要做如下改变：
+
+设$m = 2n$，于是利用命题7.4.3（级数的重排序）
+\begin{align*}
+  \sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}
+  =
+  \sum \limits_{m = 0}^{\infty} c_m x^{m}
+\end{align*}
+其中，
+\begin{equation*}
+  c_m = \begin{cases}
+    (-1)^{m/2} & \text{if } m \text{ is 偶数} \\
+    0          & \text{if } m \text{ is 奇数}
+  \end{cases}
+\end{equation*}
+（其实这个幂级数缺少奇次项，书中定义的$sin(x), cos(x)$幂级数表示形式，也分别缺少奇次项和偶次项）。
+
+利用定理15.1.6(e)可知，
+\begin{align*}
+  \int_{[0, x]} \frac{1}{1 + y^2} dy
+   & = \sum \limits_{m = 0}^{\infty} c_m \frac{x^{m + 1}}{m + 1} \\
+\end{align*}
+令$n = \frac{1}{2}m$，于是再次利用命题7.4.3（级数的重排序）
+\begin{align*}
+  \sum \limits_{m = 0}^{\infty} c_m \frac{x^{m + 1}}{m + 1}
+  =
+  \sum \limits_{n = 0}^{\infty} (-1)^n \frac{x^{2n + 1}}{2n + 1}
+\end{align*}
+
+又因为，
+\begin{align*}
+  \int_{[0, x]} \frac{1}{1 + y^2} dy
+   & = tan^{-1}(y)|_0^x          \\
+   & = tan^{-1}(x) - tan^{-1}(0) \\
+   & = tan^{-1}(x) - 0           \\
+   & = tan^{-1}(x)
+\end{align*}
+
+综上可得，
+\begin{align*}
+  tan^{-1}(x) = \sum \limits_{n = 0}^{\infty} (-1)^n \frac{x^{2n + 1}}{2n + 1}
+\end{align*}
+
+（2）
+
+\begin{itemize}
+  \item 使用阿贝尔定理证明。（按照提示证明，但个人有一点问题：这个幂级数的收敛半径不是$1$）。
+
+        因为
+        \begin{align*}
+          \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
+        \end{align*}
+
+        所以，有定理15.3.1（阿贝尔定理）可得，
+        \begin{align*}
+          \lim\limits_{x \to 1} tan^{-1}(x) = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1} \\
+          \implies                                                                                \\
+          tan^{-1} (1) = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
+        \end{align*}
+
+        % \item 使用命题14.3.3证明。
+
+        %       $tan^{-1}(x) = \sum \limits_{n = 0}^{\infty} (-1)^n \frac{x^{2n + 1}}{2n + 1}$，
+        %       即部分和$\sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1}$一致收敛于$tan^{-1}(x)$。
+
+        %       又因为，对任意$N$都有，
+        %       \begin{align*}
+        %         \lim\limits_{x \to 1} \sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1}
+        %          & = \sum \limits_{n = 0}^{N} \frac{(-1)^n}{2n + 1}
+        %       \end{align*}
+
+        %       于是，利用命题14.3.3可知，
+        %       \begin{align*}
+        %         \lim\limits_{x \to 1} tan^{-1}(x)
+        %          & = \lim\limits_{N \to +\infty} \lim \limits_{x \to 1} \sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1} \\
+        %          & = \lim\limits_{N \to +\infty} \sum \limits_{n = 0}^{N} \frac{(-1)^n}{2n + 1}                                   \\
+        %          & = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
+        %       \end{align*}
+        %       因为，$tan^{-1}(x)$是连续的，所以，
+        %       \begin{align*}
+        %         \lim\limits_{x \to 1} tan^{-1}(x) = tan^{-1}(1)
+        %       \end{align*}
+
+        %       综上可得，
+        %       \begin{align*}
+        %         tan^{-1}(1) & = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
+        %       \end{align*}
+\end{itemize}
+
+接下来，现在需要证明: $tan^{-1}(1) = \frac{\pi}{4}$。
+
+\begin{align*}
+  cos(\pi/2) & = cos(\pi/4 + \pi/4)                          \\
+             & = cos(\pi/4)cos(\pi/4) - sin(\pi/4)sin(\pi/4) \\
+             & = 0
+\end{align*}
+于是可得，
+\begin{align*}
+  cos(\pi/4)cos(\pi/4) = sin(\pi/4)sin(\pi/4)
+\end{align*}
+又因为，
+\begin{align*}
+  cos(\pi/4)cos(\pi/4) + sin(\pi/4)sin(\pi/4) = 1
+\end{align*}
+又因为$cos(\pi/4) > 0, sin(\pi/4) > 0$，于是
+\begin{align*}
+  cos(\pi/4) = \frac{1}{\sqrt{2}} \\
+  sin(\pi/4) = \frac{1}{\sqrt{2}}
+\end{align*}
+
+因为，$tan(x) = \frac{sin(x)}{cos(x)}$，且在$(-\pi/2, \pi/2)$中严格单调递减，
+所以，当且仅当$x = \pi/4$时，$tan(x) = 1$。
+
+综上可得，
+\begin{align*}
+  tan^{-1}(1) = \frac{\pi}{4}
+\end{align*}
+
+所以，
+\begin{align*}
+  \pi = 4tan^{-1}(1) = 4\lim\limits_{n \to +\infty} \frac{(-1)^n}{2n + 1}
+\end{align*}
+
+（3）推导出$4 - \frac{4}{3} < \pi < 4$。
+
+todo
+
+\section*{15.7.19}
+
+\begin{itemize}
+  \item (a)
+
+        利用定理14.5.8（威尔斯特拉斯M判别法）完成证明。
+
+        令$f_(n) = 4^{-n} cos(32^n \pi x)$是有界且连续的，
+        又因为$\sum \limits_{n = 1}^{\infty} ||f_(n)||_{\infty} = \sum \limits_{n = 1}^{\infty} 4^{-n}$，
+        由引理7.3.3（几何级数）可知，$\sum \limits_{n = 1}^{\infty} 4^{-n}$收敛，
+        于是利用定理14.5.8（威尔斯特拉斯M判别法），
+        $\sum \limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi x)$
+        一致收敛于连续的函数$f$。
+  \item (b)
+
+        直接利用书中的提示的小命题，不做证明了。
+
+        \begin{align*}
+          \left|f(\frac{j + 1}{32^m}) - f(\frac{j}{32^m})\right|
+           & = \left|\sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - \sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right| \\
+           & =  \left|\sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right|
+        \end{align*}
+
+        $n > m$时，$32^n \pi \frac{j + 1}{32^m}$与$32^n \pi \frac{j}{32^m}$都是$2\pi$的整数倍，
+        所以，
+        \begin{align*}
+          \left|\sum\limits_{n = m+1}^{\infty} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right|
+           & = \left|\sum\limits_{n = m}^{\infty} 4^{-n} \times 1  - 4^{-n} \times 1  \right| \\
+           & = 0
+        \end{align*}
+
+        $n = m$时，
+        \begin{align*}
+          \left|\sum\limits_{n = m}^{m} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right|
+           & = \left|4^{-m} cos(32^m \pi \frac{j + 1}{32^m}) - 4^{-m} cos(32^m \pi \frac{j}{32^m}) \right| \\
+           & = \left|4^{-m} cos(\pi (j + 1)) - 4^{-m} cos(\pi j) \right|                                   \\
+           & = 2 \times 4^{-m}
+        \end{align*}
+
+        $n < m$时，
+        \begin{align*}
+          \left|\sum\limits_{n = 1}^{m-1} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right|
+           & \leq \sum\limits_{n = 1}^{m-1} 4^{-n}\frac{\pi}{32^{m - n}}                         \\
+           & = \sum\limits_{n = 1}^{m-1} 4^{-n}4^{n-m}\frac{\pi}{(8 \times 4)^{m - n} 4^{n - m}} \\
+           & = \sum\limits_{n = 1}^{m-1} 4^{-m}\frac{\pi}{8^{m - n}}                             \\
+           & = 4^{-m}\sum\limits_{n = 1}^{m-1} \frac{\pi}{(2 \times 4)^{m - n}}                  \\
+           & < 4^{-m} \sum\limits_{n = 1}^{m-1} \frac{1}{2^{m - n}}                              \\
+           & \leq 4^{-m} \sum\limits_{n = 1}^{\infty} \frac{1}{2^{n}}                            \\
+           & = 4^{-m}
+        \end{align*}
+
+        综上可得，
+        \begin{align*}
+          \left|f(\frac{j + 1}{32^m}) - f(\frac{j}{32^m})\right|
+           & = \left|\sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - \sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right| \\
+           & =  \left|\sum\limits_{n = 1}^{\infty} 4^{-n} cos(32^n \pi \frac{j + 1}{32^m}) - 4^{-n} cos(32^n \pi \frac{j}{32^m}) \right|                             \\
+           & \geq 2 \times 4^{-m} - 4^{-m}                                                                                                                           \\
+           & = 4^{-m}
+        \end{align*}
+  \item (c)
+
+        todo （没解出来）
+
+        反证法，假设$f$是可微的，那么$f$是连续。那么，对任意$x_0$，$f$在$x_0$是连续的。
+
+        对于，任意$\epsilon > 0$，都存在$\delta > 0$，使得只要$|x - x_0| < \delta$，
+        就有，
+        \begin{align*}
+          \left|f(x) - f(x_0)\right| < \epsilon
+        \end{align*}
+        $x_1, x_2 \in (x_0 - \delta, x_0 + \delta)$，我们有
+        \begin{align*}
+          \left|f(x_1) - f(x_2)\right|
+           & = \left|f(x_1) - f(x_0) + f(x_0) - f(x_2)\right|                 \\
+           & \leq \left|f(x_1) - f(x_0)\right| + \left|f(x_0) - f(x_2)\right| \\
+           & < 2\epsilon
+        \end{align*}
+
+  \item (d)
+
+        令$f_n = 4^{-n} cos(32^n \pi x)$，$f_n$是一个可微函数，
+        他的导函数$f_n^\prime = 4^{-n} (-32^n \pi) sin(32^n \pi x)$
+        是连续的，其中，
+        \begin{align}
+          \sum \limits_{n = 1}^{\infty} ||f_n||_{\infty} = \sum \limits_{n = 1}^{\infty} 4^{-n} 32^n \pi
+        \end{align}
+        不收敛，无法满足14.7.3的前置条件。
+
+\end{itemize}
 
 \end{document}
 
