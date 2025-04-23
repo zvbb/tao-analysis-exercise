@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{16.1 习题}
+\author{张志聪}
+\maketitle
+
+\section*{16.1.1}
+
+（1）$k$的存在性。
+
+对任意实数$x$，
+令$A : = \{l \in \mathbb{Z}: l \leq x\}, k: = \sup(A)$。
+
+由命题5.4.12（负实数有类似的命题）可知，存在有理数$q$和整数$N$使得
+\begin{align*}
+  q \leq x \leq N
+\end{align*}
+
+由命题4.4.1可知，存在一个整数$M$使得$M \leq q$，于是
+\begin{align*}
+  M \leq x \leq N
+\end{align*}
+
+于是$A$非空，且有上界。
+
+接下来，证明上确界是存在的，且上确界属于$A$。
+换言之，任意一个元素为整数的非空有界集合都有一个最大元素。
+
+由命题5.5.9（最小上界的存在性）可知，$A$存在上确界，设$k$是$A$的上确界。
+
+反证法，假设$k \notin A$。
+
+任取$a_0 \in A$（因为$A$是非空，所以$a_0$是存在的。）
+因为$k \notin A, a_0 \in A$，所以存在$a_1 \in A$，且$a_1 > a_0$（否则$a_0 = k$就是上确界了，与假设矛盾）。
+因为$a_1 > a_0$，所以，$a_1 \geq a_0 + 1$（$A$中的元素都是整数）。
+递归地构造出$a_2, a_3, \dots, a_n, \dots$。
+
+所以，对任意$n \geq 1$，都有$a_n \geq a_0 + n$。
+于是，只要$n$足够大，就可以取到$a_n > k$，这与$k$是$A$的上确界矛盾。
+
+综上，整数$k$是存在的。
+
+（2）$y \in [0, 1)$。
+
+接下来，证明：令$y = x - k$，$y \in [0, 1)$。
+
+如果，$y \geq 1$，那么，$x = k + y \geq k + 1$，
+这与$k$是$A$的上确界矛盾（因为$k + 1 \in A$）。
+
+同理，$y < 0$，$x = k + y < k$，
+同样与$k$是$A$的上确界矛盾。（因为$k \notin A$。）
+
+综上，$y \in y \in [0, 1)$。
+
+\end{document}
+
+
