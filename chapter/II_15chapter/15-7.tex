@@ -563,34 +563,6 @@ $\sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}$
           \implies                                                                                \\
           tan^{-1} (1) = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
         \end{align*}
-
-        % \item 使用命题14.3.3证明。
-
-        %       $tan^{-1}(x) = \sum \limits_{n = 0}^{\infty} (-1)^n \frac{x^{2n + 1}}{2n + 1}$，
-        %       即部分和$\sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1}$一致收敛于$tan^{-1}(x)$。
-
-        %       又因为，对任意$N$都有，
-        %       \begin{align*}
-        %         \lim\limits_{x \to 1} \sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1}
-        %          & = \sum \limits_{n = 0}^{N} \frac{(-1)^n}{2n + 1}
-        %       \end{align*}
-
-        %       于是，利用命题14.3.3可知，
-        %       \begin{align*}
-        %         \lim\limits_{x \to 1} tan^{-1}(x)
-        %          & = \lim\limits_{N \to +\infty} \lim \limits_{x \to 1} \sum \limits_{n = 0}^{N} (-1)^n \frac{x^{2n + 1}}{2n + 1} \\
-        %          & = \lim\limits_{N \to +\infty} \sum \limits_{n = 0}^{N} \frac{(-1)^n}{2n + 1}                                   \\
-        %          & = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
-        %       \end{align*}
-        %       因为，$tan^{-1}(x)$是连续的，所以，
-        %       \begin{align*}
-        %         \lim\limits_{x \to 1} tan^{-1}(x) = tan^{-1}(1)
-        %       \end{align*}
-
-        %       综上可得，
-        %       \begin{align*}
-        %         tan^{-1}(1) & = \sum \limits_{n = 0}^{\infty} \frac{(-1)^n}{2n + 1}
-        %       \end{align*}
 \end{itemize}
 
 接下来，现在需要证明: $tan^{-1}(1) = \frac{\pi}{4}$。
@@ -629,7 +601,54 @@ $\sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}$
 
 （3）推导出$4 - \frac{4}{3} < \pi < 4$。
 
-todo
+\begin{itemize}
+  \item (a) $4 - \frac{4}{3} < \pi$。
+
+        我们从每一个部分和都是正的来证明（要分两种情况讨论：部分和是由偶数个项组成的以及奇数个项组成的）。
+
+        \begin{align*}
+          \pi & = 4\sum\limits_{n = 0}^\infty \frac{(-1)^n}{2n +1}                  \\
+              & = 4 - \frac{4}{3} + \sum\limits_{n = 2}^\infty \frac{(-4)^n}{2n +1}
+        \end{align*}
+
+        $\sum\limits_{n = 0}^\infty \frac{(-4)^n}{2n +1}$的部分和序列为
+        $(S_N)_{N = 2}^\infty$，其中
+        $S_N = \sum\limits_{n = 0}^{N} \frac{(-4)^n}{2n +1}$。
+
+        我们有，
+        \begin{align*}
+          \sum\limits_{n = 2}^\infty \frac{(-4)^n}{2n +1} = \lim\limits_{N \to +\infty} S_N
+        \end{align*}
+
+        于是，问题转变成对序列$(S_N)_{N = 2}^\infty$的讨论。
+
+        当偶数个项时，
+        \begin{align*}
+          S_N & = (\frac{4}{5} - \frac{4}{7}) + ... + (\frac{4}{2(N-1) + 1} - \frac{4}{2N + 1}) \\
+              & > 0
+        \end{align*}
+        （追求严谨性，这里也可以通过归纳证明）
+
+        当奇数个项时，$S_{N - 1}$是偶数个项，所以$S_{N - 1} > 0$，于是我们有
+        \begin{align*}
+          S_N & = S_{N - 1} + \frac{4}{2N + 1} \\
+              & > 0
+        \end{align*}
+
+        于是，$(S_N)_{N = 2}^\infty$，对任意$N$都有
+        \begin{align*}
+          S_N > 0
+        \end{align*}
+        于是，
+        \begin{align*}
+          \lim\limits_{N \to +\infty} S_N \geq 0
+        \end{align*}
+
+  \item (b)$\pi < 4$。
+
+        证明方法与(a)类似，证明略。
+
+\end{itemize}
 
 \section*{15.7.19}
 
