@@ -70,6 +70,143 @@
 
 综上，$y \in y \in [0, 1)$。
 
+\section*{16.1.2}
+
+$f$是$Z$周期的，所以，我们只需要了解它在$[0, 1)$上的取值就行了。
+
+\begin{itemize}
+  \item (a)
+
+
+        因为$f$在$\mathbb{R}$上连续的，那么，$f$在$[0, 1]$上也是连续的。
+
+        证明与引理9.6.3相同（不能直接使用9.6.3，函数的值域不同）。
+
+        反证法，假设$f$在$[0, 1]$是无界的。那么，对任意实数$M > 0$，
+        都存在$x \in [0, 1)$，使得$|f(x)| \geq M$。
+
+        特别地，对于每一个自然数$n$，集合$\{x \in [0, 1]: |f(x)| \geq n\}$
+        （这里$f(x)$是复数，但$|f(x)|$是实数）都是非空的。
+        所以我们可以选取$[0, 1]$中的一个序列$(x_n)_{n=1}^\infty$使得$|f(x_n)| \geq n$
+        对所有的$n$均成立。由于这个序列属于$[0, 1]$，从而根据9.1.24可知，
+        存在一个收敛于某个极限$L \in [0, 1]$的子序列$(x_{n_j})_{j = 0}^\infty$，
+        其中$n_0 < n_1 < n_2 < \dots$是一个递增的自然数序列。
+        特别地，对于所有的$j \in \mathbb{N}$，均有$n_j \geq j$。
+
+        因为$f$在$[0, 1]$上连续，所以它在$L$处是连续的，并且我们有
+        \begin{align}
+          \lim_{j \to \infty} f(x_{n_j}) = f(L)
+        \end{align}
+
+        所以序列$(f(x_{n_j}))_{j = 0}^\infty$是收敛的，从而是有界的。
+        另外，我们从序列的构造过程中看出$|f(x_{n_j})| \geq n_j \geq j$对所有的$j$均成立，
+        从而序列$(f(x_{n_j}))_{j = 0}^\infty$是无界的，这是一个矛盾。
+
+        $f$在$[0, 1]$上有界，所以在$[0, 1)$上也有界。
+
+  \item (b)
+
+        以$f + g$为例， 只需证明$f + g$，
+        满足连续的$\mathbb{Z}$周期复值函数的空间（即：$C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$）性质即可。
+
+        $f + g$的连续性，证明略。
+
+        现在证明$f + g$是$\mathbb{Z}$周期性的。
+
+        \begin{align*}
+          (f + g)(x) & = f(x) + g(x)         \\
+                     & = f(x + k) + g(x + k) \\
+                     & = (f + g)(x + k)
+        \end{align*}
+        命题得证。
+
+  \item (c)
+
+        连续性由推论14.3.2保证。
+
+        接下来，需要证明，$f$是$\mathbb{Z}$周期性的。
+
+        反证法，假设$f$不是$\mathbb{Z}$周期性的，那么，存在$x_0 \in [0, 1)$，
+        使得$f(x_0) \neq f(x_0 + k)$（其中，$k$是任意整数）。
+
+        因为，$(f_n)_{n = 1}^\infty$一致收敛于$f$，
+        那么，令$\epsilon = |f(x_0) - f(x_0 + k)|$，
+        存在$N \geq 1$使得只要$n \geq N$，就有
+        \begin{align*}
+          |f(x_0) - f_n(x_0)| < \frac{1}{4} \epsilon \\
+          |f(x_0 + k) - f_n(x_0 + k)| = |f(x_0 + k) - f_n(x_0)| < \frac{1}{4} \epsilon
+        \end{align*}
+
+        我们有，
+        \begin{align*}
+          |f(x_0) - f(x_0 + k)| & = |f(x_0) - f_n(x_0) + f_n(x_0) - f(x_0 + k)|      \\
+                                & \leq |f(x_0) - f_n(x_0)| + |f_n(x_0) - f(x_0 + k)| \\
+                                & < \frac{1}{4} \epsilon + \frac{1}{4} \epsilon      \\
+                                & =  \frac{1}{2}\epsilon
+        \end{align*}
+
+        存在一个矛盾。
+\end{itemize}
+
+\section*{16.1.3}
+
+\begin{itemize}
+  \item (a) $(C(\mathbb{R}/\mathbb{Z}; \mathbb{C}),d_{\infty})$符合定义12.1.2（度量空间）。
+
+        符合下面四个公理：
+        \begin{itemize}
+          \item (1) 对任意的$f \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，我们有$d_{\infty}(f, f) = 0$。
+
+                因为，$\sup\limits_{x \in \mathbb{R}} |f(x) - f(x)| = \sup\limits_{x \in \mathbb{R}} 0 = 0$，
+                即：$d_{\infty}(f, f) = 0$。
+          \item (2) （正性）对任意两个不同的$f, g \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，我们有$d_{\infty}(f, g) > 0$。
+
+                因为$f \neq g$，所以，存在$x_0 \in \mathbb{R}$使得$f(x_0) \neq g(x_0)$，
+                于是$d_{\infty}(f, g) \geq |f(x_0) - g(x_0)| > 0$。
+
+          \item (3) （对称性）对任意的$f, g \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，我们有$d_{\infty}(f, g) = d_{\infty}(g, f)$。
+
+                \begin{align*}
+                  d_{\infty}(f, g) & = \sup\limits_{x \in \mathbb{R}} |f(x) - g(x)| \\
+                                   & = \sup\limits_{x \in \mathbb{R}} |g(x) - f(x)| \\
+                                   & = d_{\infty}(g, f)
+                \end{align*}
+
+          \item (4)（三角不等式）对任意的$f,g,h \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，我们有$d_{\infty}(f, h) \leq d_{\infty}(f, g) + d_{\infty}(g, h)$。
+
+                反证法，假设$d_{\infty}(f, h) > d_{\infty}(f, g) + d_{\infty}(g, h)$。
+
+                由上确界的定义和命题6.3.6可知，存在$x_0 \in \mathbb{R}$使得
+                \begin{align*}
+                  d_{\infty}(f, h) & > |f(x_0) - h(x_0)|                        \\
+                                   & > d_{\infty}(f, g) + d_{\infty}(g, h)      \\
+                                   & \geq |f(x_0) - g(x_0)| + |g(x_0) - h(x_0)|
+                \end{align*}
+                综上，我们有
+                \begin{align*}
+                  |f(x_0) - h(x_0)| > |f(x_0) - g(x_0)| + |g(x_0) - h(x_0)|
+                \end{align*}
+
+                因为对任意$x \in \mathbb{R}$，我们有
+                \begin{align*}
+                  |f(x) - h(x)| & = |f(x) - g(x) + g(x) - h(x)|      \\
+                                & \leq |f(x) - g(x)| + |g(x) - h(x)|
+                \end{align*}
+
+                存在矛盾。
+
+        \end{itemize}
+
+
+  \item (d) $(C(\mathbb{R}/\mathbb{Z}; \mathbb{C}),d_{\infty})$是完备的。
+
+
+        利用定理14.4.5可证。
+
+
+
+\end{itemize}
+
 \end{document}
 
 
