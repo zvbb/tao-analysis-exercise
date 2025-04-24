@@ -650,7 +650,7 @@ $\sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}$
 
 \end{itemize}
 
-\section*{15.7.19}
+\section*{15.7.10}
 
 \begin{itemize}
   \item (a)
@@ -711,31 +711,56 @@ $\sum \limits_{n = 0}^{\infty} (-1)^n x^{2n}$
         \end{align*}
   \item (c)
 
-        todo （没解出来）
+        反证法，假设$f$是可微的，那么$f$是连续。
 
-        反证法，假设$f$是可微的，那么$f$是连续。那么，对任意$x_0$，$f$在$x_0$是连续的。
+        设对任意$x_0 \in \mathbb{R}, f^\prime(x_0) = L$，
+        由牛顿逼近法（命题10.1.7）可知，对$\epsilon = 1$，存在$\delta > 0$，使得只要
+        $|x - x_0| < \delta$，就有
+        \begin{align*}
+          |f(x) - f(x_0) - L(x - x_0)| \leq \epsilon |x - x_0| \\
+          |f(x) - f(x_0) - L(x - x_0)| \leq |x - x_0|          \\
+          |f(x) - f(x_0)| \leq |x - x_0|(|L| + 1)
+        \end{align*}
 
-        对于，任意$\epsilon > 0$，都存在$\delta > 0$，使得只要$|x - x_0| < \delta$，
-        就有，
+        因为$\lim\limits_{m \to +\infty} \frac{1}{32^m} = 0$，所以存在$M$，使得
+        $m \geq M$，就有
         \begin{align*}
-          \left|f(x) - f(x_0)\right| < \epsilon
+          \frac{1}{32^m} < \delta
         \end{align*}
-        $x_1, x_2 \in (x_0 - \delta, x_0 + \delta)$，我们有
+
+        又因为存在$j$使得$j \leq 32^mx_0 \leq j + 1$，
+        于是$\frac{j}{32^m} \leq x_0 \leq \frac{j + 1}{32^m}$。
+
+        令$x_1 = \frac{j}{32^m}, x_2 = \frac{j + 1}{32^m}$，于是
         \begin{align*}
-          \left|f(x_1) - f(x_2)\right|
-           & = \left|f(x_1) - f(x_0) + f(x_0) - f(x_2)\right|                 \\
-           & \leq \left|f(x_1) - f(x_0)\right| + \left|f(x_0) - f(x_2)\right| \\
-           & < 2\epsilon
+          |f(x_1) - f(x_0)| \leq (x_0 - \frac{j}{32^m})(|L| + 1)   \\
+          |f(x_2) - f(x_0)| \leq (\frac{j+1}{32^m} - x_0)(|L| + 1) \\
+          \implies                                                 \\
+          |f(x_1) - f(x_2)| \leq \frac{1}{32^m}(|L| + 1)
         \end{align*}
+
+        由于(b)可知，
+        \begin{align*}
+          |f(x_1) - f(x_2)| \geq 4^{-m}
+        \end{align*}
+
+        题设中$m$是任意的，但当$m$足够大时（还要满足$m \geq M$），以下等式成立：
+        \begin{align*}
+          8^m    & \geq |L| + 1                 \\
+          \implies                              \\
+          4^{-m} & \geq \frac{1}{32^m}(|L| + 1)
+        \end{align*}
+
+        于是出现矛盾。
 
   \item (d)
 
         令$f_n = 4^{-n} cos(32^n \pi x)$，$f_n$是一个可微函数，
         他的导函数$f_n^\prime = 4^{-n} (-32^n \pi) sin(32^n \pi x)$
         是连续的，其中，
-        \begin{align}
+        \begin{align*}
           \sum \limits_{n = 1}^{\infty} ||f_n||_{\infty} = \sum \limits_{n = 1}^{\infty} 4^{-n} 32^n \pi
-        \end{align}
+        \end{align*}
         不收敛，无法满足14.7.3的前置条件。
 
 \end{itemize}
