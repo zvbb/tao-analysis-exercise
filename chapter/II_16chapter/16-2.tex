@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{16.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{16.2.1}
+
+设$f(x) = f_1(x) + if_2(x), g(x) = g_1(x) + ig_2(x), h(x) = h_1(x) + ih_2(x), c = c_1 + ic_2$。
+
+\begin{itemize}
+  \item (a)
+
+        \begin{align*}
+          \langle g, f \rangle & = \int_{[0, 1]} g(x) \overline{f(x)} dx                                                         \\
+                               & = \int_{[0, 1]} \left(g_1(x) + ig_2(x)\right) \left(f_1(x) - if_2(x)\right) dx                  \\
+                               & = \int_{[0, 1]} g_1(x) f_1(x) + g_2(x)f_2(x) + i(-g_1(x)f_2(x) + g_2(x)f_1(x)) dx               \\
+                               & = \int_{[0, 1]} g_1(x) f_1(x) + g_2(x)f_2(x) dx + i\int_{[0, 1]} g_2(x)f_1(x) - g_1(x)f_2(x) dx
+        \end{align*}
+
+        \begin{align*}
+          \langle f, g \rangle & = \int_{[0, 1]} f(x) \overline{g(x)} dx                                                        \\
+                               & = \int_{[0, 1]} (f_1(x) + if_2(x)) (g_1(x) - ig_2(x)) dx                                       \\
+                               & = \int_{[0, 1]} f_1(x)g_1(x) + f_2(x)g_2(x) + i(-f_1(x)g_2(x) + f_2(x)g_1(x)) dx               \\
+                               & = \int_{[0, 1]} f_1(x)g_1(x) + f_2(x)g_2(x) dx + i\int_{[0, 1]}-f_1(x)g_2(x) + f_2(x)g_1(x) dx \\
+        \end{align*}
+        于是，
+        \begin{align*}
+          \overline{\langle f, g \rangle} & = \int_{[0, 1]} f_1(x)g_1(x) + f_2(x)g_2(x) dx - i\int_{[0, 1]}-f_1(x)g_2(x) + f_2(x)g_1(x) dx \\
+                                          & = \int_{[0, 1]} f_1(x)g_1(x) + f_2(x)g_2(x) dx + i\int_{[0, 1]}f_1(x)g_2(x) - f_2(x)g_1(x) dx  \\
+        \end{align*}
+
+        所以，
+        \begin{align*}
+          \langle g, f \rangle = \overline{\langle f, g \rangle}
+        \end{align*}
+
+  \item (b)
+
+        \begin{itemize}
+          \item (1) $\langle f, f \rangle \geq 0$。
+
+                \begin{align*}
+                  \langle f, f \rangle & = \int_{[0, 1]} f(x) \overline{f(x)} dx                                         \\
+                                       & = \int_{[0, 1]} (f_1(x) + if_2(x))(f_1(x) - if_2(x))                            \\
+                                       & = \int_{[0, 1]} f_1(x)f_1(x) + f_2(x)f_2(x) + i(-f_1(x)f_2(x) + f_2(x)f_1(x))dx \\
+                                       & = \int_{[0, 1]} f_1(x)f_1(x) + f_2(x)f_2(x)dx
+                \end{align*}
+
+                因为
+                \begin{align*}
+                  f_1(x)f_1(x) + f_2(x)f_2(x) \geq 0
+                \end{align*}
+
+                由定理11.4.1(e)可知，
+                \begin{align*}
+                  \int_{[0, 1]} f_1(x)f_1(x) + f_2(x)f_2(x)dx \geq \int_{[0, 1]} 0 dx = 0
+                \end{align*}
+                即
+                \begin{align*}
+                  \langle f, f \rangle \geq 0
+                \end{align*}
+
+          \item $\langle f, f \rangle = 0$当且仅当$f = 0$。
+
+                $\Leftarrow$ 是易证的，略。
+
+                $\Rightarrow$
+
+                反证法，假设$f$不是零函数，那么存在某个$x_0 \in [0, 1], f(x_0) \neq 0$，
+                又因为$f$是连续的，那么，对$\epsilon = \frac{1}{2}|f(x_0)|$，
+                存在$\delta > 0$，使得只要，$|x - x_0| < \delta$，就有
+                \begin{align*}
+                  |f(x) - f(x_0)| \leq \epsilon \\
+                  |f(x_0)| - \epsilon \leq |f(x)| \leq |f(x_0)| + \epsilon
+                \end{align*}
+                （以上是复数的性质，与实数是一致的，具体证明在15-6-comment.tex文件中）
+                所以，
+                \begin{align*}
+                  \int_{[x_0 - \delta, x_0 + \delta]} |f(x)|^2 dx > 0
+                \end{align*}
+
+                于是，我们有
+                \begin{align*}
+                  \langle f, f \rangle & = \int_{[0, 1]} f_1(x)f_1(x) + f_2(x)f_2(x)dx \\
+                                       & = \int_{[0, 1]} |f(x)|^2 dx                   \\
+                                       & = \int_{[0, x_0 - \delta]} |f(x)|^2 dx
+                  + \int_{(x_0 - \delta, x_0 + \delta)} |f(x)|^2 dx
+                  + \int_{[x_0 + \delta, 1]} |f(x)|^2 dx                               \\
+                                       & > 0
+                \end{align*}
+                存在矛盾。
+
+        \end{itemize}
+
+  \item (c)
+
+        证明略
+
+  \item (d)
+
+        证明略
+\end{itemize}
+
+\section*{16.2.2}
+
+证明$(C(\mathbb{R}/\mathbb{Z};\mathbb{C}), d_{L^2})$。
+
+
+
+
+\end{document}
+
+
