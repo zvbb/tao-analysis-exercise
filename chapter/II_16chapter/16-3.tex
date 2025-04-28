@@ -1,0 +1,183 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{16.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{16.3.1}
+
+设两个三角多项式分别为
+\begin{align*}
+  f = \sum \limits_{n = - N}^N c_n e_n \\
+  g = \sum \limits_{n = - M}^N d_n e_n
+\end{align*}
+其中，整数$N, M \geq 0$，$(c_n)_{n = - N}^N$和$(d_n)_{n = - M}^M$都是复数序列。
+
+\begin{itemize}
+  \item (a) 证明$f + g$是三角多项式。
+
+        如果$N = M$，那么
+        \begin{align*}
+          f + g = \sum \limits_{n = - N}^N (c_n + d_n) e_n
+        \end{align*}
+        满足定义16.3.2中关于三角多项式的定义，命题成立。
+
+        如果$N > M$，那么
+        \begin{align*}
+          f + g = \sum \limits_{n = - N}^{-M-1} c_n e_n
+          + \sum \limits_{n = - M}^{M} (c_n + d_n) e_n
+          + \sum \limits_{n = M+1}^{N} d_n e_n
+        \end{align*}
+        于是，我们可以定义复数序列$(b_n)_{n = -N}^N$如下
+        \begin{equation*}
+          b_n = \begin{cases}
+            c_n       & -N \leq n \leq -M-1 \\
+            c_n + d_n & -M \leq n \leq M    \\
+            d_n       & M + 1 \leq n \leq N
+          \end{cases}
+        \end{equation*}
+
+        综上可得，
+        \begin{align*}
+          f + g = \sum\limits_{n = -N}^n b_n e_n
+        \end{align*}
+        满足定义16.3.2中关于三角多项式的定义，命题成立。
+
+        如果$M > N$，与上述讨论相同，不做赘述。
+
+  \item (b) 证明$fg$是三角多项式。
+
+        \begin{align*}
+          fg & = \sum \limits_{n = - N}^N c_n e_n \sum \limits_{m = - M}^M d_{m} e_m
+        \end{align*}
+
+        对$N$进行强归纳。
+
+        $N = 0$时，$fg = 0$是三角多项式。
+
+        归纳假设$N \leq k$时，$fg = \sum \limits_{n = - k}^k c_n e_n \sum \limits_{m = - M}^M d_{m} e_m$是三角多项式。
+
+        $N = k + 1$时，
+        \begin{align*}
+          fg & = \sum \limits_{n = - (k + 1)}^{k + 1} c_n e_n \sum \limits_{m = - M}^M d_{m} e_m   \\
+             & = \left(\sum \limits_{n = - (k + 1)}^{-{k + 1}} c_ne_n
+          + \sum \limits_{n = k + 1}^{k + 1} c_ne_n
+          + \sum \limits_{n = - k}^k c_n e_n\right)\sum \limits_{m = - M}^M d_{m} e_m              \\
+             & = \sum \limits_{n = - (k + 1)}^{-{k + 1}} c_ne_n \sum \limits_{m = - M}^M d_{m} e_m
+          + \sum \limits_{n = k + 1}^{k + 1} c_ne_n \sum \limits_{m = - M}^M d_{m} e_m
+          + \sum \limits_{n = - k}^k c_n e_n \sum \limits_{m = - M}^M d_{m} e_m
+        \end{align*}
+
+        由归纳假设可知，以上各项都是三角多项式，故利用(a)可知相加后也是三角多项式，
+        于是可得$fg$是三角多项式。
+
+        归纳完成。
+
+\end{itemize}
+
+\section*{16.3.2}
+
+\begin{itemize}
+  \item (a) $n = m$时，$\langle e_n, e_m \rangle = 1$。
+
+        \begin{align*}
+          \langle e_n, e_m \rangle
+           & = \langle e_n, e_n \rangle                         \\
+           & = \int_{[0, 1]} |e_n|^2 dx                         \\
+           & = \int_{[0, 1]} cos(2\pi nx)^2 + sin(2\pi nx)^2 dx \\
+           & = \int_{[0, 1]} 1                                  \\
+           & = 1
+        \end{align*}
+
+  \item (b) $n \neq m$时，$\langle e_n, e_m \rangle = 0$。
+
+        \begin{align*}
+          \langle e_n, e_m \rangle
+           & = \int_{[0, 1]} e_n \overline{e_m} dx                                                       \\
+           & = \int_{[0, 1]} e^{2\pi inx}e^{-2\pi imx} dx                                                \\
+           & = \int_{[0, 1]} e^{2\pi i(n-m)x} dx                                                         \\
+           & = \int_{[0, 1]} cos(2\pi (n-m)x) + isin(2\pi (n-m)x) dx                                     \\
+           & = \int_{[0, 1]} cos(2\pi (n-m)x)dx + i\int_{[0, 1]}sin(2\pi (n-m)x) dx                      \\
+           & = \frac{1}{2\pi (n-m)x}sin(2\pi (n-m)x)|_0^1 + i\frac{1}{2\pi (n-m)x}-cos(2\pi (n-m)x)|_0^1 \\
+           & = \frac{1}{2\pi (n-m)x}(0 - 0) + i\frac{1}{2\pi (n-m)x}(1 - 1)                              \\
+           & = 0
+        \end{align*}
+
+  \item (c) $\|e_n\|_2 = 1$。
+
+        这是(a)的特殊情况，
+        \begin{align*}
+          \|e_n\|_2 = \sqrt{\langle e_n, e_n \rangle} = \sqrt{1} = 1
+        \end{align*}
+\end{itemize}
+
+\section*{16.3.3}
+
+\begin{itemize}
+  \item (a)$-N \leq n \leq N$时，$c_n = \langle f, e_n \rangle$。
+
+        由引理16.3.5可以直接推出，
+        对任意$-N \leq n_0 \leq N$，我们有
+        \begin{align*}
+          \langle f, e_{n_0} \rangle
+           & = \int_{[0, 1]} \left(\sum\limits_{n = -N}^N c_n e_n\right) \overline{e_{n_0}} dx \\
+           & = \int_{[0, 1]} \sum\limits_{n = -N}^N c_n e_n\overline{e_{n_0}} dx               \\
+           & = \sum\limits_{n = -N}^N \langle c_ne_n, e_{n_0} \rangle                          \\
+           & = \sum\limits_{n = -N}^N c_n\langle e_n, e_{n_0} \rangle                          \\
+           & = \sum\limits_{n = n_0}^{n_0} c_n\langle e_n, e_{n_0} \rangle                     \\
+           & = c_{n_0}\langle e_{n_0}, e_{n_0} \rangle                                         \\
+           & = c_{n_0} \times 1                                                                \\
+           & = c_{n_0}
+        \end{align*}
+
+  \item (b)$n > N$或$n < -N$，我们有$0 = \langle f, e_n \rangle$。
+
+        对任意$n_0 > N$或$n_0 < -N$，我们有
+        \begin{align*}
+          \langle f, e_{n_0} \rangle
+           & = \int_{[0, 1]} \left(\sum\limits_{n = -N}^N c_n e_n\right) \overline{e_{n_0}} dx \\
+           & = \int_{[0, 1]} \sum\limits_{n = -N}^N c_n e_n\overline{e_{n_0}} dx               \\
+           & = \sum\limits_{n = -N}^N \langle c_ne_n, e_{n_0} \rangle                          \\
+           & = \sum\limits_{n = -N}^N c_n\langle e_n, e_{n_0} \rangle                          \\
+        \end{align*}
+        因为$\sum\limits_{n = -N}^N c_n\langle e_n, e_{n_0} \rangle$无法满足$n = n_0$，
+        由引理16.3.5可知，所有项都为0，
+        故$\langle f, e_{n_0} \rangle = 0$。
+
+  \item (c)恒等式$\|f\|_2^2 = \sum\limits_{n = -N}^N |c_n|^2$。
+
+        \begin{align*}
+          \|f\|_2^2
+           & = \langle f, f \rangle                                                                        \\
+           & = \langle \sum\limits_{n = -N}^N c_n e_n, \sum\limits_{m = -N}^N c_m e_m \rangle              \\
+           & = \int_{[0, 1]} \sum\limits_{n = -N}^N c_n e_n \sum\limits_{m = -N}^N \overline{c_m e_m} dx   \\
+           & = \int_{[0, 1]} \sum\limits_{n = -N}^N \sum\limits_{m = -N}^N c_n e_n \overline{c_m e_m} dx   \\
+           & = \sum\limits_{n = -N}^N \sum\limits_{m = -N}^N \int_{[0, 1]} c_n e_n \overline{c_m e_m} dx   \\
+           & = \sum\limits_{n = -N}^N \sum\limits_{m = -N}^N \langle  c_n e_n,  c_m e_m \rangle            \\
+           & = \sum\limits_{n = -N}^N \sum\limits_{m = -N}^N c_n \overline{c_m} \langle  e_n,  e_m \rangle \\
+           & = \sum\limits_{n = -N}^N c_n \overline{c_n}                                                   \\
+           & = \sum\limits_{n = -N}^N |c_n|^2
+        \end{align*}
+\end{itemize}
+
+\end{document}
+
+
