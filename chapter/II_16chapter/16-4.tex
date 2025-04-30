@@ -97,16 +97,143 @@ $f$是紧支撑的，不妨设其支撑在区间$[a, b]$上，
         但由于$f,g$都是周期为$1$的函数，积分可以调整到任意长度为$1$的区间，
         因此我们将积分限改为$0 \to 1$：
         \begin{align*}
-          g \ast f (x) & = \int_{[0, 1]} g(y) f(x - y) dy      \\
-                       & = \int_{[x, x-1]} g(x - u) f(u) (-du) \\
-                       & = \int_{[x - 1, x]} g(x - u) f(u) du  \\
-                       & = \int_{[0, 1]} f(u) g(x - u)  du     \\
+          g \ast f (x) & = \int_{[0, 1]} g(y) f(x - y) dy         \\
+                       & = \int_{[x, x-1]} g(x - u) f(u) d(x - u) \\
+                       & = \int_{[x - 1, x]} g(x - u) f(u) du     \\
+                       & = \int_{[0, 1]} f(u) g(x - u)  du        \\
                        & = \int_{[0, 1]} f(y) g(x - y) dy
         \end{align*}
 
         所以，$f \ast g = g \ast f$。
 
   \item (c) 双线性性质
+        \begin{align*}
+          f \ast (g + h)
+           & = \int_{[0, 1]} f(y) (g + h)(x - y) dy                         \\
+           & = \int_{[0, 1]} f(y) (g(x - y) + h(x - y)) dy                  \\
+           & = \int_{[0, 1]} f(y)g(x - y) + f(y)h(x - y) dy                 \\
+           & = \int_{[0, 1]} f(y)g(x - y)dy + \int_{[0, 1]} f(y)h(x - y) dy \\
+           & = f \ast g + f \ast h
+        \end{align*}
+
+        \begin{align*}
+          (f + g) \ast h
+           & = \int_{[0, 1]} (f+g)(y) h(x - y) dy           \\
+           & = \int_{[0, 1]} (f(y)+g(y)) h(x - y) dy        \\
+           & = \int_{[0, 1]} f(y)h(x - y) + g(y)h(x - y) dy \\
+           & = f \ast h + g \ast h
+        \end{align*}
+
+        \begin{align*}
+          c(f \ast g)
+           & = c \int_{[0, 1]} f(y) g(x - y) dy \\
+           & = \int_{[0, 1]} cf(y) g(x - y) dy  \\
+           & = (cf) \ast g
+        \end{align*}
+
+        \begin{align*}
+          c(f \ast g)
+           & = c \int_{[0, 1]} f(y) g(x - y) dy \\
+           & = \int_{[0, 1]} f(y) cg(x - y) dy  \\
+           & = f \ast (cg)
+        \end{align*}
+\end{itemize}
+
+\section*{16.4.3}
+
+\begin{itemize}
+  \item (1)
+
+        \begin{align*}
+          F_N & = \sum \limits_{n = -N}^{N} (1 - \frac{|n|}{N})e_n   \\
+              & = \sum \limits_{n = -N}^{N} (\frac{N - |n|}{N})e_n   \\
+              & = \frac{1}{N} \sum \limits_{n = -N}^{N} (N - |n|)e_n
+        \end{align*}
+
+        接下来，我们证明$\sum \limits_{n = -N}^{N} (N - |n|)e_n = |\sum \limits_{n = 0}^{N-1} e_n|^2$，即可完成证明。
+
+        对$N$进行归纳。
+
+        归纳基始，$N = 1$时，
+        \begin{align*}
+          \sum \limits_{n = -N}^{N} (N - |n|)e_n
+           & = \sum \limits_{n = -1}^{1} (1 - |n|)e_n      \\
+           & = (1 - |-1|)e_n + (1 - |0|)e_n + (1 - |n|)e_n \\
+           & = e_n
+        \end{align*}
+
+        \begin{align*}
+          |\sum \limits_{n = 0}^{N-1} e_n|^2
+           & = \left|\sum\limits_{n = 0}^{0}e_n\right|^2 \\
+           & = |e_0|^2                                   \\
+           & = |e^{2\pi 0 i}|^2                          \\
+           & = |1|^2                                     \\
+           & = 1
+        \end{align*}
+        命题成立。
+
+        归纳假设$N = K$时，命题成立。
+
+        $N = K + 1$时，
+        \begin{align*}
+           & \sum \limits_{n = -(K + 1)}^{K + 1} (K + 1 - |n|)e_n                     \\
+           & = \sum \limits_{n = -K}^{K} (K + 1 - |n|)e_n
+          + \sum \limits_{n = -(K + 1)}^{-(K + 1)} (K + 1 - |n|)e_n
+          + \sum \limits_{n = K + 1}^{K + 1} (K + 1 - |n|)e_n                         \\
+           & = \sum \limits_{n = -K}^{K} e_n + \sum \limits_{n = -K}^{K} (K - |n|)e_n
+          +  (K + 1 - |-(K + 1)|)e_{-(K + 1)}
+          +  (K + 1 - |K + 1|)e_{K + 1}                                               \\
+           & = \sum \limits_{n = -K}^{K} e_n + \sum \limits_{n = -K}^{K} (K - |n|)e_n
+        \end{align*}
+
+        \begin{align*}
+           & \left|\sum\limits_{n = 0}^{K} e_n\right|^2                                                                        \\
+           & = \left|\sum\limits_{n = 0}^{K-1} e_n + \sum\limits_{n = K}^{K} e_n\right|^2                                      \\
+           & = \left|(\sum\limits_{n = 0}^{K-1} e_n) + e_K\right|^2                                                            \\
+           & = \left((\sum\limits_{n = 0}^{K-1} e_n) + e_K\right)\overline{\left((\sum\limits_{n = 0}^{K-1} e_n) + e_K\right)} \\
+           & = \left((\sum\limits_{n = 0}^{K-1} e_n) + e_K\right)\left((\sum\limits_{n = 0}^{K-1} e_{-n}) + e_{-K}\right)      \\
+           & = \left((\sum\limits_{n = 0}^{K-1} e_n) + e_K\right)\left((\sum\limits_{n = 0}^{K-1} e_{-n}) + e_{-K}\right)      \\
+           & = (\sum\limits_{n = 0}^{K-1} e_n)(\sum\limits_{n = 0}^{K-1} e_{-n})
+          + (\sum\limits_{n = 0}^{K-1} e_n) e_{-K}
+          + e_K(\sum\limits_{n = 0}^{K-1} e_{-n})
+          + e_Ke_{-K}                                                                                                          \\
+           & = \left|\sum\limits_{n = 0}^{K-1} e_n\right|^2
+          + \sum\limits_{n = 0}^{K-1} e_{n - K}
+          + (\sum\limits_{n = 0}^{K-1} e_{-n+K})
+          + e_0                                                                                                                \\
+           & = \sum \limits_{n = -K}^{K} (K - |n|)e_n
+          + \sum\limits_{n = -K}^{-1} e_n
+          + (\sum\limits_{n = 1}^{K} e_{n})
+          + e_0                                                                                                                \\
+           & = \sum \limits_{n = -K}^{K} (K - |n|)e_n + \sum \limits_{n = -K}^{K} e_n
+        \end{align*}
+        归纳完成，命题得证。
+
+  \item (2)
+
+        \begin{align*}
+          \sum \limits_{n = 0}^{N - 1} e_n
+           & = \sum \limits_{n = 0}^{\infty} e_n - \sum \limits_{n = N}^{\infty} e_n                  \\
+           & = \sum \limits_{n = 0}^{\infty} e_n - e_N\sum \limits_{n = N}^{\infty} e_{n - N}         \\
+           & = \sum \limits_{n = 0}^{\infty} e_n - e_N\sum \limits_{n = 0}^{\infty} e_n               \\
+           & = \frac{1}{1 - e_1} - e_N\frac{1}{1 - e_1}                                               \\
+           & = \frac{1 - e_N}{1 - e_1}                                                                \\
+           & = \frac{e_N - 1}{e_1 - 1}                                                                \\
+           & = \frac{e_N - e_0}{e_1 - e_0}                                                            \\
+           & = \frac{e^{2\pi i N x} - e^0}{e^{2\pi i x} - e^0}                                        \\
+           & = \frac{e^{2\pi i N x - \pi i x} - e^{-\pi i x}}{e^{\pi i x} - e^{-\pi i x}}             \\
+           & = \frac{e^{\pi i N x + \pi i N x- \pi i x} - e^{-\pi i x}}{e^{\pi i x} - e^{-\pi i x}}   \\
+           & = \frac{e^{\pi i (N - 1) x + \pi i N x} - e^{-\pi i x}}{e^{\pi i x} - e^{-\pi i x}}      \\
+           & = \frac{e^{\pi i (N - 1) x}(e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} - e^{-\pi i x}} \\
+           & = \frac{e^{\pi i (N - 1) x}(2isin(\pi Nx))}{2isin(\pi x)}                                \\
+           & = \frac{e^{\pi i (N - 1) x}sin(\pi Nx)}{sin(\pi x)}                                      
+        \end{align*}
+
+  \item (3)
+
+
+
+
 \end{itemize}
 
 \end{document}
