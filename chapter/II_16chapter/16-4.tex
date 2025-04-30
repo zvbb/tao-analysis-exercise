@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{16.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{16.4.1}
+
+反证法，假设$f$不是恒等于零的。
+
+$f$是紧支撑的，不妨设其支撑在区间$[a, b]$上，
+于是，对所有的$x \in [a, b]$都有$f(x) \neq 0$。
+
+因为$f$不是恒等于零的，所以存在$x_0 \in [a, b]$，使得$f(x_0) \neq 0$。
+又存在整数$N$，使得$N + x_0 > b$，因为$x_0 + N \notin [a, b]$，
+所以$f(x_0 + N) = 0$。
+
+又因为$f$是$\mathbb{Z}$周期函数，
+所以$f(x_0 + N) = f(x_0) \neq 0$。
+
+存在矛盾。
+
+\section*{16.4.2}
+
+先证明$f$是一致连续的，因为$f$在$\mathbb{R}$上是连续的，
+所以$f$在$([0, 1], d)$这个紧致度量空间上是连续的，
+于是由定理13.3.5可知，$f$是一致连续的。这可以周期性地推广到整个$\mathbb{R}$上。
+（这里无法直接使用定理9.9.16，因为这里的值域是复数）。
+
+同理可得，$g,h$是一致连续的。
+
+\begin{itemize}
+  \item (a) 封闭性
+
+        \begin{itemize}
+          \item (1)连续性
+
+                因为$f$是有界的，所以存在一个$M > 0$，使得对于所有的$x \in \mathbb{R}$都有$|f(x)| \leq M$。
+
+                设$\epsilon > 0$是任意的，因为$g$是一致连续的，所以存在一个$\delta > 0$，使得只要
+                $|x - y| \leq \delta$，就有$|g(x) - g(y)| \leq \epsilon$。
+
+
+                对任意$x_0 \in \mathbb{R}, |x - x_0| < \delta$，
+                \begin{align*}
+                   & |f \ast g(x) - f \ast g(x_0)|                                                    \\
+                   & = \left|\int_{[0, 1]} f(y) g(x - y) dy - \int_{[0, 1]} f(y) g(x_0 - y) dy\right| \\
+                   & = \left|\int_{[0, 1]} f(y) (g(x - y) - g(x_0 - y)) dy \right|                    \\
+                   & \leq \int_{[0, 1]} |f(y) (g(x - y) - g(x_0 - y))| dy                             \\
+                   & \leq \int_{[0, 1]} M|(g(x - y) - g(x_0 - y))| dy                                 \\
+                   & \leq M \int_{[0, 1]} \epsilon dy                                                 \\
+                   & = M \epsilon
+                \end{align*}
+
+                于是有$|f \ast g(x) - f \ast g(x_0)| \leq M \epsilon$。由于$M$是定制并且$\epsilon$是任意的，
+                因此我我们可以得出$f \ast g$在$x_0$处连续的。
+
+                由$x_0$的任意性，$f \ast g$连续。
+          \item (2)$\mathbb{Z}$周期
+
+                设$k$是整数，因为$f, g \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，
+                我们有
+                \begin{align*}
+                  f \ast  g(x + k) & = \int_{[0, 1]} f(y) g(x+k - y) dy \\
+                                   & = \int_{[0, 1]} f(y) g(x - y) dy   \\
+                                   & = f \ast g(x)
+                \end{align*}
+
+                所以$f \ast g$是$\mathbb{Z}$周期的。
+        \end{itemize}
+
+  \item (b) 交换性
+
+        \begin{align*}
+          f \ast g (x) & = \int_{[0, 1]} f(y) g(x - y) dy
+        \end{align*}
+
+        令$u = x - y$，则$y = x - u$。当$y$从$0 \to 1$时，$u$从$x \to x - 1$。
+        但由于$f,g$都是周期为$1$的函数，积分可以调整到任意长度为$1$的区间，
+        因此我们将积分限改为$0 \to 1$：
+        \begin{align*}
+          g \ast f (x) & = \int_{[0, 1]} g(y) f(x - y) dy      \\
+                       & = \int_{[x, x-1]} g(x - u) f(u) (-du) \\
+                       & = \int_{[x - 1, x]} g(x - u) f(u) du  \\
+                       & = \int_{[0, 1]} f(u) g(x - u)  du     \\
+                       & = \int_{[0, 1]} f(y) g(x - y) dy
+        \end{align*}
+
+        所以，$f \ast g = g \ast f$。
+
+  \item (c) 双线性性质
+\end{itemize}
+
+\end{document}
+
+

@@ -205,22 +205,20 @@ $f$是一致连续的。
         \end{itemize}
   \item (b)
 
-        利用命题11.10.6（变量替换公式II），解决自变量不同的问题，但用的是它的推论，即$\phi$是单减的，注意证明过程中符号的变化。
+        利用命题11.10.6（变量替换公式II），解决自变量不同的问题，
+        但用的是它的推论（习题11.10.4），即$\phi$是单减的，注意证明过程中符号的变化。
 
-        定义$\phi (y) := x - y$函数$\phi : [c, d] \cap [x - b, x - a] \to [a, b] \cap [x - d, x - c]$，
-        以区间的方式表示$\phi: [max(c, x - b), min(d, x - a)] \to [min(b, x - c), max(a, x - d)]$。
-
+        定义$u := x - y, u : [c, d] \cap [x - b, x - a] \to [a, b] \cap [x - d, x - c]$，
+        以区间的方式表示$u: [max(c, x - b), min(d, x - a)] \to [max(a, x - d), min(b, x - c)]$。
+        但这里要注意的是$y = x - u$是单调递减的（注意积分区间的变化）。
         \begin{align*}
-          f \ast g(x) & = \int_{[a, b] \cap [x - d, x - c]} f(y)g(x - y) dy                       \\
-                      & = \int_{[max(a, x - d), min(b, x - c)]} f(y)g(x - y)                      \\
-                      & = - \int_{[max(c, x - b), min(d, x - a)]} f(\phi(y))g(x - \phi(y)) d_\phi \\
-                      & = - \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y) d_{x - y}          \\
-                      & = - \int_{[max(c, x - b), min(d, x - a)]} -f(x - y)g(y)                   \\
-                      & = \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y)                      \\
-                      & = \int_{[max(c, x - b), min(d, x - a)]} f(x - y)g(y) dy                   \\
+          f \ast g(x) & = \int_{[a, b] \cap [x - d, x - c]} f(y)g(x - y) dy       \\
+                      & = \int_{[max(a, x - d), min(b, x - c)]} f(y)g(x - y)      \\
+                      & = -\int_{[min(d, x - a), max(c, x - b)]} f(x - u)g(u) d_u \\
+                      & = \int_{[max(c, x - b), min(d, x - a)]} f(x - u)g(u) d_u  \\
+                      & = \int_{[c, d] \cap [x - b, x - a]} f(x - u)g(u) d_u      \\
                       & = g \ast f(x)
         \end{align*}
-        （注意第二个等式，使用了推论11.10.3）
   \item (c)
         \begin{align*}
           f \ast (g + h)(x) & = \int_{-\infty}^{\infty} f(y)(g + h)((x - y)) dy                               \\

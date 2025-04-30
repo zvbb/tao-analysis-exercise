@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+
+\begin{document}
+\title{11.10 注释}
+\author{张志聪}
+\maketitle
+
+\section*{1}
+
+\begin{zremark}
+  通过命题11.10.6，推导出以下命题（同济大学高等数学-定积分的换元法，即黎曼积分的换元法）：
+
+  假设函数$f(x)$在区间$[a, b]$上连续，函数$x = \varphi(t)$满足条件：
+  \begin{itemize}
+    \item （1）$\varphi(\alpha) = a, \varphi(\beta) = b$；
+    \item （2）$\varphi(t)$在$[\alpha, \beta]$（或$[\beta, \alpha]$）上具有连续导数，
+          且其值域$R_{\varphi} = [a, b]$，则有
+          \begin{align*}
+            \int_{[a, b]} f(x) dx = \int_{[\alpha, \beta]} f[\varphi(t)]\varphi^\prime(t) dt
+          \end{align*}
+  \end{itemize}
+\end{zremark}
+
+这里对$\varphi$的前置条件是不全的，以下条件是必须的：
+\begin{itemize}
+  \item （1）$\varphi$是可导的；
+  \item （2）$\varphi$是单调的；
+\end{itemize}
+
+\textbf{证明：}
+
+以$\varphi$单调递增为例，
+$\varphi = [\alpha, \beta] \to [a, b]$，
+又因为$f$在$[a, b]$上是连续的，所以$f$是$[a, b]$上黎曼可积的函数，
+利用命题11.10.6可知，
+\begin{align*}
+  \int_{[a, b]} f
+   & = \int_{[\alpha, \beta]} f \circ \varphi d\varphi \\
+   & = \int_{[\alpha, \beta]} f[\varphi(t)]\varphi^\prime(t) dt
+\end{align*}
+
+
+
+\end{document}
