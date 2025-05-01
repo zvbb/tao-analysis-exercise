@@ -226,10 +226,25 @@ $f$是紧支撑的，不妨设其支撑在区间$[a, b]$上，
            & = \frac{e^{\pi i (N - 1) x + \pi i N x} - e^{-\pi i x}}{e^{\pi i x} - e^{-\pi i x}}      \\
            & = \frac{e^{\pi i (N - 1) x}(e^{\pi i N x} - e^{-\pi i N x})}{e^{\pi i x} - e^{-\pi i x}} \\
            & = \frac{e^{\pi i (N - 1) x}(2isin(\pi Nx))}{2isin(\pi x)}                                \\
-           & = \frac{e^{\pi i (N - 1) x}sin(\pi Nx)}{sin(\pi x)}                                      
+           & = \frac{e^{\pi i (N - 1) x}sin(\pi Nx)}{sin(\pi x)}
         \end{align*}
 
   \item (3)
+
+        \begin{align*}
+          \int_{[0, 1]} F_N(x) dx
+           & = \int_{[0, 1]} \sum \limits_{n = -N}^N (1 - \frac{|n|}{N})e_n dx  \\
+           & = \sum \limits_{n = -N}^N \int_{[0, 1]} (1 - \frac{|n|}{N})e_n dx  \\
+           & = \sum \limits_{n = -N}^N (1 - \frac{|n|}{N}) \int_{[0, 1]} e_n dx \\
+        \end{align*}
+        因为$n = 0$时，$\int_{[0, 1]} e_n dx = 1$，$n > 0$时，$\int_{[0, 1]} e_n dx = 0$，
+        所以
+        \begin{align*}
+           & \sum \limits_{n = -N}^N (1 - \frac{|n|}{N}) \int_{[0, 1]} e_n dx \\
+           & = \sum \limits_{n = 0}^0(1 - \frac{|0|}{N}) 1                      \\
+           & = (1 - \frac{|0|}{N}) 1                                            \\
+           & = 1
+        \end{align*}
 
 
 
