@@ -278,7 +278,7 @@ $P$是一个三角多项式，所以$P \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$
         由定理16.5.4（Plancherel定理）可知，$|\hat{f}(n)|$对任意$n$有界，
         函数$f(x)$有界。所以存在$M > 0$使得$|\hat{f}(n)| < M$，$|f(x)| < M$。
 
-        由定理16.4.1(三角多项式的威尔斯特拉斯逼近定理)可知，存在三角多项式$P$使得
+        由定理16.4.1(三角多项式的魏尔斯特拉斯逼近定理)可知，存在三角多项式$P$使得
         \begin{align*}
           \left\|g - P\right\|_{\infty} \leq \epsilon
         \end{align*}
@@ -313,7 +313,8 @@ $P$是一个三角多项式，所以$P \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$
            & = \left|\hat{f}(n)(\hat{P}(n) - \hat{g}(n))\right|                         \\
            & = \left|\hat{f}(n)(\langle P, e_n \rangle - \langle f, e_n \rangle)\right| \\
            & = \left|\hat{f}(n)\langle P - f, e_n \rangle\right|                        \\
-           & \leq |\hat{f}(n)|\left\|P - f, e_n \right\|_2                              \\
+           & \leq |\hat{f}(n)|\left|\langle P - f, e_n \rangle\right|                   \\
+           & \leq |\hat{f}(n)|\left\|P - f\right\|_2\left\|e_n \right\|_2               \\
            & = M\epsilon
         \end{align*}
 
@@ -380,7 +381,7 @@ $P$是一个三角多项式，所以$P \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$
            & = 2\pi i n \hat{f}(n)
         \end{align*}
 
-        方法一的问题在于，本书中没有复数函数的导数的定义。
+        方法一的问题在于，本书中没有复数函数的导数的定义。胜在方便
 
   \item 方法二
 
@@ -403,6 +404,129 @@ $P$是一个三角多项式，所以$P \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$
 \end{itemize}
 
 \section*{16.5.5}
+
+todo
+
+由Plancherel定理可知，
+\begin{align*}
+  \|f + g\|_2^2 = \sum\limits_{n = -\infty}^{\infty} |\widehat{f + g}(n)|^2 \\
+  \|f - g\|_2^2 = \sum\limits_{n = -\infty}^{\infty} |\widehat{f - g}(n)|^2 \\
+\end{align*}
+于是，
+\begin{align*}
+  \|f + g\|_2^2 - \|f - g\|_2^2
+   & = \langle f + g, f + g \rangle - \langle f - g, f - g \rangle \\
+   & = 2 \langle f, g \rangle + 2\langle g, f \rangle
+\end{align*}
+
+我们有
+\begin{align*}
+   & \sum\limits_{n = -\infty}^{\infty} |\widehat{f + g}(n)|^2 - \sum\limits_{n = -\infty}^{\infty} |\widehat{f - g}(n)|^2                          \\
+   & = \sum\limits_{n = -\infty}^{\infty} (\langle f + g, e_n \rangle)^2 - (\langle f - g, e_n \rangle)^2                                           \\
+   & = \sum\limits_{n = -\infty}^{\infty} (\langle f, e_n \rangle + \langle g, e_n \rangle)^2 - (\langle f, e_n \rangle - \langle g, e_n \rangle)^2 \\
+   & = \sum\limits_{n = -\infty}^{\infty} 4 \langle f, e_n \rangle \langle g, e_n \rangle                                                           \\
+   & = \sum\limits_{n = -\infty}^{\infty} 4 \hat{f}(n)\hat{g}(n)                                                                                    \\
+\end{align*}
+
+综上可得，
+\begin{align*}
+  \langle f, g \rangle + \langle g, f \rangle = \sum\limits_{n \in \mathbb{Z}} 2 \hat{f}(n)\hat{g}(n)
+\end{align*}
+
+
+\section*{16.5.6}
+
+先证明函数$f(Lx) \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$。
+由$f(x)$是$L$周期函数，我们有，
+\begin{align*}
+  f(L(x+1)) = f(Lx + L) = f(Lx)
+\end{align*}
+于是可得$f(Lx)$是1周期函数。
+
+又由$g(x) := Lx$和$f(x)$都连续可知，$f \circ g(x)$连续。
+
+综上可得，$f(Lx) \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$。
+
+\begin{itemize}
+  \item (a)
+
+        令$h(x) = f(Lx)$。
+        由傅里叶定理可知，对任意$\epsilon > 0$，当$N$足够大时，都有
+        \begin{align*}
+          \left\| h - \sum_{n = -N}^{N} \hat{h}(n)e_n \right\|_2 < \epsilon                                 \\
+          \left\| f(Lx) - \sum_{n = -N}^{N} (\int_{[0, 1]} f(Lx)e^{-2\pi i nx} dx)e_n \right\|_2 < \epsilon \\
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} (\int_{[0, 1]} f(Lx)e^{-2\pi i nx} dx)e_n|^2 dx\right)^{1/2} < \epsilon
+        \end{align*}
+        令$y = Lx$，$y : [0, L] \to [0, 1]$，我们有
+        \begin{align*}
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} (\int_{[0, 1]} f(Lx)e^{-2\pi i nx} dx)e_n|^2 dx \right)^{1/2} < \epsilon             \\
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} (\frac{1}{L}\int_{[0, L]} f(y)e^{-2\pi i ny/L} dy)e_n|^2 dx \right)^{1/2} < \epsilon \\
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} c_n e_n|^2 dx\right)^{1/2} < \epsilon                                                \\
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} c_n e^{2\pi n i x}|^2 dx\right)^{1/2} < \epsilon
+        \end{align*}
+        令$z = Lx$，于是
+        \begin{align*}
+          \left(\int_{[0, 1]} |f(Lx) - \sum_{n = -N}^{N} c_n e^{2\pi n i x}|^2 dx \right)^{1/2} < \epsilon            \\
+          \left(\frac{1}{L}\int_{[0, L]} |f(z) - \sum_{n = -N}^{N} c_n e^{2\pi n i z/L}|^2 dz\right)^{1/2} < \epsilon \\
+          \int_{[0, 1]} |f(z) - \sum_{n = -N}^{N} c_n e^{2\pi n i z/L}|^2 < L \epsilon^2
+        \end{align*}
+        由$\epsilon$的任意性和$L$是定值可知，
+        $\lim\limits_{N \to \infty} \int_{[0, 1]} |f(x) - \sum_{n = -N}^{N} c_n e^{2\pi n i x}|^2  = 0$。
+
+  \item (b)
+
+        换言之，我们需要证明
+        \begin{align*}
+          \lim\limits_{N \to \infty}\left\| f - \sum \limits_{n = -\infty}^\infty c_n e^{2\pi i nx / L}\right\|_\infty = 0
+        \end{align*}
+
+        利用命题11.10.7（变量替换公式），令$y = Lx$。
+        \begin{align*}
+          \widehat{f(Lx)}(n)
+           & = \langle f(Lx), e_n \rangle                        \\
+           & = \int_{[0, 1]} f(Lx) e^{-2\pi i nx} dx             \\
+           & = \frac{1}{L}\int_{[0, L]} f(y) e^{-2\pi i ny/L} dy \\
+           & = c_n
+        \end{align*}
+        由题设$\sum\limits_{n = -\infty}^\infty |c_n|$绝对收敛可知，$\sum\limits_{n = -\infty}^\infty |\widehat{f(Lx)}(n)|$绝对收敛。
+        于是由定理16.5.3可知，
+        \begin{align*}
+          \lim\limits_{N \to \infty}\left\| f(Lx) - \sum \limits_{n = -\infty}^\infty  \widehat{f(Lx)}(n)e^{2\pi i nx}\right\|_\infty = 0
+        \end{align*}
+        替换$y = Lx$，且$c_n = \widehat{f(Lx)}(n)$（这两个值都是定值，替换不会受到影响），我们有
+        \begin{align*}
+          \lim\limits_{N \to \infty}\left\| f(y) - \sum \limits_{n = -\infty}^\infty  \widehat{f(Lx)}(n)e^{2\pi i ny/L}\right\|_\infty = 0 \\
+          \implies                                                                                                                         \\
+          \lim\limits_{N \to \infty}\left\| f(x) - \sum \limits_{n = -\infty}^\infty  c_ne^{2\pi i nx / L}\right\|_\infty = 0
+        \end{align*}
+
+  \item (c)
+
+        由于$f(Lx) \in C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$，由Plancherel定理可知，
+        \begin{align*}
+          \|f(Lx)\|_2^2 & = \sum\limits_{n = -\infty}^\infty |\widehat{f(Lx)}(n)|^2 \\
+        \end{align*}
+
+        (b)的证明中，有
+        \begin{align*}
+          \widehat{f(Lx)}(n) = c_n
+        \end{align*}
+
+        利用命题11.10.7（变量替换公式），令$y = Lx$。
+        \begin{align*}
+          \|f(Lx)\|_2^2
+           & = \langle f(Lx), f(Lx) \rangle         \\
+           & = \int_{[0, 1]} |f(Lx)|^2 dx           \\
+           & = \frac{1}{L}\int_{[0, L]} |f(y)|^2 dy
+        \end{align*}
+
+        综上可得，
+        \begin{align*}
+          \frac{1}{L}\int_{[0, L]} |f(x)|^2 dx = \sum\limits_{n = -\infty}^\infty |c_n|^2
+        \end{align*}
+
+
+\end{itemize}
 
 
 
