@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{17.2.1}
+
+\begin{itemize}
+  \item (a) $\implies$ (b)
+
+        $f$在$x_0$处可微，所以由牛顿逼近法（命题10.1.7）可得，
+        对任意的$\epsilon > 0$都存在一个$\delta > 0$使得，只要$x \in E$且
+        $|x - x_0| \leq \delta$，就有
+        \begin{align*}
+          |f(x) - (f(x_0) + L(x - x_0))| \leq \epsilon|x - x_0|
+          % \frac{|f(x) - (f(x_0) + L(x - x_0))|}{|x - x_0|} \leq \epsilon
+        \end{align*}
+        令函数$h: E - \{x_0\} \to \mathbb{R}$为$h(x) = \frac{|f(x) - (f(x_0) + L(x - x_0))|}{|x - x_0|}$，
+        所以（因为符合定义9.3.6）
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E - \{x_0\}} h(x) = 0 \\
+          \lim\limits_{x \to x_0; x \in E - \{x_0\}} \frac{|f(x) - (f(x_0) + L(x - x_0))|}{|x - x_0|} = 0
+        \end{align*}
+
+  \item (b) $\implies$ (a)
+
+        \begin{align*}
+          \lim\limits_{x \to x_0; x \in E - \{x_0\}} \frac{|f(x) - (f(x_0) + L(x - x_0))|}{|x - x_0|} = 0
+        \end{align*}
+
+        那么，对任意$\epsilon > 0$都存在一个$\delta > 0$使得，只要$x \in E - \{x_0\}$且
+        $|x - x_0| \leq \delta$，就有
+        \begin{align*}
+          \left|\frac{|f(x) - (f(x_0) + L(x - x_0))|}{|x - x_0|} - 0\right| \leq \epsilon \\
+          |f(x) - (f(x_0) + L(x - x_0))| \leq \epsilon|x - x_0|
+        \end{align*}
+        特别地，$x = x_0$时，$|f(x) - (f(x_0) + L(x - x_0))| \leq \epsilon|x - x_0|$也成立。
+
+        由命题10.1.7（牛顿逼近法）可知(a)成立。
+\end{itemize}
+
+\section*{17.2.2 $\circledast$} 
+
+反证法，如果$L_1 \neq L2$，那么存在一个向量$v$使得
+$L_1v \neq L_2v$。这个向量$v$一定不是零向量（因为由线性变换的可加性，对任意的线性变换$T$，都有$T(0) = 0$）。
+
+由$f$在$x_0$处可微，那么对任意$\epsilon = \frac{\|L_1(v) - L_2(v)\|}{2\|v\|} > 0$，
+存在$\delta > 0$使得只要$|x - x_0| \leq \delta$，就有
+\begin{align*}
+  \frac{\|f(x) - f(x_0 - L_1(x - x_0))\|}{\|x - x_0\|} < \epsilon \\
+  \frac{\|f(x) - f(x_0) - L_2(x - x_0)\|}{\|x - x_0\|} < \epsilon
+\end{align*}
+
+令$x = x_0 + tv$，使得$|x - x_0| < \delta$。
+\begin{align*}
+  \frac{\|f(x) - f(x_0) - L_1(tv)\|}{\|tv\|} < \epsilon \\
+  \frac{\|f(x) - f(x_0) - L_2(tv)\|}{\|tv\|} < \epsilon
+\end{align*}
+
+因为
+\begin{align*}
+  \|L_1(tv) - L_2(tv)\| & = \|L_1(tv) - (f(x) + f(x_0)) + (f(x) + f(x_0)) - L_2(tv)\|        \\
+                        & \leq \|L_1(tv) - (f(x) + f(x_0))\| + \|(f(x) + f(x_0)) - L_2(tv)\|
+\end{align*}
+
+所以
+\begin{align*}
+   & \frac{\|L_1(tv) - L_2(tv)\|}{\|tv\|} = \frac{\|L_1(v) - L_2(v)\|}{\|v\|}                                                              \\
+   & \leq \frac{\|f(x) - (f(x_0) + L_1(tv))\|}{\|tv\|} + \frac{\|f(x) - (f(x_0) + L_2(tv))\|}{\|tv\|} \\
+   & \leq 2\epsilon = \frac{\|L_1(v) - L_2(v)\|}{\|v\|}
+\end{align*}
+存在矛盾。
+
+\end{document}
+
+
