@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{}
+
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.3 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  把$f$写成$f = (f_1, f_2, \cdots, f_m)$，那么容易得出
+  \begin{align*}
+    \frac{\partial f}{\partial x_j}(x_0) = (\frac{\partial f_1}{\partial x_j}(x_0),..., \frac{\partial f_m}{\partial x_j}(x_0))
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+\begin{align*}
+  \frac{\partial f}{\partial x_j} (x_0)
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}                                              \\
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{(f_1(x_0 + te_j), ..., f_m(x_0 + te_j)) - (f_1(x_0),..., f_m(x_0))}{t}  \\
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{(f_1(x_0 + te_j)-f_1(x_0), ..., f_m(x_0 + te_j) - f_m(x_0))}{t}         \\
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} (\frac{f_1(x_0 + te_j)-f_1(x_0)}{t}, ..., \frac{f_m(x_0 + te_j)-f_m(x_0)}{t}) \\
+   & = (\frac{\partial f_1}{\partial x_j}(x_0),..., \frac{\partial f_m}{\partial x_j}(x_0))
+\end{align*}
+
+\begin{zremark}
+  设$E$是$\mathbb{R}^n$的子集，$f : E \to \mathbb{R}^m$是一个函数，$F$是$E$的子集，
+  并设$x_0$是$F$的内点。如果$f$在$F$上的全体偏导数$\frac{\partial f}{\partial x_j}$都存在，
+  并且它们在$x_0$处都是连续的。
+  那么，把$f$写成$f_1, f_2, \cdots, f_m$，（每一个$f_i$都是从$E$到$\mathbb{R}$的函数）。
+  对变量$x_1$使用平均值定理（推论10.2.9中值定理），存在一个介于$0$和$v_1$之间的$t_i$，使得
+  \begin{align*}
+    f_i(x_0 + v_1e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_ie_1)v_1
+  \end{align*}
+
+  我的问题是，按照平均值定理，等式应该是
+  \begin{align*}
+    f_i(x_0 + v_1e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_ie_1)v_1e_1
+  \end{align*}
+  才对吧！
+  因为$(x_0 + v_1e_1) - x_0 = v_1 e_1$。
+\end{zremark}
+
+\textbf{证明：}
+
+我的理解是有问题的。
+
+一方面，如果改为
+\begin{align*}
+  f_i(x_0 + v_1e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_ie_1)v_1e_1
+\end{align*}
+此时，等式左侧是标量，右侧是向量，存在矛盾。
+
+另一方面，$f_i : \mathbb{R}^n \to \mathbb{R}$，对变量$x_1$求偏导数，即固定了$x_2, x_3, \cdots, x_n$，
+仅让$x_1$变化，此时$f_i$可以看做单变量函数：
+\begin{align*}
+  g(t) = f_i(x_0 + te_1) \ t \in [0, v_1]
+\end{align*}
+于是
+\begin{align*}
+  g(v_1) - g(0) = g^\prime(t_i) (v_1 - 0)
+\end{align*}
+
+因为
+\begin{align*}
+  g^\prime(t_0)
+   & = \lim\limits_{t \to t_0} \frac{g(t) - g(t_0)}{t - t_0}                       \\
+   & = \lim\limits_{t \to t_0} \frac{f_i(x_0 + te_1) - f_i(x_0 + t_0e_1)}{t - t_0}
+\end{align*}
+令$h = t - t_0$，则当$t \to t_0$时，$h \to 0$。代入后：
+\begin{align*}
+  g^\prime(t_0) & = \lim\limits_{h \to 0} \frac{f_i(x_0 + (t_0 + h)e_1) - f_i(x_0 + t_0e_1)}{h}
+\end{align*}
+
+又因为
+\begin{align*}
+  \frac{\partial f_i}{\partial x_1}(x_0 + t_0e_1)
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_1 \in F } \frac{f_i(x_0 + t_0e_1 + te_1) - f_i(x_0 + t_0e_1)}{t} \\
+   & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_1 \in F } \frac{f_i(x_0 + (t_0 + t)e_1) - f_i(x_0 + t_0e_1)}{t}  \\
+\end{align*}
+
+由$t_0$的任意性可得
+\begin{align*}
+  g^\prime(t) = \frac{\partial f_i}{\partial x_1}(x_0 + te_1)
+\end{align*}
+
+综上可得，
+\begin{align*}
+  g(v_1) - g(0) & = f_i(x_0 + v_1e_1) - f_i(x_0)                       \\
+                & = g^\prime(t_i)v_1                                   \\
+                & = \frac{\partial f_i}{\partial x_1}(x_0 + t_ie_1)v_1
+\end{align*}
+
+\begin{zremark}
+  特别地，如果$E \subseteq \mathbb{R}^m$，$f: E \to \mathbb{R}$是一个实值函数，并且$f$在$x_0$处的梯度$\nabla f(x_0)$
+  被定义为$n$维行向量
+  \begin{align*}
+    \nabla f(x_0) := \left(\frac{\partial f}{\partial x_1}(x_0),\cdots,\frac{\partial f}{\partial x_n}(x_0)\right)
+  \end{align*}
+  ，那么只要$x_0$是某个梯度存在且连续的区域的内点，我们就有熟知的公式
+  \begin{align*}
+    D_vf(x_0) = v \cdot \nabla f(x_0)
+  \end{align*}
+\end{zremark}
+
+\textbf{说明：}
+
+这里应该是有问题，$v$和$\nabla f(x_0)$都是行向量是不能乘的，
+所以，要么把$\nabla f(x_0)$改为列向量，要么把$v \cdot \nabla f(x_0)$改为$\nabla f(x_0) \cdot v$。
+
+\end{document}
+
+
