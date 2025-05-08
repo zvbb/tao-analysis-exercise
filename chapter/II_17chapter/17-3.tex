@@ -39,6 +39,37 @@
 
 \section*{17.3.1}
 
+$v$是零向量，等式显然成立，接下来我们讨论$v$不是零向量的情况。
+
+$f$在$x_0$处可微，所以由定义17.2.2（可微性），我们有
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in E - \{x_0\}} \frac{\|f(x) - (f(x_0) + f^\prime(x_0)(x- x_0)) \|}{\|x-x_0\|} = 0
+\end{align*}
+
+令$x = x_0 + tv$，则当$x \to x_0$时，$t \to 0$（只关注$t > 0$）。代入后：
+\begin{align*}
+  \lim\limits_{t \to 0; t > 0} \frac{\|f(x_0 + tv) - (f(x_0) + f^\prime(x_0)(tv)) \|}{\|tv\|} = 0 \\
+  \lim\limits_{t \to 0; t > 0} \frac{\|f(x_0 + tv) - f(x_0) - f^\prime(x_0)(tv)\|}{\|tv\|} = 0    
+\end{align*}
+
+对任意$\epsilon > 0$，存在$\delta > 0$，使得对所有的$x \in B(x_0, \delta) \ \{x_0\}$（即：$(x_0 + tv) \in B(x_0, \delta) \ \{x_0\}$）。
+都有
+\begin{align*}
+  \frac{\|f(x_0 + tv) - f(x_0) - f^\prime(x_0)(tv)\|}{\|tv\|} < \epsilon         \\
+  \frac{\|f(x_0 + tv) - f(x_0) - tf^\prime(x_0)(v)\|}{t\|v\|} < \epsilon         \\
+  \frac{\|\frac{f(x_0 + tv) - f(x_0)}{t} - f^\prime(x_0)(v)\|}{\|v\|} < \epsilon \\
+  \|\frac{f(x_0 + tv) - f(x_0)}{t} - f^\prime(x_0)(v)\| < \epsilon \|v\|
+\end{align*}
+（变换过程中，$f^\prime(x_0)$的线性性来自可微性的定义）
+
+由$\epsilon > 0$是任意值，$\|v\|$是定值，可知
+\begin{align*}
+  \frac{f(x_0 + tv) - f(x_0)}{t} = f^\prime(x_0)(v) \\
+  \implies                                          \\
+  D_vf(x_0) = f^\prime(x_0)(v)
+\end{align*}
+
+\section*{17.3.2}
 
 \end{document}
 
