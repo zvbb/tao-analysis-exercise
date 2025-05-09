@@ -141,6 +141,43 @@
 这里应该是有问题，$v$和$\nabla f(x_0)$都是行向量是不能乘的，
 所以，要么把$\nabla f(x_0)$改为列向量，要么把$v \cdot \nabla f(x_0)$改为$\nabla f(x_0) \cdot v$。
 
+\begin{zremark}
+  为什么导数矩阵是书中定义的格式（P365）
+  $D_f(x_0) = (\frac{\partial f_i}{\partial x_j})_{1 \leq i \leq m; 1 \leq j \leq n}$。
+\end{zremark}
+
+按照可微性（定义17.2.2）可知，$f^\prime(x_0)$是一个线性变换，
+且$f^\prime(x_0) : \mathbb{R}^n \to \mathbb{R}^m$。
+于是按照引理17.1.13可知，存在一个$m \times n$矩阵$A$使得$f^\prime(x_0) = L_A$。
+所以，$D_f(x_0) = A$应该是一个$m \times n$矩阵，符合书中的定义。
+
+不妨设
+\quickmatrix{m}{n}
+
+因为
+\begin{align*}
+  \frac{\partial f}{\partial x_j}(x_0)
+   & = f^\prime(x_0) e_j                                               \\
+   & = L_A e_j                                                         \\
+   & = \left(\sum \limits_{k = 1}^n a_{ik}x_k\right)_{1 \leq i \leq m} \\
+   & = \left(a_{ij}\right)_{1 \leq i \leq m}                           \\
+\end{align*}
+这表示的是矩阵$A$的$j$列。
+
+又因为
+\begin{align*}
+  \frac{\partial f}{\partial x_j}(x_0) = (\frac{\partial f_1}{\partial x_j}(x_0),..., \frac{\partial f_m}{\partial x_j}(x_0))
+\end{align*}
+
+综上可得，
+\begin{align*}
+  a_ij = \frac{\partial f_i}{\partial x_j}(x_0)
+\end{align*}
+
+与书中定义一致。
+
+
+
 \end{document}
 
 
