@@ -49,7 +49,7 @@ $f$在$x_0$处可微，所以由定义17.2.2（可微性），我们有
 令$x = x_0 + tv$，则当$x \to x_0$时，$t \to 0$（只关注$t > 0$）。代入后：
 \begin{align*}
   \lim\limits_{t \to 0; t > 0} \frac{\|f(x_0 + tv) - (f(x_0) + f^\prime(x_0)(tv)) \|}{\|tv\|} = 0 \\
-  \lim\limits_{t \to 0; t > 0} \frac{\|f(x_0 + tv) - f(x_0) - f^\prime(x_0)(tv)\|}{\|tv\|} = 0    
+  \lim\limits_{t \to 0; t > 0} \frac{\|f(x_0 + tv) - f(x_0) - f^\prime(x_0)(tv)\|}{\|tv\|} = 0
 \end{align*}
 
 对任意$\epsilon > 0$，存在$\delta > 0$，使得对所有的$x \in B(x_0, \delta) \ \{x_0\}$（即：$(x_0 + tv) \in B(x_0, \delta) \ \{x_0\}$）。
@@ -70,6 +70,188 @@ $f$在$x_0$处可微，所以由定义17.2.2（可微性），我们有
 \end{align*}
 
 \section*{17.3.2}
+
+\begin{itemize}
+  \item (a)偏导数$\implies$方向导数
+
+        $\frac{\partial f}{\partial x_j}(x_0)$存在，由偏导数的定义可知，
+        \begin{align*}
+          \frac{\partial f}{\partial x_j}(x_0)
+           & = \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}
+        \end{align*}
+
+        所以（右极限等于$x_0$处极限），
+        \begin{align*}
+          \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}
+           & = \lim\limits_{t \to 0; t > 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t} \\
+           & = D_{e_j}f(x_0)
+        \end{align*}
+
+        又因为（左极限等于$x_0$处极限）
+        \begin{align*}
+          \lim\limits_{t \to 0; t \neq 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}
+           & = \lim\limits_{t \to 0; t < 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}
+        \end{align*}
+        令$t = - t^\prime$，则当$t \to 0, t < 0$时，$t^\prime \to 0, t^\prime > 0$。代入后
+        \begin{align*}
+          \lim\limits_{t \to 0; t < 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}
+           & = \lim\limits_{t^\prime \to 0; t^\prime > 0, x_0 + (-1)t^\prime e_j \in E} \frac{f(x_0 + (-t^\prime)e_j) - f(x_0)}{(-1)t^\prime} \\
+           & = \lim\limits_{t^\prime \to 0; t^\prime > 0, x_0 + t^\prime (-e_j) \in E} (-1) \frac{f(x_0 + t^\prime(-e_j)) - f(x_0)}{t^\prime} \\
+           & = - D_{(-e_j)} f(x_0)
+        \end{align*}
+
+  \item (b) 方向导数$\implies$偏导数
+
+        $D_{e_j}f(x_0)$存在，由方向导数的定义，我们有
+        \begin{align*}
+          D_{e_j}f(x_0) & = \lim\limits_{t \to 0; t > 0, x_0 + t e_j \in E} \frac{f(x_0 + t e_j) - f(x_0)}{t} \\
+                        & = \frac{\partial f}{\partial x_j^+}(x_0)
+        \end{align*}
+        即$\frac{\partial f}{\partial x_j}(x_0)$的右极限存在，且等于$D_{e_j}f(x_0)$。
+
+        同理可得，
+        \begin{align*}
+          - D_{(-e_j)} f(x_0) & = \lim\limits_{t^\prime \to 0; t^\prime > 0, x_0 + t^\prime (-e_j) \in E} (-1) \frac{f(x_0 + t^\prime(-e_j)) - f(x_0)}{t^\prime} \\
+        \end{align*}
+        令$t^\prime = -t$，则当$t^\prime \to 0, t^\prime < 0$时，$t \to 0, t < 0$。代入后
+        \begin{align*}
+          - D_{(-e_j)} f(x_0) & = (-1) \lim\limits_{t^\prime \to 0; t^\prime > 0, x_0 + t^\prime (-e_j) \in E} \frac{f(x_0 + t^\prime(-e_j)) - f(x_0)}{t^\prime} \\
+                              & = \lim\limits_{t \to 0; t < 0, x_0 + te_j \in E} \frac{f(x_0 + te_j) - f(x_0)}{t}                                                \\
+                              & = \frac{\partial f}{\partial x_j^-}(x_0)
+        \end{align*}
+        即$\frac{\partial f}{\partial x_j}(x_0)$的左极限存在，且等于$- D_{(-e_j)} f(x_0)$。
+
+        题设知$D_{e_j}f(x_0)$和$D_{(-e_j)} f(x_0)$互为相反数，
+        所以，$D_{e_j}f(x_0) = - D_{(-e_j)} f(x_0)$。
+        于是，$\frac{\partial f}{\partial x_j}(x_0)$左右极限相等，
+        所以$\frac{\partial f}{\partial x_j}(x_0)$存在，且
+        \begin{align*}
+          \frac{\partial f}{\partial x_j}(x_0) = D_{e_j}f(x_0)
+        \end{align*}
+
+\end{itemize}
+
+\section*{17.3.3}
+\begin{itemize}
+  \item (1)在$(0, 0)$处不可微。
+
+        反证法，假设$f$在$(0, 0)$处可微，导数为$L = f^\prime(0, 0)$。
+
+        我们有（P362有说明），
+        \begin{align*}
+          f^\prime(0, 0)(x, y)
+           & = xf^\prime(0, 0)e_1 + yf^\prime(0, 0)e_2
+        \end{align*}
+        其中
+        \begin{align*}
+          f^\prime(0, 0)e_1 = \frac{\partial f}{\partial x_1}(0, 0) \\
+          f^\prime(0, 0)e_2 = \frac{\partial f}{\partial x_2}(0, 0)
+        \end{align*}
+        我们先计算这两个偏导数
+        \begin{align*}
+          \frac{\partial f}{\partial x_1}(0, 0)
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_1 \in \mathbb{R}^2} \frac{f((0, 0) + te_1) - f(0, 0)}{t} \\
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_1 \in \mathbb{R}^2} \frac{f(t, 0) - 0}{t}                \\
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_1 \in \mathbb{R}^2} \frac{\frac{t^3}{t^2}}{t}            \\
+           & = 1
+        \end{align*}
+        \begin{align*}
+          \frac{\partial f}{\partial x_2}(0, 0)
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_2 \in \mathbb{R}^2} \frac{f((0, 0) + te_2) - f(0, 0)}{t} \\
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_2 \in \mathbb{R}^2} \frac{f(0, t) - 0}{t}                \\
+           & = \lim\limits_{t \to 0; t \neq 0, (0, 0) + te_2 \in \mathbb{R}^2} \frac{\frac{0^3}{0^2 + t^2} - 0}{t}  \\
+           & = 0
+        \end{align*}
+
+        综上可得
+        \begin{align*}
+          f^\prime(0, 0)(x, y)
+           & = xf^\prime(0, 0)e_1 + yf^\prime(0, 0)e_2 \\
+           & = x
+        \end{align*}
+
+        于是由可微性（定义17.2.2），我们有
+        \begin{align*}
+          \lim\limits_{(x, y) \to (0, 0); (x, y) \in \mathbb{R}^2 - \{(0, 0)\}} \frac{\|f(x, y) - f(0, 0) - f^\prime(0, 0)(x, y)\|}{\|(x, y) - (0, 0)\|} = 0 \\
+          \lim\limits_{(x, y) \to (0, 0); (x, y) \in \mathbb{R}^2 - \{(0, 0)\}} \frac{\|f(x, y) - 0 - x\|}{\|(x, y)\|} = 0                                   \\
+          \lim\limits_{(x, y) \to (0, 0); (x, y) \in \mathbb{R}^2 - \{(0, 0)\}} \frac{\|\frac{x^3}{x^2 + y^2} - x\|}{\|(x, y)\|} = 0
+        \end{align*}
+        $(x, y)$以任何方式趋近于$(0, 0)$时，都等于0。
+        不妨假设$y = x$且$x, y \to 0$，于是
+        \begin{align*}
+          \frac{\|\frac{x^3}{x^2 + x^2} - x\|}{\sqrt{x^2 + x^2}}
+           & = \frac{\|\frac{x}{2} - x\|}{\sqrt{2}|x|} \\
+           & = \frac{|-\frac{x}{2}|}{\sqrt{2}|x|}      \\
+           & = \frac{\frac{1}{2}|x|}{\sqrt{2}|x|}      \\
+           & = \frac{\sqrt{2}}{4}
+        \end{align*}
+        存在矛盾，假设不成立。
+
+  \item (2) 不与定理17.3.8矛盾。
+
+        任意$(x_0, y_0) \neq (0, 0)$求偏导数（这里选择对$y$求偏导数，避免处理3次方）
+        \begin{align*}
+          \frac{\partial f}{\partial x_2}
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} \frac{f((x_0, y_0) + te_2) - f(x_0, y_0)}{t}                                                             \\
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} \frac{f(x_0, y_0 + t) - f(x_0, y_0)}{t}                                                                  \\
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} \frac{\frac{x_0^3}{x_0^2 + (y_0 + t)^2} - \frac{x_0^3}{x_0^2 + y_0^2}}{t}                                \\
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} \frac{\frac{x_0^3(x_0^2 + y_0^2) - x_0^3[x_0^2 + (y_0 + t)^2]}{[x_0^2 + (y_0 + t)^2](x_0^2 + y_0^2)}}{t} \\
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} x_0^3 \frac{-t^2 - 2ty_0}{t[x_0^2 + (y_0 + t)^2](x_0^2 + y_0^2)}                                         \\
+           & = \lim\limits_{t \to 0; t \neq 0, (x_0, y_0) + te_2 \in \mathbb{R}^2} x_0^3 \frac{-t - 2y_0}{[x_0^2 + (y_0 + t)^2](x_0^2 + y_0^2)}                                             \\
+           & = \frac{- 2x_0^3 y_0}{(x_0^2 + y_0^2)^2}
+        \end{align*}
+
+        (x, y)以任何方式趋近于$(0, 0)$，偏导数公式相同。
+        不妨设$y_0 = x_0$且$(x_0, y_0) \to (0, 0)$，那么
+        \begin{align*}
+          \frac{- 2x_0^3 y_0}{(x_0^2 + y_0^2)^2}
+           & = \frac{- 2x_0^4}{4x_0^4} \\
+           & = \frac{- 1}{2}
+        \end{align*}
+        可见$\frac{\partial f}{\partial x_2}$在$(0, 0)$处不连续。不满足定理17.3.8的前置条件。
+
+\end{itemize}
+
+\section*{17.3.4}
+
+因为对于所有的$x \in \mathbb{R}^n, f^\prime(x) = 0$（表示是零线性变换，任意向量$v$，都有$f^\prime(x)v = 0$），
+那么，任意偏导数都有
+\begin{align*}
+  \frac{\partial f}{\partial x_j}(x) = f^\prime(x) e_j = 0
+\end{align*}
+于是$f$在$\mathbb{R}^n$上的全体偏导数都是零向量，所以，在任意$x \in \mathbb{R}^n$处
+偏导数都是连续的（总是零向量）。
+把$f$写成$(f_1, f_2, \cdots, f_m)$，于是
+\begin{align*}
+  \frac{\partial f}{\partial x_j}(x)
+   & = (\frac{\partial f_1}{\partial x_j}(x), \cdots, \frac{\partial f_m}{\partial x_j}(x)) \\
+   & = (0, \cdots, 0)
+\end{align*}
+从而，每个分量的偏导数也是连续的。
+
+设$y_0 \neq x_0, y_0 - x_0 = v = (v_1, \cdots, v_n) = \sum \limits_{i=1}^n v_i e_i$。
+对变量$x_1$使用平均值定理可得，存在一个介于$0$和$v_1$之间的$t_i$，使得
+\begin{align*}
+  f_i(x_0 + v_1e_1) - f_i(x_0) = \frac{\partial f_i}{\partial x_1}(x_0 + t_ie_1)v_1 = 0,\ 1 \leq i \leq m
+\end{align*}
+所以，$f(x_0 + v_1e_1) - f(x_0) = 0$。
+
+同理可得
+\begin{align*}
+  f(x_0 + v_1e_1 + v_2e_2) - f(x_0 + v_1e_1) = 0
+\end{align*}
+那么以此类推有
+\begin{align*}
+  f(x_0 + v_1e_1 + \cdots + v_ne_n) - f(x_0 + v_1e_1 + \cdots + v_{n-1}e_{n - 1}) = 0
+\end{align*}
+把这$n$个等式相加，得到
+\begin{align*}
+  f(x_0 + v_1e_1 + \cdots + v_ne_n) - f(x_0) = 0 \\
+  f(y_0) - f(x_0) = 0
+\end{align*}
+所以$f(y_0) = f(x_0)$，
+由$y_0, x_0$的任意性可得，$f(x)$是常值函数。
+
 
 \end{document}
 
