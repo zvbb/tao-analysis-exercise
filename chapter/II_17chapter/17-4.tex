@@ -37,6 +37,32 @@
 \author{张志聪}
 \maketitle
 
+\section*{17.4.1}
+
+先证明可微性，再证明导数作为关于$\mathbb{R}^n$的函数是连续的。
+
+设$L : \mathbb{R}^n \to \mathbb{R}^m$的线性变换，令$L = T$，
+于是，对任意$x_0 \in \mathbb{R}^n$，我们有
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in \mathbb{R}^n - \{x_0\} } \frac{\|T(x) - T(x_0) - L(x - x_0) \|}{\|x - x_0\|}
+   & = \lim\limits_{x \to x_0; x \in \mathbb{R}^n - \{x_0\} } \frac{\|T(x - x_0) - L(x - x_0) \|}{\|x - x_0\|} \\
+   & = \lim\limits_{x \to x_0; x \in \mathbb{R}^n - \{x_0\} } \frac{\|T(x - x_0) - T(x - x_0) \|}{\|x - x_0\|} \\
+   & = \lim\limits_{x \to x_0; x \in \mathbb{R}^n - \{x_0\} } \frac{0}{\|x - x_0\|}                            \\
+   & = 0
+\end{align*}
+
+所以$T$在$x_0$处是可微的，并且导数为$T$。而且引理17.2.4也保证了导数的唯一性。
+
+又由$x_0$的任意性可知，$T$在任意一点$x$处的导数都是$T$，即$T^\prime(x) = x$，
+可见导数函数是定值，所以其是连续的。
+
+\section*{17.4.2}
+
+要证明$f$在$x_0$连续，我们需要证明
+\begin{align*}
+  \lim\limits_{x \to x_0; x \in E - \{x_0\} } f(x) = f(x_0)
+\end{align*}
+
 \end{document}
 
 
