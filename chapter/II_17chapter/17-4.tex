@@ -63,6 +63,88 @@
   \lim\limits_{x \to x_0; x \in E - \{x_0\} } f(x) = f(x_0)
 \end{align*}
 
+对任意$\epsilon > 0$，由于$f$在$x_0$处的可微性可知，
+存在$\delta > 0$，使得只要$\|x - x_0\| \leq \delta, x \in E - \{x_0\}$，
+就有
+\begin{align*}
+  \frac{\|f(x) - f(x_0) - f^\prime(x_0)(x - x_0)\|}{\|x - x_0\|} < \epsilon                                             \\
+  \|f(x) - f(x_0) - f^\prime(x_0)(x - x_0)\| < \epsilon \|x - x_0\|                                                     \\
+  \|f(x) - f(x_0)\| - \|f^\prime(x_0)(x - x_0)\| \leq \|f(x) - f(x_0) - f^\prime(x_0)(x - x_0)\| < \epsilon \|x - x_0\| \\
+  \|f(x) - f(x_0)\| - \|f^\prime(x_0)(x - x_0)\| < \epsilon \|x - x_0\|                                                 \\
+  \|f(x) - f(x_0)\| < \epsilon \|x - x_0\| + \|f^\prime(x_0)(x - x_0)\|
+\end{align*}
+因为$x_0$是$E$的内点，于是$B(x_0, min(\delta, \epsilon)) \subseteq E$，
+令$x \in B(x_0, min(\delta, \epsilon))$。
+又由习题17.1.4可知，存在$M > 0$，使得$\|f^\prime(x_0)(x - x_0)\| \leq M \|x - x_0\|$，
+于是，我们有
+\begin{align*}
+  \|f(x) - f(x_0)\| & < \epsilon \|x - x_0\| + \|f^\prime(x_0)(x - x_0)\| \\
+                    & \leq \epsilon^2 + M \epsilon
+\end{align*}
+$M$是定值和$\epsilon$的任意性可知，$f$在$x_0$处连续。
+
+\section*{17.4.3}
+不妨设$g^\prime(f(x_0)) = L_1, f^\prime(x_0) = L_2$。
+
+按照可微性的定义（定义17.2.2），我们需要证明
+\begin{align*}
+  \lim_{x \to x_0; x \in E - \{x_0\}} \frac{\|g \circ f(x) - g \circ f(x_0) - L_1L_2(x - x_0)\|}{\|x - x_0\|} = 0
+\end{align*}
+
+因为$g$在$f(x_0)$处可微，
+于是对任意的$\epsilon > 0$，存在$\delta > 0$，使得只要$\|y - f(x_0)\| < \delta$，
+就有
+\begin{align*}
+  \frac{\|g(y) - g(f(x_0)) - L_1(y - f(x_0))\|}{\|y - f(x_0)\|} < \epsilon
+\end{align*}
+又$f$在$x_0$处可微，由习题17.4.2可知，$f$在$x_0$处连续，
+所以，存在$\delta_f > 0$，使得只要$\|x - x_0\| < \delta_f$，
+就有
+\begin{align*}
+  \|f(x) - f(x_0)\| < \delta
+\end{align*}
+综上，当$\|x - x_0\| < \delta_f$，我们有
+\begin{align}
+  \frac{\|g(f(x)) - g(f(x_0)) - L_1(y - f(x_0))\|}{\|f(x) - f(x_0)\|} < \epsilon
+\end{align}
+
+$f$在$x_0$处可微，存在$\delta^\prime > 0$，使得只要$|x - x_0| < min(\delta_f,\delta^\prime)|$，就有
+\begin{align}
+  \frac{\|f(x) - f(x_0) - L_2(x - x_0)\|}{\|x - x_0\|} < \epsilon
+\end{align}
+取$\delta = min(\delta_f,\delta^\prime), \|x - x_0 \| < \delta$，式（1）（2）同时成立。
+
+对任意$v \in R^m, w \in R^n$，由习题17.1.4可知，存在$M_1, M_2 > 0$使得
+\begin{align*}
+  \|L_1 v\| \leq M_1 \|v\| \\
+  \|L_2 w\| \leq M_2 \|w\|
+\end{align*}
+
+当$\| x - x_0 \| < \delta$时，我们有
+\begin{align*}
+   & \frac{\|g \circ f(x) - g \circ f(x_0) - L_1L_2(x - x_0)\|}{\|x - x_0\|}                                                              \\
+   & = \frac{\|g(f(x)) - g(f(x_0)) - L_1L_2(x - x_0)\|}{\|x - x_0\|}                                                                      \\
+   & = \frac{\|g(f(x)) - g(f(x_0)) - L_1(f(x) - f(x_0)) + L_1(f(x) - f(x_0)) - L_1L_2(x - x_0)\|}{\|x - x_0\|}                            \\
+   & \leq \frac{\|g(f(x)) - g(f(x_0)) - L_1(f(x) - f(x_0))\|}{\|x - x_0\|} + \frac{\|L_1(f(x) - f(x_0)) - L_1L_2(x - x_0)\|}{\|x - x_0\|} \\
+   & = \frac{\|g(f(x)) - g(f(x_0)) - L_1(f(x) - f(x_0))\|}{\|x - x_0\|} + \frac{\|L_1[f(x) - f(x_0) - L_2(x - x_0)]\|}{\|x - x_0\|}       \\
+   & \leq \frac{\epsilon \|f(x) - f(x_0)\|}{\|x - x_0\|} + \frac{M_2\|f(x) - f(x_0) - L_2(x - x_0)\|}{\|x - x_0\|}                        \\
+   & \leq \frac{\epsilon \|f(x) - f(x_0)\|}{\|x - x_0\|} + \frac{M_2\epsilon \|x - x_0\|}{\|x - x_0\|}                                    \\
+   & = \frac{\epsilon \|f(x) - f(x_0) - L_2(x - x_0) + L_2(x - x_0)\|}{\|x - x_0\|} + M_2\epsilon                                         \\
+   & \leq \frac{\epsilon \|f(x) - f(x_0) - L_2(x - x_0)\| + \epsilon\|L_2(x - x_0)\|}{\|x - x_0\|} + M_2\epsilon                          \\
+   & \leq \frac{\epsilon^2\|x - x_0\| + \epsilon M_1\|x - x_0\|}{\|x - x_0\|} + M_2\epsilon                                               \\
+   & = \epsilon(\epsilon + M_1 + M_2)
+\end{align*}
+
+由$\epsilon$是任意的，$M_1, M_2$是定值，所以
+\begin{align*}
+  \lim_{x \to x_0; x \in E - \{x_0\}} \frac{\|g \circ f(x) - g \circ f(x_0) - L_1L_2(x - x_0)\|}{\|x - x_0\|} = 0
+\end{align*}
+命题得证。
+
+\section*{17.4.4}
+
+
+
 \end{document}
 
 
