@@ -185,15 +185,17 @@ $f$在$x_0$处可微，存在$\delta^\prime > 0$，使得只要$|x - x_0| < min(
 
 \section*{17.4.5}
 
+注意，注意，注意!!! 书中的是点积（或点乘），正文中也没有提及过，坑人！！！
+
 令$k: \mathbb{R}^3 \to \mathbb{R}$表示$l^2$度量函数
 $k(a, b, c) = \|(a, b, c)\| = \sqrt{a^2 + b^2 + c^2}$。
 我们有
 \begin{align*}
-  D_{\overrightarrow{t_0}} =
+  D_{\overrightarrow{x}}(t_0) =
   \begin{pmatrix}
-    \frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) \\
-    \frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) \\
-    \frac{\partial \overrightarrow{x}}{\partial x_3} (t_0)
+    \frac{\partial \overrightarrow{x}_1}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}_2}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}_3}{\partial x_1} (t_0)
   \end{pmatrix}
 \end{align*}
 和
@@ -206,14 +208,22 @@ $k(a, b, c) = \|(a, b, c)\| = \sqrt{a^2 + b^2 + c^2}$。
   D(k \circ \overrightarrow{x})(t_0)
    & = (\frac{c_1}{\|\overrightarrow{x}(t_0)\|}, \frac{c_2}{\|\overrightarrow{x}(t_0)\|}, \frac{c_3}{\|\overrightarrow{x}(t_0)\|})
   \begin{pmatrix}
-    \frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) \\
-    \frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) \\
-    \frac{\partial \overrightarrow{x}}{\partial x_3} (t_0)
+    \frac{\partial \overrightarrow{x}_1}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}_2}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}_3}{\partial x_1} (t_0)
   \end{pmatrix}                                                                       \\
-   & = \frac{\frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) c_1 }{\|\overrightarrow{x}(t_0)\|}
-  + \frac{\frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) c_2}{\|\overrightarrow{x}(t_0)\|}
-  + \frac{\frac{\partial \overrightarrow{x}}{\partial x_3} (t_0) c_3}{\|\overrightarrow{x}(t_0)\|}                                 \\
-   & = \frac{\overrightarrow{x}^\prime(t_0) \overrightarrow{x}(t_0)}{r(t_0)}
+   & = \frac{\frac{\partial \overrightarrow{x}_1}{\partial x_1} (t_0) c_1 }{\|\overrightarrow{x}(t_0)\|}
+  + \frac{\frac{\partial \overrightarrow{x}_2}{\partial x_1} (t_0) c_2}{\|\overrightarrow{x}(t_0)\|}
+  + \frac{\frac{\partial \overrightarrow{x}_3}{\partial x_1} (t_0) c_3}{\|\overrightarrow{x}(t_0)\|}                                 \\
+   & = \frac{\overrightarrow{x}^\prime(t_0) \cdot \overrightarrow{x}(t_0)}{r(t_0)}
+\end{align*}
+
+因为
+\begin{align*}
+  \overrightarrow{x}^\prime(t_0) \cdot \overrightarrow{x}(t_0)
+  = \frac{\partial \overrightarrow{x}_1}{\partial x_1} (t_0) c_1 
+  + \frac{\partial \overrightarrow{x}_2}{\partial x_1} (t_0) c_2
+  + \frac{\partial \overrightarrow{x}_3}{\partial x_1} (t_0) c_3
 \end{align*}
 
 \end{document}
