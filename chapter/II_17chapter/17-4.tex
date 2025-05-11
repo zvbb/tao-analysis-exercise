@@ -143,7 +143,78 @@ $f$在$x_0$处可微，存在$\delta^\prime > 0$，使得只要$|x - x_0| < min(
 
 \section*{17.4.4}
 
+\textbf{命题：}
 
+设$f: \mathbb{R}^n \to \mathbb{R}$和$g: \mathbb{R}^n \to \mathbb{R}$都是可微函数，
+且$g$在$\mathbb{R}^n$上不为零，那么$f/g$也是可微的，且
+\begin{align*}
+  \nabla (\frac{f}{g}) = \frac{(\nabla f) g  - f (\nabla g)  }{g^2}
+\end{align*}
+
+\textbf{证明：}
+
+仿照例17.4.2进行证明。
+
+把$h: \mathbb{R}^n \to \mathbb{R}^2$定义为$h(x) = (f(x), g(x))$。
+现在令$k: \mathbb{R}^2 \to \mathbb{R}$表示除法函数$K(a, b) = \frac{a}{b}$。
+注意，
+\[
+  D_h(x_0) =
+  \begin{pmatrix}
+    \nabla f(x_0) \\
+    \nabla g(x_0)
+  \end{pmatrix}
+\]
+和
+\begin{align*}
+  D_k(a,b) = (\frac{1}{b}, -\frac{a}{b^2})
+\end{align*}
+根据链式法则可得，
+\begin{align*}
+  D(k \circ h)
+   & = (\frac{1}{g(x_0)}, -\frac{f(x_0)}{g(x_0)^2})
+  \begin{pmatrix}
+    \nabla f(x_0) \\
+    \nabla g(x_0)
+  \end{pmatrix}                                                                      \\
+   & = \frac{\nabla f(x_0)}{g(x_0)} - \frac{f(x_0)\nabla g(x_0)}{g(x_0)^2}            \\
+   & = \frac{(\nabla f(x_0)) g(x_0)}{g(x_0)^2} - \frac{f(x_0)\nabla g(x_0)}{g(x_0)^2} \\
+   & = \frac{(\nabla f(x_0)) g(x_0) - f(x_0)\nabla g(x_0)}{g(x_0)^2}
+\end{align*}
+命题得证。
+
+\section*{17.4.5}
+
+令$k: \mathbb{R}^3 \to \mathbb{R}$表示$l^2$度量函数
+$k(a, b, c) = \|(a, b, c)\| = \sqrt{a^2 + b^2 + c^2}$。
+我们有
+\begin{align*}
+  D_{\overrightarrow{t_0}} =
+  \begin{pmatrix}
+    \frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) \\
+    \frac{\partial \overrightarrow{x}}{\partial x_3} (t_0)
+  \end{pmatrix}
+\end{align*}
+和
+\begin{align*}
+  D_k(a, b, c) = (\frac{a}{\sqrt{a^2 + b^2 + c^2}}, \frac{b}{\sqrt{a^2 + b^2 + c^2}}, \frac{c}{\sqrt{a^2 + b^2 + c^2}})
+\end{align*}
+令$\overrightarrow{x}(t_0) = (c_1, c_2, c_3)$
+根据链式法则可得，
+\begin{align*}
+  D(k \circ \overrightarrow{x})(t_0)
+   & = (\frac{c_1}{\|\overrightarrow{x}(t_0)\|}, \frac{c_2}{\|\overrightarrow{x}(t_0)\|}, \frac{c_3}{\|\overrightarrow{x}(t_0)\|})
+  \begin{pmatrix}
+    \frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) \\
+    \frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) \\
+    \frac{\partial \overrightarrow{x}}{\partial x_3} (t_0)
+  \end{pmatrix}                                                                       \\
+   & = \frac{\frac{\partial \overrightarrow{x}}{\partial x_1} (t_0) c_1 }{\|\overrightarrow{x}(t_0)\|}
+  + \frac{\frac{\partial \overrightarrow{x}}{\partial x_2} (t_0) c_2}{\|\overrightarrow{x}(t_0)\|}
+  + \frac{\frac{\partial \overrightarrow{x}}{\partial x_3} (t_0) c_3}{\|\overrightarrow{x}(t_0)\|}                                 \\
+   & = \frac{\overrightarrow{x}^\prime(t_0) \overrightarrow{x}(t_0)}{r(t_0)}
+\end{align*}
 
 \end{document}
 
