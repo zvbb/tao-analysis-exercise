@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.5 习题}
+\author{张志聪}
+\maketitle
+
+\section*{17.5.1}
+
+% \begin{align*}
+%   \frac{\partial f}{\partial x} = \frac{y^3(x^2 + y^2) - xy^3(2x)}{(x^2 + y^2)^2} = \frac{y^5 - x^2 y^3}{(x^2 + y^2)^2} \\
+%   \frac{\partial f}{\partial y} = \frac{3xy^2(x^2 + y^2) - xy^3(2y)}{(x^2 + y^2)^2} = \frac{3x^3 y^2 + xy^4}{(x^2 + y^2)^2}
+% \end{align*}
+% 接下来，需要判断偏导数的连续性。
+% 由引理13.2.2和推论13.2.3可知，$(x, y) \neq 0$时，
+% $\frac{\partial f}{\partial x}$和$\frac{\partial f}{\partial y}$都是连续的，
+% 我们还需判断$(x, y) = (0, 0)$时的情况：
+% \begin{align*}
+%   \lim\limits_{(x, y) \to (0, 0)} \frac{y^5 - x^2 y^3}{(x^2 + y^2)^2} = 0 \\
+%   \lim\limits_{(x, y) \to (0, 0)} \frac{3x^3 y^2 + xy^4}{(x^2 + y^2)^2} = 0 
+% \end{align*}
+% （书中好像也没啥可靠的办法，也有可能是我学艺不精。）
+
+略。
+大家可以查考：https://christangdt.home.blog/2019/07/05/%e9%99%b6%e5%93%b2%e8%bd%a9%e5%ae%9e%e5%88%86%e6%9e%90%ef%bc%88%e4%b8%8b%ef%bc%896-5%e5%8f%8a%e4%b9%a0%e9%a2%98-analysis-ii-6-5/
+
+
+\end{document}

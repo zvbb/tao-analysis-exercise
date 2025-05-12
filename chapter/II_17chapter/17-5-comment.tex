@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.5 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  定理17.5.4（克莱罗定理）证明过程中的，有
+  \begin{align*}
+    f(\delta e_i + \delta e_j) - f(\delta e_j)
+    = \int_{0}^{\delta} \frac{\partial f}{\partial x_i} (x_ie_i + \delta e_j) d_{x_i}
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+要利用定理11.9.4（微积分第二基本定理），我们先要确定
+$\frac{\partial f}{\partial x_i} (x_ie_i + \delta e_j)$的原函数。
+
+先解释下右侧的表达式，方便理解。首先
+\begin{align*}
+  \frac{\partial f}{\partial x_i}
+\end{align*}
+是一个$\mathbb{R}^n \to \mathbb{R}^m$的函数。
+于是右侧就是沿着路径$\gamma (t) = te_i + \delta e_j \ (t \in [0, \delta])$的积分，
+即$\int_{0}^{\delta} \frac{\partial f}{\partial x_i} \circ \gamma (t) dt$。
+
+将$f$的第$j$个变量固定为$\delta$，其余变量（除了$x_i$）固定为$0$，
+为了找到原函数，我们定义一个辅助函数
+\begin{align*}
+  g(x_i) : = f(x_ie_i + \delta e_j), \ x_i \in [0, \delta]
+\end{align*}
+$g$是一元函数，而且其导数为：
+\begin{align*}
+  g^\prime(x_i)
+   & = \lim \limits_{x \to x_i} \frac{g(x) - g(x_i)}{x - x_i}                                           \\
+   & = \lim\limits_{t \to 0;t \neq 0} \frac{g(x_i + t) - g(x_i)}{t}                                     \\
+   & = \lim\limits_{t \to 0;t \neq 0} \frac{f((x_i + t)e_i + \delta e_j) - f(x_ie_i + \delta e_j)}{t}   \\
+   & = \lim\limits_{t \to 0;t \neq 0} \frac{f(x_i e_i + \delta e_j + te_i) - f(x_ie_i + \delta e_j)}{t} \\
+   & = \frac{\partial f}{\partial x_i} (x_i e_i + \delta e_j)
+\end{align*}
+$g$就是原函数。
+
+然后，利用利用定理11.9.4（微积分第二基本定理）
+
+\begin{align*}
+   & \int_{0}^{\delta} \frac{\partial f}{\partial x_i} (x_i e_i + \delta e_j) \\
+   & = \int_{0}^{\delta} g^\prime(x_i)                                        \\
+   & = g(\delta) - g(0)                                                       \\
+   & = f(\delta e_i + \delta e_j) - f(\delta e_j)
+\end{align*}
+
+\begin{zremark}
+  定理17.5.4（克莱罗定理）证明过程中的，
+  $f \in C^2, f: \mathbb{R}^n \to \mathbb{R}^m$，
+  我们有，由平均值定理可知，对于每一个$x_i$，都存在一个$0 \leq r \leq \delta$，使得
+  \begin{align*}
+    \frac{\partial f}{\partial x_i}(x_i e_i + \delta e_j) - \frac{\partial f}{\partial x_i}(x_i e_i)
+    = \delta \frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i} (x_ie_i + r e_j)
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+令$g : = \frac{\partial f}{\partial x_i}(x_i e_i + t e_j), t \in [0, \delta]$，
+令$w = \frac{\partial f}{\partial x_i}; h : = x_i e_i + te_j$，
+于是$g = w \circ h$，
+使用链式法则，并令$e_j = (v_1, v_2, \cdots, v_n)$。
+\begin{align*}
+  g^\prime(t) & = w^\prime (x_ie_i + t e_j) h^\prime(t)                                          \\
+              & = w^\prime (x_ie_i + t e_j) e_j                                                  \\
+              & = \frac{\partial w}{\partial x_j}(x_ie_i + t e_j)                                \\
+              & = \frac{\partial}{\partial x_j} \frac{\partial f}{\partial x_i} (x_ie_i + t e_j)
+\end{align*}
+接下来，对平均值定理的使用就无需赘述了。
+
+\end{document}

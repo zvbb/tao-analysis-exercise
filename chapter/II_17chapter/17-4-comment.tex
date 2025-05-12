@@ -38,8 +38,46 @@
 \maketitle
 
 \begin{zremark}
+  作为链式法则和引理17.1.16（以及引理17.1.13）的一个推论，我们得到
+  \begin{align*}
+    D(g \circ f)(x_0) = Dg(f(x_0)) Df(x_0)
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+由链式法则，我们有
+\begin{align*}
+  (g \circ f)^\prime(x_0) = g^\prime(f(x_0)) f^\prime(x_0)
+\end{align*}
+$(g \circ f)^\prime(x_0)$是一个线性变换，
+由P364中对导数矩阵的构造方式可知
+\begin{align*}
+  (g \circ f)^\prime(x_0) = L_{D(g \circ f)(x_0)}
+\end{align*}
+同理可得
+\begin{align*}
+  g^\prime(f(x_0)) & = L_{Dg(f(x_0))} \\
+  f^\prime(x_0)    & = L_{Df(x_0)}
+\end{align*}
+综上，
+\begin{align*}
+  L_{D(g \circ f)(x_0)} = L_{Dg(f(x_0))} L_{Df(x_0)}
+\end{align*}
+利用引理17.1.16，我们得到
+\begin{align*}
+  L_{D(g \circ f)(x_0)} = L_{Dg(f(x_0)) Df(x_0)} 
+\end{align*}
+由引理17.1.13可知线性变换存在唯一的对应矩阵，于是我们有
+\begin{align*}
+  D(g \circ f)(x_0) = Dg(f(x_0)) Df(x_0)
+\end{align*}
+
+\begin{zremark}
   $D(fg) = \nabla (fg)$
 \end{zremark}
+
+\textbf{证明：}
 
 $k \circ h = fg: \mathbb{R}^n \to \mathbb{R}$，
 按照书中关于梯度的定义（P364），我们有
