@@ -1,0 +1,285 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.6 习题}
+\author{张志聪}
+\maketitle
+
+\section*{17.6.1}
+
+\begin{itemize}
+  \item (1) $f$是压缩映射。
+
+        令$x_0, x_1 \in [a, b]$
+        $x_0 = x_1$显然满足压缩映射的条件，
+        我们接下来关注$x_0 < x_1$的情况。
+
+        在区间$[x_0, x_1]$，由推论10.2.9（中值定理）可知，
+        存在$x \in [x_0, x_1]$，使得
+        \begin{align*}
+          \frac{f(x_1) - f(x_0)}{x_1 - x_0} = f^\prime(x) \\
+          f(x_1) - f(x_0) = f^\prime(x)(x_1 - x_0)        \\
+          |f(x_1) - f(x_0)| = |f^\prime(x)||x_1 - x_0|
+        \end{align*}
+        由题设可知$|f^\prime(x)| \leq 1$，
+        所以
+        \begin{align*}
+          |f(x_1) - f(x_0)| \leq |x_1 - x_0|
+        \end{align*}
+        所以，$f$是压缩映射。
+
+  \item (2) $|f^\prime(x)| < 1, f^\prime$连续的，那么$f$是一个严格压缩映射。
+
+        如果$f$是常值函数，那么对任意$x \in [a, b]$，都有$f^\prime(x) = 0$，显然命题成立。
+
+        我们接下来关注$f$不是常值函数的情况。
+
+        由(1)的证明过程可知，对任意$x_0, x_1 \in [a, b]$，
+        存在$x \in (x_0, x_1)$有
+        \begin{align*}
+          |f(x_1) - f(x_0)| = |f^\prime(x)||x_1 - x_0|
+        \end{align*}
+        因为$f^\prime$连续，由命题9.6.7可知（最大值原理），
+        存在$x_{max}, x_{min} \in [a, b]$使得$f^\prime$达到
+        最大值$f^\prime(x_{max})$和最小值$f^\prime(x_{min})$。
+        令$c = max(|f^\prime(x_{max})|, |f^\prime(x_{min})|)$，
+        于是对任意$x$都有$|f^\prime(x)| \leq c < 1$，所以
+        \begin{align*}
+          |f(x_1) - f(x_0)| = |f^\prime(x)||x_1 - x_0| \leq c |x_1 - x_0|
+        \end{align*}
+        所以$f$是一个严格压缩映射。
+
+\end{itemize}
+
+\section*{17.6.2}
+
+反证法，假设存在$x_0$使得$|f^\prime(x_0)| > 1$。
+
+以$f^\prime(x_0) > 1$为例，
+对$\epsilon = \frac{1}{2}(f^\prime(x_0) - 1)$，存在$\delta > 0$使得只要
+$|x - x_0| < \delta$，就有
+\begin{align*}
+  |f(x) - f(x_0) - f^\prime(x_0)(x - x_0)| \leq \epsilon |x - x_0|                                                      \\
+  |f^\prime(x_0)||x - x_0| - \epsilon |x - x_0| \leq |f(x) - f(x_0)| \leq |f^\prime(x_0)||x - x_0| + \epsilon |x - x_0| \\
+  (|f^\prime(x_0)| - \epsilon)|x - x_0| \leq |f(x) - f(x_0)|                                                            \\
+  (\frac{1}{2}f^\prime(x_0) + 1)|x - x_0| \leq |f(x) - f(x_0)|
+\end{align*}
+因为$(\frac{1}{2}f^\prime(x_0) + 1) > 1$，
+这与$f$是压缩映射矛盾。
+
+\section*{17.6.3}
+
+$f: [0, \frac{\pi}{2}] \to \mathbb{R}, f(x) = \sin(x)$。
+
+$f$在$[0, \frac{\pi}{2}]$上可微。
+
+任意$x, y \in [0, \frac{\pi}{2}]$都有
+\begin{align*}
+  |f(x) - f(y)|
+   & = |sin(x) - sin(y)|                                                                        \\
+   & = |sin(\frac{x + y}{2} + \frac{x - y}{2}) - sin(\frac{x + y}{2} - \frac{x - y}{2})|        \\
+   & = |sin(\frac{x + y}{2})cos(\frac{x - y}{2}) + cos(\frac{x + y}{2})sin(\frac{x - y}{2})     \\
+   & - (sin(\frac{x + y}{2})cos(-\frac{x - y}{2}) + cos(\frac{x + y}{2})sin(-\frac{x - y}{2}))| \\
+   & = |2 cos(\frac{x + y}{2})sin(\frac{x - y}{2})|                                             \\
+   & \leq |2 sin(\frac{x - y}{2})|                                                              \\
+   & < 2 |\frac{x - y}{2}| = |x - y|
+\end{align*}
+
+因为$f^\prime(x) = sin^\prime(x) = cos(x)$，
+于是当$x = 0$时$f^\prime(0) = cos(0) = 1$。
+
+\section*{17.6.4}
+
+$f: [-1, 1] \to \mathbb{R}, f(x) = \frac{|x|}{2}$。
+
+$f$在$x = 0$处是不可微的，
+因为左右导数不相等：
+
+左导数
+\begin{align*}
+  \lim\limits_{x \to 0^-} \frac{f(x) - f(0)}{x - 0}
+   & = \lim\limits_{x \to 0^-} \frac{\frac{-x}{2} - 0}{x} \\
+   & = -\frac{1}{2}
+\end{align*}
+右导数
+\begin{align*}
+  \lim\limits_{x \to 0^+} \frac{f(x) - f(0)}{x - 0}
+   & = \lim\limits_{x \to 0^+} \frac{\frac{x}{2} - 0}{x} \\
+   & = \frac{1}{2}
+\end{align*}
+
+\section*{17.6.5}
+
+\begin{align*}
+  f^\prime(x) & = (x - x^2)^\prime \\
+              & = 1 - 2x
+\end{align*}
+于是任意$x \in [0, 1]$，我们有
+\begin{align*}
+  |f^\prime(x)| \leq 1
+\end{align*}
+由习题17.6.1可知$f$是一个压缩映射。
+
+注意，现在我们还不能说$f$不是严格压缩映射。
+
+反证法，假设存在$0 < c < 1$使得$|f(x) - f(y)| \geq c|x - y|$。
+
+\begin{align*}
+  |f(x) - f(y)|
+   & = |x - x^2 - y + y^2|        \\
+   & = |x - y + y^2 - x^2|        \\
+   & = |(x - y) + (y + x)(y - x)| \\
+   & = |(x - y)[1 - (y + x)]|     \\
+   & = |x - y| |1 - (y + x)|      \\
+\end{align*}
+因为$x, y \in [0, 1]$，所以$|1 - (y + x)| \in [0, 1]$，
+因为$0 < c < 1$是一个定值，那么，存在
+\begin{align*}
+  |1 - (y + x)| > c
+\end{align*}
+于是
+\begin{align*}
+  |f(x) - f(y)| = |x - y| |1 - (y + x)| > c |x - y|
+\end{align*}
+存在矛盾。
+
+\section*{17.6.6}
+
+设$f$是$X$上的压缩映射任意压缩映射。
+
+任意$x_0 \in X$，设$(x^{(n)})_{n = 1}^\infty$是$X$中收敛于
+$x_0$的序列。
+
+对任意$\epsilon > 0$，存在$N \geq 1$使得只要$n \geq N$，都有
+\begin{align*}
+  |x^{(n)} - x_0| < \epsilon
+\end{align*}
+又因为$f$是$X$上的压缩映射，于是
+\begin{align*}
+  |f(x^{(n)}) - f(x_0)| \leq |x^{(n)} - x_0| < \epsilon
+\end{align*}
+所以，序列$(f(x^{(n)}))_{n = 1}^\infty$收敛于$f(x_0)$。
+
+由定理13.1.4(b)可知，$f$在$x_0$处连续。
+因为$x_0$的任意性可知$f$在是连续的。
+
+\section*{17.6.7}
+
+\begin{itemize}
+  \item (1) $f$最多有一个不动点。
+
+        反证法，假设$f$不止一个不动点。
+        设$x_0, x_1$是$f$的不动点，即
+        \begin{align*}
+          x_0 = f(x_0) \\
+          x_1 = f(x_1)
+        \end{align*}
+
+        于是
+        \begin{align*}
+          d(f(x_1), f(x_0)) & = d(x_1, x_0)
+        \end{align*}
+        这与$f$是严格压缩映射矛盾。
+
+  \item (2) $X$是一个非空的完备空间，那么$f$恰好有一个不动点。
+
+        因为$X$是非空的，可以任取$x_0 \in X$，递归地定义
+        \begin{align*}
+           & x_1 = f(x_0) \\
+           & x_2 = f(x_1) \\
+           & x_3 = f(x_2) \\
+           & \vdots       \\
+        \end{align*}
+        于是
+        \begin{align*}
+          d(x_{n + 1}, x_n) \leq c^n d(x1, x_0)
+        \end{align*}
+        （通过归纳法证明）
+
+        由引理7.3.3可知，$\sum\limits_{n = 0}^\infty c^n d(x_1, x_0) = \frac{d(x_1, x_0)}{1 - c}$。
+
+        对任意$\epsilon > 0$，存在$N \geq 1$使得只要$p-1, q \geq N$其中$q > p$，都有
+        \begin{align*}
+          \sum\limits_{n = 0}^q c^n d(x_1, x_0) - \sum\limits_{n = 0}^{p - 1} c^n d(x_1, x_0)
+          = d(x_{p+1}, x_p) + d(x_{p+2}, x_{p+1}) + \cdots + d(x_{q}, x_{q-1}) \leq \epsilon
+        \end{align*}
+        因为
+        \begin{align*}
+          d(x_q, x_p) \leq d(x_{p+1}, x_p) + d(x_{p+2}, x_{p+1}) + \cdots + d(x_{q}, x_{q-1}) \leq \epsilon
+        \end{align*}
+        又$p = q$时，$d(x_q, x_p) = 0 \leq \epsilon$。
+
+        综上可得$(x_n)_{n = 0}^\infty$是柯西序列。
+        因为$X$是完备的度量空间，所以$(x_n)_{n = 0}^\infty$收敛于某个值$x^\prime \in X$。
+
+        接下来证明$x^\prime$是$f$的不动点。
+
+        因为$(x_n)_{n = 0}^\infty$收敛于$x^\prime$，
+        那么，对任意$\epsilon > 0$，存在$N_0 \geq 0$，
+        使得只要$n \geq N_0$都有$d(x_n, x^\prime) < \frac{1}{2}\epsilon$，
+        又因为$f$是一个严格压缩映射，所以
+        \begin{align*}
+          d(f(x^\prime), f(x_n)) \leq c d(x^\prime, x_n) \leq  c \frac{1}{2} \epsilon < \frac{1}{2} \epsilon
+        \end{align*}
+
+        又由$f(x_n)$的构造方式可得$(f(x_n))_{n = 0}^\infty$也收敛于$x^\prime$。
+        那么，对任意$\epsilon > 0$，存在$N_1 \geq 0$，
+        使得只要$n \geq N_1$都有$d(f(x_n), x^\prime) < \frac{1}{2}\epsilon$。
+
+        综上，取$N = \max(N_0, N_1)$，$n \geq N$，我们有
+        \begin{align*}
+          d(f(x^\prime), x^\prime)
+           & \leq d(f(x^\prime), f(x_n)) + d(f(x_n), x^\prime)      \\
+           & < \frac{1}{2}\epsilon + \frac{1}{2}\epsilon = \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，$x^\prime = f(x^\prime)$。
+\end{itemize}
+
+\section*{17.6.8 $\circledast$}
+\begin{align*}
+  d(x_0, y_0) = d(f(x_0), g(y_0)) = d(f(x_0), f(y_0)) + d(f(y_0), g(y_0)) \leq cd(x_0, y_0) + \epsilon \\
+  d(x_0, y_0) = d(f(x_0), g(y_0)) = d(f(x_0), g(x_0)) + d(g(x_0), g(y_0)) \leq \epsilon + c^\prime d(x_0, y_0)
+\end{align*}
+可得
+\begin{align*}
+  d(x_0, y_0) \leq \frac{\epsilon}{1 - c} \\
+  d(x_0, y_0) \leq \frac{\epsilon}{1 - c^\prime}
+\end{align*}
+所以
+\begin{align*}
+  d(x_0, y_0) \leq \frac{\epsilon}{1 - \min(c, c^\prime)}
+\end{align*}
+
+\end{document}

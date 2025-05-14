@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.6 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  $\overline{B(0, r)}$是$\mathbb{R}^n$中以原点为中心的球，
+  $\overline{B(0, r)}$是完备度量空间。
+\end{zremark}
+
+设$(x_n)_{n = 1}^\infty$是$\overline{B(0, r)}$中的柯西序列，
+即对任意$\epsilon > 0$，存在$N \geq 1$，使得只要$p, q \geq N$，都有
+\begin{align*}
+  d(x_p, x_q) < \epsilon
+\end{align*}
+于是，对$x_p, x_q$的任意分量$1 \leq j \leq n$，都有
+\begin{align*}
+  x_{p}^{(j)} - x_{q}^{(j)} < \epsilon
+\end{align*}
+因此，每个分量序列$(x_n^{(j)})_{n = 1}^\infty$都是柯西序列，
+由定理6.4.18可知，
+$(x_n^{(j)})_{n = 1}^\infty$收敛于某个实数$L_j$，
+因此，由命题12.1.18可知$(x_n)_{n = 1}^\infty$收敛，
+因为$\overline{B(0, r)}$是闭集，于是由命题12.2.5(b)可知，
+$(L_1, L_2, \cdots, L_n) \in \overline{B(0, r)}$。
+
+综上，命题成立。
+
+
+
+\end{document}
