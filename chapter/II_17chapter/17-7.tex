@@ -139,4 +139,21 @@ $x = 0$时
 
 \end{itemize}
 
+\section*{17.7.3}
+
+对任意$y_0 \in f(V)$，存在$x_0 \in V$使得$y_0 = f(x_0)$。
+由题设可知$f^\prime(x_0)$是一个可逆的线性变换，
+于是由反函数定理可知，
+$V$中存在一个包含$x_0$的开集$V_{x_0}$，
+并且在$\mathbb{R}^n$中存在一个包含$f(x_0)$的开集$U_{x_0}$，使得
+$f$是从$V_{x_0}$到$U_{x_0}$的双射。
+
+因为$U_{x_0}$是开集，且$f(x_0) \in U_{x_0}$，那么存在$r > 0$，使得
+$B(f(x_0), r) \subseteq U_{x_0}$，即$B(y_0, r) \subseteq U_{x_0}$。
+
+因为$V_{x_0} \subseteq V$，所以$U_{x_0} \subseteq f(V)$。
+
+综上可得，$B(y_0, r) \subseteq f(V)$，
+由命题12.2.15(a)可知$f(V)$是开集。
+
 \end{document}
