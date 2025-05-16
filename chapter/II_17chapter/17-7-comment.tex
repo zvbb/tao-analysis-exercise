@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.7 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  “化归”技巧，用于将一般问题转化为已解决的特殊问题：
+  \begin{itemize}
+    \item (1) 只证明$f(x_0) = 0$，如何解决一般性问题？
+    \item (2) 只证明$x_0 = 0$，如何解决一般性问题？
+  \end{itemize}
+\end{zremark}
+
+\textbf{证明：}
+
+\begin{itemize}
+  \item (1)
+
+        对于一般的$f$，即$x_0$处$f(x_0) \neq 0$的情况，
+        通过把$f$替换成
+        \begin{align*}
+          \tilde{f} := f(x) - f(x_0)
+        \end{align*}
+        此时，$\tilde{f}(x_0) = f(x_0) - f(x_0) = 0$，
+        其他$x \in E, x \neq x_0$的情况下
+        \begin{align*}
+          \tilde{f}(x) = f(x) - f(x_0)
+        \end{align*}
+        这里要知道，$f(x_0)$是定值，
+        于是可知，相比于我们要研究的$f$本身，
+        $\tilde{f}(x)$的值域发生了偏移，
+        相对于$f$，偏移了$f(x_0)$（注意：不一定向左，因为$f(x_0)$的正负不确定）。
+
+        至于反函数，设$f(x) = y$，于是$f^{-1}(y) = x$，
+        我们有
+        \begin{align*}
+          f^{-1}(y) & = x                             \\
+                    & = \tilde{f}^{-1}(f(x) - f(x_0)) \\
+                    & = \tilde{f}^{-1}(y - f(x_0))
+        \end{align*}
+        综上，我们可以通过研究$\tilde{f}$来了解$f$。
+
+  \item (2)
+
+        对于一般的$f$，我们讨论的$x_0$可能不等于$0$。
+        通过把$f$替换成
+        \begin{align*}
+          \tilde{f}(x) : = f(x + x_0)
+        \end{align*}
+        此时，$\tilde{f}(0) = f(0 + x_0) = f(x_0)$，
+        于是对$f$在$x_0$处的研究，就转变成了对$\tilde{f}$在$0$点处的研究。
+
+        这样的替换是有副作用的，因为$x \in E$，那么$x + x_0$则相对于$E$平移了$x_0$。
+
+        值域反函数，设$f(x + x_0) = y$，于是$f^{-1}(y) = x + x_0$，
+        我们有
+        \begin{align*}
+          f^{-1}(y) - x_0 & = x                            \\
+                          & = \tilde{f}^{-1}(\tilde{f}(x)) \\
+                          & = \tilde{f}^{-1}(f(x + x_0))   \\
+                          & = \tilde{f}^{-1}(y)
+        \end{align*}
+        于是$f^{-1}(y) = \tilde{f}^{-1}(y) + x_0$。
+
+        综上，我们可以通过研究$\tilde{f}$来了解$f$。
+\end{itemize}
+
+\begin{zremark}
+  书中$I^\prime(x_0) = I$什么意思？
+\end{zremark}
+
+\textbf{说明：}
+
+首先，$I^\prime(x_0)$，$I$在$x_0$处的$n \times n$导数矩阵，
+所以，我们可以确定$I$是$n \times n$矩阵。
+
+对任意$1 \leq j \leq n$，我们有，
+\begin{align*}
+  \frac{\partial I}{\partial x_j}(x_0)
+   & = \lim\limits_{t \to 0; t \neq 0} \frac{I(x_0 + t e_j) - I(x_0)}{t} \\
+   & = \lim\limits_{t \to 0; t \neq 0} \frac{x_0 + t e_j - x_0}{t}       \\
+   & = e_j
+\end{align*}
+
+于是
+\begin{align*}
+  I = \begin{pmatrix}
+        (e_1)^T & (e_2)^T & \cdots & (e_n)^T
+      \end{pmatrix}
+\end{align*}
+所以，$I$是单位矩阵（对角线元素都是1，其余元素都是0）。
+
+在线性代数中，如果矩阵$A, B$满足:
+\begin{align*}
+  A B = I
+\end{align*}
+那么，$A$是$B$的左逆矩阵，$B$是$A$的右逆矩阵，记为:
+\begin{align*}
+  A = B^{-1}, B = A^{-1}
+\end{align*}
+所以，书中得到结论：
+\begin{align*}
+  (f^{-1})^\prime(f(x_0)) = (f^\prime(x_0))^{-1}
+\end{align*}
+
+\begin{zremark}
+  书中：
+  最后，假设$f^\prime(0) = I$，其中$I: \mathbb{R}^n \to \mathbb{R}^n$是恒等变换
+  $I(x) = x$。此时，我们把$f$替换成定义为$\tilde{f}(x) := f^\prime(0)^{-1}f(x)$
+  的新函数$\tilde{f} : E \to \mathbb{R}^n$，并对它应用$f^\prime(0) = I$时的结果，
+  这样就得到了一般情形下的结论。
+\end{zremark}
+
+\textbf{证明：}
+
+问题的核心是：为什么通过定义$\tilde{f}(x) := f^\prime(0)^{-1}f(x)$，
+并利用$f^\prime(0) = I$时的结果，可以推广到一般情形？
+
+在特殊情况下才会有$f^\prime(0) = I$，一般情况下是不具备这个特性的。
+但由题设可知$f^\prime(0)$是可逆的，
+即：设$A = f^\prime(0)$，则$A^{-1}$存在。
+$\tilde{f}$被定义为$A^{-1}f(x)$，这样做的目的是让$\tilde{f}$在
+$x = 0$处的导数是单位矩阵：
+\begin{align*}
+  \tilde{f}^\prime(0) = A^{-1}f^\prime(0) = A^{-1}A = I
+\end{align*}
+以上利用了链式法则，且线性变换$A^{-1}$的导数是其本身$A^{-1}$（这部分在17.2.2-comment中有说明）。
+
+\begin{zremark}
+  \begin{align*}
+    f^{-1}(y) = \tilde{f}^{-1}(f^\prime(0)^{-1}y)
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+因为$f$是双射，对任意$y$存在唯一的$x$使得$y = f(x)$，即
+\begin{align*}
+  y = f(x) = f^\prime(0)\tilde{f}(x)
+\end{align*}
+于是
+\begin{align*}
+  f^{-1}(y) = x
+\end{align*}
+接下来，我们需要证明$\tilde{f}^{-1}(f^\prime(0)^{-1}y) = x$。
+\begin{align*}
+  \tilde{f}^{-1}(f^\prime(0)^{-1}y)
+   & = \tilde{f}^{-1}(f^\prime(0)^{-1}f(x))                    \\
+   & = \tilde{f}^{-1}(f^\prime(0)^{-1}f^\prime(0)\tilde{f}(x)) \\
+   & = \tilde{f}^{-1}(I \tilde{f}(x))                          \\
+   & = \tilde{f}^{-1}(\tilde{f}(x))                            \\
+   & = x
+\end{align*}
+综上，等式成立。
+
+\begin{zremark}
+  $V$是一个开集，$f$是连续的且可逆的，那么$U = f^{-1}(V)$也是开集。
+\end{zremark}
+
+\textbf{证明：}
+
+首先，由题设可知$f$是单射和满射。
+
+对任意的$x_0 \in U$，
+$f(x_0) \in V$，
+因为$V$是开集，存在$\epsilon > 0$，使得$B(f(x_0), \epsilon) \subseteq V$。
+
+因为$f$连续，所以存在$\delta > 0$，使得只要
+$|x - x_0| < \delta$就有
+\begin{align*}
+  |f(x) - f(x_0)| < \epsilon
+\end{align*}
+
+综上可得，任意$x \in B(x_0, \delta)$，都有
+\begin{align*}
+  f(x) \in V \\
+  \implies   \\
+  x \in U    \\
+  \implies   \\
+  B(x_0, \delta) \subseteq U
+\end{align*}
+
+由开集的定义（命题12.2.15(a)）可知，$U$是开集。
+
+\end{document}

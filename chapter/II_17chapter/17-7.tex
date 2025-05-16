@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.7 习题}
+\author{张志聪}
+\maketitle
+
+\section*{17.7.1}
+
+（1）
+
+$x \neq 0$时
+\begin{align*}
+  f^\prime(x) & = (x + x^2sin(1/x^4))^\prime               \\
+              & = 1 + 2xsin(1/x^4) + x^2cos(1/x^4)(-4/x^5) \\
+              & = 1 + 2xsin(1/x^4) + (-4/x^3)cos(1/x^4)
+\end{align*}
+
+$x = 0$时
+\begin{align*}
+  \lim\limits_{x \to 0} \frac{f(x) - f(0)}{x - 0}
+   & = \lim\limits_{x \to 0} \frac{x + x^2sin(1/x^4)}{x} \\
+   & = \lim\limits_{x \to 0} 1 + xsin(1/x^4)
+\end{align*}
+因为$-1 \leq sin(1/x^4) \leq 1$，于是
+\begin{align*}
+  -x \leq xsin(1/x^4) \leq 1
+\end{align*}
+所以
+\begin{align*}
+  \lim\limits_{x \to 0} xsin(1/x^4) = 0
+\end{align*}
+综上可得
+\begin{align*}
+  f^\prime(0)
+   & = \lim\limits_{x \to 0} 1 + xsin(1/x^4)                       \\
+   & = \lim\limits_{x \to 0} 1 + \lim\limits_{x \to 0} xsin(1/x^4) \\
+   & = 1 + 0 = 1
+\end{align*}
+
+（2）
+
+序列$((2\pi k)^{-1})_{k = 1}^\infty$收敛于$0$。
+令$x = (2\pi k)^{-1}$，我们有
+\begin{align*}
+  cos(1/x^4) =  cos(2 \pi k) = 1 \\
+  sin(1/x^4) =  sin(2 \pi k) = 0
+\end{align*}
+
+于是
+\begin{align*}
+  f^\prime((2 \pi k)^{-1/4}) = 1 - \frac{4}{(2 \pi k)^{-1/4}} = 1 - \frac{(2 \pi k)^{1/4}}{4}
+\end{align*}
+所以
+\begin{align*}
+  \lim\limits_{k \to \infty} f^\prime((2 \pi k)^{-1/4}) = -\infty
+\end{align*}
+
+综上可得，$x$以序列$((2\pi k)^{-1})_{k = 1}^\infty$的方式趋近$0$，总有$f^\prime(x) < 0$。
+
+\section*{17.7.2}
+
+因为$T$是可逆的线性变换，那么，$T$既是单射也是满射。
+于是，对任意$y_0 \in \mathbb{R}^n$
+都存在唯一的$x_0 \in \mathbb{R}^n$使得$T(x_0) = y_0$，即$T^{-1}(y_0) = x_0$。
+
+接下来，证明$T^{-1}$满足定义17.1.6（线性变换）的两个公理。
+\begin{itemize}
+  \item (a)（可加性）对任意$y, y^\prime \in \mathbb{R}^n$，都有$T^{-1}(y + y^\prime) = T^{-1}(y) + T^{-1}(y^\prime)$。
+
+        存在$x, x^\prime \in \mathbb{R}^n$使得$T(x) = y$和$T(x^\prime) = y^\prime$，
+        于是
+        \begin{align*}
+          T^{-1}(y) + T^{-1}(y^\prime) = T^{-1}(T(x)) + T^{-1}(T(x^\prime)) = x + x^\prime
+        \end{align*}
+        又因为
+        \begin{align*}
+          T(x) + T(x^\prime) = T(x + x^\prime)
+        \end{align*}
+        综上
+        \begin{align*}
+          T^{-1}(y + y^\prime)
+           & = T^{-1}(T(x) + T(x^\prime)) \\
+           & = T^{-1}(T(x + x^\prime))    \\
+           & = x + x^\prime
+        \end{align*}
+        所以，$T^{-1}(y + y^\prime) = T^{-1}(y) + T^{-1}(y^\prime)$。
+
+  \item (b)（齐次性）对任意$y \in \mathbb{R}^n$和任意的$c \in \mathbb{R}$，都有$T^{-1}(cy) = cT^{-1}(y)$。
+
+        存在$x \in \mathbb{R}^n$使得$T(x) = y$，
+        于是
+        \begin{align*}
+          cT^{-1}(y) = cx
+        \end{align*}
+        我们有
+        \begin{align*}
+          T(cx) = cT(x) = cy
+        \end{align*}
+        于是
+        \begin{align*}
+          T^{-1}(cy) & = T^{-1}(cT(x)) \\
+                     & = T^{-1}(T(cx)) \\
+                     & = cx
+        \end{align*}
+        所以，$T^{-1}(cy) = cT^{-1}(y)$。
+
+\end{itemize}
+
+\end{document}
