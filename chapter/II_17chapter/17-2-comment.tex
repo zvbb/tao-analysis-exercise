@@ -38,6 +38,42 @@
 \maketitle
 
 \begin{zremark}
+  $f: \mathbb{R}^n \to \mathbb{R}^m$在点$x_0$处可微，那么，在$x_0$处$f$的分量函数也是可微的。
+\end{zremark}
+
+\textbf{证明：}
+
+由可微性定义可知，存在线性变换$L: \mathbb{R}^n \to \mathbb{R}^m$，
+使得以下极限存在：
+\begin{align*}
+  \lim\limits_{x \to x_0;} \frac{\|f(x) - f(x_0) - L(x - x_0)\|}{\|x - x_0\|} = 0
+\end{align*}
+把$f,L$写成$(f_1, f_2, \cdots, f_m)$和$(L_1, L_2, \cdots, L_m)$，
+其中$f_i: \mathbb{R}^n \to \mathbb{R}$和$L_i: \mathbb{R}^n \to \mathbb{R}$。
+至于如何拆线性变换，书中P355，已经说明：
+\begin{align*}
+  L_A(x_j)_{1 \leq j \leq n} = \left(\sum \limits_{j = 1}^n a_{ij}x_j\right)_{1 \leq i \leq m}
+\end{align*}
+那么
+\begin{align*}
+   & \lim\limits_{x \to x_0;} \frac{\|f(x) - f(x_0) - L(x - x_0)\|}{\|x - x_0\|}                                                                        \\
+   & = \lim\limits_{x \to x_0;} \frac{\|(f_1(x), \cdots ,f_m(x)) - (f_1(x_0), \cdots ,f_m(x_0)) - (L_1(x - x_0)+ \cdots + L_m(x - x_0))\|}{\|x - x_0\|} \\
+   & = \lim\limits_{x \to x_0;} \frac{\|(f_1(x) - f_1(x_0) - L_1(x - x_0), \cdots , f_m(x) - f_m(x_0) - L_m(x - x_0))\|}{\|x - x_0\|}                   \\
+   & = 0
+\end{align*}
+对任意$\epsilon > 0$，存在$\delta > 0$，使得只要$\|x - x_0\| \leq \delta$，就有
+\begin{align*}
+  \frac{\|(f_1(x) - f_1(x_0) - L_1(x - x_0), \cdots , f_m(x) - f_m(x_0) - L_m(x - x_0))\|}{\|x - x_0\|} < \epsilon
+\end{align*}
+于是可得，任意分量($1 \leq j \leq m$)都有
+\begin{align*}
+  \frac{\|f_j(x) - f_j(x_0) - L_j(x - x_0)\|}{\|x - x_0\|} \leq \epsilon
+\end{align*}
+
+综上可得，在$x_0$处$f$的分量函数也是可微的，且$f_j^\prime(x_0) = L_j$。
+
+
+\begin{zremark}
   如果$l: \mathbb{R}^n \to \mathbb{R}^m$的一个线性变换，
   那么$l$在点$x_0 \in \mathbb{R}^n$处的导数如何确定。
 \end{zremark}

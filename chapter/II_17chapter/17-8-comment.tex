@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{17.8 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  $F(x_1, x_2, \cdots, x_n) : = (x_1, x_2, \cdots, f(x_1, x_2, \cdots, x_n))$，
+  其中$f$是连续可微的。
+  $F^{-1}(y) = (h_1(y), h_2(y), \cdots, h_n(y))$，
+  因为$F^{-1}$在$(y_1,\cdots,y_{n - 1}, 0)$处可微，
+  所以$h_n$也在$(y_1,\cdots,y_{n - 1}, 0)$处可微。
+\end{zremark}
+
+\textbf{证明：}
+
+17-2-comment.txt中有说明。
+
+\end{document}
