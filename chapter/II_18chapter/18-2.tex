@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{18.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{18.2.1}
+
+\begin{itemize}
+  \item (v) （空集）
+
+        因为$\varnothing \subseteq \varnothing$，
+        于是我们可以这样定义开盒子
+        \begin{align*}
+          B = \prod\limits_{i=1}^{1}
+        \end{align*}
+        其中$(a_1, b_1) = (0, 0)$，
+        所以$B$是空集，
+        \begin{align*}
+          m^{\ast}(\varnothing) \leq vol(B) = 0
+        \end{align*}
+        又因为按照定义，外测量是非负的，于是
+        \begin{align*}
+          m^{\ast}(\varnothing) = 0
+        \end{align*}
+
+  \item (vi)（正性）
+
+        到目前为止，可测集是否能够被开盒覆盖是不确定的，
+        但这里应该指的是可以被开盒覆盖的可测集。
+
+        设$\Omega$被任意有限个或者可数个盒子$(B_j)_{j \in J}$覆盖。
+        由盒子体积的定义可知，对任意$j \in J$，都有
+        \begin{align*}
+          vol(B_j) \geq 0
+        \end{align*}
+        所以
+        \begin{align*}
+          \sum\limits_{j \in J} vol(B_j) \geq 0 \\
+          m^{\ast}(\Omega) \geq 0
+        \end{align*}
+        而$m^{\ast}(\Omega) \leq +\infty$是显然的。
+
+  \item (vii) （单调性）
+
+        如果$m^{\ast}(B) = +\infty$，命题显然是正确的。
+
+        如果$m^{\ast}(B) < +\infty$，即$m^{\ast}(B)$是某个实数。
+        由定义18.2.4可知，$m^{\ast}(B)$是下确界，于是对任意$\epsilon > 0$，
+        存在$(B_j)_{j \in J}$覆盖$B$，使得
+        \begin{align*}
+          \sum\limits_{j \in J} vol(B_j) \leq m^{\ast}(B) + \epsilon
+        \end{align*}
+        （因为如果不存在，那么$m^{\ast}(B) + \epsilon$就成为了下确界，存在矛盾）
+
+        因为$A \subseteq B$，所以$(B_j)_{j \in J}$也覆盖$A$，
+        所以
+        \begin{align*}
+          m^{\ast}(A) \leq \sum\limits_{j \in J} vol(B_j) \leq m^{\ast}(B) + \epsilon
+        \end{align*}
+        由$\epsilon$的任意可知，$m^{\ast}(A) \leq m^{\ast}(B)$。
+
+  \item (viii)（有限次可加性）
+
+        可以直接通过(x)(v)推导，设$J$的基数为$n$，
+        我们可以定义一个双射$f: \{i \in \mathbb{N}: 1 \leq i \leq n \} \to (A_j)_{j \in J}$。
+        并令
+        \begin{equation*}
+          A_k =
+          \begin{cases*}
+            f(k), \  k \leq n \\
+            \varnothing, \  k > n
+          \end{cases*}
+        \end{equation*}
+        于是$\bigcup\limits_{k \in \mathbb{N}} A_k$是可数无限集合，由(x)可得，
+        \begin{align*}
+          m^{\ast}(\bigcup\limits_{k \in \mathbb{N}} A_k)  \leq  \sum \limits_{k \in \mathbb{N}} m^{\ast}(A_k)
+        \end{align*}
+        又因为（可以利用反证法证明）
+        \begin{align*}
+          \bigcup\limits_{k \in \mathbb{N}} A_k = \bigcup\limits_{j \in J} A_j
+        \end{align*}
+        于是
+        \begin{align*}
+          m^{\ast}(\bigcup\limits_{k \in \mathbb{N}} A_k) = m^{\ast}(\bigcup\limits_{j \in J} A_j)
+        \end{align*}
+        而且
+        \begin{align*}
+          \sum \limits_{k \in \mathbb{N}} m^{\ast}(A_k) & = \sum \limits_{k = 1}^n m^{\ast}(A_k) + \sum \limits_{k = n + 1}^\infty m^{\ast}(A_k) \\
+                                                        & = \sum \limits_{j \in J} m^{\ast}(A_j)
+        \end{align*}
+        综上，
+        \begin{align*}
+          m^{\ast}(\bigcup\limits_{j \in J} A_j) \leq \sum \limits_{j \in J} m^{\ast}(A_j)
+        \end{align*}
+
+
+  \item (x) （可数次可加性）
+
+        $\sum \limits_{j \in J} m^{\ast}(A_j) = +\infty$，命题显然是正确的。
+
+        接下来，证明$\sum \limits_{j \in J} m^{\ast}(A_j) < +\infty$的情况。
+
+        对任意$\epsilon$，
+        对任意$A_j$，存在开盒覆盖，即存在一簇盒子$(B^{(j)}_k)_{k \in K}$，
+        使得
+        \begin{align*}
+          A_j \subseteq \bigcup \limits_{k \in K} B^{(j)}_k
+        \end{align*}
+        且
+        \begin{align*}
+          m^{\ast}(A_j) \leq \sum \limits_{k \in K} vol(B^{(j)}_k) \leq m^{\ast}(A_j) + \frac{\epsilon}{2^j}
+        \end{align*}
+        于是，整个并集$\bigcup \limits_{j \in J} A_j$
+        可以被$\bigcup \limits_{j \in J}\left(\bigcup \limits_{k \in K} B^{(j)}_k\right)$表示。
+
+        我们有
+        \begin{align*}
+          m^{\ast}(\bigcup \limits_{j \in J} A_j)
+          \leq \sum \limits_{j \in J} \sum \limits_{k \in K} vol(B^{(j)}_k)
+          \leq \sum \limits_{j \in J} (m^{\ast}(A_j) + \frac{\epsilon}{2^j})
+          = \sum \limits_{j \in J} m^{\ast}(A_j)  + \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，
+        \begin{align*}
+          m^{\ast}(\bigcup \limits_{j \in J} A_j)  \leq  \sum \limits_{j \in J} m^{\ast}(A_j)
+        \end{align*}
+
+        \begin{zremark}
+          其实以上的证明使用了“可数无限次加”，而是本书中，陶哲轩通过极限来严格定义无限级数的和。
+          这样做的目的应该是避免逻辑问题：\\
+          “无限次加法”在数学基础中缺乏严格定义（如：交换律和结合律在无限情况下是否需要额外条件？）。\\
+          而极限理论已经是一套严谨框架了。
+        \end{zremark}
+
+  \item (xiii)
+
+\end{itemize}
+
+
+
+\end{document}
+
+

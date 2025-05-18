@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{18.2 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  $\mathbb{R}^n$自身就被可数个单位立方体$(0,1)^n$覆盖，如何覆盖?
+\end{zremark}
+
+\textbf{证明：}
+
+我们用以下方式覆盖$\mathbb{R}^n$：
+\begin{align*}
+  \mathbb{R}^n = \bigcup\limits_{q \in \mathbb{Q}^n}((0, 1)^n + q)
+\end{align*}
+其中，有理数$\mathbb{Q}$是可数的（推论8.1.15），又由推论8.1.14可知$\mathbb{Q}^n$也是可数的。 
+$(0, 1)^n + q$表示单位立方体平移到$q$这个位置。
+
+接下来，需要证明这个集合确实可以覆盖$\mathbb{R}^n$。
+
+对任意$x = (x_1, \cdots, x_n) \in \mathbb{R}^n$，
+由实数的构造方式可得，对任意分量$1 \leq j \leq n$，
+存在有理数$q_j$，
+使得
+\begin{align*}
+  x_j - q_j \in (0, 1) 
+\end{align*}
+令$q = (q_1, \cdots, q_n)$，则
+$x \in (0, 1)^n + q$。
+
+$\{A^{(j)}: j \in J; x_n \in (a, b)\}$
+
+\begin{zremark}
+  虽然$\mathbb{R}$的一维测度是$+\infty$，但是$\mathbb{R}^2$的整个$x$轴的二维外测度却是$0$。  
+\end{zremark}
+
+\textbf{证明：}
+
+设$\mathbb{R}^2$的整个$x$轴是区间$X = \{(x, 0): x \in \mathbb{R}\}$。
+
+对于每一个整数$z$，$B_z : = \prod \limits_{i = 1}^2 [a_i, b_i]$，
+其中$[a_1, b_1]= [z - 1, z + 1]$，$[a_2, b_2] = [0, 0]$，
+于是
+\begin{align*}
+  m^{\ast}(B_z) = 2 \times 0 = 0
+\end{align*}
+全体的$z \in \mathbb{Q}, B_z$的并集就是整个目标集合$X$，
+所以
+\begin{align*}
+  m^{\ast}(X) \leq \sum \limits_{z \in \mathbb{Q}} m^{\ast}(B_z) = 0
+\end{align*}
+
+
+\end{document}
+
+
