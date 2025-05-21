@@ -168,9 +168,356 @@
 
   \item (xiii)
 
+        对任意$\epsilon > 0$，存在一簇开盒子$(B_j)_{j \in J}$覆盖了$\Omega$，使得
+        \begin{align*}
+          \sum\limits_{j \in J} vol(B_j) \leq m^{\ast}(\Omega) + \epsilon
+        \end{align*}
+        任意$x_0 \in \Omega$，存在$j \in J$使得
+        \begin{align*}
+          x_0 \in B_j
+        \end{align*}
+        于是
+        \begin{align*}
+          (x + x_0) \in (x + B_j)
+        \end{align*}
+        于是可得$(x + \Omega) \subseteq \bigcup \limits_{j \in J} (x + B_j)$。
+        又由$vol$的平移不变性（公理(xiii)），
+        \begin{align*}
+          vol(x + B_j)  = vol(B_j)
+        \end{align*}
+        综上可得，
+        \begin{align*}
+          m^{\ast}(x + \Omega) \leq \sum\limits_{j \in J} vol(x + B_j) = \sum\limits_{j \in J} vol(B_j) \leq m^{\ast}(\Omega) + \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，$m^{\ast}(x + \Omega) \leq m^{\ast}(\Omega)$。
+
+        类似地，可得
+        \begin{align*}
+          m^{\ast}(\Omega) \leq m^{\ast}(x + \Omega) + \epsilon
+        \end{align*}
+        由$\epsilon$的任意性可知，$m^{\ast}(\Omega) \leq m^{\ast}(x + \Omega)$。
+
+        综上，
+        \begin{align*}
+          m^{\ast}(\Omega) = m^{\ast}(x + \Omega)
+        \end{align*}
 \end{itemize}
 
+\section*{18.2.2}
 
+% $A \subseteq \mathbb{R}^n$，$B \subseteq \mathbb{R}^m$，有
+% \begin{align*}
+%   m^{\ast}_{n + m}(A \times B) \leq m^{\ast}_{n}(A)m^{\ast}_{m}(B)
+% \end{align*}
+
+对任意$\epsilon > 0$，存在一簇盒子$(A_j)_{j \in J}$覆盖了$A$且有
+\begin{align*}
+  \sum\limits_{j \in J} vol(A_j) \leq m^{\ast}_{n}(A) + \epsilon
+\end{align*}
+同理可得，存在一簇盒子$(B_k)_{k \in K}$覆盖了$B$且有
+\begin{align*}
+  \sum\limits_{k \in K} vol(B_k) \leq m^{\ast}_{m}(B) + \epsilon
+\end{align*}
+
+接下来，我们证明$A \times B$被$(A_j)_{j \in J} \times (B_k)_{k \in K}$覆盖。
+
+$A \times B = \{(a, b): a \in A, b \in B\}$，对任意$x_0 = (a_0, b_0), x_0 \in A \times B$，
+其中$a_0 \in A, b_0 \in B$，
+所以存在$j_0 \in J, k_0 \in K$使得
+\begin{align*}
+  a_0 \in A_{j_0} \\
+  b_0 \in B_{k_0}
+\end{align*}
+所以
+\begin{align*}
+  x_0 \in A_{j_0} \times B_{k_0}
+\end{align*}
+即$x_0 \in (A_j)_{j \in J} \times (B_k)_{k \in K}$，
+由$x_0$的任意性可知，$A \times B \subseteq (A_j)_{j \in J} \times (B_k)_{k \in K}$。
+
+于是我们有
+\begin{align*}
+  m^{\ast}_{n + m}(A \times B)
+   & \leq \sum\limits_{j \in J} \sum\limits_{k \in K} vol(A_j \times B_k)                      \\
+   & = \sum\limits_{j \in J} \sum\limits_{k \in K} vol(A_j)vol(B_k)                            \\
+   & = \sum\limits_{j \in J} vol(A_j) \sum\limits_{k \in K} vol(B_k)                           \\
+   & \leq (m^{\ast}_{n}(A) + \epsilon) + (m^{\ast}_{m}(B) + \epsilon)                          \\
+   & = m^{\ast}_{n}(A)m^{\ast}_{m}(B) + \epsilon(m^{\ast}_{n}(A) + m^{\ast}_{m}(B) + \epsilon)
+\end{align*}
+（注意$\sum\limits_{j \in J} \sum\limits_{k \in K} vol(A_j)vol(B_k) = \sum\limits_{j \in J} vol(A_j) \sum\limits_{k \in K} vol(B_k)$
+需要额外证明下，本节注释部分有证明。）
+因为$m^{\ast}_{n}(A), m^{\ast}_{m}(B)$是定值且$\epsilon$是任意的，所以
+\begin{align*}
+  m^{\ast}_{n + m}(A \times B) \leq m^{\ast}_{n}(A)m^{\ast}_{m}(B)
+\end{align*}
+
+\section*{18.2.3}
+
+\begin{itemize}
+  \item (a)
+        $A_1 \subseteq A_2 \subseteq A_3 \subseteq \cdots$，于是有$ m(\bigcup\limits_{j = 1}^\infty A_j) = \lim\limits_{j \to \infty} m(A_j)$。
+
+        证明：
+        $m(A_j)$是单调递增的，所以要么$\lim\limits_{j \to \infty} m(A_j) = +\infty$，要么
+        $\lim\limits_{j \to \infty} m(A_j) = L$（其中$L \in \mathbb{R}$）。接下里分情况讨论：
+
+        （1）如果$\lim\limits_{j \to \infty} m(A_j) = +\infty$，即序列$(m(A_j))_{j = 1}^\infty$
+        没有上界，即对任意$M > 0$，都存在$N$，使得只要$j \geq N$，就有
+        \begin{align*}
+          m(A_j) > M
+        \end{align*}
+        因为对任意$n$都有
+        \begin{align*}
+          \bigcup\limits_{j = 1}^n A_j = A_n
+        \end{align*}
+        于是当$n \geq N$时，也有
+        \begin{align*}
+          m(\bigcup\limits_{j = 1}^n A_j) > M
+        \end{align*}
+        由$M$的任意性和$m(\bigcup\limits_{j = 1}^\infty A_j)$的单调递增性可知，
+        $m(\bigcup\limits_{j = 1}^\infty A_j)$发散，即$m(\bigcup\limits_{j = 1}^\infty A_j) = +\infty$。
+
+        （2）如果$\lim\limits_{j \to \infty} m(A_j) = L$，
+        即序列$(m(A_j))_{j = 1}^\infty$
+        有上界且$L$是最小上界（单调递增序列的性质），
+        于是对任意$n \in \mathbb{N}^+$都有
+        \begin{align*}
+          m(A_n) \leq L
+        \end{align*}
+        于是可得
+        \begin{align*}
+          m(\bigcup\limits_{j = 1}^n A_j) = m(A_n) \leq L
+        \end{align*}
+        $m(\bigcup\limits_{j = 1}^\infty A_j)$的单调递增性且有上界可知，
+        $m(\bigcup\limits_{j = 1}^\infty A_j)$收敛。
+
+        反证法，假设$m(\bigcup\limits_{j = 1}^\infty A_j) = L^\prime < L$，
+        那么，$L^\prime$是$m(\bigcup\limits_{j = 1}^\infty A_j)$的上界，
+        对任意$n \in \mathbb{N}^+$都有
+        \begin{align*}
+          m(\bigcup\limits_{j = 1}^n A_j) \leq L^\prime
+        \end{align*}
+        因为$m(\bigcup\limits_{j = 1}^n A_j) = m(A_n)$，
+        于是可得，对任意$n \in \mathbb{N}^+$都有
+        \begin{align*}
+          m(A_n) \leq L^\prime < L
+        \end{align*}
+        于是$L$不是$(m(A_j))_{j = 1}^\infty$的最小上界，
+        存在矛盾。
+
+        综合（1）（2）可得
+        \begin{align*}
+          m(\bigcup\limits_{j = 1}^\infty A_j) = \lim\limits_{j \to \infty} m(A_j)
+        \end{align*}
+
+  \item (b)
+
+        因为对于每一个正整数$j$都有$A_j \supseteq A_{j + 1}$，
+        于是可得$(m(A_j))_{j = 1}^\infty$是单调递减的，
+        又因为对任意可测集$\Omega$都有$m(\Omega) \geq 0$，且有$m(A_1) < +\infty$。
+        综上可得，$(m(A_j))_{j = 1}^\infty$是单调递减且有下界，
+        所以$(m(A_j))_{j = 1}^\infty$极限存在，且等于下确界$l \in \mathbb{R}$：
+        \begin{align*}
+          \lim\limits_{j \to \infty} m(A_j) = l
+        \end{align*}
+        因为$l$是下确界，那么对任意$n \in \mathbb{N}^+$都有
+        \begin{align*}
+          m(A_n) \geq l
+        \end{align*}
+        由题设可知
+        \begin{align*}
+          \bigcap\limits_{j = 1}^n A_j = A_n
+        \end{align*}
+        于是，我们有
+        \begin{align*}
+          m(\bigcap\limits_{j = 1}^n A_j) = m(A_n) \geq l
+        \end{align*}
+        所以，$(m(\bigcap\limits_{j = 1}^n A_j))_{n = 1}^\infty$也是
+        单调递减且有下界$l$，
+        进而极限$\lim\limits_{n \to \infty} m(\bigcap\limits_{j = 1}^n A_j) \geq l$。
+
+        接下来证明$\lim\limits_{n \to \infty} m(\bigcap\limits_{j = 1}^n A_j) = l$。
+
+        反证法，假设$\lim\limits_{n \to \infty} m(\bigcap\limits_{j = 1}^n A_j) = l^\prime > l $，
+        即$l^\prime$是$(m(\bigcap\limits_{j = 1}^n A_j))_{j = 1}^\infty$下确界，
+        那么，由下确界的性质，对$\epsilon = \frac{l - l^\prime}{2} > 0$，
+        存在$n \in \mathbb{N}^+$使得
+        \begin{align*}
+          m(\bigcap\limits_{j = 1}^n A_j) = m(A_n) & < l^\prime + \frac{l - l^\prime}{2} \\
+                                                   & < l
+        \end{align*}
+        这与$l$是$(m(A_j))_{j = 1}^\infty$的下确界矛盾。
+
+        综上，
+        \begin{align*}
+          m(\bigcap\limits_{j = 1}^\infty A_j) = \lim\limits_{j \to \infty} m(A_j)
+        \end{align*}
+\end{itemize}
+
+\section*{18.2.4}
+
+令$A = \{(0, 1/q)^n + (1/q)(k_1,\cdots, k_n): k_1,\cdots, k_n \in \{0, 1, \cdots, q - 1\}\}$，
+于是$A$中有$q^n$个不相交的集合，且集合都是通过平移$(0, 1/q)^n$得到的。
+又因为$A \subseteq [0, 1]^n$，
+由勒贝格测度的性质(ix)(xii)(xiii)可知，
+\begin{align*}
+  m(A) = q^n m((0, 1/q)^n) \leq m([0, 1]^n) = 1 \\
+  \implies                                      \\
+  m((0, 1/q)^n) \leq q^{-n}
+\end{align*}
+
+令$B = \{[0, 1/q]^n + (1/q)(k_1,\cdots, k_n): k_1,\cdots, k_n \in \{0, 1, \cdots, q - 1\}\}$，
+于是$B$中$q^n$个相交的集合（在边界的地方重合），且集合都是通过平移$[0, 1/q]^n$得到的。
+又因为$\bigcup\limits_{b \in B}  b = [0, 1]^n$，
+于是$[0, 1]^n \subseteq \bigcup\limits_{b \in B}  b$。
+由勒贝格测度的性质(viii)(xii)(xiii)可知，
+\begin{align*}
+  m(\bigcup\limits_{b \in B}  b) = m([0, 1]^n) = 1 \leq q^n m([0, 1/q]^n) \\
+  \implies                                                                \\
+  m([0, 1/q]^n) \geq q^{-n}
+\end{align*}
+
+因为
+\begin{align*}
+  [0, 1/q]^n \setminus (0, 1/q)^n = \{0, 1/q\}
+\end{align*}
+
+令$p$是任意正整数，
+于是$\{0\} \subseteq (-1/2p) + (0, 1/p)^n, \{1/q\} \subseteq 1/q + (-1/2p) + (0, 1/p)$。
+由之前的讨论可知
+\begin{align*}
+  m(\{0\}) + m(\{1/q\}) \leq 2 m((0, 1/p)^n) \leq 2 p^{-n}
+\end{align*}
+因为
+\begin{align*}
+  \lim\limits_{p \to \infty} 2 p^{-n} = 0
+\end{align*}
+于是，对任意$\epsilon > 0$，存在$N$使得只要$p \geq N$，就有
+\begin{align*}
+  2 p^{-n} \leq \epsilon
+\end{align*}
+综上可得，
+\begin{align*}
+  m([0, 1/q]^n \setminus (0, 1/q)^n) \leq \epsilon
+\end{align*}
+于是
+\begin{align*}
+  m([0, 1/q]^n) \leq m((0, 1/q)^n) + \epsilon \\
+  \implies                                    \\
+  m([0, 1/q]^n) \leq m((0, 1/q)^n) \leq q^{-n}
+\end{align*}
+结合$m([0, 1/q]^n) \geq q^{-n}$可知，
+\begin{align*}
+  m([0, 1/q]^n) = q^{-n}
+\end{align*}
+进而
+\begin{align*}
+  m((0, 1/q)^n) = q^{-n}
+\end{align*}
+
+\section*{18.2.5$\circledast$}
+
+设任意闭盒子$B : = \prod\limits_{j = 1}^n (a_j, b_j)$。
+
+如果$a_j = b_j$，则$B$是空集，于是$m(B) = 0$，
+又因为$vol(B) = \prod\limits_{j = 1}^n (b_j - a_j) = \prod\limits_{j = 1}^n 0 = 0$，
+于是$m(B) = vol(B)$。
+
+如果$a_j \neq b_j$，先假设$a_j, b_j$都是有理数，于是$b_j - a_j$也是有理数，
+于是可表示$b_j - a_j = \frac{p_j}{q_j}$，其中$p_j, q_j$都是正整数。
+我们有
+\begin{align*}
+   & vol(B) = \prod\limits_{j = 1}^n (b_j - a_j) = \prod\limits_{j = 1}^n \frac{p_j}{q_j}                                              \\
+   & B = (a_1, \cdots, a_n) + \prod\limits_{j = 1}^n (0, b_j - a_j) = (a_1, \cdots, a_n) + \prod\limits_{j = 1}^n (0, \frac{p_j}{q_j})
+\end{align*}
+由(xiii)（平移不变性）可知，我们只需证明$vol(B) = m(\prod\limits_{j = 1}^n (0, \frac{p_j}{q_j}))$。
+
+为了方便描述，令$B^\prime : = \prod\limits_{j = 1}^n (0, \frac{p_j}{q_j})$。
+
+取$q = q_1 \times q_2 \cdots q_n$，
+于是每个$\frac{p_j}{q_j}$可以写作$\frac{p_j^\prime}{q}$（只需保证$\frac{p_j}{q_j} = \frac{p_j^\prime}{q}$）。
+所以
+\begin{align*}
+  B^\prime & = \prod\limits_{j = 1}^n (0, \frac{p_j}{q_j})                                                            \\
+           & = \prod\limits_{j = 1}^n (0, \frac{p_j^\prime}{q})                                                       \\
+           & \supseteq \{(0, 1/q)^n + (1/q)(k_1,\cdots, k_n): k_j \in \{0, 1, \cdots, p_j^\prime\}; 1 \leq j \leq n\}
+\end{align*}
+可得$\{(0, 1/q)^n + (1/q)(k_1,\cdots, k_n): k_j \in \{0, 1, \cdots, p_j^\prime\}; 1 \leq j \leq n\}$中
+元素个数为
+\begin{align*}
+  p_1^\prime \times p_2^\prime \times \cdots \times p_n^\prime
+   & = \frac{p_1 q}{q_1} \times \frac{p_2 q}{q_2} \times \cdots \times \frac{p_n q}{q_n} \\
+   & = (p_1 \times p_2 \times \cdots \times p_n)q^{n - 1}
+\end{align*}
+因为元素都是$(0, 1/q)^n$通过平移得到，所以有
+\begin{align*}
+  m(B^\prime) & \leq (p_1 \times p_2 \times \cdots \times p_n)q^{n - 1} m((0, 1/q)^n) \\
+              & \leq (p_1 \times p_2 \times \cdots \times p_n)q^{n - 1} q^{-n}        \\
+              & = \frac{p_1 \times p_2 \times \cdots \times p_n}{q}                   \\
+              & = \prod\limits_{j = 1}^n \frac{p_j}{q_j}                              \\
+              & = vol(B)
+\end{align*}
+又因为对任意$\epsilon > 0$，
+都有$m(B^\prime \setminus \{(0, 1/q)^n + (1/q)(k_1,\cdots, k_n): k_j \in \{0, 1, \cdots, p_j^\prime\}; 1 \leq j \leq n\}) \leq \epsilon$，
+（习题18.2.4中有类似证明，这里省略）可得
+\begin{align*}
+  m(B^\prime) = vol(B)
+\end{align*}
+即
+\begin{align*}
+  m(B) = vol(B)
+\end{align*}
+
+如果$a_j, b_j$是实数，
+这里把下标$a_j, b_j$改为上标$a^j, b^j$，以方便接下来序列的表示。
+对每一个分量$1 \leq j \leq n$，由实数的构造方式，我们可以构造一个
+单调递减收敛于$a^j$的序列$(a_m^j)_{m = 1}^\infty$，
+一个单调递增收敛于$b^j$序列$(b_m^j)_{m = 1}^\infty$，
+并保证对任意$m$都有$a_m < b_m$。
+
+令$A_k := \prod\limits_{j = 1}^n (a^j_k, b^j_k)$，
+于是$A_k \subseteq A_{k + 1}$，
+且我们有
+\begin{align*}
+  \bigcup\limits_{k = 1}^\infty A_k = \prod\limits_{j = 1}^n (a^j, b^j) \\
+  \lim\limits_{k \to \infty} A_k = \prod\limits_{j = 1}^n (a^j, b^j)
+\end{align*}
+（可以通过任意$x \in \textbf{左侧}$都有$x \in \textbf{右侧}$来证明）
+
+所以
+\begin{align*}
+  m(\bigcup\limits_{k = 1}^\infty A_k) & = m(\prod\limits_{j = 1}^n (a^j, b^j))                                  & (1) \\
+  \lim\limits_{k \to \infty} m(A_k)    & = \lim\limits_{k \to \infty} m(\prod\limits_{j = 1}^n (a^j_k, b^j_k))         \\
+                                       & = \lim\limits_{k \to \infty} vol(\prod\limits_{j = 1}^n (a^j_k, b^j_k))       \\
+                                       & = \lim\limits_{k \to \infty} vol(A_k)                                         \\
+                                       & = vol(\prod\limits_{j = 1}^n (a^j, b^j))                                & (2)
+\end{align*}
+利用18.2.3(a)可知
+\begin{align*}
+  m(\bigcup\limits_{k = 1}^\infty A_k) = \lim\limits_{k \to \infty} m(A_k)
+\end{align*}
+于是
+\begin{align*}
+  m(\prod\limits_{j = 1}^n (a^j, b^j)) = vol(\prod\limits_{j = 1}^n (a^j, b^j))  
+\end{align*}
+即
+\begin{align*}
+  m(B) = vol(B)
+\end{align*}
+
+\section*{18.2.6}
+
+反证法，假设$\mathbb{R}$是可数的，
+于是由例18.2.9可知
+\begin{align*}
+  m^{\ast}(\mathbb{R}) \leq \sum\limits_{r \in \mathbb{R}} m^{\ast}(\{r\}) = \sum\limits_{r \in \mathbb{R}} = 0 
+\end{align*}
+因为$[0, 1] \subseteq \mathbb{R}$，
+由命题18.2.6可知，
+\begin{align*}
+  m^{\ast}([0, 1]) = 1 \leq m^{\ast}(\mathbb{R})
+\end{align*}
+存在矛盾。
 
 \end{document}
 

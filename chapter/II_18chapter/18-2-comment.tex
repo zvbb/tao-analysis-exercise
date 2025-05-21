@@ -38,6 +38,46 @@
 \maketitle
 
 \begin{zremark}
+  开盒子$A, B$，且$A$是$\mathbb{R}^n$的子集，$B$是$\mathbb{R}^m$的子集，
+  我们有
+  \begin{align*}
+    vol(A \times B) = vol(A) vol(B)
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+$A \times B$是$\mathbb{R}^{n + m}$的子集，
+且可表示为
+\begin{align*}
+  A \times B = \{(a, b): a \in A, b \in B\}
+\end{align*}
+设
+\begin{align*}
+  A = \prod\limits_{i = 1}^n (a_i, b_i) \\
+  B = \prod\limits_{j = 1}^m (c_j, d_j)
+\end{align*}
+于是按照笛卡尔积定义，我们有
+\begin{align*}
+  A \times B = \{(x_1, \cdots, x_n, y_1, \cdots, y_m): a_i < x_i < b_i, c_j < y_j < d_j\}
+\end{align*}
+也就是说$A \times B$可以表示成开盒子的形式：
+\begin{align*}
+  A \times B = \prod\limits_{k = 1}^{n + m} (e_k, f_k)
+\end{align*}
+其中
+\begin{align*}
+  (e_k, f_k) & = (a_i, b_i), \ 1 \leq k \leq n                     \\
+  (e_k, f_k) & = (c_{k - n}, d_{k - n}), \ n + 1 \leq k \leq n + m
+\end{align*}
+所以
+\begin{align*}
+  vol(A \times B) & = \prod\limits_{k = 1}^{n + m} (f_k - e_k)                                \\
+                  & = \prod\limits_{i = 1}^{n} (a_i, b_i) \prod\limits_{j = 1}^{m} (c_j, d_j) \\
+                  & = vol(A) vol(B)
+\end{align*}
+
+\begin{zremark}
   $\mathbb{R}^n$自身就被可数个单位立方体$(0,1)^n$覆盖，如何覆盖?
 \end{zremark}
 
@@ -47,7 +87,7 @@
 \begin{align*}
   \mathbb{R}^n = \bigcup\limits_{q \in \mathbb{Q}^n}((0, 1)^n + q)
 \end{align*}
-其中，有理数$\mathbb{Q}$是可数的（推论8.1.15），又由推论8.1.14可知$\mathbb{Q}^n$也是可数的。 
+其中，有理数$\mathbb{Q}$是可数的（推论8.1.15），又由推论8.1.14可知$\mathbb{Q}^n$也是可数的。
 $(0, 1)^n + q$表示单位立方体平移到$q$这个位置。
 
 接下来，需要证明这个集合确实可以覆盖$\mathbb{R}^n$。
@@ -57,7 +97,7 @@ $(0, 1)^n + q$表示单位立方体平移到$q$这个位置。
 存在有理数$q_j$，
 使得
 \begin{align*}
-  x_j - q_j \in (0, 1) 
+  x_j - q_j \in (0, 1)
 \end{align*}
 令$q = (q_1, \cdots, q_n)$，则
 $x \in (0, 1)^n + q$。
@@ -65,7 +105,7 @@ $x \in (0, 1)^n + q$。
 $\{A^{(j)}: j \in J; x_n \in (a, b)\}$
 
 \begin{zremark}
-  虽然$\mathbb{R}$的一维测度是$+\infty$，但是$\mathbb{R}^2$的整个$x$轴的二维外测度却是$0$。  
+  虽然$\mathbb{R}$的一维测度是$+\infty$，但是$\mathbb{R}^2$的整个$x$轴的二维外测度却是$0$。
 \end{zremark}
 
 \textbf{证明：}
@@ -83,6 +123,72 @@ $\{A^{(j)}: j \in J; x_n \in (a, b)\}$
 \begin{align*}
   m^{\ast}(X) \leq \sum \limits_{z \in \mathbb{Q}} m^{\ast}(B_z) = 0
 \end{align*}
+
+\begin{zremark}
+  默认情况下，两个无限级数的乘积是否收敛，与其“乘积”的求和顺序有关，于是需要定义其顺序。
+  但在绝对收敛的情况，情况特殊：
+
+  这里引入一个命题（参考了数学分析第五版（下册）华东师范大学版）：
+  设有绝对收敛序列
+  \begin{align*}
+    \sum \limits_{n = 1}^{\infty} |u_n| = A \\
+    \sum \limits_{n = 1}^{\infty} |v_n| = B
+  \end{align*}
+  则把级数$\sum \limits_{n = 1}^{\infty} u_n$和$\sum \limits_{n = 1}^{\infty} v_n$
+  中每一项所有可能的乘积列出（任何方式都可以）得到级数$\sum w_n$也是绝对收敛的，且其和等于$AB$。
+\end{zremark}
+
+\textbf{证明：}
+
+以$s_n$表示级数$\sum |w_n|$的部分和，即：
+\begin{align*}
+  s_n = |w_1| + |w_2| + \cdots + |w_n|
+\end{align*}
+其中$w_k = u_{i_k}v_{j_k}(k = 1, 2, \cdots, n)$，记
+\begin{align*}
+  m = max(i_1, j_1, \cdots, i_n, j_n),  \\
+  A_m = |u_1| + |u_2| + \cdots + |u_m|, \\
+  B_m = |v_1| + |v_2| + \cdots + |v_m|
+\end{align*}
+于是有（有限项求和）
+\begin{align*}
+  s_n \leq A_m B_m
+\end{align*}
+因为$\sum \limits_{n = 1}^{\infty} |u_n|$和$\sum \limits_{n = 1}^{\infty} |v_n|$
+的部分和${A_n}$和${B_n}$序列都是有界的。
+于是可得${s_n}$是有界的，从而级数$\sum w_n$绝对收敛。
+
+绝对收敛的级数，具有可重排序的性质，于是把$\sum w_n$以正方形顺序并加相关括号，即
+\begin{align*}
+  u_1v_1 + (u_1v_2 + u_2v_2 + u_2v_1) + (u_1v_3 + u_2v_3 + u_3v_3 + u_3v_2 + u_3v_1) + \cdots,
+\end{align*}
+\[
+  \begin{array}{c|cccc}
+           & v_1     & v_2     & v_3     & \cdots \\
+    \hline
+    u_1    & u_1 v_1 & u_1 v_2 & u_1 v_3 & \cdots \\
+    u_2    & u_2 v_1 & u_2 v_2 & u_2 v_3 & \cdots \\
+    u_3    & u_3 v_1 & u_3 v_2 & u_3 v_3 & \cdots \\
+    \vdots & \vdots  & \vdots  & \vdots  & \ddots
+  \end{array}
+\]
+
+把每个括号作为一项的新级数:
+\begin{align*}
+  p_1 + p_2 + p_3 + \cdots
+\end{align*}
+于是部分和$P_n$有
+\begin{align*}
+  P_n = A_n B_n
+\end{align*}
+从而由之前的结论有
+\begin{align*}
+  \lim\limits_{n \to \infty} P_n
+  = \lim\limits_{n \to \infty} A_n B_n
+  = \lim\limits_{n \to \infty} A_n \lim\limits_{n \to \infty} B_n
+  = AB
+\end{align*}
+
 
 
 \end{document}

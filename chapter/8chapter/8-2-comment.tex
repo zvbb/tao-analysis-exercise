@@ -56,10 +56,6 @@ $\bigstar \textbf{定理}8.2.2$
     \sum \limits_{n=0}^N \sum \limits_{m=0}^M = \sum \limits_{(n,m) \in X}f(n,m)
 \end{align*}
 
-（2）书中“当$M \rightarrow \infty$时，对上面的式子取上确界可得（利用极限定律并对$N$使用归纳法）”
-
-应该是错的，这里是对$M$进行归纳，$N$是看做固定值的。
-
 （3）证明：$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f(n,m)$是绝对收敛的，那么
 $\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{+}(n,m)$
 和$\sum \limits_{(n,m) \in \mathbb{N} \times \mathbb{N}}f_{-}(n,m)$也都是绝对收敛的。
@@ -168,5 +164,39 @@ $\textbf{（5）前提一定要是绝对收敛么？} $
 
 由命题7.2.12（交错级数判别法）可知，该级数收敛。
 而级数$f_{+} := \sum \limits_{n=1}^\infty 1 / n$是调和函数，是发散的（推论7.3.7）。
+
+% \textbf{（6）
+%     两个绝对收敛的无限级数：$\sum\limits_{j = 0}^\infty a_j = A, \sum\limits_{k = 0}^\infty b_k = B$，
+%     且$a_j, b_k \geq 0$，
+%     则：
+%     \begin{align*}
+%       \sum\limits_{j = 0}^\infty \sum\limits_{k = 0}^\infty  a_j b_k = \sum\limits_{j = 0}^\infty  a_j \sum\limits_{k = 0}^\infty  b_k = AB
+%     \end{align*}
+%   }
+
+%   我们的任务是证明级数$\sum\limits_{j = 0}^\infty \sum\limits_{k = 0}^\infty  a_j b_k$收敛$AB$。
+
+%   对任意的有限集$X \subset \mathbb{N} \times \mathbb{N}$都有
+%   $\sum\limits_{(j, k) \in X}  a_j b_k \leq AB$，
+%   （此时相关代数法则还是我们熟知的有限个）。
+%   特别地，对每一个$n \in \mathbb{N}$和$m \in \mathbb{N}$都有
+%   $\sum\limits_{k = 0}^m a_{n} b_k \leq AB$，由命题6.3.8可知
+%   $\sum\limits_{k = 0}^\infty a_{n} b_k$收敛。
+
+% 对任意的$N \in \mathbb{N}$和$M \in \mathbb{N}$都有
+% \begin{align*}
+%     \sum\limits_{n = 0}^N \sum\limits_{m = 0}^M f(n, m) \leq L
+% \end{align*}
+% 当$M \to \infty$时，对上面的式子取上确界可得（对$N$使用归纳法），
+% \begin{align*}
+%     \sum\limits_{n = 0}^N \sum\limits_{m = 0}^\infty f(n, m) \leq L
+% \end{align*}
+% 由单调有界序列收敛可知，这表明$\sum\limits_{n = 0}^\infty \sum\limits_{m = 0}^\infty f(n, m)$
+% 收敛以及
+% \begin{align*}
+%     \sum\limits_{n = 0}^\infty \sum\limits_{m = 0}^\infty f(n, m) \leq L
+% \end{align*}
+
+
 
 \end{document}
