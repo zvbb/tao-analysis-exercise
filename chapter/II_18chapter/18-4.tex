@@ -1,0 +1,447 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{18.4 习题}
+\author{张志聪}
+\maketitle
+
+\section*{18.4.1}
+
+$A$是$\mathbb{R}$中的开集，不妨设$A = (a, b)$其中$a < b, a, b \in \mathbb{R}$。
+于是
+\begin{align*}
+  m^{\ast}(A) = b - a
+\end{align*}
+
+(1)当$b \leq 0$时，$A \cap (0, \infty) = \varnothing, A \setminus (0, \infty) = A$，
+于是
+\begin{align*}
+  m^{\ast}(A \cap (0, \infty)) + m^{\ast}(A \setminus (0, \infty))
+   & = m^{\ast}(\varnothing) + m^{\ast}(A) \\
+   & = m^{\ast}(A)
+\end{align*}
+
+(2)当$b > 0 > a$时，$A \cap (0, \infty) = (0, b), A \setminus (0, \infty) = (a, 0]$。
+\begin{align*}
+  m^{\ast}(A \cap (0, \infty)) + m^{\ast}(A \setminus (0, \infty))
+   & = m^{\ast}((0, b)) + m^{\ast}((a, 0]) \\
+   & = b + m^{\ast}((a, 0])
+\end{align*}
+接下来，我们计算$m^{\ast}((a, 0])$。
+
+因为，我们有
+\begin{align*}
+  (a, 0) \subseteq (a, 0]
+\end{align*}
+对任意$\epsilon > 0$，我们又有
+\begin{align*}
+  (a, 0] \subseteq (a, \epsilon)
+\end{align*}
+由引理18.2.5(vii)可知，
+\begin{align*}
+  m^{\ast}((a, 0)) \leq m^{\ast}((a, 0]) \leq m^{\ast}((a, \epsilon)) \\
+  \implies                                                            \\
+  -a \leq m^{\ast}((a, 0]) \leq \epsilon - a
+\end{align*}
+令$\epsilon \to 0$，然后使用夹逼定理，可以得到
+\begin{align*}
+  m^{\ast}((a, 0]) = -a
+\end{align*}
+综上可得
+\begin{align*}
+  m^{\ast}(A \cap (0, \infty)) + m^{\ast}(A \setminus (0, \infty)) = b - a = m^{\ast}(A)
+\end{align*}
+
+(3)当$a \geq 0$时，$A \cap (0, \infty) = A, A \setminus (0, \infty) = \varnothing$。
+于是
+\begin{align*}
+  m^{\ast}(A \cap (0, \infty)) + m^{\ast}(A \setminus (0, \infty))
+   & = m^{\ast}(A) + m^{\ast}(\varnothing) \\
+   & = m^{\ast}(A)
+\end{align*}
+
+综上可得，命题$m^{\ast}(A) = m^{\ast}(A \cap (0, \infty)) + m^{\ast}(A \setminus (0, \infty))$得证。
+
+\section*{18.4.2}
+有一点需要注意$E := \{(x_1, x_2, \cdots, x_n) \in \mathbb{R}^n: x_n > 0\}$，其中
+$x_1, x_2, \cdots, x_{n - 1}$不是固定值，在集合定义中，未被限制的变量都是自由的，
+所以在这个集合中，前面的分量$x_1, x_2, \cdots, x_{n - 1}$完全自由，只有最后
+一个分量$x_n > 0$。
+
+$A$是$\mathbb{R}^n$中的开盒子，那么，对任意$A$可以表示成
+\begin{align*}
+  A = \prod\limits_{i = 1}^n (a_i, b_i)
+\end{align*}
+
+于是
+\begin{align*}
+  A \cap E = \prod\limits_{i = 1}^{n - 1} (a_i, b_i) \times ((a_n, b_n) \cap (0, \infty)) \\
+  A \setminus E = \prod\limits_{i = 1}^{n - 1} (a_i, b_i) \times ((a_n, b_n) \setminus (0, \infty))
+\end{align*}
+由习题18.2.2可知，
+\begin{align*}
+  m^{\ast}(A \cap E) \leq m^{\ast}(\prod\limits_{i = 1}^{n - 1} (a_i, b_i))m^{\ast}( (a_n, b_n) \cap (0, \infty)) \\
+  m^{\ast}(A \setminus E) \leq m^{\ast}(\prod\limits_{i = 1}^{n - 1} (a_i, b_i))m^{\ast}( (a_n, b_n) \setminus (0, \infty))
+\end{align*}
+于是可得
+\begin{align*}
+  m^{\ast}(A \cap E) + m^{\ast}(A \setminus E) \leq m^{\ast}(\prod\limits_{i = 1}^{n - 1} (a_i, b_i))(m^{\ast}( (a_n, b_n) \cap (0, \infty)) + m^{\ast}( (a_n, b_n) \setminus (0, \infty)))
+\end{align*}
+利用习题18.4.1(viii)可得
+\begin{align*}
+  m^{\ast}(A \cap E) + m^{\ast}(A \setminus E) & \leq m^{\ast}(\prod\limits_{i = 1}^{n - 1} (a_i, b_i))m^{\ast}((a_n, b_n)) \\
+                                               & = m^{\ast}(\prod\limits_{i = 1}^{n} (a_i, b_i))                            \\
+                                               & = m^{\ast}(A)
+\end{align*}
+又由引理18.2.5可知
+\begin{align*}
+  m^{\ast}(A) \leq m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+\end{align*}
+综上可得
+\begin{align*}
+  m^{\ast}(A) = m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+\end{align*}
+
+\section*{18.4.3}
+
+令$E$等于半空间。对任意$A \subseteq \mathbb{R}^n$，引理18.2.5(viii)可得
+\begin{align*}
+  m^{\ast}(A) \leq m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+\end{align*}
+
+对任意$\epsilon > 0$，由外测度的定义可知，存在
+$(B_j)_{j \in J}$覆盖$A$，使得
+\begin{align*}
+  \sum\limits_{j \in J} vol(B_j) \leq m^{\ast}(A) + \epsilon \\
+  \implies                                                   \\
+  \sum\limits_{j \in J} vol(B_j) - \epsilon \leq m^{\ast}(A)
+\end{align*}
+由推论18.2.7，我们有
+\begin{align*}
+  m^{\ast}(B_j) = vol(B_j)
+\end{align*}
+于是由习题18.4.2可知，对任意$j \in J$，都有
+\begin{align*}
+  m^{\ast}(B_j) = m^{\ast}(B_j \cap E) + m^{\ast}(B_j \setminus E)
+\end{align*}
+于是，我们有
+\begin{align*}
+  \sum\limits_{j \in J} vol(B_j) = \sum\limits_{j \in J} m^{\ast}(B_j \cap E)  + \sum\limits_{j \in J} m^{\ast}(B_j \setminus E)
+\end{align*}
+因为
+\begin{align*}
+  \bigcup \limits_{j \in J} (B_j \cap E) \subseteq A \cap E \\
+  \bigcup \limits_{j \in J} (B_j \setminus E) \subseteq A \setminus E
+\end{align*}
+于是由引理18.2.5(viii)或(x)可得
+\begin{align*}
+  m^{\ast}(A \cap E) \leq \sum\limits_{j \in J} m^{\ast}(B_j \cap E) \\
+  m^{\ast}(A \setminus E) \leq \sum\limits_{j \in J} m^{\ast}(B_j \setminus E)
+\end{align*}
+综上可得
+\begin{align*}
+  m^{\ast}(A \cap E) + m^{\ast}(A \setminus E) -\epsilon \leq m^{\ast}(A)
+\end{align*}
+由$\epsilon$的任意性可知，并结合$m^{\ast}(A) \leq m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)$，
+我们就有
+\begin{align*}
+  m^{\ast}(A) = m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+\end{align*}
+
+于是由定义18.4.1可知，$E$是可测的。
+
+\section*{18.4.4}
+
+\begin{itemize}
+  \item (a)
+
+        对$\mathbb{R}^n$的每一个子集$A$，我们有
+        \begin{align*}
+          A \cap E = A \setminus (\mathbb{R}^n \setminus E) \\
+          A \setminus E = A \cap (\mathbb{R}^n \setminus E)
+        \end{align*}
+        因为$E$是可测的，所以
+        \begin{align*}
+          m^{\ast}(A) & = m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)                                                   \\
+                      & = m^{\ast}(A \setminus (\mathbb{R}^n \setminus E)) + m^{\ast}(A \cap (\mathbb{R}^n \setminus E))
+        \end{align*}
+        于是可得，$\mathbb{R}^n \setminus E$是可测的。
+
+  \item (b)
+
+        因为$E$是可测的，所以对$\mathbb{R}^n$的每一个子集$A$，我们有
+        \begin{align*}
+          m^{\ast}(A) & = m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+        \end{align*}
+        又因为
+        \begin{align*}
+          A \cap (E + x) = (A - x) \cap E + x \\
+          A \setminus (E + x) = (A - x) \setminus E + x
+        \end{align*}
+        因为$A - x$也是$\mathbb{R}^n$的子集，于是以下等式依然成立：
+        \begin{align*}
+          m^{\ast}(A - x) & = m^{\ast}((A - x) \cap E) + m^{\ast}((A - x) \setminus E)
+        \end{align*}
+        利用引理18.2.5(xiii)（平移不变性），我们有
+        \begin{align*}
+          m^{\ast}(A - x + x) & = m^{\ast}((A - x) \cap E + x) + m^{\ast}((A - x) \setminus E + x) \\
+          \implies                                                                                 \\
+          m^{\ast}(A)         & = m^{\ast}(A \cap (E + x)) + m^{\ast}(A \setminus (E + x))
+        \end{align*}
+        于是可得$x + E$是可测的。
+
+        由定义18.4.1可知$m(E) = m^{\ast}(E)$，
+        再次利用引理18.2.5(xiii)（平移不变性）
+        \begin{align*}
+          m(E) = m^{\ast}(E) = m^{\ast}(x + E) = m(x + E)
+        \end{align*}
+
+  \item (c) $\circledast$
+
+        $E_1$是可测的，所以对任意$A \subseteq \mathbb{R}^n$，我们有
+        \begin{align}
+          m^{\ast}(A) = m^{\ast}(A \cap E_1) + m^{\ast}(A \setminus E_1)
+        \end{align}
+        $E_2$也是可测的，且因为$(A \cap E_1) \subseteq \mathbb{R}^n$，于是我们有
+        \begin{align*}
+          m^{\ast}(A \cap E_1) & = m^{\ast}((A \cap E_1) \cap E_2) + m^{\ast}((A \cap E_1) \setminus E_2) \\
+                               & = m^{\ast}(A \cap E_1 \cap E_2) + m^{\ast}(A \cap E_1 \setminus E_2)
+        \end{align*}
+        同样的，$(A \setminus E_1) \subseteq \mathbb{R}^n$，于是
+        \begin{align*}
+          m^{\ast}(A \setminus E_1) & = m^{\ast}((A \setminus E_1) \cap E_2) + m^{\ast}((A \setminus E_1) \setminus E_2) \\
+                                    & = m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        代入(1)式可得：
+        \begin{align*}
+          m^{\ast}(A) = m^{\ast}(A \cap E_1 \cap E_2) + m^{\ast}(A \cap E_1 \setminus E_2) + m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        \textcolor{red}{令这个为式子(0)}
+
+        观察$A \setminus (E_1 \cap E_2)$，利用命题3.1.28(h)，我们有
+        \begin{align*}
+          A \setminus (E_1 \cap E_2) & = (A \setminus E_1) \cup (A \setminus E_2)                                                    \\
+                                     & =(A \cap E_1 \setminus E_2) \cup (A \cap E_2 \setminus E_1) \cup (A \setminus (E_1 \cup E_2))
+        \end{align*}
+        于是由命题18.2.5(viii)可知，
+        \begin{align*}
+          m^{\ast}(A \setminus (E_1 \cap E_2)) \leq m^{\ast}(A \cap E_1 \setminus E_2) + m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        这里有：
+        \begin{align*}
+          m^{\ast}(A \setminus (E_1 \cap E_2)) = m^{\ast}(A \cap E_1 \setminus E_2) + m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        反证法，假设上式不成立，那么就有
+        \begin{align*}
+          m^{\ast}(A \setminus (E_1 \cap E_2)) < m^{\ast}(A \cap E_1 \setminus E_2) + m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        又因为
+        \begin{align*}
+          A = (A \cap (E_1 \cap E_2)) \cup (A \setminus (E_1 \cap E_2))
+        \end{align*}
+        再次利用命题18.2.5(viii)可知，
+        \begin{align*}
+           & m^{\ast}(A) \leq m^{\ast}(A \cap E_1 \cap E_2) + m^{\ast}(A \setminus (E_1 \cap E_2))                                                                        \\
+           & \implies                                                                                                                                                     \\
+           & m^{\ast}(A) < m^{\ast}(A \cap E_1 \cap E_2) + m^{\ast}(A \cap E_1 \setminus E_2) + m^{\ast}(A \cap E_2 \setminus E_1) + m^{\ast}(A \setminus (E_1 \cup E_2))
+        \end{align*}
+        这与式(0)存在矛盾，假设不成立。
+
+        结合式(0)可得
+        \begin{align}
+          m^{\ast}(A) = m^{\ast}(A \cap (E_1 \cap E_2)) + m^{\ast}(A \setminus (E_1 \cap E_2))
+        \end{align}
+        所以$E_1 \cap E_2$是可测的。
+
+        利用集合运算关系（命题3.1.28），我们有
+        \begin{align*}
+          E_1 \cup E_2 = \mathbb{R}^n \setminus ((\mathbb{R}^n \setminus E_1) \cap (\mathbb{R}^n \setminus E_2))
+        \end{align*}
+        由(a)可知，$\mathbb{R}^n \setminus E_1$和$\mathbb{R}^n \setminus E_2$都是可测的。
+        由刚才的证明可知$(\mathbb{R}^n \setminus E_1) \cap (\mathbb{R}^n \setminus E_2)$也是可测的，
+        再次利用(a)可知，$\mathbb{R}^n \setminus ((\mathbb{R}^n \setminus E_1) \cap (\mathbb{R}^n \setminus E_2))$是可测的。
+
+  \item (d)
+
+        对$N$进行归纳即可证明。
+  \item (e)
+
+        \begin{itemize}
+          \item 开盒子
+
+                任意开盒子为$B = \prod\limits_{i = 1}^n (a_i, b_i)$，
+                于是
+                \begin{align*}
+                  B = \left(\bigcap \limits_{i = 1}^n \{(x_1, x_2, \dots, x_n) \in \mathbb{R}^n : x_i > a_i\}\right)
+                  \bigcap
+                  \left(\bigcap \limits_{i = 1}^n \{(x_1, x_2, \dots, x_n) \in \mathbb{R}^n : x_i < b_i\}\right)
+                \end{align*}
+                （注意，右侧括号内都是半空间平移后的形式）
+
+                由引理18.4.2（半空间都是可测的），并且利用引理(b)(d)(c)可知，$B$是可测的。
+
+          \item 闭盒子
+
+                任意闭盒子为$B = \prod\limits_{i = 1}^n [a_i, b_i]$，
+                因为
+                \begin{align*}
+                  B = (a_1, a_2, \dots, a_n) + \prod\limits_{i = 1}^n [0, b_i - a_i]
+                \end{align*}
+                令$E = \prod\limits_{i = 1}^n [0, b_i - a_i]$，
+                由(b)（平移不变性）可知，我们只需证明$E$是可测的即可。
+
+                又因为
+                \begin{align*}
+                  \mathbb{R}^n \setminus E & = \left(\bigcup \limits_{i = 1}^n \{(x_1, \dots, x_n) \in \mathbb{R}^n : x_i < 0\}\right)
+                  \bigcup \left(\bigcup \limits_{i = 1}^n \{(x_1, \dots, x_n) \in \mathbb{R}^n : x_i > (b_i - a_i)\}\right)
+                \end{align*}
+                由引理18.4.2（半空间都是可测的），并且利用引理(b)(d)(c)可知，
+                $E$是可测的。
+        \end{itemize}
+  \item (f)
+
+        对于$\mathbb{R}^n$的任意子集，我们有
+        \begin{align*}
+          A \cap E \subseteq E
+        \end{align*}
+        利用引理18.2.5(vii)（单调性）可知，
+        \begin{align*}
+          m^{\ast}(A \cap E) \leq m^{\ast}(E) = 0
+        \end{align*}
+        结合引理18.2.5(vi)（正性）可知，
+        \begin{align*}
+          m^{\ast}(A \cap E) = 0
+        \end{align*}
+        因为
+        \begin{align*}
+          A \setminus E \subseteq A
+        \end{align*}
+        再次利用引理18.2.5(vii)（单调性）
+        \begin{align*}
+          m^{\ast}(A \setminus E) \leq m^{\ast}(A)
+        \end{align*}
+        又因为
+        \begin{align*}
+          (A \setminus E) \cup E = A
+        \end{align*}
+        利用引理18.2.5(viii)（有限次可加性）
+        \begin{align*}
+          m^{\ast}(A) & \leq m^{\ast}(A \setminus E) + m^{\ast}(E) \\
+                      & = m^{\ast}(A \setminus E) + 0              \\
+                      & = m^{\ast}(A \setminus E)
+        \end{align*}
+        综上可得
+        \begin{align*}
+          m^{\ast}(A) = m^{\ast}(A \setminus E)
+        \end{align*}
+        于是我们有
+        \begin{align*}
+          m^{\ast}(A) = m^{\ast}(A \cap E) + m^{\ast}(A \setminus E)
+        \end{align*}
+        所以，$E$是可测的。
+
+\end{itemize}
+
+\section*{18.4.5}
+
+\begin{itemize}
+  \item 命题18.3.1中的$E$是不可测集。
+
+  
+
+  \item 命题18.3.3中的$E$是不可测集。
+\end{itemize}
+
+
+\section*{18.4.6}
+（1）
+
+对$J$的基数$n$进行归纳。$\bigcup \limits_{j \in J} E_j$表示成$\bigcup \limits_{j = 1}^n E_j$。
+（可以建立对应双射，细节不做说明了。）
+
+归纳基始$n = 1$时，这是显然的：
+\begin{align*}
+  m^{\ast}(A \cap E_1) = m^{\ast}(A \cap E_1)
+\end{align*}
+
+归纳假设$n = k$时，我们有
+\begin{align*}
+  m^{\ast}(A \cap \bigcup\limits_{j = 1}^k E_j) = \sum \limits_{j = 1}^k m^{\ast}(A \cap E_j)
+\end{align*}
+
+$n = k + 1$时，
+令$F = \bigcup\limits_{j = 1}^k E_j$，
+因为$E_{k + 1}$是可测的，由引理18.4.4(d)可知，$F \cup E_{k + 1}$也是可测的，
+于是我们有
+\begin{align*}
+  m^{\ast}(A \cap (F \cup E_{k + 1}))
+  = m^{\ast}(A \cap (F \cup E_{k + 1}) \cap E_{k + 1}) + m^{\ast}(A \cap (F \cup E_{k + 1}) \setminus E_{k + 1})
+\end{align*}
+
+由命题命题3.1.18可得（有用到$E_j$之间不相交这个条件）
+\begin{align*}
+  A \cap (F \cup E_{k + 1}) \cap E_{k + 1}
+   & = ((A \cap F) \cup (A \cap E_{k + 1})) \cap E_{k + 1}                  \\
+   & = (E_{k + 1} \cap (A \cap F)) \cup (E_{k + 1} \cap (A \cap E_{k + 1})) \\
+   & = E_{k + 1}
+\end{align*}
+又有
+\begin{align*}
+  A \cap (F \cup E_{k + 1}) \setminus E_{k + 1}
+   & = ((A \cap F) \cup (A \cap E_{k + 1})) \setminus E_{k + 1} \\
+   & = A \cap F
+\end{align*}
+（第二个等式可能只能使用集合相等（定义3.1.4）的定义证明了）
+
+综上可得，并结合归纳假设
+\begin{align*}
+  m^{\ast}(A \cap (F \cup E_{k + 1}))
+   & = m^{\ast}(A \cap (F \cup E_{k + 1}) \cap E_{k + 1}) + m^{\ast}(A \cap (F \cup E_{k + 1}) \setminus E_{k + 1}) \\
+   & = m^{\ast}(E_{k + 1}) + m^{\ast}(A \cap F)                                                                     \\
+   & = \sum\limits_{j = 1}^{k + 1} m^{\ast}(A \cap E_{j})
+\end{align*}
+归纳完成。
+
+（2）
+
+令$A = \bigcup\limits_{j \in J} E_j$，代入
+\begin{align*}
+  m^{\ast}(A \cap \bigcup\limits_{j \in J} E_j) & = \sum\limits_{j \in J} m^{\ast}(A \cap E_{j}) \\
+  \implies                                                                                       \\
+  m^{\ast}(\bigcup\limits_{j \in J} E_j)        & = \sum\limits_{j \in J} m^{\ast}(E_{j})
+\end{align*}
+
+
+\end{document}
