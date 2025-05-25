@@ -376,14 +376,30 @@ $(B_j)_{j \in J}$覆盖$A$，使得
 
 \section*{18.4.5}
 
-\begin{itemize}
-  \item 命题18.3.1中的$E$是不可测集。
+反证法，假设$E$是可测的。
+如同在命题18.3.3中描述的，
+由$m^{\ast}(E) \neq 0$可知，存在一个有限的整数$n > 0$使得
+$m^{\ast}(E) = m(E) > 1/n$。现在令$J$表示$\mathbb{Q} \cap [-1, 1]$的基数
+为$3n$的有限子集。$E$是可测的，那么由引理18.4.4(b)和引理18.4.5可知，
+\begin{align*}
+  m\left(\bigcup\limits_{q \in J} q + E\right)
+   & = \sum\limits_{q \in J} m(q + E) \\
+   & = \sum\limits_{q \in J} m(E)     \\
+   & = 3n m^{\ast}(E)                 \\
+   & > 3n \frac{1}{n}                 \\
+   & = 3
+\end{align*}
+即（按照定义18.4.1中的定义）
+\begin{align*}
+  m^{\ast}\left(\bigcup\limits_{q \in J} q + E\right) > 3
+\end{align*}
 
-  
-
-  \item 命题18.3.3中的$E$是不可测集。
-\end{itemize}
-
+而由命题18.3.3中有$\bigcup\limits_{q \in J} q + E \subseteq X$，
+那么
+\begin{align*}
+  m^{\ast}\left(\bigcup\limits_{q \in J} q + E\right) \leq m^{\ast}(X)
+\end{align*}
+这与$1 \leq m^{\ast}(X) \leq 3$矛盾。
 
 \section*{18.4.6}
 （1）
@@ -442,6 +458,66 @@ $n = k + 1$时，
   \implies                                                                                       \\
   m^{\ast}(\bigcup\limits_{j \in J} E_j)        & = \sum\limits_{j \in J} m^{\ast}(E_{j})
 \end{align*}
+
+\section*{18.4.7}
+
+我们有
+\begin{align*}
+  B \setminus A = B \cap (\mathbb{R}^n \setminus A)
+\end{align*}
+因为$A$是可测的，所以由引理18.4.4(a)可知$\mathbb{R}^n \setminus A$是可测的，
+再次利用引理18.4.4(c)可知，$B \cap (\mathbb{R}^n \setminus A)$也是可测的。
+（通过证明过程可以知道，没有用到$A \subseteq B$这个题设）
+
+因为$A \subseteq B$，所以$A, B \setminus A$是不相交的，
+又因为
+\begin{align*}
+  A \cup (B \setminus A) = B
+\end{align*}
+于是由引理18.4.5可知
+\begin{align*}
+  m(A \cup (B \setminus A)) = m(B) = m(A) + m(B \setminus A) \\
+  \implies                                                   \\
+  m(B \setminus A) = m(B) - m(A)
+\end{align*}
+
+\section*{18.4.8}
+
+（1）
+
+按书中的提示，记：
+\[
+  J = \{j_1, j_2, \dots\},
+  F_N = \bigcup\limits_{k = 1}^N \Omega_{j_k},
+  E_N = F_{N} \setminus F_{N - 1}
+\]
+
+于是可得
+\begin{align*}
+  F_N = \bigcup \limits_{n = 1}^N E_n \\
+  \bigcup\limits_{j \in J} \Omega_{j} = \lim\limits_{N \to \infty} F_N = \bigcup \limits_{n = 1}^\infty E_n
+\end{align*}
+因为$E_N$的可测性由推论18.4.8保证，
+又因为$E_N$之间都是不相交的可测集，
+于是由引理18.4.8（可数可加性）可知，
+$\bigcup \limits_{n = 1}^\infty E_n$是可测集，
+进而$\bigcup\limits_{j \in J} \Omega_{j}$是可测集。
+
+（2）
+
+利用命题3.1.28(h)（德摩根定律），我们有
+\begin{align*}
+  \bigcap\limits_{k = 1}^N \Omega_{k} = \mathbb{R}^n \setminus \bigcup\limits_{k = 1}^N (\mathbb{R}^n \setminus \Omega_{k})
+\end{align*}
+于是，我们有
+\begin{align*}
+  \bigcap\limits_{k = 1}^\infty \Omega_{k} = \mathbb{R}^n \setminus \bigcup\limits_{k = 1}^\infty (\mathbb{R}^n \setminus \Omega_{k})
+\end{align*}
+（这里不是从有限版本直接推导出可数无限版本的，需要单独证明下，3-1-comment.tex中有证明）
+
+利用引理16.4.4(a)可知，$\mathbb{R}^n \setminus \Omega_{k}$是可测的，
+并利用刚才的结论，可以完成证明。
+
 
 
 \end{document}
