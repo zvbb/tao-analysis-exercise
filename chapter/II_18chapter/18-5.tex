@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{18.5 习题}
+\author{张志聪}
+\maketitle
+
+\section*{18.5.1}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        如果$f$是可测的，那么对任意开集$V \subseteq \mathbb{R}^m$，$f^{-1}(V)$都是可测的，
+        而开盒子$B$本身就是开集，所以$f^{-1}(B)$是可测的。
+
+  \item $\Leftarrow$
+
+        对任意开集$V \subseteq \mathbb{R}^m$，由引理18.5.10可知，$V$可写成可数个或有限个开盒子的并集，
+        即
+        \begin{align*}
+          V = \bigcup_{B \in \Sigma} B
+        \end{align*}
+        $\Sigma$是一个可数集或者有限集。
+        我们有
+        \begin{align*}
+          f^{-1}(V) = \bigcup_{B \in \Sigma} f^{-1}(B)
+        \end{align*}
+        因为$f^{-1}(B)$是可测的，利用(iv)（$\sigma-$代数性质可知），
+        $\bigcup_{B \in \Sigma} f^{-1}(B)$是可测的，即$f^{-1}(V)$是可测的。
+
+\end{itemize}
+
+\section*{18.5.2}
+
+对任意开集$V \subseteq \mathbb{R}^m$，由引理18.5.10可知，$V$可写成可数个或有限个开盒子的并集，
+即
+\begin{align*}
+  V = \bigcup_{B \in \Sigma} B
+\end{align*}
+$\Sigma$是一个可数集或者有限集。
+对任意开盒子$B \in \Sigma$可以表示成
+\begin{align*}
+  B = \prod\limits_{i=1}^m (a_i, b_i)
+\end{align*}
+对任意$1 \leq j \leq m$，
+令$b_j = (a_j, b_j)$，
+由题设可知，$f_j^{-1}(b_j)$是可测的。
+
+接下来证明：
+\begin{align*}
+  f^{-1}(B) = \bigcap\limits_{j=1}^m f_j^{-1}(b_j)
+\end{align*}
+因为任意$x_0 \in f^{-1}(B)$，那么$f(x_0) \in B$，
+所以对任意$1 \leq j \leq m$都有$f_j(x_0) \in b_j$，否则与$f(x_0) \in B$矛盾，
+于是可得$x_0 \in \bigcap\limits_{j=1}^m f_j^{-1}(b_j)$，进而$f^{-1}(B) \subseteq \bigcap\limits_{j=1}^m f_j^{-1}(b_j)$。
+
+任意$x_0 \in \bigcap\limits_{j=1}^m f_j^{-1}(b_j)$，
+那么对任意$1 \leq j \leq m$都有$f_j(x_0) \in b_j$，
+于是可得$(f_1(x_0), \cdots, f_m(x_0)) \in B$，
+所以$x_0 \in f^{-1}(B)$，进而$\bigcap\limits_{j=1}^m f_j^{-1}(b_j) \subseteq f^{-1}(B)$。
+
+综上可得$f^{-1}(B) = \bigcap\limits_{j=1}^m f_j^{-1}(b_j)$。
+
+因为任意$1 \leq j \leq m$，$f_j^{-1}(b_j)$都是可测的，
+利用引理18.4.4(d)（布尔代数性质）可知$\bigcap\limits_{j=1}^m f_j^{-1}(b_j)$
+是可测的，即$f^{-1}(B)$是可测的。
+
+我们有
+\begin{align*}
+  f^{-1}(V) = \bigcup\limits_{B \in \Sigma} f^{-1}(B)
+\end{align*}
+
+由开盒子$B$的任意性和$\sigma$代数性质可知$\bigcup\limits_{B \in \Sigma} f^{-1}(B)$是可测的，
+即$f^{-1}(V)$是可测的。
+
+综上可得，$f$是可测函数。
+
+\section*{18.5.3}
+
+对任意开集$V \subseteq \mathbb{R}^p$，
+由引理18.5.2（连续函数是可测的）可知，
+$g^{-1}(V)$是可测的。
+
+因为$g^{-1}(V) \subseteq W$，且由题设可知$f$是可测的，
+所以$f^{-1}(g^{-1}(V))$是可测的。
+
+接下来我们需要证明：
+\begin{align*}
+  f^{-1}(g^{-1}(V)) = (g \circ f)^{-1}(V)
+\end{align*}
+
+任意$x_0 \in f^{-1}(g^{-1}(V))$，
+那么$f(x_0) \in g^{-1}(V)$，
+进而$g(f(x_0)) \in V$，即$g \circ f(x_0) \in V$，
+所以$x_0 \in (g \circ f)^{-1}(V)$，
+从而可得$f^{-1}(g^{-1}(V)) \subseteq (g \circ f)^{-1}(V)$。
+
+任意$x_0 \in (g \circ f)^{-1}(V)$，
+那么$g \circ f(x_0) \in V$，
+即$g(f(x_0)) \in V$，
+于是可得$f(x_0) \in g^{-1}(V)$，
+进而$x_0 \in f^{-1}(g^{-1}(V))$，
+从而可得$(g \circ f)^{-1}(V) \subseteq f^{-1}(g^{-1}(V))$。
+
+综上可得$f^{-1}(g^{-1}(V)) = (g \circ f)^{-1}(V)$。
+
+所以$(g \circ f)^{-1}(V)$也是可测的。
+
+\section*{18.5.4}
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+        因为$(a, \infty) \subseteq \mathbb{R}$，
+        于是由$f$是可测的可得，$f^{-1}((a, \infty))$是可测的。
+
+  \item $\Leftarrow$
+
+        先证明如果对于所有的$a$，$f^{-1}((a, \infty))$都是可测的，
+        那么对于所有的$a$，$f^{-1}([a, \infty))$也是可测的。
+
+        我们有
+        \begin{align*}
+          [a, \infty) = \bigcap\limits_{n = 1}^\infty (a - \frac{1}{n}, \infty)
+        \end{align*}
+        $f^{-1}$保持集合运算，我们有：
+        \begin{align*}
+          f^{-1}([a, \infty)) & = f^{-1}\left(\bigcap\limits_{n = 1}^\infty (a - \frac{1}{n}, \infty)\right) \\
+                              & = \bigcap\limits_{n = 1}^\infty f^{-1}((a - \frac{1}{n}, \infty))
+        \end{align*}
+        由于$f^{-1}((a - \frac{1}{n}, \infty))$都是可测的，由$\sigma-$代数性质可得
+        \begin{align*}
+          f^{-1}([a, \infty)) = \bigcap\limits_{n = 1}^\infty f^{-1}((a - \frac{1}{n}, \infty))
+        \end{align*}
+        是可测的。
+
+        任意开集$V \subseteq \mathbb{R}$，
+        由引理18.4.10可知，$V$可写成可数个或有限个开盒子的并集，
+        即
+        \begin{align*}
+          V = \bigcup_{B \in \Sigma} B
+        \end{align*}
+        $\Sigma$是一个可数集或者有限集。
+
+        对任意开盒子$B \in \Sigma$，
+        $B$是一维空间中的开盒子，于是可表示成$(a, b)$其中$a, b$都是实数。
+        我们有
+        \begin{align*}
+          B = (a, b) = (a, \infty) \setminus [b, \infty)
+        \end{align*}
+        有题设可知$f^{-1}((a, \infty)), f^{-1}([b, \infty))$都是可测的，
+        于是我们有
+        \begin{align*}
+          f^{-1}(B) & = f^{-1}((a, \infty) \setminus [b, \infty))         \\
+                    & = f^{-1}((a, \infty)) \setminus f^{-1}([b, \infty))
+        \end{align*}
+        利用推论18.4.7可知，$f^{-1}(B)$是可测的。 
+\end{itemize}
+
+\end{document}
