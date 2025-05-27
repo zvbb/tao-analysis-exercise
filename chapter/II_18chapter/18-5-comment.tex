@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{18.5 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  证明：
+  \begin{align*}
+    g^{-1}((a, +\infty]) = \bigcup\limits_{n \geq 1} f_n^{-1}((a, +\infty])
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+这是上确界函数，书中没找到明确定义的地方，这里先说明一下：
+
+$\sup\limits_{n \geq 1} f_n$ 表示一系列函数${f_n}$（其中 $n \geq 1$）的上确界函数。
+具体来说，对于每一个自变量$x$，
+这个函数的值是所有函数$f_n$在$x$处的上确界（即最小的上界）。
+数学表达式为：
+\begin{align*}
+  \left( \sup\limits_{n \geq 1} f_n \right)(x) = \sup(f_1(x), f_2(x), \cdots, f_n(x))
+\end{align*}
+
+\begin{itemize}
+  \item 从右到左
+
+        设任意$x_0 \in g^{-1}((a, +\infty])$，
+        那么$g(x_0) \in (a, +\infty]$，
+        由上确界函数的定义可知，存在$f_n(x_0) = g(x_0)$，
+        从而$g^{-1}((a, +\infty]) \subseteq \bigcup\limits_{n \geq 1} f_n^{-1}((a, +\infty])$。
+
+  \item 从左到右
+
+        设任意$x_0 \in \bigcup\limits_{n \geq 1} f_n^{-1}((a, +\infty])$，
+        那么存在某个$n$，使得$f_n(x_0) \in (a, +\infty]$，
+        于是我们有
+        \begin{align*}
+          g(x_0) \geq f_n(x_0) > a
+        \end{align*}
+        所以$x_0 \in g^{-1}((a, +\infty])$，
+        从而$\bigcup\limits_{n \geq 1} f_n^{-1}((a, +\infty]) \subseteq g^{-1}((a, +\infty])$。
+\end{itemize}
+
+
+
+\end{document}
