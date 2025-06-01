@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{19.1 习题}
+\author{张志聪}
+\maketitle
+
+\section*{19.1.1}
+
+ (1)
+
+因为 $f$ 是简单函数，设 $f(\Omega) = \{c_1, c_2, \cdots, c_N\}$，定义：
+\[
+  E_j := \{x \in \Omega : f(x) = c_j\}, \quad 1 \leq j \leq N
+\]
+这些集合两两不交，且 $\bigcup_{j=1}^N E_j = \Omega$。
+
+同理，设 $g(\Omega) = \{d_1, d_2, \cdots, d_M\}$，定义：
+\[
+  X_k := \{x \in \Omega : g(x) = d_k\}, \quad 1 \leq k \leq M
+\]
+这些集合也两两不交，且 $\bigcup_{k=1}^M X_k = \Omega$。
+
+考虑集合：
+\[
+  W := \{W_{j,k} := E_j \cap X_k : 1 \leq j \leq N,\ 1 \leq k \leq M\}
+\]
+由于交集运算，$W_{j,k}$ 两两不交，且它们的并集仍为 $\Omega$，因此 $W$ 构成了 $\Omega$ 的一个有限划分。
+
+对任意 $x \in \Omega$，存在唯一的 $j,k$ 使得 $x \in W_{j,k}$，此时有：
+\[
+  (f + g)(x) = f(x) + g(x) = c_j + d_k
+\]
+因为 $c_j + d_k$ 的可能取值至多为 $N \times M$ 个有限个数，所以 $f + g$ 的取值是有限的。
+
+因此，$f + g$ 是简单函数。
+
+(2)
+
+特别地$cf$也是简单函数。此时$cf(\Omega) = \{c \times c_1, c \times c_2, \cdots,c \times c_N\}$，
+满足简单函数的定义。
+
+\section*{19.1.2}
+
+因为 $f$ 是简单函数，设 $f(\Omega) = \{c_1, c_2, \cdots, c_N\}$，定义：
+\[
+  E_j := \{x \in \Omega : f(x) = c_j\}, \quad 1 \leq j \leq N
+\]
+这些集合两两不交，且 $\bigcup_{j=1}^N E_j = \Omega$。
+
+因为$f$是可测函数，所以对任意$1 \leq j \leq N$，$f^{-1}(c_j) = E_j$都是可测集合。
+
+对于任意$x \in \Omega$，存在$E_j$使得$x \in E_j$，此时$f(x) = c_j$，
+又因为对
+\begin{align*}
+  \sum \limits_{i = 1}^N c_i \chi_{E_i} (x)
+\end{align*}
+当$i \neq j$时，由特征函数的定义可知$c_i \chi_{E_i} = 0 $;
+
+当$i = j$时，由特征函数的定义可知$c_i \chi_{E_i} = c_j$;
+
+所以
+\begin{align*}
+  \sum \limits_{i = 1}^N c_i \chi_{E_i}(x) = c_j
+\end{align*}
+
+综上可得
+\begin{align*}
+  f(x) = \sum \limits_{i = 1}^N c_i \chi_{E_i}(x)
+\end{align*}
+
+由$x$的任意性可知，$f =  \sum \limits_{i = 1}^N c_i \chi_{E_i}$
+
+\section*{19.1.3}
+
+设$(f_n)_{n = 1}^\infty$是函数序列，其中$f_n:  \Omega \to \mathbb{R}$，
+\begin{align*}
+  f_n(x) = \sup\{\frac{j}{2^n}: j \in \mathbb{Z}, \frac{j}{2^n} \leq min(f(x), 2^n)\}
+\end{align*}
+接下来证明该序列是否满足所需的性质。
+
+(1) 证明$f_1(x) \geq 0$。
+\begin{align*}
+  f_1(x) & = \sup\{\frac{j}{2^1}: j \in \mathbb{Z}, \frac{j}{2^1} \leq min(f(x), 2^1)\} \\
+         & = \sup\{\frac{j}{2}: j \in \mathbb{Z}, \frac{j}{2} \leq min(f(x), 2)\}       \\
+\end{align*}
+因为$f$是非负的，所以$min(f(x), 2) \geq 0$。
+
+现在证明$f_1(x) \geq 0$，反证法，假设$f_1(x) < 0$，
+即
+\begin{align*}
+  f_1(x) = \sup\{\frac{j}{2}: j \in \mathbb{Z}, \frac{j}{2} \leq min(f(x), 2)\} < 0
+\end{align*}
+当$j = 0$时，$0 \in \{\frac{j}{2}: j \in \mathbb{Z}, \frac{j}{2} \leq min(f(x), 2)\}$，
+这与上确界$f_1(x) < 0$矛盾，假设不成立。
+
+(2) 证明$(f_n)_{n = 1}^\infty$序列是递增的，即$f_n(x) \leq f_{n + 1}(x)$。
+
+我们有
+\begin{align*}
+  f_n(x)       & = \sup\{\frac{j}{2^n}: j \in \mathbb{Z}, \frac{j}{2^n} \leq min(f(x), 2^n)\}                   \\
+  f_{n + 1}(x) & = \sup\{\frac{j}{2^{n + 1}}: j \in \mathbb{Z}, \frac{j}{2^{n + 1}} \leq min(f(x), 2^{n + 1})\}
+\end{align*}
+
+因为$2^n < 2^{n + 1}$，所有
+\begin{align*}
+  min(f(x), 2^n) & \leq min(f(x), 2^{n + 1})
+\end{align*}
+
+反证法，假设$f_n(x) > f_{n + 1}(x)$，即存在
+$y \in \{\frac{j}{2^n}: j \in \mathbb{Z}, \frac{j}{2^n} \leq min(f(x), 2^n)\}$使得
+\begin{align*}
+  y > f_{n + 1}(x)
+\end{align*}
+$y$可表示成$\frac{j_0}{2^n}$的形式，即$y = \frac{j_0}{2^n}$，
+于是我们有
+\begin{align*}
+  \frac{j_0}{2^n} > f_{n + 1}(x)
+\end{align*}
+于是可得
+\begin{align*}
+  \frac{j_0}{2^n} \leq min(f(x), 2^n) \leq min(f(x), 2^{n + 1})
+\end{align*}
+这表明$\frac{j_0}{2^n} = \frac{2j_0}{2^{n + 1}} \in \{\frac{j}{2^{n + 1}}: j \in \mathbb{Z}, \frac{j}{2^{n + 1}} \leq min(f(x), 2^{n + 1})\}$，
+于是存在矛盾。
+
+(3) 证明$(f_n)_{n = 1}^\infty$序列逐点收敛于$f$。
+
+对任意$x_0 \in \Omega, \epsilon > 0$。
+我们有
+\begin{align*}
+  \lim\limits_{n \to \infty} 2^n = +\infty
+\end{align*}
+因为$f(x_0)$是定值，所以存在$N \geq 1$使得只要$n \geq N$，就有
+\begin{align*}
+  2^n \geq f(x_0)
+\end{align*}
+于是可得，当$n \geq N$时，
+\begin{align*}
+  min(f(x_0), 2^n) = f(x_0)
+\end{align*}
+
+存在$k \in \mathbb{Z}$使得$\frac{k}{2^n} \leq f_n(x_0) < \frac{k+1}{2^n}$（参考习题5.5.2），
+又有
+\begin{align*}
+  \frac{k}{2^n} \in \{\frac{j}{2^n}: j \in \mathbb{Z}, \frac{j}{2^n} \leq min(f(x_0), 2^n) = f(x_0)\}
+\end{align*}
+综上可得，存在$n \geq N$使得
+\begin{align*}
+  |f_n(x_0) - f(x_0)| < \frac{1}{2^n}
+\end{align*}
+因为
+\begin{align*}
+  \lim\limits_{n \to \infty} \frac{1}{2^n} = 0
+\end{align*}
+所以存在$N^\prime \geq N$，使得
+\begin{align*}
+  \frac{1}{2^n} < \epsilon
+\end{align*}
+
+综上，对任意$x_0 \in \Omega, \epsilon > 0$，存在$N^\prime$，使得只要$n \geq N^\prime$，就有
+\begin{align*}
+  |f_n(x_0) - f(x_0)| < \epsilon
+\end{align*}
+所以$(f_n)_{n = 1}^\infty$序列逐点收敛于$f$。
+
+\end{document}
