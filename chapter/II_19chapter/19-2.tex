@@ -1,0 +1,383 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{19.2 习题}
+\author{张志聪}
+\maketitle
+
+\section*{19.2.1}
+
+\begin{itemize}
+  \item (a)
+
+        (1)
+
+        因为$0$是从下方控制$f$的非负简单函数，因此可得
+        \begin{align*}
+          0 \leq \int_{\Omega} f \leq +\infty
+        \end{align*}
+
+        (2)
+        \begin{itemize}
+          \item $\Rightarrow$
+
+                考虑集合
+                \begin{align*}
+                  A : = \{x \in \Omega : f(x) > 0\}
+                \end{align*}
+                我们要证明这个集合的测度为零。
+
+                对于任意的$n \in \mathbb{N}^+$，定义
+                \begin{align*}
+                  A_n : = \{x \in \Omega : f(x) > \frac{1}{n}\}
+                \end{align*}
+                显然$A_n \subseteq A$，并且
+                \begin{align*}
+                  A = \bigcup_{n = 1}^{\infty} A_n
+                \end{align*}
+                因为在$A_n$上，$f(x) \geq \frac{1}{n}$，于是我们有
+                \begin{align*}
+                  \int_{\Omega} f \geq \int_{A_n} f \geq \int_{A_n} \frac{1}{n} = \frac{1}{n} m(A_n) \geq 0
+                \end{align*}
+                （注意没有用到(c)，因为这个可以通过定义19.2.2和命题19.1.10推出）
+
+                通过题设可知，$\int_{\Omega} f = 0$，所以
+                \begin{align*}
+                  \frac{1}{n} m(A_n) \leq 0 \\
+                  \implies                  \\
+                  m(A_n) = 0
+                \end{align*}
+                于是，我们有
+                \begin{align*}
+                  m(A) = m(\bigcup_{n = 1}^{\infty} A_n) \leq \sum_{n = 1}^{\infty} m(A_n) = 0
+                \end{align*}
+                命题得证。
+
+          \item $\Leftarrow$
+
+                设
+                \begin{align*}
+                  A = \{x \in \Omega : f(x) \neq 0\}
+                \end{align*}
+                由题设可知
+                \begin{align*}
+                  m(A) = 0
+                \end{align*}
+                于是由命题19.1.10(a)可知，
+                对所有$s$是一个非负简单函数，并且$s$从下方控制$f$的函数，我们有
+                \begin{align*}
+                  \int_{\Omega} s = 0
+                \end{align*}
+                所以
+                \begin{align*}
+                  \int_{\Omega} f = 0
+                \end{align*}
+        \end{itemize}
+
+  \item (b)
+
+        考虑集合
+        \begin{align*}
+          A = \{\int_{\Omega} s: s \text{是一个非负简单函数，并且$s$是从下方控制$f$}\} \\
+          B = \{\int_{\Omega} s: s \text{是一个非负简单函数，并且$s$是从下方控制$cf$}\}
+        \end{align*}
+
+        对任意$s$从下方控制$f$时，$cs$也从下方控制$cf$（反之亦成立）。
+        而且由命题19.1.10(c)可知，
+        \begin{align*}
+          \int_{\Omega} cs = c \int_{\Omega} s
+        \end{align*}
+        于是可得
+        \begin{align*}
+          x \in A         \\
+          \Leftrightarrow \\
+          cx \in B
+        \end{align*}
+        所以
+        \begin{align*}
+          \sup(B) = c \sup(A)
+        \end{align*}
+        即：
+        \begin{align*}
+          \int_{\Omega} cf = c \int_{\Omega} f
+        \end{align*}
+
+  \item (c)
+
+        考虑集合
+        \begin{align*}
+          A = \{\int_{\Omega} s: s \text{是一个非负简单函数，并且$s$是从下方控制$f$}\} \\
+          B = \{\int_{\Omega} s: s \text{是一个非负简单函数，并且$s$是从下方控制$g$}\}
+        \end{align*}
+
+        由题设可知，对任意$s$从下方控制$f$时，$s$也从下方控制$g$。
+        于是可得
+        \begin{align*}
+          x \in A
+          \implies
+          x \in B
+          \implies
+          A \subseteq B
+        \end{align*}
+        于是我们有
+        \begin{align*}
+          sup(A) \leq sup(B)
+        \end{align*}
+        即
+        \begin{align*}
+          \int_{\Omega} f \leq \int_{\Omega} g
+        \end{align*}
+  \item (d)
+
+        考虑集合
+        \begin{align*}
+          A : = \{x \in \Omega : f(x) \neq g(x)\}
+        \end{align*}
+        有题设可知$m(A) = 0$。
+
+        对任意$\epsilon > 0$，由定义19.2.2（通过上确界的方式定义的）可知，
+        存在一个非负简单函数$s$，使得
+        \begin{align*}
+          \int_{\Omega} f - \epsilon < \int_{\Omega} s
+        \end{align*}
+        定义一个$s^\prime$从下方控制$g$，
+        \begin{equation*}
+          s^\prime(x) = \begin{cases}
+            0    & \text{if } x \in A    \\
+            s(x) & \text{if } x \notin A
+          \end{cases}
+        \end{equation*}
+        于是可得
+        \begin{align*}
+          \int_{\Omega} s^\prime \leq \int_{\Omega} g
+        \end{align*}
+        令$h = s - s^\prime$，于是由命题19.1.10(a)可知
+        \begin{align*}
+          \int_{\Omega} h = 0
+        \end{align*}
+        因为$s = h + s^\prime$，于是由命题19.1.10(b)可知
+        \begin{align*}
+          \int_{\Omega} s = \int_{\Omega} h + \int_{\Omega} s^\prime = \int_{\Omega} s^\prime
+        \end{align*}
+        综上可得
+        \begin{align*}
+          \int_{\Omega} f - \epsilon < \int_{\Omega} s^\prime \leq \int_{\Omega} g
+        \end{align*}
+        由$\epsilon$的任意性可得
+        \begin{align*}
+          \int_{\Omega} f \leq \int_{\Omega} g
+        \end{align*}
+        类似地，可得
+        \begin{align*}
+          \int_{\Omega} g \leq \int_{\Omega} f
+        \end{align*}
+        所以
+        \begin{align*}
+          \int_{\Omega} g  = \int_{\Omega} f
+        \end{align*}
+
+  \item (e)
+
+        命题有些错误，应该是：
+
+        \textbf{如果$\Omega^\prime \subseteq \Omega$是一个可测集，
+          那么$\int_{\Omega^\prime} f = \int_{\Omega} f_{\chi_{\Omega^\prime}} \leq \int_{\Omega} f$，
+          其中$f_{\chi_{\Omega^\prime}}$表示只在$\Omega^\prime$上保留$f$的值，其它地方为0。
+        }
+
+        (1)先证明$f$是非负简单函数时，命题成立。
+
+        因为在$\Omega$上，$f \geq f_{\chi_{\Omega^\prime}}$，由命题19.1.10(d)可得
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} \leq \int_{\Omega} f
+        \end{align*}
+
+        因为 $f$ 是非负简单函数，设 $f(\Omega^\prime) = \{c_1, c_2, \cdots, c_N\}$，定义：
+        \[
+          E_j := \{x \in \Omega^\prime : f(x) = c_j\}, \quad 1 \leq j \leq N
+        \]
+        这些集合两两不交，且 $\bigcup_{j=1}^N E_j = \Omega^\prime$。
+        由引理19.1.9，$\int_{\Omega^\prime} f$可表示为
+        \begin{align*}
+          \int_{\Omega^\prime} f = \sum\limits_{j = 1}^N c_j m(E_j)
+        \end{align*}
+
+        记$E_0 = \Omega \setminus \Omega^\prime$，由题设可知$E_0$是可测集（因为可以被$f^{-1}$表示出来，
+        而且$f$是可测函数。），
+        且与$E_j, 1 \leq j \leq N$不相交，
+        于是由引理19.1.9，$\int_{\Omega} f_{\chi_{\Omega^\prime}}$可表示为
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}}
+           & = \sum\limits_{j = 0}^N c_j m(E_j)                   \\
+           & = 0 \times m(E_0) + \sum\limits_{j = 1}^N c_j m(E_j) \\
+           & = \sum\limits_{j = 1}^N c_j m(E_j)                   \\
+           & = \int_{\Omega^\prime} f
+        \end{align*}
+
+        (2) $f$是非负可测函数，命题成立。
+
+        因为在$\Omega$上，$f \geq f_{\chi_{\Omega^\prime}}$，由(c)可得
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} \leq \int_{\Omega} f
+        \end{align*}
+
+        对任意$\epsilon > 0$，存在一个非负简单函数$s$，并且从下方控制$f$，使得
+        \begin{align*}
+          \int_{\Omega^\prime} f - \epsilon < \int_{\Omega^\prime} s
+        \end{align*}
+        令
+        \begin{equation*}
+          s^\prime(x) = \begin{cases}
+            0    & \text{if } x \in \Omega \setminus \Omega^\prime \\
+            s(x) & \text{if } x \notin \Omega^\prime
+          \end{cases}
+        \end{equation*}
+        于是$s^\prime$是一个非负简单函数，并且从下方控制$f_{\chi_{\Omega^\prime}}$，
+        所以
+        \begin{align*}
+          \int_{\Omega} s^\prime \leq \int_{\Omega} f_{\chi_{\Omega^\prime}}
+        \end{align*}
+        又由(1)可知
+        \begin{align*}
+          \int_{\Omega^\prime} s = \int_{\Omega} s^\prime
+        \end{align*}
+        综上可得
+        \begin{align*}
+          \int_{\Omega^\prime} f - \epsilon < \int_{\Omega} f_{\chi_{\Omega^\prime}} \\
+          \implies                                                                   \\
+          \int_{\Omega^\prime} f \leq \int_{\Omega} f_{\chi_{\Omega^\prime}}
+        \end{align*}
+
+        类似的，存在一个非负简单函数$s$，并且从下方控制$f_{\chi_{\Omega^\prime}}$，使得
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} - \epsilon < \int_{\Omega} s
+        \end{align*}
+        令
+        \begin{equation*}
+          s^\prime(x) = s(x) \;\;\; x \in \Omega^\prime
+        \end{equation*}
+        由于$s$是从下方控制$f_{\chi_{\Omega^\prime}}$，
+        于是$\Omega \setminus \Omega^\prime$上$s(x) = 0$，
+        于是由(1)，我们有
+        \begin{align*}
+          \int_{\Omega^\prime} s^\prime = \int_{\Omega} s
+        \end{align*}
+        又因为$s^\prime$从下方控制$f$，所以
+        \begin{align*}
+          \int_{\Omega^\prime} s^\prime \leq \int_{\Omega^\prime} f
+        \end{align*}
+        综上可得
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} - \epsilon < \int_{\Omega^\prime} f \\
+          \implies                                                                   \\
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} \leq \int_{\Omega^\prime} f
+        \end{align*}
+
+        综上，我们有
+        \begin{align*}
+          \int_{\Omega} f_{\chi_{\Omega^\prime}} = \int_{\Omega^\prime} f
+        \end{align*}
+
+\end{itemize}
+
+\section*{19.2.2}
+
+对任意$\epsilon > 0$，存在非负简单函数$s_f, s_g$，分别从下方控制$f, g$，使得
+\begin{align*}
+  \int_{\Omega} f - \frac{1}{2}\epsilon < \int_{\Omega} s_f \\
+  \int_{\Omega} g - \frac{1}{2}\epsilon < \int_{\Omega} s_g
+\end{align*}
+因为
+\begin{align*}
+  s_f(x) \leq f(x) \\
+  s_g(x) \leq g(x)
+\end{align*}
+于是，我们有
+\begin{align*}
+  (s_f + s_g)(x) \leq (f + g)(x)
+\end{align*}
+即非负简单函数$s_f + s_g$从下方控制$f + g$，于是我们有
+\begin{align*}
+  \int_{\Omega} s_f + s_g \leq \int_{\Omega} (f + g)
+\end{align*}
+由命题19.1.10可知，
+\begin{align*}
+  \int_{\Omega} s_f + s_g =  \int_{\Omega} f + \int_{\Omega} g
+\end{align*}
+综上可得
+\begin{align*}
+  \int_{\Omega} f + \int_{\Omega} g - \epsilon < \int_{\Omega} s_f + \int_{\Omega} s_g = \int_{\Omega} s_f + s_g \leq \int_{\Omega} (f + g) \\
+  \implies \\
+  \int_{\Omega} f + \int_{\Omega} g \leq \int_{\Omega} (f + g)
+\end{align*}
+
+\section*{19.2.3}
+
+考虑序列$(F_N)_{N = 1}^\infty$，其中
+\begin{align*}
+  F_N : = \sum \limits_{n = 1}^N g_n
+\end{align*}
+因为$f_n$都是非负可测函数，于是我们有
+\begin{align*}
+  0 \leq F_1 \leq F_2 \leq \cdots 
+\end{align*}
+且有推论18.5.7可知，$F_N$都是非负可测函数。
+于是利用定理19.2.9，我们有
+\begin{align*}
+  \int_{\Omega} \sup\limits_{N} F_N = \sup\limits_{N} \int_{\Omega} F_N
+\end{align*}
+
+因为$(F_N)_{N = 1}^\infty$是单调的递增序列，
+于是有
+\begin{align*}
+  \sum \limits_{n = 1}^\infty g_n = \lim\limits_{N \to \infty} F_N = \sup\limits_{N} F_N
+\end{align*}
+（第二个等式的证明在19-2-comment.tex中有）\\
+于是
+\begin{align*}
+  \int_{\Omega} \sup\limits_{N} F_N  = \int_{\Omega} \sum \limits_{n = 1}^\infty g_n 
+\end{align*}
+
+同理可得（考虑$\int_{\Omega} F_N = \sum \limits_{n = 1}^N \int_{\Omega} g_n $），
+\begin{align*}
+  \sup\limits_{N} \int_{\Omega} F_N = \sum \limits_{n = 1}^\infty \int_{\Omega} g_n 
+\end{align*}
+
+综上，我们有
+\begin{align*}
+  \int_{\Omega} \sum \limits_{n = 1}^\infty g_n = \sum \limits_{n = 1}^\infty \int_{\Omega} g_n
+\end{align*}
+
+\end{document}
