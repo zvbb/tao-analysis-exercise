@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{19.3 习题}
+\author{张志聪}
+\maketitle
+
+\section*{19.3.1}
+
+我们有
+\begin{align*}
+  \left| \int_{\Omega} f \right|
+  = \left|\int_{\Omega} f^+ - \int_{\Omega} f^-\right|
+\end{align*}
+因为$\int_{\Omega} f^+, \int_{\Omega} f^-$都是非负的有限实数，
+运用实数的三角不等式， 我们有
+\begin{align*}
+  \left|\int_{\Omega} f^+ - \int_{\Omega} f^-\right| \leq \int_{\Omega} f^+ + \int_{\Omega} f^-
+\end{align*}
+综上可得
+\begin{align*}
+  \left| \int_{\Omega} f \right| \leq \int_{\Omega} f^+ + \int_{\Omega} f^-
+\end{align*}
+
+利用引理19.2.10，我们有
+\begin{align*}
+  \int_{\Omega} |f|
+   & = \int_{\Omega} f^+ + f^-               \\
+   & = \int_{\Omega} f^+ + \int_{\Omega} f^-
+\end{align*}
+
+所以，综上
+\begin{align*}
+  \left| \int_{\Omega} f \right| \leq \int_{\Omega} f^+ + \int_{\Omega} f^- = \int_{\Omega} |f|
+\end{align*}
+
+\section*{19.3.2}
+
+\begin{itemize}
+  \item (a)
+
+        $f$是绝对可积函数，即$\int_{\Omega} |f| < \infty$是有限的，
+        于是由命题19.2.6可知，
+        \begin{align*}
+          \int_{\Omega} |cf|
+           & = \int_{\Omega} |c||f|          \\
+           & = |c|\int_{\Omega} |f| < \infty
+        \end{align*}
+        所以，$cf$也是绝对可积函数。
+
+        \begin{itemize}
+          \item $c = 0$
+
+                于是$cf = 0$，易得
+                \begin{align*}
+                  \int_{\Omega} cf = 0 = c \int_{\Omega} f
+                \end{align*}
+
+          \item $c > 0$
+
+                于是由定义19.3.2和命题19.2.6(b)可知，
+                \begin{align*}
+                  \int_{\Omega} cf
+                   & = \int_{\Omega} (cf)^+ - \int_{\Omega} (cf)^- \\
+                   & = \int_{\Omega} cf^+ - \int_{\Omega} cf^-     \\
+                   & = c \int_{\Omega} f^+ - c \int_{\Omega} f^-   \\
+                   & = c \int_{\Omega} f
+                \end{align*}
+
+          \item $c < 0$
+
+                此时，我们有
+                \begin{align*}
+                  (cf)^+ = |c|f^- \\
+                  (cf)^- = |c|f^+
+                \end{align*}
+
+                于是由定义19.3.2和命题19.2.6(b)可知，
+                \begin{align*}
+                  \int_{\Omega} cf
+                   & = \int_{\Omega} (cf)^+ - \int_{\Omega} (cf)^- \\
+                   & = \int_{\Omega} |c|f^- - \int_{\Omega} |c|f^+ \\
+                   & = |c|\int_{\Omega} f^- - |c|\int_{\Omega} f^+ \\
+                   & = |c|(\int_{\Omega} f^- - \int_{\Omega} f^+)  \\
+                   & = |c| (- \int_{\Omega} f)                     \\
+                   & = c \int_{\Omega} f
+                \end{align*}
+        \end{itemize}
+
+        综上可得
+        \begin{align*}
+          \int_{\Omega} c f = c \int_{\Omega} f
+        \end{align*}
+
+  \item (b)
+
+        我们有
+        \begin{align*}
+          \int_{\Omega} |f| < \infty \\
+          \int_{\Omega} |g| < \infty
+        \end{align*}
+
+        对任意$x \in \Omega$，我们有
+        \begin{align*}
+          |(f + g)(x)| = |f(x) + g(x)| \leq |f(x)| + |g(x)|
+        \end{align*}
+        即
+        \begin{align*}
+          |f + g| \leq |f| + |g|
+        \end{align*}
+        于是利用19.2.6(c)可得
+        \begin{align*}
+          \int_{\Omega} |f + g| \leq \int_{\Omega} |f| + \int_{\Omega} |g| < \infty
+        \end{align*}
+        所以，$f + g$是绝对可积函数。
+
+        (2)
+
+        我们有
+        \begin{align}
+          f + g & = (f + g)^+ - (f + g)^-     \\
+          f + g & = (f^+ - f^-) + (g^+ - g^-)
+        \end{align}
+        由(1)(2)可得
+        \begin{align*}
+          (f + g)^+ + f^- + g^- = (f+g)^- + f^+ + g^+
+        \end{align*}
+
+        因为等式两边都是非负可测函数，利用引理19.2.10可得
+        \begin{align*}
+          \int_{\Omega} (f + g)^+ + f^- + g^-                             & = \int_{\Omega} (f+g)^- + f^+ + g^+                                             \\
+          \int_{\Omega} (f + g)^+ + \int_{\Omega} f^- + \int_{\Omega} g^- & = \int_{\Omega} (f+g)^- + \int_{\Omega} f^+ + \int_{\Omega} g^+                 \\
+          \int_{\Omega} (f + g)^+ - \int_{\Omega} (f+g)^-                 & = \int_{\Omega} f^+ - \int_{\Omega} f^- + \int_{\Omega} g^+ - \int_{\Omega} g^- \\
+          \int_{\Omega} (f + g)                                           & = \int_{\Omega} f + \int_{\Omega} g
+        \end{align*}
+
+  \item (c)
+
+        因为$f(x) \leq g(x)$，于是可得
+        \begin{align*}
+          f^+(x) \geq g^+(x) \\
+          f^-(x) \leq g^-(x)
+        \end{align*}
+        所以
+        \begin{align*}
+          \int_{\Omega} f^+ - \int_{\Omega} f^- \leq \int_{\Omega} g^+ - \int_{\Omega} g^- \\
+          \implies                                                                         \\                                                                        \\
+          \int_{\Omega} f \leq \int_{\Omega} g
+        \end{align*}
+
+  \item (d)
+
+        由命题19.2.6(d)可知，
+        \begin{align*}
+          \int_{\Omega} f^+ = \int_{\Omega} g^+ \\
+          \int_{\Omega} f^- = \int_{\Omega} g^-
+        \end{align*}
+        所以
+        \begin{align*}
+          \int_{\Omega} f^+  + \int_{\Omega} f^- = \int_{\Omega} g^+ + \int_{\Omega} g^- \\
+          \implies                                                                       \\
+          \int_{\Omega} f = \int_{\Omega} g
+        \end{align*}
+
+\end{itemize}
+
+\end{document}
