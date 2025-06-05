@@ -115,7 +115,7 @@
 \begin{itemize}
   \item $\sup\limits_{n} s_n$是一个函数；
   \item 它在每个点$x$的取值是实数序列$(s_n(x))_{n = 1}^\infty$的上确界（注意不是极限点。
-  因为实数序列只要有界，就有上确界，但序列本身不一定收敛）。
+        因为实数序列只要有界，就有上确界，但序列本身不一定收敛）。
 \end{itemize}
 
 对任意$x \in \Omega$，
@@ -130,12 +130,12 @@ $(s_n)_{n = 1}^\infty$逐点收敛于$f$可知，$f(x) = +\infty$，
 \end{align*}
 
 如果$(\sup\limits_{n} s_n)(x)$是实数，
-那么对任意$\epsilon > 0$，存在$N_0$，使得只要$n \geq N_0$，就有 
+那么对任意$\epsilon > 0$，存在$N_0$，使得只要$n \geq N_0$，就有
 \begin{align}
   |(\sup\limits_{n} s_n)(x) - s_n(x)| < \frac{1}{2}\epsilon
 \end{align}
 
-$(s_n)_{n = 1}^\infty$逐点收敛于$f$，那么存在$N_1$，使得只要$n \geq N_1$，就有 
+$(s_n)_{n = 1}^\infty$逐点收敛于$f$，那么存在$N_1$，使得只要$n \geq N_1$，就有
 \begin{align}
   |f(x) - s_n(x)| < \frac{1}{2}\epsilon
 \end{align}
@@ -148,5 +148,53 @@ $(s_n)_{n = 1}^\infty$逐点收敛于$f$，那么存在$N_1$，使得只要$n \g
 \end{align*}
 由$\epsilon$的任意性可知，$(\sup\limits_{n} s_n)(x) = f(x)$，
 由$x$的任意性可知，$\sup\limits_{n} s_n = f$。
+
+\begin{zremark}
+  法都引理如何推导出：极限函数的积分不可能大于初始积分（的极限）。
+\end{zremark}
+
+\textbf{证明：}
+
+我们需要证明以下不等式成立：
+\begin{align*}
+  \int_{\Omega} \lim\limits_{n \to \infty} f_n \leq \lim\limits_{n \to \infty} \int_{\Omega} f_n
+\end{align*}
+
+我们先证明：$\lim\limits_{n \to \infty} f_n = \liminf\limits_{n \to \infty} f_n$。
+（书中是没有的，不要实数序列与函数序列混淆）
+
+设
+\begin{align*}
+  \lim\limits_{n \to \infty} f_n = f
+\end{align*}
+于是，对任意$x_0 \in \Omega$，我们有
+\begin{align*}
+  \lim\limits_{n \to \infty} f_n(x_0) = f(x_0)
+\end{align*}
+
+我们有
+\begin{align*}
+  \liminf\limits_{n \to \infty} f_n = \sup\limits_{n} \left(\inf\limits_{m \geq n} f_m\right)
+\end{align*}
+
+于是
+\begin{align*}
+  (\liminf\limits_{n \to \infty} f_n)(x_0)
+   & = \sup\limits_{n} \left(\inf\limits_{m \geq n} f_m (x_0) \right)
+\end{align*}
+利用实数序列的极限值等于下极限，我们有
+\begin{align*}
+  \sup\limits_{n} \left(\inf\limits_{m \geq n} f_m (x_0) \right) = f(x_0)
+\end{align*}
+
+由$x_0$的任意性可得$\lim\limits_{n \to \infty} f_n = \liminf\limits_{n \to \infty} f_n$。
+
+于是利用法都定理可得
+\begin{align*}
+  \int_{\Omega} \lim\limits_{n \to \infty} f_n
+  = \int_{\Omega} \liminf\limits_{n \to \infty} f_n
+  \leq \liminf\limits_{n \to \infty} \int_{\Omega} f_n = \lim\limits_{n \to \infty} \int_{\Omega} f_n
+\end{align*}
+
 
 \end{document}
