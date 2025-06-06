@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+
+\begin{document}
+\title{19.3 注释}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  定理19.3.4中：如何从
+  \begin{align*}
+    \int_{\Omega} F + f \leq \liminf\limits_{n \to \infty} \int_{\Omega} F + f_n
+  \end{align*}
+  从而有
+  \begin{align*}
+    \int_{\Omega} f \leq \liminf\limits_{n \to \infty} \int_{\Omega} f_n
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+左侧，由命题19.3.3(b)可知
+\begin{align*}
+  \int_{\Omega} F + f = \int_{\Omega} F + \int_{\Omega} f
+\end{align*}
+
+右侧，我们有
+\begin{align*}
+  \liminf\limits_{n \to \infty} \int_{\Omega} F + f_n
+   & = \liminf\limits_{n \to \infty} \left(\int_{\Omega} F + \int_{\Omega} f_n\right)
+\end{align*}
+因为$\int_{\Omega} F$是定值，不妨设$c = \int_{\Omega} F$。
+
+所以
+\begin{align*}
+  \liminf\limits_{n \to \infty} \left(\int_{\Omega} F + \int_{\Omega} f_n\right)
+   & = \liminf\limits_{n \to \infty} \left(c + \int_{\Omega} f_n\right)                       \\
+   & = \sup\limits_{n} \inf\limits_{m \geq n} \left(c + \int_{\Omega} f_m\right)              \\
+   & = \sup\limits_{n} \left(c + \inf\limits_{m \geq n} \left(\int_{\Omega} f_m\right)\right) \\
+   & = c + \sup\limits_{n} \left(\inf\limits_{m \geq n} \left(\int_{\Omega} f_m\right)\right) \\
+   & = \int_{\Omega} F + \liminf\limits_{n \to \infty} \int_{\Omega} f_n
+\end{align*}
+
+综上可得
+\begin{align*}
+  \int_{\Omega} f \leq \liminf\limits_{n \to \infty} \int_{\Omega} f_n
+\end{align*}
+
+\begin{zremark}
+  定理19.3.4中：
+  为什么
+  \begin{align*}
+    \liminf\limits_{n \to \infty} \int_{\Omega} F - f_n
+    =
+    \int_{\Omega} F - \limsup\limits_{n \to \infty} \int_{\Omega} f_n
+  \end{align*}
+\end{zremark}
+
+\textbf{证明：}
+
+我们有
+\begin{align*}
+  \liminf\limits_{n \to \infty} \int_{\Omega} F - f_n
+  = \liminf\limits_{n \to \infty} \int_{\Omega} F - \int_{\Omega} f_n
+\end{align*}
+因为$\int_{\Omega} F$是定值，不妨设$c = \int_{\Omega} F$。
+
+所以
+\begin{align*}
+  \liminf\limits_{n \to \infty} \left(\int_{\Omega} F - \int_{\Omega} f_n\right)
+   & = \liminf\limits_{n \to \infty} \left( c - \int_{\Omega} f_n \right)            \\
+   & = \sup\limits_{n} \inf\limits_{m \geq  n} \left( c - \int_{\Omega} f_m \right)  \\
+   & = c + \sup\limits_{n} \inf\limits_{m \geq  n} \left(- \int_{\Omega} f_m \right)
+\end{align*}
+
+接下来需要证明：
+\begin{align*}
+  \sup\limits_{n} \inf\limits_{m \geq  n} \left(- \int_{\Omega} f_m \right)
+  = - \inf\limits_{n} \sup\limits_{m \geq  n} \left(\int_{\Omega} f_m \right)
+\end{align*}
+把$(\int_{\Omega} f_n)_{n = 1}^\infty$看做实数序列$(a_n)_{n = 1}^\infty$，
+相应的，我们需要证明：
+\begin{align*}
+  \liminf\limits_{n \to \infty} - a_n = - \limsup\limits_{n \to \infty} a_n
+\end{align*}
+
+对任意集合$A$，设$\sup(A) = L^+$，$\inf(A) = L^-$，
+于是对任意$x \in A$，我们有
+\begin{align*}
+  x \leq L^+ \\
+  x \geq L^-
+\end{align*}
+于是
+\begin{align*}
+  -x \geq -L^+ \\
+  -x \leq -L^-
+\end{align*}
+所以，
+\begin{align*}
+  \sup(-A) = -L^- = - \inf(A) \\
+  \inf(-A) = -L^+ = - \sup(A)
+\end{align*}
+
+应用以上命题，我们有
+\begin{align*}
+  \liminf\limits_{n \to \infty} - a_n
+   & = \sup\limits_{n}\inf\limits_{m \geq n} - a_m   \\
+   & = \sup\limits_{n}(- \sup\limits_{m \geq n} a_m) \\
+   & = - \inf\limits_{n}\sup\limits_{m \geq n} a_m   \\
+   & = - \limsup\limits_{n \to \infty} a_n
+\end{align*}
+\end{document}

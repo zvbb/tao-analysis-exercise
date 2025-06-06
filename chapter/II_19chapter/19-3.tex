@@ -166,6 +166,46 @@
           \int_{\Omega} (f + g)                                           & = \int_{\Omega} f + \int_{\Omega} g
         \end{align*}
 
+  \item (b-减法)
+
+        扩展(b)：函数$f - g$是绝对可积的，并且$\int_{\Omega} (f - g) = \int_{\Omega} f - \int_{\Omega} g$。
+        （不假设$g,f$的大小关系）。
+
+        对任意$x \in \Omega$，我们有
+        \begin{align*}
+          |f(x) - g(x)| \leq |f(x)| + |g(x)|
+        \end{align*}
+        因为$f, g$都是可测函数，由推论18.5.7可知
+        $|f(x) - g(x)|$是可测函数。
+
+        由命题19.2.6(c)和(b)可得
+        \begin{align*}
+          \int_{\Omega} |f(x) - g(x)|
+          \leq \int_{\Omega} |f(x)| + |g(x)|
+          = \int_{\Omega} |f(x)| + \int_{\Omega} |g(x)|
+          < \infty
+        \end{align*}
+        所以，$f - g$是绝对可积函数。
+
+        我们有
+        \begin{align}
+          f - g & = (f - g)^+ - (f - g)^-     \\
+          f - g & = (f^+ - f^-) - (g^+ - g^-)
+        \end{align}
+        由(3)(4)可得
+        \begin{align*}
+          (f - g)^+ + f^- + g^+= (f - g)^- + f^+ + g^-
+        \end{align*}
+
+        因为等式两边都是非负可测函数，利用引理19.2.10可得
+        \begin{align*}
+          \int_{\Omega} (f - g)^+ + f^- + g^+ = \int_{\Omega} (f - g)^- + f^+ + g^- \\
+          \int_{\Omega} (f - g)^+ + \int_{\Omega} f^- + \int_{\Omega} g^+
+          = \int_{\Omega} (f - g)^- + \int_{\Omega} f^+ + \int_{\Omega} g^-         \\
+          \implies                                                                  \\
+          \int_{\Omega} (f - g) = \int_{\Omega} f - \int_{\Omega} g
+        \end{align*}
+
   \item (c)
 
         因为$f(x) \leq g(x)$，于是可得
@@ -195,5 +235,55 @@
         \end{align*}
 
 \end{itemize}
+
+\section*{19.3.3}
+
+注意：不能直接利用命题19.3.3(b)。
+
+\begin{itemize}
+  \item 方法一：使用习题19.3.2(b-减法)
+
+        \begin{align*}
+          \int_{\mathbb{R}} g - f = \int_{\mathbb{R}} g - \int_{\mathbb{R}} f = 0
+        \end{align*}
+        由命题19.2.6(a)可得，$g - f$是几乎处处为零，
+        命题得证。
+
+  \item 方法二：直接证明
+
+        考虑集合
+        \begin{align*}
+          A : = \{ x \in \mathbb{R} : f(x) \neq g(x) \}
+        \end{align*}
+        我们需要证明$m(A) = 0$。
+
+        反证法，假设$m(A) \neq 0$。
+
+        令$h: \mathbb{R} \to \mathbb{R}$为
+        \begin{align*}
+          h(x) = g(x) - f(x)
+        \end{align*}
+        因为$g(x) \geq f(x)$且$g, f$都是绝对可积的可测函数，
+        所以$h$是可测的（根据引理18.5.10）且是非负的。而且还是绝对可积的。
+
+        因为$m(A) \neq 0$，所以$h$不是几乎处处为零，利用命题19.2.6(a)可得
+        \begin{align*}
+          \int_{\mathbb{R}} h > 0
+        \end{align*}
+        我们有
+        \begin{align*}
+          g(x) = f(x) + h(x)
+        \end{align*}
+        由命题19.3.3(b)可得
+        \begin{align*}
+          \int_{\mathbb{R}} g = \int_{\mathbb{R}} f + \int_{\mathbb{R}} h \\
+          \implies                                                        \\
+          \int_{\mathbb{R}} g > \int_{\mathbb{R}} f
+        \end{align*}
+        这与题设$\int_{\mathbb{R}} g = \int_{\mathbb{R}} f$矛盾。
+        假设不成立，命题得证。
+
+\end{itemize}
+
 
 \end{document}
