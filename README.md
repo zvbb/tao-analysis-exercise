@@ -3,7 +3,6 @@
 
 latex项目, 使用XeLaTeX编译。
 
-
 # 目录结构
 chapter 章节
   - *chapter 具体章节
@@ -14,3 +13,6 @@ chapter 章节
 
 参考：
 https://christangdt.home.blog/analysis/analysis-tenrece-tao-3rd-ed/
+
+补充：
+除了前三章只解答了部分和一些不会做的，全书习题更新完毕。
