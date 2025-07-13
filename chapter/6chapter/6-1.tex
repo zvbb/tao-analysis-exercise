@@ -150,28 +150,25 @@ $(a_n)_{n=m}^\infty$收敛于$c$，于是对任意$\epsilon > 0$，
 \begin{align*}
    & |a_n + b_n - (x+y)|                   \\
    & =|(a_n - x) + (b_n - y)|              \\
-   & \leq |a_n - x| + |b_n - y| = /epsilon
+   & \leq |a_n - x| + |b_n - y| = \epsilon
 \end{align*}
 因此$(a_n+b_n)_{n=m}^\infty$是最终$\epsilon -$接近$x+y$的。
 由于$\epsilon$是任意的，所以$(a_n+b_n)_{n=m}^\infty$收敛于$x+y$
 
 \textbf{（b）}
 
-设$\epsilon_0> 0$，
-因为$(a_n)_{n=m}^\infty$收敛于$x$，即存在$N_a \geq m$使得$|a_n - x| \leq \epsilon _0$对所有的$n \geq N_a$均成立。
+对任意$\epsilon> 0$，
+因为$(a_n)_{n=m}^\infty$收敛于$x$，即存在$N_a \geq m$使得$|a_n - x| \leq \epsilon$对所有的$n \geq N_a$均成立。
 
-因为$(b_n)_{n=m}^\infty$收敛于$y$，即存在$N_b \geq m$使得$|b_n - y| \leq \epsilon _0$对所有的$n \geq N_b$均成立。
+因为$(b_n)_{n=m}^\infty$收敛于$y$，即存在$N_b \geq m$使得$|b_n - y| \leq \epsilon$对所有的$n \geq N_b$均成立。
 
 取$N := max(N_a, N_b)$，
 
 由命题4.3.7（h） 对实数也成立，那么对任意$n \geq N$都有，
 \begin{align*}
-  d(a_nb_n,xy) \leq \epsilon_0|y| + \epsilon_0|x| + \epsilon_0\epsilon_0
+  d(a_nb_n,xy) \leq \epsilon|y| + \epsilon|x| + \epsilon^2
 \end{align*}
-对任意的$\epsilon > 0$，只要$\epsilon_0$足够小，那么$d(a_nb_n,xy)\leq \epsilon$，
-因此$(a_nb_n)_{n=m}^\infty$是最终$\epsilon -$接近$xy$的。
-由于$\epsilon$是任意的，所以$(a_nb_n)_{n=m}^\infty$收敛于$xy$
-
+因为$|x|, |y|$是定值，$\epsilon$是任意的，所以$(a_nb_n)_{n=m}^\infty$收敛于$xy$。
 
 \textbf{（c）}
 
